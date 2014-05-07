@@ -323,6 +323,10 @@ Turtle.step = function(command, values) {
         Turtle.ctxScratch.stroke();
       }
       break;
+    case 'MT': // Move To
+      Turtle.x=values[0];
+      Turtle.y=values[1];
+      break;
     case 'RT':  // Right Turn
       Turtle.heading += values[0];
       Turtle.heading %= 360;
@@ -383,6 +387,10 @@ Turtle.moveForward = function(distance, id) {
 
 Turtle.moveBackward = function(distance, id) {
   BlocklyApps.log.push(['FD', -distance, id]);
+};
+
+Turtle.moveTo = function(xpos, ypos, id) {
+  BlocklyApps.log.push(['MT', xpos, ypos, id]);
 };
 
 Turtle.turnRight = function(angle, id) {

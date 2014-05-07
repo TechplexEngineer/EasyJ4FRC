@@ -20,6 +20,8 @@
     <span id="Turtle_moveTooltip">{msg meaning="Turtle.moveTooltip" desc="tooltip - In this and subsequent messages, 'turtle' refers to a stylized turtle on the screen to represent a position and direction.  This imaginary turtle is carrying a pen in its tail, so moving the turtle draws a line (or curve, etc.).  You are encouraged to play with the [https://blockly-demo.appspot.com/static/apps/turtle/index.html Turtle application] before doing this translation."}Moves the turtle forward or backward by the specified amount.{/msg}</span>
     <span id="Turtle_moveForward">{msg meaning="Turtle.moveForward" desc="[[Translating:Blockly#Drop-Down_Menus dropdown]] - Infinitive or imperative of a verb telling a turtle to move (walk) in the direction he/she is facing.  This is followed by a number indicating how far (how many pixels) to go.  Prefer a translation that has text in common with the translation of 'move backward'.  See [[Translating:Blockly#Drop-Down_Menus]]."}move forward by{/msg}</span>
     <span id="Turtle_moveBackward">{msg meaning="Turtle.moveBackward" desc="[[Translating:Blockly#Drop-Down_Menus dropdown]] - Infinitive or imperative of a verb telling a turtle to move (walk) in the direction opposite to where he/she is facing.  This is followed by a number indicating how far (how many pixels) to go.  Prefer a translation that has text in common with the translation of 'move forward'."}move backward by{/msg}</span>
+    <span id="Turtle_moveToTooltip">{msg meaning="Turtle.moveToTooltip" desc="Moves the turtle to an absolute x and y location via 2 numbers. Top left is 0,0 whilst centre is 200,200 (default)."}Moves turtle to the absolute x/y location without drawing a mark{/msg}</span>
+    <span id="Turtle_moveTo">{msg meaning="Turtle.moveTo" desc="block text - Infinitive or imperative of a verb to move the turtle to an absolute x and y location via 2 numbers. Top left is 0,0 whilst centre is 200,200 (default)."}move to{/msg}</span>
 
     <span id="Turtle_turnTooltip">{msg meaning="Turtle.turnTooltip" desc="'Left' means counter-clockwise/anti-clockwise, and 'right' means clockwise."}Turns the turtle left or right by the specified number of degrees.{/msg}</span>
     <span id="Turtle_turnRight">{msg meaning="Turtle.turnRight" desc="[[Translating:Blockly#Drop-Down_Menus dropdown]] - Infinitive or imperative of verb telling a turtle to rotate clockwise.  This is followed by a number indicating how far (how many degrees) to turn.  Prefer a translation that has text in common with the translation of 'turn left by'."}turn right by{/msg}</span>
@@ -167,6 +169,18 @@
         <value name="VALUE">
           <block type="math_number">
             <field name="NUM">10</field>
+          </block>
+        </value>
+      </block>
+      <block type="draw_moveto">
+        <value name="XPOS">
+          <block type="math_number">
+            <field name="NUM">200</field>
+          </block>
+        </value>
+        <value name="YPOS">
+          <block type="math_number">
+            <field name="NUM">200</field>
           </block>
         </value>
       </block>
