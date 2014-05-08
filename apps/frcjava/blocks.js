@@ -99,7 +99,8 @@
 // };
 
 // =============================================================================
-// Control Blocks
+// Logic & Control Blocks
+
 Blockly.Blocks['simple_robot'] = {
   init: function() {
     this.setHelpUrl('http://www.example.com/');
@@ -116,6 +117,7 @@ Blockly.Blocks['simple_robot'] = {
         .appendField("Teleoperated");
   }
 };
+
 Blockly.Java['simple_robot'] = function(block) {
   var text_name = block.getFieldValue('NAME');
   var statements_setup = Blockly.Java.statementToCode(block, 'setup');
@@ -125,17 +127,45 @@ Blockly.Java['simple_robot'] = function(block) {
   var code = [];
   code.push("public class "+text_name+" extends SimpleRobot {");
   code.push(statements_setup);
-  code.push("public void autonomous() {")
-  code.push(statements_auto);
-  code.push("}");
+  code.push("\tpublic void autonomous() {");
+  code.push("\t\twhile(isEnabled() && isAutonomous() {");
+  code.push("\t\t\t"+statements_auto);
+  code.push("\t\t}");
+  code.push("\t}");
   
-  code.push("public void operatorControl() {")
-  code.push(statements_teleop);
-  code.push("}");
+  code.push("\tpublic void operatorControl() {")
+  code.push("\t\twhile(isEnabled() && isOperatorControl() {");
+  code.push("\t\t\t"+statements_teleop);
+  code.push("\t\t}");
+  code.push("\t}");
 
   code.push("}");
 
-  return code.join('\n');
+  code = code.join('\n').replace(/\t/gm, Blockly.Java.INDENT);
+
+  return code;
+};
+
+Blockly.Blocks['delay'] = {
+  init: function() {
+    this.setHelpUrl('http://www.example.com/');
+    this.setTooltip('');
+    this.setColour(20);
+    this.appendValueInput("AMOUNT")
+        .setCheck("Number")
+        .appendField("Delay for");
+    this.appendDummyInput()
+        .appendField("seconds");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  }
+};
+Blockly.Java['delay'] = function(block) {
+  var value_amount = Blockly.Java.valueToCode(block, 'AMOUNT', Blockly.Java.ORDER_ATOMIC);
+
+  var code = 'Timer.delay('+value_amount+');';
+  return code;
 };
 
 
@@ -194,12 +224,13 @@ Blockly.Java['joystick'] = function(block) {
   var text_name = block.getFieldValue('NAME');
   var value_port = Blockly.Java.valueToCode(block, 'PORT', Blockly.Java.ORDER_ATOMIC);
 
+  Blockly.Java.addImport("import edu.wpi.first.wpilibj.Joystick;");
   var code = 'Joystick '+text_name+' = new Joystick('+value_port+')';
   return code;
 };
 
 // =============================================================================
-// Actuators
+// Motors
 Blockly.Blocks['motor_controller'] = {
   init: function() {
     this.setHelpUrl('http://www.example.com/');
@@ -209,8 +240,8 @@ Blockly.Blocks['motor_controller'] = {
         .appendField("Declare Motor Controller")
         .appendField(new Blockly.FieldTextInput("MC1"), "NAME")
         .appendField("of type")
-        .appendField(new Blockly.FieldDropdown([["Jaguar", "Jaguar"], ["Victor", "Victor"], ["Talon", "Talon"]]), "TYPE");
-    this.appendValueInput("PORT")
+        .appendField(new Blockly.FieldDropdown([["Jaguar", "Jaguar"], ["Victor", "Victor"], ["Talon", "Talon"]]), "CONTROLLER_TYPE");
+    this.appendValueInput("PORT") //@todo how do we ensure only one device per port?
         .setCheck("Number")
         .appendField("on PWM port");
     this.setInputsInline(true);
@@ -219,10 +250,12 @@ Blockly.Blocks['motor_controller'] = {
   }
 };
 Blockly.Java['motor_controller'] = function(block) {
-  var text_name = block.getFieldValue('NAME');
-  var dropdown_type = block.getFieldValue('TYPE');
+
+  var text_name = block.getFieldValue('NAME'); //@todo should be a varuable name
+  var dropdown_type = block.getFieldValue('CONTROLLER_TYPE');
   var value_port = Blockly.Java.valueToCode(block, 'PORT', Blockly.Java.ORDER_ATOMIC);
   
+  Blockly.Java.addImport("import edu.wpi.first.wpilibj."+dropdown_type+";");
   var code = dropdown_type+' '+text_name+' = new '+dropdown_type+'('+value_port+');';
   return code;
 };
@@ -234,8 +267,8 @@ Blockly.Blocks['drivetrain'] = {
     this.setTooltip('');
     this.setColour(20);
     this.appendDummyInput()
-        .appendField("Declare 2 CIM Drivetrain")
-        .appendField(new Blockly.FieldVariable("DT"), "NAME")
+        .appendField("Declare 2 CIM Drivebase ")
+        .appendField(new Blockly.FieldVariable("Drivetrain"), "NAME")
         .appendField("of type")
         .appendField(new Blockly.FieldDropdown([["Victor", "Victor"], ["Jaguar", "Jaguar"], ["Talon", "Talon"]]), "TYPE")
         .appendField("on PWM ports 1-4");
@@ -245,7 +278,7 @@ Blockly.Blocks['drivetrain'] = {
   }
 };
 Blockly.Java['drivetrain'] = function(block) {
-  var text_name = block.getFieldValue('NAME');
+  var text_name = block.getFieldValue('NAME'); //@todo should be a varaiable
   var dropdown_type = block.getFieldValue('TYPE');
 
   Blockly.Java.addReservedWords('frontLeftMotor,rearLeftMotor,frontRightMotor,rearRightMotor');
@@ -255,10 +288,76 @@ Blockly.Java['drivetrain'] = function(block) {
   code.push(dropdown_type+' frontRightMotor = new '+dropdown_type+'(3);');
   code.push(dropdown_type+' rearRightMotor  = new '+dropdown_type+'(4);');
 
+  Blockly.Java.addImport("import edu.wpi.first.wpilibj."+dropdown_type+";");
+  Blockly.Java.addImport("import edu.wpi.first.wpilibj.RobotDrive;");
   code.push('RobotDrive'+' '+text_name+' = new RobotDrive(frontLeftMotor, rearLeftMotor, frontRightMotor, rearRightMotor);');
 
   return code.join('\n');
 };
+
+Blockly.Blocks['move'] = {
+  init: function() {
+    this.setHelpUrl('http://www.example.com/');
+    this.setTooltip('');
+    this.setColour(20);
+    this.appendValueInput("MOVE") //@todo limit the range[-1,1]
+        .setCheck("Number")
+        .appendField("Move ")
+        .appendField(new Blockly.FieldVariable("Drivetrain"), "NAME")
+        .appendField("Speed");
+    this.appendValueInput("TURN") //@todo limit the range[-1,1]
+        .setCheck("Number")
+        .appendField("Turn");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  }
+};
+
+Blockly.Java['move'] = function(block) {
+  var value_move = Blockly.Java.valueToCode(block, 'MOVE', Blockly.Java.ORDER_ATOMIC);
+  var value_turn = Blockly.Java.valueToCode(block, 'TURN', Blockly.Java.ORDER_ATOMIC);
+  var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
+  // TODO: Assemble Java into code variable.
+  var code = variable_name+'.arcadeDrive('+value_move+','+value_turn+');';
+  return code;
+};
+
+Blockly.Blocks['move_with_joystick'] = {
+  init: function() {
+    this.setHelpUrl('http://www.example.com/');
+    this.setTooltip('');
+    this.setColour(20);
+    this.appendDummyInput()
+        .appendField("Move ")
+        .appendField(new Blockly.FieldVariable("Drivetrain"), "NAME");
+    this.appendDummyInput()
+        .appendField("with Joystick")
+        .appendField(new Blockly.FieldVariable("JS1"), "JOYSTICK");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  }
+};
+
+Blockly.Java['move_with_joystick'] = function(block) {
+  var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
+  var variable_joystick = Blockly.Java.variableDB_.getName(block.getFieldValue('JOYSTICK'), Blockly.Variables.NAME_TYPE);
+  // @todo check to see if the variable_joystick exists
+  var code = variable_name+'.arcadeDrive('+variable_joystick+', false);';
+  return code;
+};
+
+// =============================================================================
+// Pneumatics
+
+
+// =============================================================================
+// Sensors
+// Gyro
+// Accelerometer
+// Encoder
+
 
 // var ALIGNMENT_OPTIONS =
 //     [['left', 'LEFT'], ['right', 'RIGHT'], ['centre', 'CENTRE']];

@@ -67,19 +67,18 @@ function onchange() {
  * Update the language code.
  */
 function updateLanguage() {
-  // Generate name.
-  var name = rootBlock.getFieldValue('NAME');
-  name = name.replace(/\W/g, '_').replace(/^(\d)/, '_\\1').toLowerCase();
-  if (!name) {
-    name = 'unnamed';
-  }
+  // // Generate name.
+  // var name = rootBlock.getFieldValue('NAME');
+  // name = name.replace(/\W/g, '_').replace(/^(\d)/, '_\\1').toLowerCase();
+  // if (!name) {
+  //   name = 'unnamed';
+  // }
 
-  // var code = [];
-  // code.push("package edu.team5122.frcEasyJ;");
+  var code = "package edu.team5122.frcEasyJ;\n";
   // code.push("");
 
   var content = document.getElementById('languagePre');
-  var code = Blockly.Java.workspaceToCode();
+  code += Blockly.Java.workspaceToCode();
   content.textContent = code;
   if (typeof prettyPrintOne == 'function') {
     code = content.innerHTML;
