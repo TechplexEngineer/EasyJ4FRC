@@ -38,9 +38,9 @@ Blockly.Blocks['simple_robot'] = {
     this.appendStatementInput("setup")
         .appendField("Setup");
     this.appendStatementInput("auto")
-        .appendField("Autonomous");
+        .appendField("Autonomous Loop");
     this.appendStatementInput("teleop")
-        .appendField("Teleoperated");
+        .appendField("Teleoperated Loop");
   }
 };
 Blockly.Java['simple_robot'] = function(block) {
