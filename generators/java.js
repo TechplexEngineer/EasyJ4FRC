@@ -119,6 +119,7 @@ Blockly.Java.init = function() {
           Blockly.Variables.NAME_TYPE) + ';';
     }
     Blockly.Java.definitions_['variables'] = defvars.join('\n');
+    Blockly.Java.definitions_['imports'] = [];
   }
 };
 
@@ -131,9 +132,9 @@ Blockly.Java.finish = function(code) {
   // Convert the definitions dictionary into a list.
   var definitions = [];
   for (var name in Blockly.Java.definitions_) {
-    definitions.push(Blockly.Java.definitions_[name]);
+    definitions = definitions.concat(Blockly.Java.definitions_[name]);
   }
-  return definitions.join('\n\n') + '\n\n\n' + code;
+  return definitions.join('\n') + '\n\n' + code;
 };
 
 /**
@@ -202,3 +203,9 @@ Blockly.Java.scrub_ = function(block, code) {
   var nextCode = this.blockToCode(nextBlock);
   return commentCode + code + nextCode;
 };
+
+
+Blockly.Java.addImport = function(imprt) {
+  if ( !(Blockly.Java.definitions_['imports'].indexOf(imprt) > -1) ) //This will make it a set
+    Blockly.Java.definitions_['imports'].push(imprt);
+}
