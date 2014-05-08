@@ -4,3 +4,6 @@ apps/json/
 *_compressed.js
 *_uncompressed.js
 msg/
+*.sublime-*
+frcjava_hardway/
+xmlblocks/
