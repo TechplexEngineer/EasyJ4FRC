@@ -25,7 +25,7 @@
 
 
 // =============================================================================
-// Logic & Control Blocks
+// Root Block
 
 Blockly.Blocks['simple_robot'] = {
   init: function() {
@@ -33,8 +33,8 @@ Blockly.Blocks['simple_robot'] = {
     this.setTooltip('');
     this.setColour(120);
     this.appendDummyInput()
-        .appendField("Simple Robot Named:")
-        .appendField(new Blockly.FieldTextInput("MyRobot"), "NAME");
+        .appendField("Sinple Robot Named:")
+        .appendField(new Blockly.FieldVariable("MyRobot"), "NAME");
     this.appendStatementInput("setup")
         .appendField("Setup");
     this.appendStatementInput("auto")
@@ -43,15 +43,15 @@ Blockly.Blocks['simple_robot'] = {
         .appendField("Teleoperated");
   }
 };
-
 Blockly.Java['simple_robot'] = function(block) {
-  var text_name = block.getFieldValue('NAME');
+  var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
   var statements_setup = Blockly.Java.statementToCode(block, 'setup');
-  var statements_teleop = Blockly.Java.statementToCode(block, 'teleop');
   var statements_auto = Blockly.Java.statementToCode(block, 'auto');
-  // TODO: Assemble JavaScript into code variable.
+  var statements_teleop = Blockly.Java.statementToCode(block, 'teleop');
+  
   var code = [];
-  code.push("public class "+text_name+" extends SimpleRobot {");
+  code.push("public class "+variable_name+" extends SimpleRobot {");
+  
   code.push(statements_setup);
   code.push("\tpublic void autonomous() {");
   code.push("\t\twhile(isEnabled() && isAutonomous() {");
@@ -71,6 +71,9 @@ Blockly.Java['simple_robot'] = function(block) {
 
   return code;
 };
+
+// =============================================================================
+// Logic & Control Blocks
 
 Blockly.Blocks['delay'] = {
   init: function() {
@@ -103,22 +106,22 @@ Blockly.Blocks['joystick'] = {
     this.setColour(20);
     this.appendDummyInput()
         .appendField("Declare Joystick")
-        .appendField(new Blockly.FieldTextInput("JS1"), "NAME")
+        .appendField(new Blockly.FieldVariable("JS1"), "NAME")
         .appendField("on usb port");
     this.appendValueInput("PORT")
         .setCheck("Number");
     this.setInputsInline(true);
-    this.setPreviousStatement(true, 'Input');
+    this.setPreviousStatement(true);
     this.setNextStatement(true);
   }
 };
 
 Blockly.Java['joystick'] = function(block) {
-  var text_name = block.getFieldValue('NAME');
+  var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
   var value_port = Blockly.Java.valueToCode(block, 'PORT', Blockly.Java.ORDER_ATOMIC);
 
   Blockly.Java.addImport("import edu.wpi.first.wpilibj.Joystick;");
-  var code = 'Joystick '+text_name+' = new Joystick('+value_port+');\n';
+  var code = 'Joystick '+variable_name+' = new Joystick('+value_port+');\n';
   return code;
 };
 
@@ -131,10 +134,10 @@ Blockly.Blocks['motor_controller'] = {
     this.setColour(20);
     this.appendDummyInput()
         .appendField("Declare Motor Controller")
-        .appendField(new Blockly.FieldTextInput("MC1"), "NAME")
+        .appendField(new Blockly.FieldVariable("MC1"), "NAME")
         .appendField("of type")
-        .appendField(new Blockly.FieldDropdown([["Jaguar", "Jaguar"], ["Victor", "Victor"], ["Talon", "Talon"]]), "CONTROLLER_TYPE");
-    this.appendValueInput("PORT") //@todo how do we ensure only one device per port?
+        .appendField(new Blockly.FieldDropdown([["Victor", "Victor"], ["Jaguar", "Jaguar"], ["Talon", "Talon"]]), "TYPE");
+    this.appendValueInput("PORT")
         .setCheck("Number")
         .appendField("on PWM port");
     this.setInputsInline(true);
@@ -144,12 +147,12 @@ Blockly.Blocks['motor_controller'] = {
 };
 Blockly.Java['motor_controller'] = function(block) {
 
-  var text_name = block.getFieldValue('NAME'); //@todo should be a varuable name
+  var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
   var dropdown_type = block.getFieldValue('CONTROLLER_TYPE');
   var value_port = Blockly.Java.valueToCode(block, 'PORT', Blockly.Java.ORDER_ATOMIC);
   
   Blockly.Java.addImport("import edu.wpi.first.wpilibj."+dropdown_type+";");
-  var code = dropdown_type+' '+text_name+' = new '+dropdown_type+'('+value_port+');\n';
+  var code = dropdown_type+' '+variable_name+' = new '+dropdown_type+'('+value_port+');\n';
   return code;
 };
 
@@ -171,7 +174,7 @@ Blockly.Blocks['drivetrain'] = {
   }
 };
 Blockly.Java['drivetrain'] = function(block) {
-  var text_name = block.getFieldValue('NAME'); //@todo should be a varaiable
+  var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
   var dropdown_type = block.getFieldValue('TYPE');
 
   Blockly.Java.addReservedWords('frontLeftMotor,rearLeftMotor,frontRightMotor,rearRightMotor');
@@ -183,7 +186,7 @@ Blockly.Java['drivetrain'] = function(block) {
 
   Blockly.Java.addImport("import edu.wpi.first.wpilibj."+dropdown_type+";");
   Blockly.Java.addImport("import edu.wpi.first.wpilibj.RobotDrive;");
-  code.push('RobotDrive'+' '+text_name+' = new RobotDrive(frontLeftMotor, rearLeftMotor, frontRightMotor, rearRightMotor);\n');
+  code.push('RobotDrive'+' '+variable_name+' = new RobotDrive(frontLeftMotor, rearLeftMotor, frontRightMotor, rearRightMotor);\n');
 
   return code.join('\n');
 };
