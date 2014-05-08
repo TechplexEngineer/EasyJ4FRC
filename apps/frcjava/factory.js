@@ -50,7 +50,7 @@ function onchange() {
  */
 function updateLanguage() {
 
-  var code = "package edu.team5122.frcEasyJ;\n";
+  var code = "package org.usfirst.frcEasyJ.team5122;\n";
   // code.push("");
 
   var content = document.getElementById('languagePre');
