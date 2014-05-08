@@ -34,6 +34,8 @@ var rootBlock = null;
  */
 var blockType = '';
 
+var g_xml_text = '';
+
 /**
  * Initialize Blockly.  Called on page load.
  * @param {!Function} updateFunc Function to update the preview.
@@ -47,6 +49,14 @@ function initPreview(updateFunc) {
  * When the workspace changes, update the three other displays.
  */
 function onchange() {
+
+  // console.log(rootBlock);
+  if (!rootBlock.rendered) {
+    // console.log("INIT");
+    initRootBlock();
+  };
+  // console.log(rootBlock);
+
   var name = rootBlock.getFieldValue('NAME');
   blockType = name.replace(/\W/g, '_').replace(/^(\d)/, '_\\1').toLowerCase();
   if (!blockType) {
@@ -55,6 +65,10 @@ function onchange() {
   updateLanguage();
   updateGenerator();
   updatePreview();
+  var xmlDom = Blockly.Xml.workspaceToDom(Blockly.mainWorkspace);
+  var xmlText = Blockly.Xml.domToPrettyText(xmlDom);
+  g_xml_text = xmlText;
+  // injectCode([xmlText.toString()], 'xmlPre', 'xml');
 }
 
 /**
@@ -66,6 +80,7 @@ function updateLanguage() {
   code.push("Blockly.Blocks['" + blockType + "'] = {");
   code.push("  init: function() {");
   code.push("    this.setHelpUrl('http://www.example.com/');");
+  code.push("    this.setTooltip('');");
   // Generate colour.
   var colourBlock = rootBlock.getInputTargetBlock('COLOUR');
   if (colourBlock && !colourBlock.disabled) {
@@ -125,7 +140,6 @@ function updateLanguage() {
       code.push(connectionLine_('setNextStatement', 'BOTTOMTYPE'));
       break;
   }
-  code.push("    this.setTooltip('');");
   code.push("  }");
   code.push("};");
 
@@ -348,7 +362,7 @@ function updateGenerator() {
       case 'input_statement':
         var name = block.getFieldValue('INPUTNAME');
         code.push(makeVar('statements', name) +
-                  " = Blockly.' + language + '.statementToCode(block, '" +
+                  " = Blockly." + language + ".statementToCode(block, '" +
                   name + "');");
         break;
     }
@@ -388,12 +402,41 @@ function updatePreview() {
  * @param {!Array.<string>} code Array of lines of code.
  * @param {string} id ID of <pre> element to inject into.
  */
-function injectCode(code, id) {
+function injectCode(code, id, lang) {
+  if (typeof lang === "undefined") {
+    lang = 'js'
+  };
   var pre = document.getElementById(id);
   pre.textContent = code.join('\n');
   code = pre.innerHTML;
-  code = prettyPrintOne(code, 'js');
+  code = prettyPrintOne(code, lang);
   pre.innerHTML = code;
+}
+
+function download(filename, text) {
+  var pom = document.createElement('a');
+  pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+  pom.setAttribute('download', filename);
+  pom.click();
+}
+
+function initRootBlock () {
+  if (rootBlock == null) {
+    rootBlock = Blockly.Block.obtain(Blockly.mainWorkspace, 'factory_base');
+    rootBlock.initSvg();
+    rootBlock.render();
+  }
+  else
+  {
+    // console.log("TOP Blocks");
+    // console.log(Blockly.mainWorkspace.getTopBlocks()[0])
+    // @todo this isn't the best as saving with multiple top lvele blocks is possible
+    // doing so just dosen't make any sense
+    rootBlock = Blockly.mainWorkspace.getTopBlocks()[0];
+  }
+  
+  rootBlock.setMovable(false);
+  rootBlock.setDeletable(false);
 }
 
 /**
@@ -420,16 +463,35 @@ function init() {
                  {path: '../../', toolbox: toolbox});
 
   // Create the root block.
-  rootBlock = Blockly.Block.obtain(Blockly.mainWorkspace, 'factory_base');
-  rootBlock.initSvg();
-  rootBlock.render();
-  rootBlock.setMovable(false);
-  rootBlock.setDeletable(false);
+  initRootBlock();
 
   Blockly.addChangeListener(onchange);
   document.getElementById('direction')
       .addEventListener('change', updatePreview);
   document.getElementById('language')
       .addEventListener('change', updateGenerator);
+  document.getElementById('download')
+    .addEventListener('click', function(){
+      download(blockType+".xml", g_xml_text)
+    });
+  document.getElementById('load')
+    .addEventListener('click', function(){
+      var userxml = window.prompt("Paste your saved XML here","");
+      if (!userxml || userxml.length < 10) {
+        return;
+      };
+      try{
+        var xml = Blockly.Xml.textToDom(userxml);
+        Blockly.mainWorkspace.clear();
+        Blockly.Xml.domToWorkspace(Blockly.mainWorkspace, xml);
+      } catch(e)
+      {
+        throw e;
+      }
+      onchange();
+    });
 }
 window.addEventListener('load', init);
+
+
+
