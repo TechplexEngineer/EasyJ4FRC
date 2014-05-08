@@ -92,6 +92,13 @@ Blockly.Blocks['delay'] = {
 };
 Blockly.Java['delay'] = function(block) {
   var value_amount = Blockly.Java.valueToCode(block, 'AMOUNT', Blockly.Java.ORDER_ATOMIC);
+  if (value_amount=="") {
+    block.setWarningText("Delay amount not set. Defaulted to 0 secs.");
+    value_amount = 1;
+  }
+  else {
+    block.setWarningText(null);
+  }
 
   var code = 'Timer.delay('+value_amount+');\n';
   return code;
@@ -120,6 +127,14 @@ Blockly.Java['joystick'] = function(block) {
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
   var value_port = Blockly.Java.valueToCode(block, 'PORT', Blockly.Java.ORDER_ATOMIC);
 
+  if (value_port=="") {
+    block.setWarningText("Joystick port not set. Defaulted to port 1.");
+    value_port = 1;
+  }
+  else {
+    block.setWarningText(null);
+  }
+  
   Blockly.Java.addImport("import edu.wpi.first.wpilibj.Joystick;");
   var code = 'Joystick '+variable_name+' = new Joystick('+value_port+');\n';
   return code;
@@ -150,6 +165,15 @@ Blockly.Java['motor_controller'] = function(block) {
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
   var dropdown_type = block.getFieldValue('CONTROLLER_TYPE');
   var value_port = Blockly.Java.valueToCode(block, 'PORT', Blockly.Java.ORDER_ATOMIC);
+
+  if (value_port=="") {
+    block.setWarningText("Motor Controller port not set. Defaulted to port 1.");
+    value_port = 1;
+  }
+  else
+  {
+    block.setWarningText(null);
+  }
   
   Blockly.Java.addImport("import edu.wpi.first.wpilibj."+dropdown_type+";");
   var code = dropdown_type+' '+variable_name+' = new '+dropdown_type+'('+value_port+');\n';
@@ -214,7 +238,22 @@ Blockly.Java['move'] = function(block) {
   var value_move = Blockly.Java.valueToCode(block, 'MOVE', Blockly.Java.ORDER_ATOMIC);
   var value_turn = Blockly.Java.valueToCode(block, 'TURN', Blockly.Java.ORDER_ATOMIC);
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
-  // TODO: Assemble Java into code variable.
+  
+  if (value_move=="") {
+    block.setWarningText("Motor Controller speed not set. Defaulted to speed 0.");
+    value_move = 0;
+  }
+  else {
+    block.setWarningText(null);
+  }
+  if (value_turn=="") {
+    block.setWarningText("Motor Controller turn not set. Defaulted to turn 0.");
+    value_turn = 0;
+  }
+  else {
+    block.setWarningText(null);
+  }
+
   var code = variable_name+'.arcadeDrive('+value_move+','+value_turn+');\n';
   return code;
 };
