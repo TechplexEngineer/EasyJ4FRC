@@ -118,7 +118,7 @@ Blockly.Java['joystick'] = function(block) {
   var value_port = Blockly.Java.valueToCode(block, 'PORT', Blockly.Java.ORDER_ATOMIC);
 
   Blockly.Java.addImport("import edu.wpi.first.wpilibj.Joystick;");
-  var code = 'Joystick '+text_name+' = new Joystick('+value_port+')';
+  var code = 'Joystick '+text_name+' = new Joystick('+value_port+');\n';
   return code;
 };
 
@@ -149,7 +149,7 @@ Blockly.Java['motor_controller'] = function(block) {
   var value_port = Blockly.Java.valueToCode(block, 'PORT', Blockly.Java.ORDER_ATOMIC);
   
   Blockly.Java.addImport("import edu.wpi.first.wpilibj."+dropdown_type+";");
-  var code = dropdown_type+' '+text_name+' = new '+dropdown_type+'('+value_port+');';
+  var code = dropdown_type+' '+text_name+' = new '+dropdown_type+'('+value_port+');\n';
   return code;
 };
 
@@ -183,7 +183,7 @@ Blockly.Java['drivetrain'] = function(block) {
 
   Blockly.Java.addImport("import edu.wpi.first.wpilibj."+dropdown_type+";");
   Blockly.Java.addImport("import edu.wpi.first.wpilibj.RobotDrive;");
-  code.push('RobotDrive'+' '+text_name+' = new RobotDrive(frontLeftMotor, rearLeftMotor, frontRightMotor, rearRightMotor);');
+  code.push('RobotDrive'+' '+text_name+' = new RobotDrive(frontLeftMotor, rearLeftMotor, frontRightMotor, rearRightMotor);\n');
 
   return code.join('\n');
 };
@@ -212,7 +212,7 @@ Blockly.Java['move'] = function(block) {
   var value_turn = Blockly.Java.valueToCode(block, 'TURN', Blockly.Java.ORDER_ATOMIC);
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
   // TODO: Assemble Java into code variable.
-  var code = variable_name+'.arcadeDrive('+value_move+','+value_turn+');';
+  var code = variable_name+'.arcadeDrive('+value_move+','+value_turn+');\n';
   return code;
 };
 
@@ -237,7 +237,7 @@ Blockly.Java['move_with_joystick'] = function(block) {
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
   var variable_joystick = Blockly.Java.variableDB_.getName(block.getFieldValue('JOYSTICK'), Blockly.Variables.NAME_TYPE);
   // @todo check to see if the variable_joystick exists
-  var code = variable_name+'.arcadeDrive('+variable_joystick+', false);';
+  var code = variable_name+'.arcadeDrive('+variable_joystick+', false);\n';
   return code;
 };
 
