@@ -220,7 +220,6 @@ Blockly.Java.workspaceToCode = function(rootBlk) {
   } else {
     blocks = Blockly.mainWorkspace.getTopBlocks(true);
   }
-  console.log(blocks);
   for (var x = 0, block; block = blocks[x]; x++) {
     var line = this.blockToCode(block);
     if (goog.isArray(line)) {

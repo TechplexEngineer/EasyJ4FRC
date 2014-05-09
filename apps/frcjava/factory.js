@@ -98,7 +98,7 @@ function init() {
   onresize();
   window.addEventListener('resize', onresize);
 
-  var toolbox = document.getElementById('toolbox');
+  var toolbox = document.getElementById('toolbox'); //@todo can we lazy load this?
   Blockly.inject(document.getElementById('blockly'),
                  {path: '../../', toolbox: toolbox});
 
