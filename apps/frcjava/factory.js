@@ -83,6 +83,7 @@ function escapeString(string) {
  * Initialize Blockly and layout.  Called on page load.
  */
 function init() {
+  // Blockly.Java.init();
   var expandList = [
     document.getElementById('blockly'),
     // document.getElementById('previewFrame'),
