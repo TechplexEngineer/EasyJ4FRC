@@ -53,8 +53,10 @@ function updateLanguage() {
   var code = "package org.usfirst.frcEasyJ.team5122;\n";
   // code.push("");
 
+  
+
   var content = document.getElementById('languagePre');
-  code += Blockly.Java.workspaceToCode();
+  code += Blockly.Java.workspaceToCode(rootBlock);
   content.textContent = code;
   if (typeof prettyPrintOne == 'function') {
     code = content.innerHTML;
