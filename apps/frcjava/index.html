@@ -59,13 +59,39 @@
     </tr>
   </table>
   <xml id="toolbox" style="display: none">
+    
     <category name="Input">
-      <block type="joystick">
+      <category name="User">
+        <block type="joystick">
         <value name="PORT">
           <block type="math_number">
             <field name="NUM">1</field>
           </block>
-        </value></block>
+        </value>
+      </block>
+      <block type="get_joystick_axis"></block>
+      <block type="get_joystick_button"></block>
+      </category>
+      <category name="Digital">
+        <block type="digital_input">
+          <value name="PORT">
+            <block type="math_number">
+              <field name="NUM">1</field>
+            </block>
+          </value>
+        </block>
+        <block type="get_digital_input_value"></block>
+      </category>
+      <category name="Analog">
+        <block type="analog_input">
+          <value name="PORT">
+            <block type="math_number">
+              <field name="NUM">1</field>
+            </block>
+          </value>
+        </block>
+        <block type="get_analog_input_value"></block>
+      </category>
     </category>
 
     <category name="Motors">
@@ -100,13 +126,6 @@
       <block type="logic_boolean"></block>
       <block type="logic_null"></block>
       <block type="logic_ternary"></block>
-      <block type="delay">
-        <value name="AMOUNT">
-          <block type="math_number">
-            <field name="NUM">1.5</field>
-          </block>
-        </value>
-      </block>
     </category>
 
     <category name="Loops">
@@ -160,7 +179,11 @@
 
     <category name="Text">
       <block type="text"></block>
-      <block type="text_print"></block>
+      <block type="text_print">
+        <value name="TEXT">
+          <block type="text"></block>
+        </value>
+      </block>
       <block type="text_join"></block>
       <category name="More">
         <block type="text_append"></block>
@@ -173,6 +196,22 @@
         <block type="text_trim"></block>
         <block type="text_prompt"></block>
       </category>
+    </category>
+
+
+    <category name="Timing">
+      <block type="delay">
+        <value name="AMOUNT">
+          <block type="math_number">
+            <field name="NUM">1.5</field>
+          </block>
+        </value>
+      </block>
+      <block type="timer"></block>
+      <block type="start_timer"></block>
+      <block type="stop_timer"></block>
+      <block type="reset_timer"></block>
+      <block type="us_counter"></block>
     </category>
 
     <!-- <category name="Field">

@@ -74,13 +74,13 @@ Blockly.Java['simple_robot'] = function(block) {
 };
 
 // =============================================================================
-// Logic & Control Blocks
+// Timing Blocks
 
 Blockly.Blocks['delay'] = {
   init: function() {
     this.setHelpUrl('http://www.example.com/');
     this.setTooltip('');
-    this.setColour(20);
+    this.setColour(330);
     this.appendValueInput("AMOUNT")
         .setCheck("Number")
         .appendField("Delay for");
@@ -93,6 +93,8 @@ Blockly.Blocks['delay'] = {
 };
 Blockly.Java['delay'] = function(block) {
   var value_amount = Blockly.Java.valueToCode(block, 'AMOUNT', Blockly.Java.ORDER_ATOMIC);
+  
+  
   if (value_amount=="") {
     block.setWarningText("Delay amount not set. Defaulted to 0 secs.");
     value_amount = 1;
@@ -100,9 +102,105 @@ Blockly.Java['delay'] = function(block) {
   else {
     block.setWarningText(null);
   }
-
+  Blockly.Java.addImport("import edu.wpi.first.wpilibj.Timer;");
   var code = 'Timer.delay('+value_amount+');\n';
   return code;
+};
+
+Blockly.Blocks['timer'] = {
+  init: function() {
+    this.setHelpUrl('http://www.example.com/');
+    this.setTooltip('');
+    this.setColour(260);
+    this.appendDummyInput()
+        .appendField("Declare Timer")
+        .appendField(new Blockly.FieldVariable("Timer1"), "NAME");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  }
+};
+Blockly.Java['timer'] = function(block) {
+  var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
+  
+  Blockly.Java.addImport("import edu.wpi.first.wpilibj.Timer;");
+  var code = 'Timer '+variable_name+' = new Timer();';
+  return code;
+};
+
+Blockly.Blocks['start_timer'] = {
+  init: function() {
+    this.setHelpUrl('http://www.example.com/');
+    this.setTooltip('');
+    this.setColour(260);
+    this.appendDummyInput()
+        .appendField("Start timer")
+        .appendField(new Blockly.FieldVariable("Timer1"), "NAME");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  }
+};
+Blockly.Java['start_timer'] = function(block) {
+  var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
+  // @todo check to see if the variable_name exists
+  var code = variable_name+'.start()';
+  return code;
+};
+
+Blockly.Blocks['stop_timer'] = {
+  init: function() {
+    this.setHelpUrl('http://www.example.com/');
+    this.setTooltip('');
+    this.setColour(260);
+    this.appendDummyInput()
+        .appendField("Stop timer")
+        .appendField(new Blockly.FieldVariable("Timer1"), "NAME");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  }
+};
+Blockly.Java['stop_timer'] = function(block) {
+  var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
+  // @todo check to see if the variable_name exists
+  var code = variable_name+'.stop()';
+  return code;
+};
+
+Blockly.Blocks['reset_timer'] = {
+  init: function() {
+    this.setHelpUrl('http://www.example.com/');
+    this.setTooltip('');
+    this.setColour(260);
+    this.appendDummyInput()
+        .appendField("Reset timer")
+        .appendField(new Blockly.FieldVariable("Timer1"), "NAME");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  }
+};
+Blockly.Java['reset_timer'] = function(block) {
+  var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
+  // @todo check to see if the variable_name exists
+  var code = variable_name+'.reset()';
+  return code;
+};
+
+Blockly.Blocks['us_counter'] = {
+  init: function() {
+    this.setHelpUrl('http://www.example.com/');
+    this.setTooltip('');
+    this.setColour(330);
+    this.appendDummyInput()
+        .appendField("Microsecond Counter");
+    this.setInputsInline(true);
+    this.setOutput(true, "Number");
+  }
+};
+
+Blockly.Java['us_counter'] = function(block) {
+  Blockly.Java.addImport("import edu.wpi.first.wpilibj.Timer;");
+  var code = 'Timer.getUsClock()';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.Java.ORDER_ATOMIC];
 };
 
 // =============================================================================
@@ -141,6 +239,50 @@ Blockly.Java['joystick'] = function(block) {
   return code;
 };
 
+Blockly.Blocks['get_joystick_axis'] = {
+  init: function() {
+    this.setHelpUrl('http://www.example.com/');
+    this.setTooltip('');
+    this.setColour(20);
+    this.appendDummyInput()
+        .appendField("Get Joystick")
+        .appendField(new Blockly.FieldVariable("JS1"), "NAME")
+        .appendField(new Blockly.FieldDropdown([["X Axis", "kX"], ["Y Axis", "kY"], ["Z Axis", "kZ"], ["Twist", "kTwist"], ["Throttle", "kThrottle"]]), "WHAT");
+    this.setOutput(true, "Number");
+  }
+};
+Blockly.Java['get_joystick_axis'] = function(block) {
+  var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
+  var dropdown_what = block.getFieldValue('WHAT');
+
+  var code = variable_name+'.getAxis(Joystick.AxisType.'+dropdown_what+')';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.Java.ORDER_ATOMIC];
+};
+
+Blockly.Blocks['get_joystick_button'] = {
+  init: function() {
+    this.setHelpUrl('http://www.example.com/');
+    this.setTooltip('');
+    this.setColour(20);
+    this.appendDummyInput()
+        .appendField("Get Joystick")
+        .appendField(new Blockly.FieldVariable("JS1"), "NAME");
+    this.appendValueInput("BUTTON_NUMBER")
+        .setCheck("Number") // @todo Get the button value for buttons 1 through 12.
+        .appendField("Button");
+    this.setInputsInline(true);
+    this.setOutput(true, "Boolean");
+  }
+};
+Blockly.Java['get_joystick_button'] = function(block) {
+  var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
+  var value_button_number = Blockly.Java.valueToCode(block, 'BUTTON_NUMBER', Blockly.Java.ORDER_ATOMIC);
+  // TODO: Assemble Java into code variable.
+  variable_name+'.getRawButton('+value_button_number+')';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.Java.ORDER_ATOMIC];
+};
 // =============================================================================
 // Motors
 Blockly.Blocks['motor_controller'] = {
@@ -281,6 +423,114 @@ Blockly.Java['move_with_joystick'] = function(block) {
   var variable_joystick = Blockly.Java.variableDB_.getName(block.getFieldValue('JOYSTICK'), Blockly.Variables.NAME_TYPE);
   // @todo check to see if the variable_joystick exists
   var code = variable_name+'.arcadeDrive('+variable_joystick+', false);\n';
+  return code;
+};
+
+// =============================================================================
+// Digital
+
+Blockly.Blocks['digital_input'] = {
+  init: function() {
+    this.setHelpUrl('http://www.example.com/');
+    this.setTooltip('');
+    this.setColour(120);
+    this.appendDummyInput()
+        .appendField("Declare Digital Input")
+        .appendField(new Blockly.FieldVariable("Din1"), "NAME");
+    this.appendValueInput("PORT")
+        .setCheck("Number")
+        .appendField("on Port");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  }
+};
+Blockly.Java['digital_input'] = function(block) {
+  var value_port = Blockly.Java.valueToCode(block, 'PORT', Blockly.Java.ORDER_ATOMIC);
+  var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
+  
+  Blockly.Java.addImport("import edu.wpi.first.wpilibj.DigitalInput;");
+  var code = 'DigitalInput '+variable_name+' = new DigitalInput('+value_port+');';
+  return code;
+};
+
+Blockly.Blocks['get_digital_input_value'] = {
+  init: function() {
+    this.setHelpUrl('http://www.example.com/');
+    this.setTooltip('');
+    this.setColour(120);
+    this.appendDummyInput()
+        .appendField("Get value")
+        .appendField(new Blockly.FieldVariable("Din1"), "NAME");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  }
+};
+
+Blockly.Java['get_digital_input_value'] = function(block) {
+  var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
+  
+  //@todo make sure wariable_name has been declared
+  var code = variable_name+'.get()';
+  return code;
+};
+
+// =============================================================================
+// Analog
+
+Blockly.Blocks['analog_input'] = {
+  init: function() {
+    this.setHelpUrl('http://www.example.com/');
+    this.setTooltip('');
+    this.setColour(65);
+    this.appendDummyInput()
+        .appendField("Declare Analog Input")
+        .appendField(new Blockly.FieldVariable("Ain1"), "NAME");
+    this.appendValueInput("PORT")
+        .setCheck("Number")
+        .appendField("on Port");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  }
+};
+Blockly.Java['analog_input'] = function(block) {
+  var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
+  var value_port = Blockly.Java.valueToCode(block, 'PORT', Blockly.Java.ORDER_ATOMIC);
+  
+  if (value_port=="") {
+    block.setWarningText("Analog Input port not set. Defaulted to port 1.");
+    value_port = 1;
+  }
+  else {
+    block.setWarningText(null);
+  }
+  Blockly.Java.addImport("import edu.wpi.first.wpilibj.AnalogChannel;");
+  var code = 'AnalogChannel '+variable_name+' = new AnalogChannel('+value_port+');';
+  return code;
+};
+
+Blockly.Blocks['get_analog_input_value'] = {
+  init: function() {
+    this.setHelpUrl('http://www.example.com/');
+    this.setTooltip('');
+    this.setColour(65);
+    this.appendDummyInput()
+        .appendField("Get ")
+        .appendField(new Blockly.FieldDropdown([["Average Voltage", "getAverageVoltage"], ["Voltage", "getVoltage"], [" Average Value", "getAverageValue"]]), "WHAT")
+        .appendField(new Blockly.FieldVariable("Ain1"), "NAME");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  }
+};
+Blockly.Java['get_analog_input_value'] = function(block) {
+  var dropdown_what = block.getFieldValue('WHAT');
+  var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
+  
+  //@todo make sure wariable_name has been declared
+  var code = variable_name+'.'+dropdown_what+'()';
   return code;
 };
 
