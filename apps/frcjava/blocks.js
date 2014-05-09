@@ -49,18 +49,19 @@ Blockly.Java['simple_robot'] = function(block) {
   var statements_auto = Blockly.Java.statementToCode(block, 'auto');
   var statements_teleop = Blockly.Java.statementToCode(block, 'teleop');
   
+  Blockly.Java.addImport("import edu.wpi.first.wpilibj.SimpleRobot;");
   var code = [];
   code.push("public class "+variable_name+" extends SimpleRobot {");
   
   code.push(statements_setup);
   code.push("\tpublic void autonomous() {");
-  code.push("\t\twhile(isEnabled() && isAutonomous() {");
+  code.push("\t\twhile(isEnabled() && isAutonomous()) {");
   code.push("\t\t\t"+statements_auto);
   code.push("\t\t}");
   code.push("\t}");
   
   code.push("\tpublic void operatorControl() {")
-  code.push("\t\twhile(isEnabled() && isOperatorControl() {");
+  code.push("\t\twhile(isEnabled() && isOperatorControl()) {");
   code.push("\t\t\t"+statements_teleop);
   code.push("\t\t}");
   code.push("\t}");
