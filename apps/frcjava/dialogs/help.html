@@ -1,0 +1,98 @@
+<style type="text/css">
+	.help_block{
+		display:none;
+		border: 1px solid #ccc;
+		padding: 5px;
+		margin: 5px;
+		background: #EDEDED;
+	}
+	.fakeurl{
+		color: blue;
+		text-decoration: underline;
+	}
+	.fakeurl:hover{
+		cursor: pointer;
+	}
+</style>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function(){
+		$('.fakeurl').click(function(event){
+			console.log("clicked");
+			var eT = $(event.target);
+			$('div.help_block',eT.parent()).toggle();
+		});
+	});
+</script>
+
+
+<h2>What can we help you with?</h2>
+
+<ul>
+	<li>
+	<span class="fakeurl">Where should I begin?</span>
+	<div class="help_block">
+		 Try loading one of the demos. <br>
+		 Press the <em>Demos</em> button at the top right of your screen and have a look at the <em> Simple Robot Example </em>
+	</div>
+	</li>
+	<li>
+	<span class="fakeurl">A Specific Block</span>
+	<div class="help_block">
+		 The best way to learn more about what a block does it to hover your mouse pointer over it, for most blocks one will see a small bit of hovertext detailing the usage of the block.
+	</div>
+	</li>
+	<li>
+	<span class="fakeurl">Deploying Code</span>
+	<div class="help_block">
+		<ol>
+			<li>Navigate to the script tab. (Just left of help tab)</li>
+			<li>Copy the script the program has generated for you</li>
+			<li>Open Netbeans on your computer. (Don't have it? <a href="http://frc2648.weebly.com/getting-started.html">View our Getting Started Guide</a>)</li>
+			<li>File &gt; New Project</li>
+			<li>Select FRC Java (Is it Missing? You might have missed step 5 in our <a href="http://frc2648.weebly.com/getting-started.html">Getting Started Guide</a>)</li>
+			<li>In the right pane, select SimpleRobotTemplateProject</li>
+			<li>Then click the <i> Next &gt; </i> Button</li>
+			<li>Name your project (Best to avoid spaces, punctuation and symbols. Stick to numbers and letters)</li>
+			<li>Pick a location to store your new project (ie: My Documents)</li>
+			 ***It is important to enter the following <strong>EXACTLY</strong> as they appear. (Just the <i>Italicized</i> part)
+			<li>Project Package: <i>edu.team2648.frcEasyJ</i></li>
+			<li>Robot Class: <i>MyRobot</i></li>
+			<li>Click the Finish button. Netbeans will now create your robot project.</li>
+			<li>On the left side of your screen you should see the project you just created with two things under it. <i>src</i> and <i>build.xml</i></li>
+			<li>Click the small plus next to <i> src</i></li>
+			<li>Then the plus next to <i>edu.team2648.frcEasyJ</i></li>
+			<li>Now you should see MyRobot.java : Double click it (Open for editing)</li>
+			<li>This is the default code that is provided for you for simple robot projects. We are going to replace it with the code generated for us.</li>
+			<li>Edit &gt; Select All</li>
+			<li>Edit &gt; Paste</li>
+			<li>Now we should save our new project. File &gt; Save</li>
+			<li>You are now ready to download code to your robot.</li>
+		</ol>
+		<br>
+		 Check out our <a href="http://frc2648.weebly.com/getting-started.html">Getting Started Guide</a> to learn to download code to your cRio robot controller.
+	</div>
+	</li>
+	<li>
+	<span class="fakeurl">Copying Blocks</span>
+	<div class="help_block">
+		One can easily copy blocks by holding the ctrl key on one's keyboard and dragging the block they wish to copy. <br>
+		<strong>NOTE:</strong> all blocks that are attached to the block will also be copied.
+	</div>
+	</li>
+	<li>
+	<span class="fakeurl">What characters are allowed where?</span>
+	<div class="help_block">
+		<ul>
+			<li>int: An integer socket can contain any whole number value [0-9] with or without a sign (-)</li>
+			<li>string: A string can contain any character, digit or symbol except the double quote: (")</li>
+			<li>decimal: A decimal value can contain any integer value and the dot (.)</li>
+			<li>varname: For ease of programming: varnames can only contain letters (a-z and A-Z) and the underscore character(_)</li>
+		</ul>
+	</div>
+	</li>
+	<!-- <li>
+	<a href="http://frc2648.weebly.com/easyj-feedback.html" target="_blank">Send your feedback and Suggestions here</a>
+	</li> -->
+</ul>

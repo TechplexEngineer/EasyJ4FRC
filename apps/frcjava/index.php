@@ -14,6 +14,7 @@
   <meta name="viewport" content="target-densitydpi=device-dpi, height=660, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>EasyJ 4 FRC <?php echo $dev?"| Devel":"";?></title>
   
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <?php 
     if ($dev): 
       $blocklyPath = "../../";
@@ -54,6 +55,7 @@
 
   <?php endif; ?>
   <!-- Include these all of the time *************************************** -->
+
   <script type="text/javascript" src="factory.js"></script>
   
   <script type="text/javascript" src="blocks.js"></script>
@@ -74,9 +76,11 @@
   <table>
     <tr>
       <td width="50%" height="5%">
-        <h1>EasyJ 4 FRC <small>based on the <a href="https://blockly.googlecode.com/" target="_blank">Blockly Project</a></small></h1> 
-        <button id="aboutButton"  title="About EasyJ">About</button>
-        <button id="helpButton"  title="Help for EasyJ">Help</button>
+        <!-- <h1>EasyJ 4 FRC <small>based on the <a href="https://blockly.googlecode.com/" target="_blank">Blockly Project</a></small></h1>  -->
+        <button title="About EasyJ" onclick="Blockly.Dialog.dialogHandler(event)" href="dialogs/about.html">About</button>
+        <button title="Help for EasyJ" onclick="Blockly.Dialog.dialogHandler(event)" href="dialogs/help.html">Help</button>
+        <button title="Examples to get you started" onclick="Blockly.Dialog.dialogHandler(event)" href="dialogs/examples.html">Examples</button>
+        <button title="Things you might need to change" onclick="Blockly.Dialog.dialogHandler(event)" href="dialogs/settings.html">Settings</button>
       </td>
       <td width="50%" height="5%" style="vertical-align: bottom;">
         <h3>Language code:</h3>

@@ -1,24 +1,39 @@
 Blockly.Dialog = {};
 
 /**
- * @todo
+ * Load the dialog from the href of the event's target
  * @param {!Event} e Mouse or touch event.
  */
 Blockly.Dialog.dialogHandler = function(e) {
+
   var origin = e.target;
   
   var container = document.getElementById('dialogContainer');
-  container.innerHTML = "Help";
+  container.innerHTML = "Loading ...";
 
-  var content = document.getElementById('generalDialog');
-  var style = {
-    width: '40%',
-    left: '30%',
-    top: '5em'
-  };
-  Blockly.Dialog.showDialog(content, origin, true, true, style,
-      Blockly.Dialog.stopDialogKeyDown);
-  Blockly.Dialog.startDialogKeyDown();
+  if (typeof origin.getAttribute("href") === 'undefined' || origin.getAttribute("href") == "" ) {
+    container.innerHTML = "Unable to load the dialog. Try again later.";
+  }
+  else {
+    var oReq = new XMLHttpRequest();
+    oReq.onload = reqListener;
+    oReq.open("get", origin.getAttribute("href"), true);
+    oReq.send();
+    function reqListener () {
+      var container = document.getElementById('dialogContainer');
+      container.innerHTML = this.responseText;
+
+      var content = document.getElementById('generalDialog');
+      var style = {
+        width: '40%',
+        left: '30%',
+        top: '5em'
+      };
+      Blockly.Dialog.showDialog(content, origin, true, true, style,
+          Blockly.Dialog.stopDialogKeyDown);
+      Blockly.Dialog.startDialogKeyDown();
+    }
+  }  
 };
 
 
