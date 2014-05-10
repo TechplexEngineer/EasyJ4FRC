@@ -1,30 +1,38 @@
 #CMDS
 CP = cp
 CD = cd
+RM = rm
 SHELL = bash
 MKDIR = mkdir
 
 #VARS
 OUTDIR = dist
 
-.phony: all dist compressed copystatic
+grandparent = msg/messages.js {java,blockly,blocks}_compressed.js
+parent = prettify.{css,js} common.{css,js}
+thisdir = index.php {blocks,factory}.js style.css toolbox.xml
+
+## END VARS
+tocopy =  $(thisdir) $(addprefix ../,$(parent)) $(addprefix ../../,$(grandparent))
+
+.phony: all dist compressed copy
 
 all:
 	@echo "Type:  'make dist'"
 
 dist: compressed copystatic
 	
-copystatic:
+
+copy:
 	@$(MKDIR) -p $(OUTDIR)
-	#@$(CP) index.html $(OUTDIR)
-	@$(CP) ../../msg/messages.js $(OUTDIR)
-	@$(CP) ../../{java,blockly,blocks}_compressed.js $(OUTDIR)
 	@$(CP) -R ../../media $(OUTDIR)
-	@$(CP) ../prettify.{css,js} $(OUTDIR)
-	@$(CP) ./{blocks,factory}.js style.css $(OUTDIR)
+	@$(CP) $(tocopy) $(OUTDIR)
 
 	@echo "Static files copied."
-	@echo "--Remember to change the includes in index.html!--"
+
+clean:
+	$(RM) -rf ./$(OUTDIR)
 
 compressed:
 	$(CD) ../../; ./build.py
+	@echo "Clojure Build Complete"

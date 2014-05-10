@@ -101,7 +101,7 @@ function init() {
 
   var toolbox = document.getElementById('toolbox'); //@todo can we lazy load this?
   Blockly.inject(document.getElementById('blockly'),
-                 {path: '../../', toolbox: toolbox});
+                 {path: BLOCKLYPATH, toolbox: toolbox});
 
   // Create the root block.
   rootBlock = Blockly.Block.obtain(Blockly.mainWorkspace, 'simple_robot');
