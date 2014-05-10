@@ -36,6 +36,7 @@ Blockly.Java['math_number'] = function(block) {
 };
 
 Blockly.Java['math_arithmetic'] = function(block) {
+  Blockly.Java.addImport("java.lang.Math");
   // Basic arithmetic operators, and power.
   var OPERATORS = {
     'ADD': [' + ', Blockly.Java.ORDER_ADDITION],
@@ -60,6 +61,7 @@ Blockly.Java['math_arithmetic'] = function(block) {
 };
 
 Blockly.Java['math_single'] = function(block) {
+  Blockly.Java.addImport("java.lang.Math");
   // Math operators with single operand.
   var operator = block.getFieldValue('OP');
   var code;
@@ -144,19 +146,21 @@ Blockly.Java['math_single'] = function(block) {
 };
 
 Blockly.Java['math_constant'] = function(block) {
+  Blockly.Java.addImport("java.lang.Math");
   // Constants: PI, E, the Golden Ratio, sqrt(2), 1/sqrt(2), INFINITY.
   var CONSTANTS = {
     'PI': ['Math.PI', Blockly.Java.ORDER_MEMBER],
     'E': ['Math.E', Blockly.Java.ORDER_MEMBER],
     'GOLDEN_RATIO': ['(1 + Math.sqrt(5)) / 2', Blockly.Java.ORDER_DIVISION],
-    'SQRT2': ['Math.SQRT2', Blockly.Java.ORDER_MEMBER],
-    'SQRT1_2': ['Math.SQRT1_2', Blockly.Java.ORDER_MEMBER],
+    'SQRT2': ['Math.SQRT2', Blockly.Java.ORDER_MEMBER], //@todo Does not exist
+    'SQRT1_2': ['Math.SQRT1_2', Blockly.Java.ORDER_MEMBER], //@todo Does not exist
     'INFINITY': ['Infinity', Blockly.Java.ORDER_ATOMIC]
   };
   return CONSTANTS[block.getFieldValue('CONSTANT')];
 };
 
 Blockly.Java['math_number_property'] = function(block) {
+  Blockly.Java.addImport("java.lang.Math");
   // Check if a number is even, odd, prime, whole, positive, or negative
   // or if it is divisible by certain number. Returns true or false.
   var number_to_check = Blockly.Java.valueToCode(block, 'NUMBER_TO_CHECK',
@@ -214,150 +218,150 @@ Blockly.Java['math_number_property'] = function(block) {
   return [code, Blockly.Java.ORDER_EQUALITY];
 };
 
-Blockly.Java['math_change'] = function(block) {
-  // Add to a variable in place.
-  var argument0 = Blockly.Java.valueToCode(block, 'DELTA',
-      Blockly.Java.ORDER_ADDITION) || '0';
-  var varName = Blockly.Java.variableDB_.getName(
-      block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
-  return varName + ' = (typeof ' + varName + ' == \'number\' ? ' + varName +
-      ' : 0) + ' + argument0 + ';\n';
-};
+// Blockly.Java['math_change'] = function(block) {
+//   // Add to a variable in place.
+//   var argument0 = Blockly.Java.valueToCode(block, 'DELTA',
+//       Blockly.Java.ORDER_ADDITION) || '0';
+//   var varName = Blockly.Java.variableDB_.getName(
+//       block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
+//   return varName + ' = (typeof ' + varName + ' == \'number\' ? ' + varName +
+//       ' : 0) + ' + argument0 + ';\n';
+// };
 
 // Rounding functions have a single operand.
 Blockly.Java['math_round'] = Blockly.Java['math_single'];
 // Trigonometry functions have a single operand.
 Blockly.Java['math_trig'] = Blockly.Java['math_single'];
 
-Blockly.Java['math_on_list'] = function(block) {
-  // Math functions for lists.
-  var func = block.getFieldValue('OP');
-  var list, code;
-  switch (func) {
-    case 'SUM':
-      list = Blockly.Java.valueToCode(block, 'LIST',
-          Blockly.Java.ORDER_MEMBER) || '[]';
-      code = list + '.reduce(function(x, y) {return x + y;})';
-      break;
-    case 'MIN':
-      list = Blockly.Java.valueToCode(block, 'LIST',
-          Blockly.Java.ORDER_COMMA) || '[]';
-      code = 'Math.min.apply(null, ' + list + ')';
-      break;
-    case 'MAX':
-      list = Blockly.Java.valueToCode(block, 'LIST',
-          Blockly.Java.ORDER_COMMA) || '[]';
-      code = 'Math.max.apply(null, ' + list + ')';
-      break;
-    case 'AVERAGE':
-      // math_median([null,null,1,3]) == 2.0.
-      var functionName = Blockly.Java.provideFunction_(
-          'math_mean',
-          [ 'function ' + Blockly.Java.FUNCTION_NAME_PLACEHOLDER_ +
-              '(myList) {',
-            '  return myList.reduce(function(x, y) {return x + y;}) / ' +
-                  'myList.length;',
-            '}']);
-      list = Blockly.Java.valueToCode(block, 'LIST',
-          Blockly.Java.ORDER_NONE) || '[]';
-      code = functionName + '(' + list + ')';
-      break;
-    case 'MEDIAN':
-      // math_median([null,null,1,3]) == 2.0.
-      var functionName = Blockly.Java.provideFunction_(
-          'math_median',
-          [ 'function ' + Blockly.Java.FUNCTION_NAME_PLACEHOLDER_ +
-              '(myList) {',
-            '  var localList = myList.filter(function (x) ' +
-              '{return typeof x == \'number\';});',
-            '  if (!localList.length) return null;',
-            '  localList.sort(function(a, b) {return b - a;});',
-            '  if (localList.length % 2 == 0) {',
-            '    return (localList[localList.length / 2 - 1] + ' +
-              'localList[localList.length / 2]) / 2;',
-            '  } else {',
-            '    return localList[(localList.length - 1) / 2];',
-            '  }',
-            '}']);
-      list = Blockly.Java.valueToCode(block, 'LIST',
-          Blockly.Java.ORDER_NONE) || '[]';
-      code = functionName + '(' + list + ')';
-      break;
-    case 'MODE':
-      // As a list of numbers can contain more than one mode,
-      // the returned result is provided as an array.
-      // Mode of [3, 'x', 'x', 1, 1, 2, '3'] -> ['x', 1].
-      var functionName = Blockly.Java.provideFunction_(
-          'math_modes',
-          [ 'function ' + Blockly.Java.FUNCTION_NAME_PLACEHOLDER_ +
-              '(values) {',
-            '  var modes = [];',
-            '  var counts = [];',
-            '  var maxCount = 0;',
-            '  for (var i = 0; i < values.length; i++) {',
-            '    var value = values[i];',
-            '    var found = false;',
-            '    var thisCount;',
-            '    for (var j = 0; j < counts.length; j++) {',
-            '      if (counts[j][0] === value) {',
-            '        thisCount = ++counts[j][1];',
-            '        found = true;',
-            '        break;',
-            '      }',
-            '    }',
-            '    if (!found) {',
-            '      counts.push([value, 1]);',
-            '      thisCount = 1;',
-            '    }',
-            '    maxCount = Math.max(thisCount, maxCount);',
-            '  }',
-            '  for (var j = 0; j < counts.length; j++) {',
-            '    if (counts[j][1] == maxCount) {',
-            '        modes.push(counts[j][0]);',
-            '    }',
-            '  }',
-            '  return modes;',
-            '}']);
-      list = Blockly.Java.valueToCode(block, 'LIST',
-          Blockly.Java.ORDER_NONE) || '[]';
-      code = functionName + '(' + list + ')';
-      break;
-    case 'STD_DEV':
-      var functionName = Blockly.Java.provideFunction_(
-          'math_standard_deviation',
-          [ 'function ' + Blockly.Java.FUNCTION_NAME_PLACEHOLDER_ +
-              '(numbers) {',
-            '  var n = numbers.length;',
-            '  if (!n) return null;',
-            '  var mean = numbers.reduce(function(x, y) {return x + y;}) / n;',
-            '  var variance = 0;',
-            '  for (var j = 0; j < n; j++) {',
-            '    variance += Math.pow(numbers[j] - mean, 2);',
-            '  }',
-            '  variance = variance / n;',
-            '  return Math.sqrt(variance);',
-            '}']);
-      list = Blockly.Java.valueToCode(block, 'LIST',
-          Blockly.Java.ORDER_NONE) || '[]';
-      code = functionName + '(' + list + ')';
-      break;
-    case 'RANDOM':
-      var functionName = Blockly.Java.provideFunction_(
-          'math_random_list',
-          [ 'function ' + Blockly.Java.FUNCTION_NAME_PLACEHOLDER_ +
-              '(list) {',
-            '  var x = Math.floor(Math.random() * list.length);',
-            '  return list[x];',
-            '}']);
-      list = Blockly.Java.valueToCode(block, 'LIST',
-          Blockly.Java.ORDER_NONE) || '[]';
-      code = functionName + '(' + list + ')';
-      break;
-    default:
-      throw 'Unknown operator: ' + func;
-  }
-  return [code, Blockly.Java.ORDER_FUNCTION_CALL];
-};
+// Blockly.Java['math_on_list'] = function(block) {
+//   // Math functions for lists.
+//   var func = block.getFieldValue('OP');
+//   var list, code;
+//   switch (func) {
+//     case 'SUM':
+//       list = Blockly.Java.valueToCode(block, 'LIST',
+//           Blockly.Java.ORDER_MEMBER) || '[]';
+//       code = list + '.reduce(function(x, y) {return x + y;})';
+//       break;
+//     case 'MIN':
+//       list = Blockly.Java.valueToCode(block, 'LIST',
+//           Blockly.Java.ORDER_COMMA) || '[]';
+//       code = 'Math.min.apply(null, ' + list + ')';
+//       break;
+//     case 'MAX':
+//       list = Blockly.Java.valueToCode(block, 'LIST',
+//           Blockly.Java.ORDER_COMMA) || '[]';
+//       code = 'Math.max.apply(null, ' + list + ')';
+//       break;
+//     case 'AVERAGE':
+//       // math_median([null,null,1,3]) == 2.0.
+//       var functionName = Blockly.Java.provideFunction_(
+//           'math_mean',
+//           [ 'function ' + Blockly.Java.FUNCTION_NAME_PLACEHOLDER_ +
+//               '(myList) {',
+//             '  return myList.reduce(function(x, y) {return x + y;}) / ' +
+//                   'myList.length;',
+//             '}']);
+//       list = Blockly.Java.valueToCode(block, 'LIST',
+//           Blockly.Java.ORDER_NONE) || '[]';
+//       code = functionName + '(' + list + ')';
+//       break;
+//     case 'MEDIAN':
+//       // math_median([null,null,1,3]) == 2.0.
+//       var functionName = Blockly.Java.provideFunction_(
+//           'math_median',
+//           [ 'function ' + Blockly.Java.FUNCTION_NAME_PLACEHOLDER_ +
+//               '(myList) {',
+//             '  var localList = myList.filter(function (x) ' +
+//               '{return typeof x == \'number\';});',
+//             '  if (!localList.length) return null;',
+//             '  localList.sort(function(a, b) {return b - a;});',
+//             '  if (localList.length % 2 == 0) {',
+//             '    return (localList[localList.length / 2 - 1] + ' +
+//               'localList[localList.length / 2]) / 2;',
+//             '  } else {',
+//             '    return localList[(localList.length - 1) / 2];',
+//             '  }',
+//             '}']);
+//       list = Blockly.Java.valueToCode(block, 'LIST',
+//           Blockly.Java.ORDER_NONE) || '[]';
+//       code = functionName + '(' + list + ')';
+//       break;
+//     case 'MODE':
+//       // As a list of numbers can contain more than one mode,
+//       // the returned result is provided as an array.
+//       // Mode of [3, 'x', 'x', 1, 1, 2, '3'] -> ['x', 1].
+//       var functionName = Blockly.Java.provideFunction_(
+//           'math_modes',
+//           [ 'function ' + Blockly.Java.FUNCTION_NAME_PLACEHOLDER_ +
+//               '(values) {',
+//             '  var modes = [];',
+//             '  var counts = [];',
+//             '  var maxCount = 0;',
+//             '  for (var i = 0; i < values.length; i++) {',
+//             '    var value = values[i];',
+//             '    var found = false;',
+//             '    var thisCount;',
+//             '    for (var j = 0; j < counts.length; j++) {',
+//             '      if (counts[j][0] === value) {',
+//             '        thisCount = ++counts[j][1];',
+//             '        found = true;',
+//             '        break;',
+//             '      }',
+//             '    }',
+//             '    if (!found) {',
+//             '      counts.push([value, 1]);',
+//             '      thisCount = 1;',
+//             '    }',
+//             '    maxCount = Math.max(thisCount, maxCount);',
+//             '  }',
+//             '  for (var j = 0; j < counts.length; j++) {',
+//             '    if (counts[j][1] == maxCount) {',
+//             '        modes.push(counts[j][0]);',
+//             '    }',
+//             '  }',
+//             '  return modes;',
+//             '}']);
+//       list = Blockly.Java.valueToCode(block, 'LIST',
+//           Blockly.Java.ORDER_NONE) || '[]';
+//       code = functionName + '(' + list + ')';
+//       break;
+//     case 'STD_DEV':
+//       var functionName = Blockly.Java.provideFunction_(
+//           'math_standard_deviation',
+//           [ 'function ' + Blockly.Java.FUNCTION_NAME_PLACEHOLDER_ +
+//               '(numbers) {',
+//             '  var n = numbers.length;',
+//             '  if (!n) return null;',
+//             '  var mean = numbers.reduce(function(x, y) {return x + y;}) / n;',
+//             '  var variance = 0;',
+//             '  for (var j = 0; j < n; j++) {',
+//             '    variance += Math.pow(numbers[j] - mean, 2);',
+//             '  }',
+//             '  variance = variance / n;',
+//             '  return Math.sqrt(variance);',
+//             '}']);
+//       list = Blockly.Java.valueToCode(block, 'LIST',
+//           Blockly.Java.ORDER_NONE) || '[]';
+//       code = functionName + '(' + list + ')';
+//       break;
+//     case 'RANDOM':
+//       var functionName = Blockly.Java.provideFunction_(
+//           'math_random_list',
+//           [ 'function ' + Blockly.Java.FUNCTION_NAME_PLACEHOLDER_ +
+//               '(list) {',
+//             '  var x = Math.floor(Math.random() * list.length);',
+//             '  return list[x];',
+//             '}']);
+//       list = Blockly.Java.valueToCode(block, 'LIST',
+//           Blockly.Java.ORDER_NONE) || '[]';
+//       code = functionName + '(' + list + ')';
+//       break;
+//     default:
+//       throw 'Unknown operator: ' + func;
+//   }
+//   return [code, Blockly.Java.ORDER_FUNCTION_CALL];
+// };
 
 Blockly.Java['math_modulo'] = function(block) {
   // Remainder computation.
@@ -370,6 +374,7 @@ Blockly.Java['math_modulo'] = function(block) {
 };
 
 Blockly.Java['math_constrain'] = function(block) {
+  Blockly.Java.addImport("java.lang.Math");
   // Constrain a number between two limits.
   var argument0 = Blockly.Java.valueToCode(block, 'VALUE',
       Blockly.Java.ORDER_COMMA) || '0';
@@ -382,29 +387,30 @@ Blockly.Java['math_constrain'] = function(block) {
   return [code, Blockly.Java.ORDER_FUNCTION_CALL];
 };
 
-Blockly.Java['math_random_int'] = function(block) {
-  // Random integer between [X] and [Y].
-  var argument0 = Blockly.Java.valueToCode(block, 'FROM',
-      Blockly.Java.ORDER_COMMA) || '0';
-  var argument1 = Blockly.Java.valueToCode(block, 'TO',
-      Blockly.Java.ORDER_COMMA) || '0';
-  var functionName = Blockly.Java.provideFunction_(
-      'math_random_int',
-      [ 'function ' + Blockly.Java.FUNCTION_NAME_PLACEHOLDER_ +
-          '(a, b) {',
-        '  if (a > b) {',
-        '    // Swap a and b to ensure a is smaller.',
-        '    var c = a;',
-        '    a = b;',
-        '    b = c;',
-        '  }',
-        '  return Math.floor(Math.random() * (b - a + 1) + a);',
-        '}']);
-  var code = functionName + '(' + argument0 + ', ' + argument1 + ')';
-  return [code, Blockly.Java.ORDER_FUNCTION_CALL];
-};
+// http://files.team2648.com/javadoc/index.html
+// Blockly.Java['math_random_int'] = function(block) {
+//   // Random integer between [X] and [Y].
+//   var argument0 = Blockly.Java.valueToCode(block, 'FROM',
+//       Blockly.Java.ORDER_COMMA) || '0';
+//   var argument1 = Blockly.Java.valueToCode(block, 'TO',
+//       Blockly.Java.ORDER_COMMA) || '0';
+//   var functionName = Blockly.Java.provideFunction_(
+//       'math_random_int',
+//       [ 'function ' + Blockly.Java.FUNCTION_NAME_PLACEHOLDER_ +
+//           '(a, b) {',
+//         '  if (a > b) {',
+//         '    // Swap a and b to ensure a is smaller.',
+//         '    var c = a;',
+//         '    a = b;',
+//         '    b = c;',
+//         '  }',
+//         '  return Math.floor(Math.random() * (b - a + 1) + a);',
+//         '}']);
+//   var code = functionName + '(' + argument0 + ', ' + argument1 + ')';
+//   return [code, Blockly.Java.ORDER_FUNCTION_CALL];
+// };
 
-Blockly.Java['math_random_float'] = function(block) {
-  // Random fraction between 0 and 1.
-  return ['Math.random()', Blockly.Java.ORDER_FUNCTION_CALL];
-};
+// Blockly.Java['math_random_float'] = function(block) {
+//   // Random fraction between 0 and 1.
+//   return ['Math.random()', Blockly.Java.ORDER_FUNCTION_CALL];
+// };

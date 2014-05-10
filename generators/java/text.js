@@ -98,119 +98,119 @@ Blockly.Java['text_indexOf'] = function(block) {
   return [code, Blockly.Java.ORDER_MEMBER];
 };
 
-Blockly.Java['text_charAt'] = function(block) {
-  // Get letter at index.
-  // Note: Until January 2013 this block did not have the WHERE input.
-  var where = block.getFieldValue('WHERE') || 'FROM_START';
-  var at = Blockly.Java.valueToCode(block, 'AT',
-      Blockly.Java.ORDER_UNARY_NEGATION) || '1';
-  var text = Blockly.Java.valueToCode(block, 'VALUE',
-      Blockly.Java.ORDER_MEMBER) || '\'\'';
-  switch (where) {
-    case 'FIRST':
-      var code = text + '.charAt(0)';
-      return [code, Blockly.Java.ORDER_FUNCTION_CALL];
-    case 'LAST':
-      var code = text + '.slice(-1)';
-      return [code, Blockly.Java.ORDER_FUNCTION_CALL];
-    case 'FROM_START':
-      // Blockly uses one-based indicies.
-      if (Blockly.isNumber(at)) {
-        // If the index is a naked number, decrement it right now.
-        at = parseFloat(at) - 1;
-      } else {
-        // If the index is dynamic, decrement it in code.
-        at += ' - 1';
-      }
-      var code = text + '.charAt(' + at + ')';
-      return [code, Blockly.Java.ORDER_FUNCTION_CALL];
-    case 'FROM_END':
-      var code = text + '.slice(-' + at + ').charAt(0)';
-      return [code, Blockly.Java.ORDER_FUNCTION_CALL];
-    case 'RANDOM':
-      var functionName = Blockly.Java.provideFunction_(
-          'text_random_letter',
-          [ 'function ' + Blockly.Java.FUNCTION_NAME_PLACEHOLDER_ +
-              '(text) {',
-            '  var x = Math.floor(Math.random() * text.length);',
-            '  return text[x];',
-            '}']);
-      code = functionName + '(' + text + ')';
-      return [code, Blockly.Java.ORDER_FUNCTION_CALL];
-  }
-  throw 'Unhandled option (text_charAt).';
-};
+// Blockly.Java['text_charAt'] = function(block) {
+//   // Get letter at index.
+//   // Note: Until January 2013 this block did not have the WHERE input.
+//   var where = block.getFieldValue('WHERE') || 'FROM_START';
+//   var at = Blockly.Java.valueToCode(block, 'AT',
+//       Blockly.Java.ORDER_UNARY_NEGATION) || '1';
+//   var text = Blockly.Java.valueToCode(block, 'VALUE',
+//       Blockly.Java.ORDER_MEMBER) || '\'\'';
+//   switch (where) {
+//     case 'FIRST':
+//       var code = text + '.charAt(0)';
+//       return [code, Blockly.Java.ORDER_FUNCTION_CALL];
+//     case 'LAST':
+//       var code = text + '.slice(-1)';
+//       return [code, Blockly.Java.ORDER_FUNCTION_CALL];
+//     case 'FROM_START':
+//       // Blockly uses one-based indicies.
+//       if (Blockly.isNumber(at)) {
+//         // If the index is a naked number, decrement it right now.
+//         at = parseFloat(at) - 1;
+//       } else {
+//         // If the index is dynamic, decrement it in code.
+//         at += ' - 1';
+//       }
+//       var code = text + '.charAt(' + at + ')';
+//       return [code, Blockly.Java.ORDER_FUNCTION_CALL];
+//     case 'FROM_END':
+//       var code = text + '.slice(-' + at + ').charAt(0)';
+//       return [code, Blockly.Java.ORDER_FUNCTION_CALL];
+//     case 'RANDOM':
+//       var functionName = Blockly.Java.provideFunction_(
+//           'text_random_letter',
+//           [ 'function ' + Blockly.Java.FUNCTION_NAME_PLACEHOLDER_ +
+//               '(text) {',
+//             '  var x = Math.floor(Math.random() * text.length);',
+//             '  return text[x];',
+//             '}']);
+//       code = functionName + '(' + text + ')';
+//       return [code, Blockly.Java.ORDER_FUNCTION_CALL];
+//   }
+//   throw 'Unhandled option (text_charAt).';
+// };
 
-Blockly.Java['text_getSubstring'] = function(block) {
-  // Get substring.
-  var text = Blockly.Java.valueToCode(block, 'STRING',
-      Blockly.Java.ORDER_MEMBER) || '\'\'';
-  var where1 = block.getFieldValue('WHERE1');
-  var where2 = block.getFieldValue('WHERE2');
-  var at1 = Blockly.Java.valueToCode(block, 'AT1',
-      Blockly.Java.ORDER_NONE) || '1';
-  var at2 = Blockly.Java.valueToCode(block, 'AT2',
-      Blockly.Java.ORDER_NONE) || '1';
-  if (where1 == 'FIRST' && where2 == 'LAST') {
-    var code = text;
-  } else {
-    var functionName = Blockly.Java.provideFunction_(
-        'text_get_substring',
-        [ 'function ' + Blockly.Java.FUNCTION_NAME_PLACEHOLDER_ +
-            '(text, where1, at1, where2, at2) {',
-          '  function getAt(where, at) {',
-          '    if (where == \'FROM_START\') {',
-          '      at--;',
-          '    } else if (where == \'FROM_END\') {',
-          '      at = text.length - at;',
-          '    } else if (where == \'FIRST\') {',
-          '      at = 0;',
-          '    } else if (where == \'LAST\') {',
-          '      at = text.length - 1;',
-          '    } else {',
-          '      throw \'Unhandled option (text_getSubstring).\';',
-          '    }',
-          '    return at;',
-          '  }',
-          '  at1 = getAt(where1, at1);',
-          '  at2 = getAt(where2, at2) + 1;',
-          '  return text.slice(at1, at2);',
-          '}']);
-    var code = functionName + '(' + text + ', \'' +
-        where1 + '\', ' + at1 + ', \'' + where2 + '\', ' + at2 + ')';
-  }
-  return [code, Blockly.Java.ORDER_FUNCTION_CALL];
-};
+// Blockly.Java['text_getSubstring'] = function(block) {
+//   // Get substring.
+//   var text = Blockly.Java.valueToCode(block, 'STRING',
+//       Blockly.Java.ORDER_MEMBER) || '\'\'';
+//   var where1 = block.getFieldValue('WHERE1');
+//   var where2 = block.getFieldValue('WHERE2');
+//   var at1 = Blockly.Java.valueToCode(block, 'AT1',
+//       Blockly.Java.ORDER_NONE) || '1';
+//   var at2 = Blockly.Java.valueToCode(block, 'AT2',
+//       Blockly.Java.ORDER_NONE) || '1';
+//   if (where1 == 'FIRST' && where2 == 'LAST') {
+//     var code = text;
+//   } else {
+//     var functionName = Blockly.Java.provideFunction_(
+//         'text_get_substring',
+//         [ 'function ' + Blockly.Java.FUNCTION_NAME_PLACEHOLDER_ +
+//             '(text, where1, at1, where2, at2) {',
+//           '  function getAt(where, at) {',
+//           '    if (where == \'FROM_START\') {',
+//           '      at--;',
+//           '    } else if (where == \'FROM_END\') {',
+//           '      at = text.length - at;',
+//           '    } else if (where == \'FIRST\') {',
+//           '      at = 0;',
+//           '    } else if (where == \'LAST\') {',
+//           '      at = text.length - 1;',
+//           '    } else {',
+//           '      throw \'Unhandled option (text_getSubstring).\';',
+//           '    }',
+//           '    return at;',
+//           '  }',
+//           '  at1 = getAt(where1, at1);',
+//           '  at2 = getAt(where2, at2) + 1;',
+//           '  return text.slice(at1, at2);',
+//           '}']);
+//     var code = functionName + '(' + text + ', \'' +
+//         where1 + '\', ' + at1 + ', \'' + where2 + '\', ' + at2 + ')';
+//   }
+//   return [code, Blockly.Java.ORDER_FUNCTION_CALL];
+// };
 
-Blockly.Java['text_changeCase'] = function(block) {
-  // Change capitalization.
-  var OPERATORS = {
-    'UPPERCASE': '.toUpperCase()',
-    'LOWERCASE': '.toLowerCase()',
-    'TITLECASE': null
-  };
-  var operator = OPERATORS[block.getFieldValue('CASE')];
-  var code;
-  if (operator) {
-    // Upper and lower case are functions built into Java.
-    var argument0 = Blockly.Java.valueToCode(block, 'TEXT',
-        Blockly.Java.ORDER_MEMBER) || '\'\'';
-    code = argument0 + operator;
-  } else {
-    // Title case is not a native Java function.  Define one.
-    var functionName = Blockly.Java.provideFunction_(
-        'text_toTitleCase',
-        [ 'function ' + Blockly.Java.FUNCTION_NAME_PLACEHOLDER_ + '(str) {',
-          '  return str.replace(/\\S+/g,',
-          '      function(txt) {return txt[0].toUpperCase() + ' +
-              'txt.substring(1).toLowerCase();});',
-          '}']);
-    var argument0 = Blockly.Java.valueToCode(block, 'TEXT',
-        Blockly.Java.ORDER_NONE) || '\'\'';
-    code = functionName + '(' + argument0 + ')';
-  }
-  return [code, Blockly.Java.ORDER_FUNCTION_CALL];
-};
+// Blockly.Java['text_changeCase'] = function(block) {
+//   // Change capitalization.
+//   var OPERATORS = {
+//     'UPPERCASE': '.toUpperCase()',
+//     'LOWERCASE': '.toLowerCase()',
+//     'TITLECASE': null
+//   };
+//   var operator = OPERATORS[block.getFieldValue('CASE')];
+//   var code;
+//   if (operator) {
+//     // Upper and lower case are functions built into Java.
+//     var argument0 = Blockly.Java.valueToCode(block, 'TEXT',
+//         Blockly.Java.ORDER_MEMBER) || '\'\'';
+//     code = argument0 + operator;
+//   } else {
+//     // Title case is not a native Java function.  Define one.
+//     var functionName = Blockly.Java.provideFunction_(
+//         'text_toTitleCase',
+//         [ 'function ' + Blockly.Java.FUNCTION_NAME_PLACEHOLDER_ + '(str) {',
+//           '  return str.replace(/\\S+/g,',
+//           '      function(txt) {return txt[0].toUpperCase() + ' +
+//               'txt.substring(1).toLowerCase();});',
+//           '}']);
+//     var argument0 = Blockly.Java.valueToCode(block, 'TEXT',
+//         Blockly.Java.ORDER_NONE) || '\'\'';
+//     code = functionName + '(' + argument0 + ')';
+//   }
+//   return [code, Blockly.Java.ORDER_FUNCTION_CALL];
+// };
 
 // Blockly.Java['text_trim'] = function(block) {
 //   // Trim spaces.
