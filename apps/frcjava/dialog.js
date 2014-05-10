@@ -11,6 +11,25 @@ Blockly.Dialog.dialogHandler = function(e) {
   var container = document.getElementById('dialogContainer');
   container.innerHTML = "Loading ...";
 
+  if (origin.getAttribute("href") == "dialogs/help.html")
+  {
+    // This is a terrrible hack. It will do for now.
+    var $ifr = $('<iframe>').addClass('help').attr('src', origin.getAttribute("href"))
+    var container = $('#dialogContainer')
+      container.html($ifr);
+
+      var content = document.getElementById('generalDialog');
+      var style = {
+        width: '40%',
+        left: '30%',
+        top: '5em'
+      };
+      Blockly.Dialog.showDialog(content, origin, true, true, style,
+          Blockly.Dialog.stopDialogKeyDown);
+      Blockly.Dialog.startDialogKeyDown();
+    return;
+  }
+
   if (typeof origin.getAttribute("href") === 'undefined' || origin.getAttribute("href") == "" ) {
     container.innerHTML = "Unable to load the dialog. Try again later.";
   }

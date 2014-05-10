@@ -111,19 +111,7 @@ function init() {
   rootBlock.setDeletable(false);
 
   Blockly.addChangeListener(onchange);
-
-  console.log("Here");
-  $('.fakeurl').on('click',function(event){
-    console.log("clicked");
-    var eT = $(event.target);
-    $('div.help_block',eT.parent()).toggle();
-  });
   
 }
 window.addEventListener('load', init);
-
-
-// $(document).ready(function(){
-  
-// });
 

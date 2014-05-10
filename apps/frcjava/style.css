@@ -69,3 +69,8 @@ h1 small {
   overflow: auto;
   max-height: 400px;
 }
+iframe.help {
+  border: none;
+  width: 750px;
+  height: 500px;
+}
