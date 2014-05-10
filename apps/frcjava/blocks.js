@@ -283,6 +283,7 @@ Blockly.Java['get_joystick_button'] = function(block) {
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.Java.ORDER_ATOMIC];
 };
+
 // =============================================================================
 // Motors
 Blockly.Blocks['motor_controller'] = {
@@ -294,7 +295,7 @@ Blockly.Blocks['motor_controller'] = {
         .appendField("Declare Motor Controller")
         .appendField(new Blockly.FieldVariable("MC1"), "NAME")
         .appendField("of type")
-        .appendField(new Blockly.FieldDropdown([["Victor", "Victor"], ["Jaguar", "Jaguar"], ["Talon", "Talon"]]), "TYPE");
+        .appendField(new Blockly.FieldDropdown([["Victor", "Victor"], ["Jaguar", "Jaguar"], ["Talon", "Talon"]]), "CONTROLLER_TYPE");
     this.appendValueInput("PORT")
         .setCheck("Number")
         .appendField("on PWM port");
@@ -322,7 +323,6 @@ Blockly.Java['motor_controller'] = function(block) {
   var code = dropdown_type+' '+variable_name+' = new '+dropdown_type+'('+value_port+');\n';
   return code;
 };
-
 
 Blockly.Blocks['drivetrain'] = {
   init: function() {
@@ -376,7 +376,6 @@ Blockly.Blocks['move'] = {
     this.setNextStatement(true);
   }
 };
-
 Blockly.Java['move'] = function(block) {
   var value_move = Blockly.Java.valueToCode(block, 'MOVE', Blockly.Java.ORDER_ATOMIC);
   var value_turn = Blockly.Java.valueToCode(block, 'TURN', Blockly.Java.ORDER_ATOMIC);
@@ -417,7 +416,6 @@ Blockly.Blocks['move_with_joystick'] = {
     this.setNextStatement(true);
   }
 };
-
 Blockly.Java['move_with_joystick'] = function(block) {
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
   var variable_joystick = Blockly.Java.variableDB_.getName(block.getFieldValue('JOYSTICK'), Blockly.Variables.NAME_TYPE);
@@ -463,11 +461,9 @@ Blockly.Blocks['get_digital_input_value'] = {
         .appendField("Get value")
         .appendField(new Blockly.FieldVariable("Din1"), "NAME");
     this.setInputsInline(true);
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
+    this.setOutput(true, "Number");
   }
 };
-
 Blockly.Java['get_digital_input_value'] = function(block) {
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
   
@@ -521,8 +517,7 @@ Blockly.Blocks['get_analog_input_value'] = {
         .appendField(new Blockly.FieldDropdown([["Average Voltage", "getAverageVoltage"], ["Voltage", "getVoltage"], [" Average Value", "getAverageValue"]]), "WHAT")
         .appendField(new Blockly.FieldVariable("Ain1"), "NAME");
     this.setInputsInline(true);
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
+    this.setOutput(true, "Number");
   }
 };
 Blockly.Java['get_analog_input_value'] = function(block) {
