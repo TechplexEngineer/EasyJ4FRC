@@ -35,9 +35,37 @@ td {
   border-width: 0 1px 1px 0;
   position: absolute;
 }*/
-pre {
+/*pre {
   margin-top: 0;
   position: absolute;
   border: #ddd 1px solid;
   overflow: scroll;
+}*/
+
+h1 small {
+  font-size: 50%;
+}
+/* Why isn't this in common.css? */
+.icon21 {
+  height: 21px;
+  width: 21px;
+  background-image: url(icons.png);
+}
+.code {
+  background-position: -21px 0px;
+}
+.link {
+  background-position: 0px 0px;
+}
+.run {
+  background-position: 0px -21px;
+}
+.stop {
+  background-position: -21px -21px;
+}
+#containerCode {
+  direction: ltr;
+  font-size: large;
+  overflow: auto;
+  max-height: 400px;
 }

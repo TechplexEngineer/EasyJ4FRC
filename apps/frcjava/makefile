@@ -10,7 +10,7 @@ OUTDIR = dist
 
 grandparent = msg/messages.js {java,blockly,blocks}_compressed.js
 parent = prettify.{css,js} common.{css,js}
-thisdir = index.php {blocks,factory}.js style.css toolbox.xml
+thisdir = index.php {blocks,factory}.js style.css toolbox.xml icons.png dialog.js
 
 ## END VARS
 tocopy =  $(thisdir) $(addprefix ../,$(parent)) $(addprefix ../../,$(grandparent))

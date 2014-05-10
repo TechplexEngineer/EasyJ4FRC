@@ -79,6 +79,29 @@ function escapeString(string) {
   return '"' + string.replace(/\\/g, '\\\\').replace(/"/g, '\\"') + '"';
 }
 
+
+
+// /**
+//  * Provide help to the user.
+//  * @param {!Event} e Mouse or touch event.
+//  */
+// function helpDialog(e) {
+//   var origin = e.target;
+
+//   var container = document.getElementById('dialogContainer');
+//   container.innerHTML = "Help";
+
+//   var content = document.getElementById('generalDialog');
+//   var style = {
+//     width: '40%',
+//     left: '30%',
+//     top: '5em'
+//   };
+//   Blockly.Dialog.showDialog(content, origin, true, true, style,
+//       Blockly.Dialog.stopDialogKeyDown);
+//   Blockly.Dialog.startDialogKeyDown();
+// };
+
 /**
  * Initialize Blockly and layout.  Called on page load.
  */
@@ -111,5 +134,12 @@ function init() {
   rootBlock.setDeletable(false);
 
   Blockly.addChangeListener(onchange);
+
+  // Dialogs
+  Blockly.Dialog.bindClick('aboutButton', aboutDialog);
+  Blockly.Dialog.bindClick('helpButton', helpDialog);
+  
 }
 window.addEventListener('load', init);
+
+
