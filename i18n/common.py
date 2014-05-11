@@ -21,6 +21,15 @@ import codecs
 import json
 import os
 from datetime import datetime
+import errno
+
+def mkdir_p(path):
+    try:
+        os.makedirs(path)
+    except OSError as exc: # Python >2.5
+        if exc.errno == errno.EEXIST and os.path.isdir(path):
+            pass
+        else: raise
 
 class InputError(Exception):
     """Exception raised for errors in the input.
@@ -124,6 +133,8 @@ def _create_lang_file(author, lang, output_dir):
     Raises:
         IOError: An error occurred while opening or writing the file.
     """
+    lang_file_path = os.path.join(os.curdir, output_dir)
+    mkdir_p(lang_file_path)
     lang_file_name = os.path.join(os.curdir, output_dir, lang + '.json')
     lang_file = codecs.open(lang_file_name, 'w', 'utf-8')
     print 'Created file: ' + lang_file_name
