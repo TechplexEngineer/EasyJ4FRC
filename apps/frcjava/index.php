@@ -75,22 +75,22 @@
     <img style="position: absolute; top: 0; right: 0; border: 0; width: 149px; height: 149px; z-index:9;" src="http://aral.github.com/fork-me-on-github-retina-ribbons/right-cerulean@2x.png" alt="Fork me on GitHub"></a>
   <table>
     <tr>
-      <td width="50%" height="5%">
+      <td width="50%" height="10%">
         <!-- <h1>EasyJ 4 FRC <small>based on the <a href="https://blockly.googlecode.com/" target="_blank">Blockly Project</a></small></h1>  -->
         <button title="About EasyJ" onclick="Blockly.Dialog.dialogHandler(event)" href="dialogs/about.html">About</button>
         <button title="Help for EasyJ" onclick="Blockly.Dialog.dialogHandler(event)" href="dialogs/help.html">Help</button>
         <button title="Examples to get you started" onclick="Blockly.Dialog.dialogHandler(event)" href="dialogs/examples.html">Examples</button>
         <button title="Things you might need to change" onclick="Blockly.Dialog.dialogHandler(event)" href="dialogs/settings.html">Settings</button>
       </td>
-      <td width="50%" height="5%" style="vertical-align: bottom;">
+      <td width="50%" height="10%" style="vertical-align: bottom;">
         <h3>Language code:</h3>
       </td>
     </tr>
     <tr>
-      <td width="50%" height="95%" style="padding: 2px;">
+      <td width="50%" height="90%" style="padding: 2px;">
         <div id="blockly"></div>
       </td>
-      <td width="50%" height="95%">
+      <td width="50%" height="90%">
         <pre id="languagePre" class="prettyprint"></pre>
       </td>
     </tr>

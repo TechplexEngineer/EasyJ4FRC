@@ -25,7 +25,7 @@ dist: compressed copystatic
 
 copy:
 	@$(MKDIR) -p $(OUTDIR)
-	@$(CP) -R ../../media $(OUTDIR)
+	@$(CP) -R ../../media dialogs $(OUTDIR) 
 	@$(CP) $(tocopy) $(OUTDIR)
 
 	@echo "Static files copied."
