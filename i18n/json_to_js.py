@@ -25,11 +25,19 @@ import os          # for os.path()
 import subprocess  # for subprocess.check_call()
 from common import InputError
 from common import read_json_file
+import errno
 
 
 # Store parsed command-line arguments in global variable.
 args = None
 
+def mkdir_p(path):
+    try:
+        os.makedirs(path)
+    except OSError as exc: # Python >2.5
+        if exc.errno == errno.EEXIST and os.path.isdir(path):
+            pass
+        else: raise
 
 def _create_xlf(target_lang):
     """Creates a <target_lang>.xlf file for Soy.
@@ -44,6 +52,8 @@ def _create_xlf(target_lang):
     Raises:
         IOError: An error occurred while opening or writing the file.
     """
+    filepath = os.path.join(os.curdir, args.output_dir)
+    mkdir_p(filepath)
     filename = os.path.join(os.curdir, args.output_dir, target_lang + '.xlf')
     out_file = codecs.open(filename, 'w', 'utf-8')
     out_file.write("""<?xml version="1.0" encoding="UTF-8"?>
