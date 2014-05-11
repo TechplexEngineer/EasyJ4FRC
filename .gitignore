@@ -1,5 +1,4 @@
 generated/
-apps/json/
 *.pyc
 *_compressed.js
 *_uncompressed.js
