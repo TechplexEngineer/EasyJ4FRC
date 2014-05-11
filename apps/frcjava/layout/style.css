@@ -133,7 +133,7 @@ img {
 	padding-bottom:1em; 	/* Centre column bottom padding. Leave it out if it's zero */
 }
 .holygrail .col1 {
-	margin:0 13em;     		/* Centre column side padding:
+	margin:0 12em 0 12em;   /* Centre column side padding:
 							Left padding = left column width + centre column left padding width
 							Right padding = right column width + centre column right padding width */
 	position:relative;
