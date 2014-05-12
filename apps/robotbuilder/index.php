@@ -71,18 +71,29 @@ $title = "EasyJ Robot Builder"
 				content.height(newheight);
 			}
 			$(window).resize(function() {
-				console.log("R");
 				adjContentHeight(-5);
 				
 			}).resize();
+
+			// toggle button
+			$('#blockcodetoggle').click(function(event){
+				if ($(event.target).attr('id') == "code") {
+					$('#blocklyworkspace').hide();
+					$('#codeoutput').show();
+				}
+				else
+				{
+					$('#blocklyworkspace').show();
+					$('#codeoutput').hide();
+				}
+			});
+			//blocklyworkspace
 
 		});
 	</script>
 	</head>
 
 	<body>
-
-
 		<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 			<div class="container">
 				<div class="navbar-header">
@@ -136,12 +147,12 @@ $title = "EasyJ Robot Builder"
 						<!-- <li><a href="#help" data-toggle="modal">Help</a></li> -->
 						<!-- <li><a href="#settings" data-toggle="modal">Settings</a></li> -->
 						<li style="margin-top: 8px;">
-							<div class="btn-group" data-toggle="buttons">
-								<label class="btn btn-primary active" title="Toggle to blocks view">
-									<input type="radio" name="options" id="blocks"> Blocks
+							<div class="btn-group" data-toggle="buttons" id="blockcodetoggle">
+								<label class="btn btn-primary active" title="Toggle to blocks view"  id="blocks">
+									<input type="radio" name="options"> Blocks
 								</label>
-								<label class="btn btn-success" title="Toggle to code view">
-									<input type="radio" name="options" id="code"> Code
+								<label class="btn btn-success" title="Toggle to code view" id="code">
+									<input type="radio" name="options"> Code
 								</label>
 							</div>
 						</li>
@@ -182,7 +193,8 @@ $title = "EasyJ Robot Builder"
 				window.Blockly = blockly;
 			}
 			</script>
-			<iframe src="frame.php" class="blockly"></iframe>
+			<iframe id="blocklyworkspace" src="frame.php" class="blockly"></iframe>
+			<div id="codeoutput" style="display:none;">This is some test content</div>
 
 			<footer>
 				<p><?= $title ?> - <a href="http://techwizworld.net">Techplex Labs</a> <script>document.write((new Date()).getFullYear());</script></p>
