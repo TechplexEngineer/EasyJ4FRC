@@ -157,6 +157,9 @@ $title = "EasyJ Robot Builder"
 						<a href="#save" title="Save" data-toggle="modal">
 							<img src="images/save.png" style="width: 30px;">
 						</a>
+						<a href="#download" title="Downaload" data-toggle="modal">
+							<img src="images/download.png" style="width: 30px;">
+						</a>
 						<a href="#settings" title="Settings" data-toggle="modal">
 							<img src="images/gear.png" style="width: 40px;">
 						</a>
