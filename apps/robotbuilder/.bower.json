@@ -1,0 +1,14 @@
+{
+  "name": "robotbuilder",
+  "version": "0.0.1",
+  "main": [
+    "index.php"
+  ],
+  "ignore": [
+  ],
+  "dependencies": {
+    "bootstrap": ">= 3.1.1"
+  },
+  "homepage": "easyj.team5122.com",
+  "_source": "git@github.com:TechplexEngineer/EasyJ4FRC.git"
+}
