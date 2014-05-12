@@ -20,7 +20,7 @@ tocopy =  $(thisdir) $(addprefix ../,$(parent)) $(addprefix ../../,$(grandparent
 all:
 	@echo "Type:  'make dist'"
 
-dist: compressed copystatic
+dist: compressed copy
 	
 
 copy:
