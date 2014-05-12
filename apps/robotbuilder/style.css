@@ -30,4 +30,13 @@ div.modal .modal-body textarea.xmlcode {
 	min-height: 200px;
 }
 
-
+/* Make sure to hide the underline on image links */
+.notext, .notext:hover {
+	font-size: 10%;
+	text-decoration: none;
+}
+/* A link that has no indication except hover that its a link*/
+.stealthlink, .stealthlink:hover {
+	text-decoration: none;
+	color:black;
+}

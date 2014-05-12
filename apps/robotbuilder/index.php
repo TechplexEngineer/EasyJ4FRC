@@ -151,16 +151,16 @@ $title = "EasyJ Robot Builder"
 					</ul>
 					<div class="pull-right" style="margin-top:5px;">
 						
-						<a href="#help" title="Help" data-toggle="modal">
+						<a href="#help" class="notext" title="Help" data-toggle="modal">
 							<img src="images/help.png" style="width: 30px;">
 						</a>
-						<a href="#save" title="Save" data-toggle="modal">
+						<a href="#save" class="notext" title="Save" data-toggle="modal">
 							<img src="images/save.png" style="width: 30px;">
 						</a>
-						<a href="#download" title="Downaload" data-toggle="modal">
+						<a href="#download" class="notext" title="Download" data-toggle="modal">
 							<img src="images/download.png" style="width: 30px;">
 						</a>
-						<a href="#settings" title="Settings" data-toggle="modal">
+						<a href="#settings" class="notext" title="Settings" data-toggle="modal">
 							<img src="images/gear.png" style="width: 40px;">
 						</a>
 					</div>
@@ -206,7 +206,7 @@ $title = "EasyJ Robot Builder"
 			</div>
 
 			<footer>
-				<p><?= $title ?> - <a href="http://techwizworld.net">Techplex Labs</a> <script>document.write((new Date()).getFullYear());</script></p>
+				<p> <a href="#about" class="stealthlink" data-toggle="modal"><?= $title ?></a> - <a href="http://techwizworld.net">Techplex Labs</a> <script>document.write((new Date()).getFullYear());</script></p>
 			</footer>
 		</div> <!-- /container -->
 		<div class="hiddenmodals">
