@@ -22,23 +22,10 @@
 		$('#import .loadbtn').click(function() {
 			var toload = $('#import .modal-body textarea').val();
 			console.log(toload);
-			if (toload.length < 5) {
-				alert("No Input");
-				return;
-			}
-			try {
-				var dom = Blockly.Xml.textToDom(toload);
-				Blockly.mainWorkspace.clear();
-				Blockly.Xml.domToWorkspace(Blockly.mainWorkspace, dom);
-			} catch (e) {
-				alert("Invalid xml")
-			}
+			var success = loadxml(toload);
+			if (success) {
+				$('#import').modal('hide');
+			};
 		});
-		// $(document).on('show.bs.modal', function(event){
-		// 	if ($(event.target).attr('id') == 'import') {
-
-		// 		
-		// 	}
-		// })
 	})
 </script>

@@ -171,18 +171,15 @@ $title = "EasyJ Robot Builder"
 
 		<div class="container" id="content">
 			<script>
+			var loadxml = function(xml) {
+				console.log("Sorry. Blockly isn't loaded yet. Try again soon."); //@todo this really should be an alert or modal.
+			}
 			function onchange() {
-				// Blockly.Java.
-				// Blockly.Java.init();
+
 				var code = "";
-				// "package org.usfirst.frcEasyJ.team5122;\n"; //@todo get this from settings
-				// code += "import edu.wpi.first.wpilibj.IterativeRobot;\n";
-				// code += Blockly.Java.getImports.join('\n');
-				// code += "\n";
-				// code += "public class "+"MyRobot"+" extends SimpleRobot {"; //@todo get MyRobot from settings
 				var content = document.getElementById('languagePre');
 				code += Blockly.Java.workspaceToCode();
-				// code += "}";
+
 				code = js_beautify(code);
 				content.textContent = code;
 				if (typeof prettyPrintOne == 'function') {
@@ -198,6 +195,23 @@ $title = "EasyJ Robot Builder"
 				Blockly.Java.workspaceToCode = JavaGenerator;
 				
 				Blockly.addChangeListener(onchange);
+
+				loadxml = function(xml) {
+					if (typeof xml != "string" || xml.length < 5) {
+						alert("No Input");
+						return false;
+						return;
+					}
+					try {
+						var dom = Blockly.Xml.textToDom(xml);
+						Blockly.mainWorkspace.clear();
+						Blockly.Xml.domToWorkspace(Blockly.mainWorkspace, dom);
+						return true;
+					} catch (e) {
+						alert("Invalid xml");
+						return false;
+					}
+				}
 			}
 			</script>
 			<iframe id="blocklyworkspace" src="frame.php" class="blockly"></iframe>
@@ -214,6 +228,7 @@ $title = "EasyJ Robot Builder"
 				$dir = "./modals";
 				$jsfiles = array_diff(scandir($dir), array('..', '.'));
 				foreach ($jsfiles as $file) {
+					echo "\n\n<!-- ".$file."-->\n\n";
 					include $dir."/".$file;
 					echo "\n";
 				}

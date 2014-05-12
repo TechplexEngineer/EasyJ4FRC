@@ -40,3 +40,7 @@ div.modal .modal-body textarea.xmlcode {
 	text-decoration: none;
 	color:black;
 }
+
+.hiddenexamples {
+	display:none;
+}
