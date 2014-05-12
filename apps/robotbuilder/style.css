@@ -25,7 +25,7 @@ iframe {
 
 
 /* Code text area */
-div.modal .modal-body textarea.code {
+div.modal .modal-body textarea.xmlcode {
 	width: 100%;
 	min-height: 200px;
 }
