@@ -17,7 +17,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <script type="text/javascript" src="tabifier.js"></script>
+    
     <script type="text/javascript" src="../../blockly_uncompressed.js"></script>
     <script type="text/javascript" src="<?= $blocklyPath ?>generators/java.js"></script>
     <?php
