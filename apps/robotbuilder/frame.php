@@ -52,7 +52,6 @@
         // Let the top-level application know that Blockly is ready.
         window.parent.blocklyLoaded(Blockly);
         var startingBlocks = document.getElementById('startingblocks').innerHTML;
-        console.log(typeof document.getElementById('startingblocks'));
         var xml = Blockly.Xml.textToDom(startingBlocks);
         Blockly.Xml.domToWorkspace(Blockly.mainWorkspace, xml);
       }
