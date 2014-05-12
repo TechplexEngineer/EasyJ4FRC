@@ -17,13 +17,30 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <script type="text/javascript" src="<?= $blocklyPath ?>blockly_compressed.js"></script>
+    <script type="text/javascript" src="tabifier.js"></script>
+    <script type="text/javascript" src="../../blockly_uncompressed.js"></script>
+    <script type="text/javascript" src="<?= $blocklyPath ?>generators/java.js"></script>
+    <?php
+      // Be sure to include all of the JS files
+      $blockdir = "../../blocks";
+      $jsfiles = array_diff(scandir($blockdir), array('..', '.'));
+      foreach ($jsfiles as $file) {
+        echo "<script type=\"text/javascript\" src=\"".$blockdir."/".$file."\"></script>\n";
+      }
+      $blockdir = "../../generators/java";
+      $jsfiles = array_diff(scandir($blockdir), array('..', '.'));
+      foreach ($jsfiles as $file) {
+        echo "<script type=\"text/javascript\" src=\"".$blockdir."/".$file."\"></script>\n";
+      }
+    ?>
+    
+
+    <!--<script type="text/javascript" src="<?= $blocklyPath ?>blockly_compressed.js"></script>
     <script type="text/javascript" src="<?= $blocklyPath ?>blocks_compressed.js"></script>
+    <script type="text/javascript" src="<?= $blocklyPath ?>java_compressed.js"></script>-->
+
     <script type="text/javascript" src="<?= $blocklyPath ?>msg/js/en.js"></script>
 
-    <script type="text/javascript" src="<?= $blocklyPath ?>java_compressed.js"></script>
-    <!--<script type="text/javascript" src="blocks.js"></script>-->
-    <!--<script type="text/javascript" src="iterativerobot.js"></script>-->
     <?php
       // Be sure to include all of the JS files
       $blockdir = "./blocks";

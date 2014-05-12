@@ -53,6 +53,8 @@ $title = "EasyJ Robot Builder"
 		<link rel="stylesheet" type="text/css" href="../prettify.css">
   		<script type="text/javascript" src="../prettify.js"></script>
 		<script src="bower_components/jquery/dist/jquery.min.js"></script>
+		<script type="text/javascript" src="tabifier.js"></script>
+		<script type="text/javascript" src="javagenerator.js"></script>
 		<script type="text/javascript">
 		$(document).ready(function() {
 			console.log("Ready!");
@@ -191,15 +193,18 @@ $title = "EasyJ Robot Builder"
 		<div class="container" id="content">
 			<script>
 			function onchange() {
-				Blockly.Java.init();
-				var code = "package org.usfirst.frcEasyJ.team5122;\n"; //@todo get this from settings
-				code += "import edu.wpi.first.wpilibj.IterativeRobot;\n";
-				code += Blockly.Java.getImports.join('\n');
-				code += "\n";
-				code += "public class "+"MyRobot"+" extends SimpleRobot {"; //@todo get MyRobot from settings
+				// Blockly.Java.
+				// Blockly.Java.init();
+				var code = "";
+				// "package org.usfirst.frcEasyJ.team5122;\n"; //@todo get this from settings
+				// code += "import edu.wpi.first.wpilibj.IterativeRobot;\n";
+				// code += Blockly.Java.getImports.join('\n');
+				// code += "\n";
+				// code += "public class "+"MyRobot"+" extends SimpleRobot {"; //@todo get MyRobot from settings
 				var content = document.getElementById('languagePre');
 				code += Blockly.Java.workspaceToCode();
-				code += "}";
+				// code += "}";
+				code = js_beautify(code);
 				content.textContent = code;
 				if (typeof prettyPrintOne == 'function') {
 					code = content.innerHTML;
@@ -211,6 +216,8 @@ $title = "EasyJ Robot Builder"
 			function blocklyLoaded(blockly) {
 				// Called once Blockly is fully loaded.
 				window.Blockly = blockly;
+				Blockly.Java.workspaceToCode = JavaGenerator;
+				
 				Blockly.addChangeListener(onchange);
 			}
 			</script>
