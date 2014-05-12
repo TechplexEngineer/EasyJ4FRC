@@ -97,6 +97,8 @@ Blockly.Java.INFINITE_LOOP_TRAP = null;
  * Initialise the database of variable names.
  */
 Blockly.Java.init = function() {
+  //A set of all the import statments
+  Blockly.Java.imports = [];
   // Create a dictionary of definitions to be printed before the code.
   Blockly.Java.definitions_ = Object.create(null);
   // Create a dictionary mapping desired function names in definitions_
@@ -119,7 +121,7 @@ Blockly.Java.init = function() {
           Blockly.Variables.NAME_TYPE) + ';';
     }
     Blockly.Java.definitions_['variables'] = defvars.join('\n');
-    Blockly.Java.definitions_['imports'] = [];
+    // Blockly.Java.definitions_['imports'] = [];
   }
 };
 
@@ -206,8 +208,12 @@ Blockly.Java.scrub_ = function(block, code) {
 
 
 Blockly.Java.addImport = function(imprt) {
-  if ( !(Blockly.Java.definitions_['imports'].indexOf(imprt) > -1) ) //This will make it a set
-    Blockly.Java.definitions_['imports'].push(imprt);
+  if ( !(Blockly.Java.imports.indexOf(imprt) > -1) ) //This will make it a set
+    Blockly.Java.imports.push(imprt);
+}
+
+Blockly.Java.getImports = function() {
+  return Blockly.Java.imports;
 }
 
 // This seems like a bit of a hack... but ohwells

@@ -50,6 +50,8 @@ $title = "EasyJ Robot Builder"
 			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 		<![endif]-->
+		<link rel="stylesheet" type="text/css" href="../prettify.css">
+  		<script type="text/javascript" src="../prettify.js"></script>
 		<script src="bower_components/jquery/dist/jquery.min.js"></script>
 		<script type="text/javascript">
 		$(document).ready(function() {
@@ -188,13 +190,34 @@ $title = "EasyJ Robot Builder"
 
 		<div class="container" id="content">
 			<script>
+			function onchange() {
+				Blockly.Java.init();
+				var code = "package org.usfirst.frcEasyJ.team5122;\n"; //@todo get this from settings
+				code += "import edu.wpi.first.wpilibj.IterativeRobot;\n";
+				code += Blockly.Java.getImports.join('\n');
+				code += "\n";
+				code += "public class "+"MyRobot"+" extends SimpleRobot {"; //@todo get MyRobot from settings
+				var content = document.getElementById('languagePre');
+				code += Blockly.Java.workspaceToCode();
+				code += "}";
+				content.textContent = code;
+				if (typeof prettyPrintOne == 'function') {
+					code = content.innerHTML;
+					code = prettyPrintOne(code, 'java');
+					content.innerHTML = code;
+				}
+
+			}
 			function blocklyLoaded(blockly) {
 				// Called once Blockly is fully loaded.
 				window.Blockly = blockly;
+				Blockly.addChangeListener(onchange);
 			}
 			</script>
 			<iframe id="blocklyworkspace" src="frame.php" class="blockly"></iframe>
-			<div id="codeoutput" style="display:none;">This is some test content</div>
+			<div id="codeoutput" style="display:none;">
+				<pre id="languagePre"></pre>
+			</div>
 
 			<footer>
 				<p><?= $title ?> - <a href="http://techwizworld.net">Techplex Labs</a> <script>document.write((new Date()).getFullYear());</script></p>
