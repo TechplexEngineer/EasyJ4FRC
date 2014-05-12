@@ -44,3 +44,7 @@ div.modal .modal-body textarea.xmlcode {
 .hiddenexamples {
 	display:none;
 }
+
+.form-group label, .form-group input {
+	width:100%;
+}

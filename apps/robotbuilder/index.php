@@ -30,6 +30,7 @@ $title = "EasyJ Robot Builder"
 		<script src="bower_components/jquery/dist/jquery.min.js"></script>
 		<script type="text/javascript" src="tabifier.js"></script>
 		<script type="text/javascript" src="javagenerator.js"></script>
+		<script type="text/javascript" src="easyj.js"></script>
 		<script type="text/javascript">
 		$(document).ready(function() {
 			console.log("Ready!");

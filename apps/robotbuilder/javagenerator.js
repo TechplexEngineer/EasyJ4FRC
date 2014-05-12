@@ -34,9 +34,9 @@ function JavaGenerator(rootBlk) {
   declarations = declarations.join('\n');
   // code = this.finish(code, declarations.join('\n'));
   
-  var out = "package org.usfirst.frcEasyJ.team5122;\n\n";
+  var out = "package "+EasyJ.projectPackage+";\n\n";
   out += Blockly.Java.getImports().join("\n");
-  out += "\npublic class MyRobot extends IterativeRobot\n{\n";
+  out += "\npublic class "+EasyJ.robotClass+" extends IterativeRobot\n{\n";
   out += declarations;
   out += code;
   out += "}";
