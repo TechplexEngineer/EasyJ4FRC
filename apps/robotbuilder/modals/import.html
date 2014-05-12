@@ -1,16 +1,17 @@
 <!-- Modal -->
-<div class="modal fade" id="export" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="import" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title" id="myModalLabel">Export</h4>
+				<h4 class="modal-title" id="myModalLabel">Import</h4>
 			</div>
 			<div class="modal-body">
 				<textarea class="xmlcode"></textarea>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary loadbtn">Load</button> <!-- @todo warn them that all blocks will be lost -->
 			</div>
 		</div>
 	</div>
@@ -18,12 +19,26 @@
 
 <script type="text/javascript">
 	$(document).ready(function () {
-		$(document).on('show.bs.modal', function(event){
-			if ($(event.target).attr('id') == 'export') {
-				var xmlDom = Blockly.Xml.workspaceToDom(Blockly.mainWorkspace);
-				var xmlText = Blockly.Xml.domToPrettyText(xmlDom);
-				$('#export .modal-body textarea').val(xmlText).focus();
+		$('#import .loadbtn').click(function() {
+			var toload = $('#import .modal-body textarea').val();
+			console.log(toload);
+			if (toload.length < 5) {
+				alert("No Input");
+				return;
 			}
-		})
+			try {
+				var dom = Blockly.Xml.textToDom(toload);
+				Blockly.mainWorkspace.clear();
+				Blockly.Xml.domToWorkspace(Blockly.mainWorkspace, dom);
+			} catch (e) {
+				alert("Invalid xml")
+			}
+		});
+		// $(document).on('show.bs.modal', function(event){
+		// 	if ($(event.target).attr('id') == 'import') {
+
+		// 		
+		// 	}
+		// })
 	})
 </script>

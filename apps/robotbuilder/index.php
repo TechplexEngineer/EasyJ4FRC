@@ -110,6 +110,7 @@ $title = "EasyJ Robot Builder"
 						<li class="dropdown"> <!-- Edit menu -->
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Edit <b class="caret"></b></a>
 							<ul class="dropdown-menu">
+								<li><a href="#">Clear</a></li>
 								<!-- <li><a href="#">Undo</a></li> -->
 								<!-- <li><a href="#">Redo</a></li> -->
 								<!-- <li class="divider"></li> -->
