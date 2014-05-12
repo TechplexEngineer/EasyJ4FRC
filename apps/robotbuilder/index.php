@@ -18,32 +18,7 @@ $title = "EasyJ Robot Builder"
 		<link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
 		<!-- Custom styles for this template -->
-		<style type="text/css">
-			/* Move down content because we have a fixed navbar that is 50px tall */
-			body {
-				padding-top: 50px;
-				padding-bottom: 20px;
-			}
-			/* All looks better with padding*/
-			#content {
-				padding-top: 20px;
-				padding-bottom: 20px;
-			}
-			iframe {
-				width: 100%;
-				height: 100%;
-				border-style: solid;
-				border-color: #ddd;
-				border-width: 0 1px 1px 0;
-			}
-			.btn-group {
-				position: relative;
-				display: inline-block;
-				font-size: 0;
-				vertical-align: middle;
-				white-space: nowrap;
-			}
-		</style>
+		<link rel="stylesheet" type="text/css" href="style.css">
 
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
@@ -118,7 +93,7 @@ $title = "EasyJ Robot Builder"
 							<ul class="dropdown-menu">
 								<!-- <li><a href="#new" data-toggle="modal">New</a></li> --> <!--This will open a new workspace, is a modal needed? -->
 								<li><a href="#save" data-toggle="modal">Save</a></li> <!-- @note if the project has already been saved, don't open the save modal on press of the save button. Just show success alert-->
-								<!-- <li><a href="#save" data-toggle="modal">Save as..</a></li> -->
+								<li><a href="#download" data-toggle="modal">Download..</a></li>
 								<li><a href="#open" data-toggle="modal">Open..</a></li>
 								<li><a href="#examples" data-toggle="modal">Examples..</a></li>
 								<!-- <li class="divider"></li> -->

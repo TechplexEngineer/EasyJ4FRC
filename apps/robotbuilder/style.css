@@ -1,0 +1,33 @@
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+	padding-top: 50px;
+	padding-bottom: 20px;
+}
+/* All looks better with padding*/
+#content {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+iframe {
+	width: 100%;
+	height: 100%;
+	border-style: solid;
+	border-color: #ddd;
+	border-width: 0 1px 1px 0;
+}
+.btn-group {
+	position: relative;
+	display: inline-block;
+	font-size: 0;
+	vertical-align: middle;
+	white-space: nowrap;
+}
+
+
+/* Code text area */
+div.modal .modal-body textarea.code {
+	width: 100%;
+	min-height: 200px;
+}
+
+
