@@ -1,9 +1,14 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	$('.fakeurl').click(function(event){
-		$('div.help_block').hide();
 		var eT = $(event.target);
-		$('div.help_block',eT.parent()).toggle();
+		var vis = $('div.help_block',eT.parent()).is(":visible"); //is it visible?
+
+		$('div.help_block').hide(); //Hide them all
+		
+		if (!vis) { //if it was visible, lets leave it hidden
+			$('div.help_block',eT.parent()).show();
+		}
 	});
 });
 </script>
@@ -36,24 +41,22 @@ $(document).ready(function(){
 						<li>
 							<span class="fakeurl">Where should I begin?</span>
 							<div class="help_block">
-								Try loading one of the demos. <br>
-								Press the <em>Demos</em> button at the top right of your screen and have a look at the <em> Simple Robot Example </em>
+								Try loading one of the examples. <br>
+								From the <em>File</em> menu choose <a href="#examples" data-dismiss="modal"  data-toggle="modal"><em>Examples..</em></a> Try the <em> Simple Robot Example </em>
 							</div>
 						</li>
 
 						<li>
 							<span class="fakeurl">A Specific Block</span>
 							<div class="help_block">
-								The best way to learn more about
-								what a block does it to hover your mouse pointer over it,
-								for most blocks one will see a small bit of hovertext detailing
-								the usage of the block.
+								The best way to learn more about what a block does it to hover your mouse pointer over it, for most blocks one will see a small bit of hovertext detailing the usage of the block.
 							</div>
 						</li>
 						<li>
 							<span class="fakeurl">Deploying Code</span>
 							<div class="help_block">
 								<ol>
+									<li><em>@todo Revise this</em></li>
 									<li>Navigate to the script tab. (Just left of help tab)</li>
 									<li>Copy the script the program has generated for you</li>
 									<li>Open Netbeans on your computer.  (Don't have it? <a href="http://frc2648.weebly.com/getting-started.html">View our Getting Started Guide</a>)</li>
@@ -83,10 +86,10 @@ $(document).ready(function(){
 						</li>
 						<li>
 							<span class="fakeurl">Copying Blocks</span>
-							<div class="help_block">One can easily copy blocks by holding the ctrl key on one's keyboard and dragging the block they wish to copy. <br>
-								<strong>NOTE:</strong> all blocks that are attached to the block will also be copied.</div>
+							<div class="help_block">One can easily copy blocks by right clicking the block they wish to copy, and choosing duplicate. <br>
+								<strong>NOTE:</strong> all blocks that are contained within the block will also be copied.</div>
 						</li>
-						<li>
+						<!-- <li>
 							<span class="fakeurl">What characters are allowed where?</span>
 							<div class="help_block">
 								<ul>
@@ -96,8 +99,9 @@ $(document).ready(function(){
 									<li>varname: For ease of programming: varnames can only contain letters (a-z and A-Z) and the underscore character(_)</li>
 								</ul>
 							</div>
-						</li>
+						</li> -->
 						<li>
+						@todo Update This
 							<a href="http://frc2648.weebly.com/easyj-feedback.html" target="_blank">Send your feedback and Suggestions here</a>
 						</li>
 
