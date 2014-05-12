@@ -69,7 +69,25 @@
   <link rel="stylesheet" type="text/css" href="style.css"> <!-- Make this superseed others -->
   <!-- ********************************************************************* -->
 </head>
-
+<!-- <body>
+  <div class="header">
+    This is the header
+  </div>
+  <div class="tabs">
+    tab bar
+  </div>
+  <div class="container">
+    <div class="col left">
+      left column
+    </div>
+    <div class="col right">
+      right column
+    </div>
+  </div>
+  <div class="footer">
+    This is the footer
+  </div>
+</body> -->
 <body>
   <a href="https://github.com/TechplexEngineer/EasyJ4FRC" target="_blank">
     <img style="position: absolute; top: 0; right: 0; border: 0; width: 149px; height: 149px; z-index:9;" src="http://aral.github.com/fork-me-on-github-retina-ribbons/right-cerulean@2x.png" alt="Fork me on GitHub"></a>
