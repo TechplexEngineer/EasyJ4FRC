@@ -1,12 +1,12 @@
 <?php
   $blocklyPath = "../../";
 
-  $toolbox = "toolbox.xml";
+  $toolbox = "xml/toolbox.xml";
   if (!file_exists($toolbox)) {
     die("<b>ERROR: </b>The '".$toolbox."' file is missing!");
     //@todo send an email to admin
   }
-  $startingBlocks  = "startingBlocks.xml";
+  $startingBlocks  = "xml/startingBlocks.xml";
   if (!file_exists($startingBlocks)) {
     die("<b>ERROR: </b>The '".$startingBlocks."' file is missing!");
     //@todo send an email to admin
