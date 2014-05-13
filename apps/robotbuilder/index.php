@@ -1,6 +1,6 @@
 <?php 
-$title = "EasyJ Robot Builder"
-
+$title = "EasyJ Robot Builder";
+$dev = file_exists("DEV");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,8 +14,36 @@ $title = "EasyJ Robot Builder"
 
 		<title><?= $title ?></title>
 
-		<!-- Bootstrap core CSS -->
-		<link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+		<?php 
+		if ($dev): 
+		?>
+<!-- Include these in development mode ************************************* -->
+			<!-- Bootstrap core CSS -->
+			<script src="bower_components/jquery/dist/jquery.min.js"></script>
+
+			<link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+			<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+			
+			<link rel="stylesheet" type="text/css" href="../prettify.css">
+			<script type="text/javascript" src="../prettify.js"></script>
+			
+
+		<?php 
+		else: 
+		?>
+<!-- Include these in production mode ************************************** -->
+			<!-- Bootstrap core CSS -->
+			<script src="jquery.min.js"></script>
+
+			<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+			<script src="bootstrap/js/bootstrap.min.js"></script>
+			
+			<link rel="stylesheet" type="text/css" href="prettify.css">
+			<script type="text/javascript" src="prettify.js"></script>
+
+		<?php endif; ?>
+
+<!-- Include these all of the time ***************************************** -->
 
 		<!-- Custom styles for this template -->
 		<link rel="stylesheet" type="text/css" href="style.css">
@@ -25,9 +53,6 @@ $title = "EasyJ Robot Builder"
 			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 		<![endif]-->
-		<link rel="stylesheet" type="text/css" href="../prettify.css">
-  		<script type="text/javascript" src="../prettify.js"></script>
-		<script src="bower_components/jquery/dist/jquery.min.js"></script>
 		<script type="text/javascript" src="tabifier.js"></script>
 		<script type="text/javascript" src="javagenerator.js"></script>
 		<script type="text/javascript" src="easyj.js"></script>
@@ -243,6 +268,6 @@ $title = "EasyJ Robot Builder"
 		<!-- Bootstrap core JavaScript
 		================================================== -->
 		<!-- Placed at the end of the document so the pages load faster -->
-		<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+		
 	</body>
 </html>

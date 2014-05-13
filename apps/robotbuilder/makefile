@@ -35,7 +35,7 @@ copy:
 	@$(CP) -R $(recursdirs) $(OUTDIR) 
 	@$(CP) $(tocopy) $(OUTDIR)
 	@$(CP) -R bower_components/bootstrap/dist/ $(OUTDIR)/bootstrap
-	@$(CP) bower_components/jquery/jquery.min.js $(OUTDIR)
+	@$(CP) bower_components/jquery/dist/jquery.min.js $(OUTDIR)
 
 	@echo "Static files copied."
 
@@ -44,4 +44,4 @@ clean:
 
 compressed:
 	$(CD) ../../; ./build.py
-	@echo "Clojure Build Complete"
+	@echo "Closure Build Complete"

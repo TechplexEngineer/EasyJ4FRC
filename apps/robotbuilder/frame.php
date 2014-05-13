@@ -1,5 +1,6 @@
 <?php
-	$blocklyPath = "../../";
+	$dev = file_exists("DEV");
+	
 
 	$toolbox = "xml/toolbox.xml";
 	if (!file_exists($toolbox)) {
@@ -17,29 +18,48 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		
-		<script type="text/javascript" src="../../blockly_uncompressed.js"></script>
-		<script type="text/javascript" src="<?= $blocklyPath ?>generators/java.js"></script>
-		<?php
-			// Be sure to include all of the JS files
-			$blockdir = "../../blocks";
-			$jsfiles = array_diff(scandir($blockdir), array('..', '.'));
-			foreach ($jsfiles as $file) {
-				echo "<script type=\"text/javascript\" src=\"".$blockdir."/".$file."\"></script>\n";
-			}
-			$blockdir = "../../generators/java";
-			$jsfiles = array_diff(scandir($blockdir), array('..', '.'));
-			foreach ($jsfiles as $file) {
-				echo "<script type=\"text/javascript\" src=\"".$blockdir."/".$file."\"></script>\n";
-			}
+
+		<?php 
+	    if ($dev): 
+	    	$blocklyPath = "../../";
 		?>
+<!-- Include these in development mode ************************************* -->			
+			<script type="text/javascript" src="../../blockly_uncompressed.js"></script>
+			<script type="text/javascript" src="<?= $blocklyPath ?>generators/java.js"></script>
+			<?php
+				// Be sure to include all of the JS files
+				$blockdir = "../../blocks";
+				$jsfiles = array_diff(scandir($blockdir), array('..', '.'));
+				foreach ($jsfiles as $file) {
+					echo "<script type=\"text/javascript\" src=\"".$blockdir."/".$file."\"></script>\n";
+				}
+				$blockdir = "../../generators/java";
+				$jsfiles = array_diff(scandir($blockdir), array('..', '.'));
+				foreach ($jsfiles as $file) {
+					echo "<script type=\"text/javascript\" src=\"".$blockdir."/".$file."\"></script>\n";
+				}
+			?>
+			<script type="text/javascript" src="<?= $blocklyPath ?>msg/messages.js"></script>
+
+		<?php 
+		else: 
+			$blocklyPath = "./";
+		?>
+<!-- Include these in production mode ************************************** -->
+			<script type="text/javascript" src="<?= $blocklyPath ?>blockly_compressed.js"></script>
+			<script type="text/javascript" src="<?= $blocklyPath ?>blocks_compressed.js"></script>
+			<script type="text/javascript" src="<?= $blocklyPath ?>java_compressed.js"></script>
+			<script type="text/javascript" src="<?= $blocklyPath ?>messages.js"></script>
+  		<?php endif; ?>
+
+<!-- Include these all of the time ***************************************** -->
+		
+	
 		
 
-		<!--<script type="text/javascript" src="<?= $blocklyPath ?>blockly_compressed.js"></script>
-		<script type="text/javascript" src="<?= $blocklyPath ?>blocks_compressed.js"></script>
-		<script type="text/javascript" src="<?= $blocklyPath ?>java_compressed.js"></script>-->
+		
 
-		<script type="text/javascript" src="<?= $blocklyPath ?>msg/js/en.js"></script>
+		
 
 		<?php
 			// Be sure to include all of the JS files
@@ -76,13 +96,13 @@
 	</head>
 	<body onload="init()">
 
-		<div class="xml" class="display:none:">
+		<div class="xml" class="display:none;">
 			<?php 
-			include $toolbox 
+			include $toolbox; 
 			?>
-		<div id="startingblocks">
+		<div id="startingblocks"  class="display:none;">
 			<?php 
-			include $startingBlocks 
+			include $startingBlocks;
 			?>
 		</div>
 		</div>
