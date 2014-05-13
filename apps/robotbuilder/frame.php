@@ -38,8 +38,15 @@
 				foreach ($jsfiles as $file) {
 					echo "<script type=\"text/javascript\" src=\"".$blockdir."/".$file."\"></script>\n";
 				}
+				// Be sure to include all of the JS files
+				$blockdir = "./blocks";
+				$jsfiles = array_diff(scandir($blockdir), array('..', '.'));
+				foreach ($jsfiles as $file) {
+					echo "<script type=\"text/javascript\" src=\"".$blockdir."/".$file."\"></script>\n";
+				}
 			?>
 			<script type="text/javascript" src="<?= $blocklyPath ?>msg/messages.js"></script>
+
 
 		<?php 
 		else: 
@@ -49,7 +56,8 @@
 			<script type="text/javascript" src="<?= $blocklyPath ?>blockly_compressed.js"></script>
 			<script type="text/javascript" src="<?= $blocklyPath ?>blocks_compressed.js"></script>
 			<script type="text/javascript" src="<?= $blocklyPath ?>java_compressed.js"></script>
-			<script type="text/javascript" src="<?= $blocklyPath ?>messages.js"></script>
+			<script type="text/javascript" src="<?= $blocklyPath ?>easyj_blocks_compressed.js"></script>
+			<script type="text/javascript" src="<?= $blocklyPath ?>en.js"></script>
   		<?php endif; ?>
 
 <!-- Include these all of the time ***************************************** -->
@@ -61,14 +69,7 @@
 
 		
 
-		<?php
-			// Be sure to include all of the JS files
-			$blockdir = "./blocks";
-			$jsfiles = array_diff(scandir($blockdir), array('..', '.'));
-			foreach ($jsfiles as $file) {
-				 echo "<script type=\"text/javascript\" src=\"".$blockdir."/".$file."\"></script>\n";
-			 }
-		?>
+		
 		<style>
 			html, body {
 				background-color: #fff;
@@ -80,6 +81,10 @@
 			.blocklySvg {
 				height: 100%;
 				width: 100%;
+			}
+			/* really shouldn't need this! */
+			span[type="expand"]{
+				display:none !important;
 			}
 		</style>
 		<script>
