@@ -31,13 +31,16 @@ function JavaGenerator(rootBlk) {
     }
   }
   code = code.join('\n');  // Blank line between each section.
-  declarations = declarations.join('\n');
+  declarations = declarations.join('');
   // code = this.finish(code, declarations.join('\n'));
   
   var out = "package "+EasyJ.projectPackage+";\n\n";
+  out += "import edu.wpi.first.wpilibj.IterativeRobot;"
   out += Blockly.Java.getImports().join("\n");
-  out += "\npublic class "+EasyJ.robotClass+" extends IterativeRobot\n{\n";
+  out += "\n\npublic class "+EasyJ.robotClass+" extends IterativeRobot {\n";
+  out += "\n";
   out += declarations;
+  out += "\n";
   out += code;
   out += "}";
   code = out;
