@@ -10,6 +10,8 @@ $dev = file_exists("DEV");
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="">
 		<meta name="author" content="">
+		<link rel="shortcut icon" href="images/team5122_200x200.ico" type="image/x-icon">
+	<link rel="icon" href="images/team5122_200x200.ico" type="image/x-icon">
 		<link rel="shortcut icon" href="../../assets/ico/favicon.ico">
 
 		<title><?= $title ?></title>
@@ -119,7 +121,9 @@ $dev = file_exists("DEV");
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="#about" data-toggle="modal"><?= $title ?></a>
+					<a class="navbar-brand" href="#about" data-toggle="modal">
+						<img src="images/easyj4frc.png" alt="<?= $title ?>" height="40px" style="margin-top: -10px;">
+					</a>
 				</div>
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">

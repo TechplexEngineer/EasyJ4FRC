@@ -7,6 +7,7 @@
         <h4 class="modal-title">About <?=$title?></h4>
       </div>
       <div class="modal-body">
+        <img src="images/easyj4frc.png" alt="EasyJ Logo" style="float:right; width:400px">
         <p>EasyJ is a new way to program FRC Robots using draggable snappable blocks.</p>
         <p>The goal is to lessen the learning curve for FRC Rookies and new programmers when using the WPI Robotics Library on an FRC Robot.</p>
       </div>
