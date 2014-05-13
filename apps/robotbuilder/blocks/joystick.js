@@ -71,7 +71,7 @@ Blockly.Java['get_joystick_button'] = function(block) {
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
   var value_button_number = Blockly.Java.valueToCode(block, 'BUTTON_NUMBER', Blockly.Java.ORDER_ATOMIC);
   // TODO: Assemble Java into code variable.
-  variable_name+'.getRawButton('+value_button_number+')';
+  var code = variable_name+'.getRawButton('+value_button_number+')';
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.Java.ORDER_ATOMIC];
 };
