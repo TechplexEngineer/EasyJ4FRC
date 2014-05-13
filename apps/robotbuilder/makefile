@@ -11,10 +11,9 @@ MKDIR = mkdir
 #VARS
 OUTDIR = dist
 
-grandparent = msg/messages.js {java,blockly,blocks}_compressed.js
-parent = prettify.{css,js} common.{css,js}
-thisdir =  {easyj,javagenerator,tabifier}.js style.css
-#{index,frame}.php
+grandparent = msg/js/en.js {java,blockly,blocks}_compressed.js
+parent = prettify.{css,js}
+thisdir =  {easyj,javagenerator,tabifier}.js style.css {index,frame}.php
 recursdirs = ../../media modals images xml
 
 ## END VARS
@@ -35,9 +34,11 @@ setup:
 
 dist: | compressed copy easyj_blocks
 	
+static: copy easyj_blocks
 
 copy:
 	@$(MKDIR) -p $(OUTDIR)
+	@$(MKDIR) -p $(OUTDIR)/bootstrap
 	@$(CP) -R $(recursdirs) $(OUTDIR) 
 	@$(CP) $(tocopy) $(OUTDIR)
 	@$(CP) -R bower_components/bootstrap/dist/{js,css} $(OUTDIR)/bootstrap
