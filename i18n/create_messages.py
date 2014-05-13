@@ -22,11 +22,19 @@ import codecs
 import os
 import re
 import sys
+import errno
 from common import read_json_file
 
 
 _NEWLINE_PATTERN = re.compile('[\n\r]')
 
+def mkdir_p(path):
+  try:
+    os.makedirs(path)
+  except OSError as exc: # Python >2.5
+    if exc.errno == errno.EEXIST and os.path.isdir(path):
+      pass
+    else: raise
 
 def main():
   """Generate .js files defining Blockly core and language messages."""
@@ -85,6 +93,7 @@ def main():
           target_defs[key] = _NEWLINE_PATTERN.sub(' ', value)
 
       # Output file.
+      mkdir_p(os.path.join(os.curdir, args.output_dir))
       outname = os.path.join(os.curdir, args.output_dir, target_lang + '.js')
       with codecs.open(outname, 'w', 'utf-8') as outfile:
         outfile.write(
