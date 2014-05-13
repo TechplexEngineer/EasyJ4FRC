@@ -25,6 +25,7 @@ tocopy =  $(thisdir) $(addprefix ../,$(parent)) $(addprefix ../../,$(grandparent
 all:
 	@echo "make setup		uses bower to install required packages"
 	@echo "make dist 		creates the dist directory & required files"
+	@echo "make static 		same as dist, but does not rebuild blockly core"
 
 clean:
 	$(RM) -rf ./$(OUTDIR)
@@ -46,11 +47,12 @@ copy:
 
 	@echo "Static files copied."
 
-
-
 compressed:
 	$(CD) ../../; ./build.py
 	@echo "Closure Build Complete"
 
 easyj_blocks:
 	./build.py
+
+deploy:
+	rsync -r dist/* blake.metheus.org:/var/www/team5122/easyj
