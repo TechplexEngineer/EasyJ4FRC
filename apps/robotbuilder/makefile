@@ -13,35 +13,43 @@ OUTDIR = dist
 
 grandparent = msg/messages.js {java,blockly,blocks}_compressed.js
 parent = prettify.{css,js} common.{css,js}
-thisdir = {index,frame}.php {easyj,javagenerator,tabifier}.js style.css
-recursdirs = ../../media modals images blocks xml
+thisdir =  {easyj,javagenerator,tabifier}.js style.css
+#{index,frame}.php
+recursdirs = ../../media modals images xml
 
 ## END VARS
 tocopy =  $(thisdir) $(addprefix ../,$(parent)) $(addprefix ../../,$(grandparent))
 
 
-.phony: all setup copy
+.phony: all setup copy easyj_blocks
 
 all:
+	@echo "make setup		uses bower to install required packages"
+	@echo "make dist 		creates the dist directory & required files"
+
+clean:
+	$(RM) -rf ./$(OUTDIR)
 
 setup:
 	bower install
 
-dist: compressed copy
+dist: | compressed copy easyj_blocks
 	
 
 copy:
 	@$(MKDIR) -p $(OUTDIR)
 	@$(CP) -R $(recursdirs) $(OUTDIR) 
 	@$(CP) $(tocopy) $(OUTDIR)
-	@$(CP) -R bower_components/bootstrap/dist/ $(OUTDIR)/bootstrap
+	@$(CP) -R bower_components/bootstrap/dist/{js,css} $(OUTDIR)/bootstrap
 	@$(CP) bower_components/jquery/dist/jquery.min.js $(OUTDIR)
 
 	@echo "Static files copied."
 
-clean:
-	$(RM) -rf ./$(OUTDIR)
+
 
 compressed:
 	$(CD) ../../; ./build.py
 	@echo "Closure Build Complete"
+
+easyj_blocks:
+	./build.py
