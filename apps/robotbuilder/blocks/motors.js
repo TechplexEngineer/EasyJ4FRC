@@ -109,6 +109,26 @@ Blockly.Java['move'] = function(block) {
   return code;
 };
 
+Blockly.Blocks['stop'] = {
+  init: function() {
+    this.setHelpUrl('http://www.example.com/');
+    this.setTooltip('');
+    this.setColour(20);
+    this.appendDummyInput()
+        .appendField("Stop ")
+        .appendField(new Blockly.FieldVariable("Drivetrain"), "NAME");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  }
+};
+Blockly.Java['stop'] = function(block) {
+  var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
+
+  var code = variable_name+'.arcadeDrive('+0+','+0+');\n';
+  return code;
+};
+
 Blockly.Blocks['move_with_joystick'] = {
   init: function() {
     this.setHelpUrl('http://www.example.com/');

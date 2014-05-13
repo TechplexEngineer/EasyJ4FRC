@@ -55,6 +55,7 @@
           </block>
         </value>
       </block>
+      <block type="stop"></block>
       <block type="move_with_joystick"></block>
     </category>
 
