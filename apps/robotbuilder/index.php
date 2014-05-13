@@ -161,8 +161,11 @@ $title = "EasyJ Robot Builder"
 						<a href="#download" class="notext" title="Download" data-toggle="modal">
 							<img src="images/download.png" style="width: 30px;">
 						</a>
-						<a href="#settings" class="notext" title="Settings" data-toggle="modal">
+						<!-- <a href="#settings" class="notext" title="Settings" data-toggle="modal">
 							<img src="images/gear.png" style="width: 40px;">
+						</a> -->
+						<a href="http://team5122.com" class="notext" title="Team5122 Homepage" target="_blank">
+							<img src="images/home.png" style="width: 40px;">
 						</a>
 					</div>
 				</div><!--/.navbar-collapse -->
