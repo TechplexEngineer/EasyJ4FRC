@@ -1,5 +1,5 @@
 // This seems like a bit of a hack... but ohwells
-function JavaGenerator(rootBlk) {
+Blockly.Java.workspaceToCode = function (rootBlk) {
   var declarations = [];
   var generatorblks = ['auto_init','auto_perodic','teleop_init','teleop_perodic'];
   var code = [];
@@ -12,7 +12,7 @@ function JavaGenerator(rootBlk) {
   }
   for (var x = 0, block; block = blocks[x]; x++) {
     var line = this.blockToCode(block);
-    if ($.isArray(line)) {
+    if (goog.isArray(line)) {
       // Value blocks return tuples of code and operator order.
       // Top-level blocks don't care about operator order.
       line = line[0];
@@ -23,10 +23,13 @@ function JavaGenerator(rootBlk) {
         // it wants to append a semicolon, or something.
         line = this.scrubNakedValue(line);
       }
-      if (generatorblks.indexOf(block.type) ==-1 ) {
+      // @note: The main difference is we separate out declarations
+      if (generatorblks.indexOf(block.type) != -1 ) { // in list
+        code.push(line);
+      } else if (block.type == "init_declare") {
         declarations.push(line);
       } else {
-        code.push(line);
+        console.log("Ignoring Loose Block! of type %s",block.type, block);
       }
     }
   }
@@ -34,21 +37,19 @@ function JavaGenerator(rootBlk) {
   declarations = declarations.join('');
   // code = this.finish(code, declarations.join('\n'));
   
-  var out = "package "+EasyJ.projectPackage+";\n\n";
-  out += "import edu.wpi.first.wpilibj.IterativeRobot;"
-  out += Blockly.Java.getImports().join("\n");
-  out += "\n\npublic class "+EasyJ.robotClass+" extends IterativeRobot {\n";
-  out += "\n";
-  out += declarations;
-  out += "\n";
-  out += code;
-  out += "}";
-  code = out;
+ 
 
 
   // Final scrubbing of whitespace.
+  code = scrubWhitespace(code);
+  declarations = scrubWhitespace(declarations);
+  
+  return {"code":code, "declarations":declarations};
+};
+
+function scrubWhitespace(code) {
   code = code.replace(/^\s+\n/, '');
   code = code.replace(/\n\s+$/, '\n');
   code = code.replace(/[ \t]+\n/g, '\n');
   return code;
-};
+}

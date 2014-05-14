@@ -27,18 +27,19 @@
 			<script type="text/javascript" src="../../blockly_uncompressed.js"></script>
 			<script type="text/javascript" src="<?= $blocklyPath ?>generators/java.js"></script>
 			<?php
-				// Be sure to include all of the JS files
+				// Be sure to include all of the standard block definitions
 				$blockdir = "../../blocks";
 				$jsfiles = array_diff(scandir($blockdir), array('..', '.'));
 				foreach ($jsfiles as $file) {
 					echo "<script type=\"text/javascript\" src=\"".$blockdir."/".$file."\"></script>\n";
 				}
+				// Be sure to include all of the standard java block definitions & generators
 				$blockdir = "../../generators/java";
 				$jsfiles = array_diff(scandir($blockdir), array('..', '.'));
 				foreach ($jsfiles as $file) {
 					echo "<script type=\"text/javascript\" src=\"".$blockdir."/".$file."\"></script>\n";
 				}
-				// Be sure to include all of the JS files
+				// Be sure to include all of the EasyJ blocks
 				$blockdir = "./blocks";
 				$jsfiles = array_diff(scandir($blockdir), array('..', '.'));
 				foreach ($jsfiles as $file) {
@@ -61,6 +62,25 @@
   		<?php endif; ?>
 
 <!-- Include these all of the time ***************************************** -->
+
+
+		<!-- BLOCKLY Extensions -->
+		<script type="text/javascript" src="javagenerator.js"></script>
+
+		
+		<script type="text/javascript">
+			// Blockly.Block.prototype.requireInFunction = function() {
+			// 	if (!this.workspace) {
+			// 		// Block has been deleted.
+			// 		return;
+			// 	}
+			// 	if (this.getSurroundParent()) {
+			// 		this.setWarningText(null);
+			// 	} else {
+			// 		this.setWarningText('Place this block inside a function.'); //@todo need better help text
+			// 	}
+			// }
+		</script>
 		
 	
 		
@@ -89,10 +109,14 @@
 		</style>
 		<script>
 			function init() {
-				Blockly.inject(document.body,
-						{path: '<?= $blocklyPath ?>', toolbox: document.getElementById('toolbox')});
+				Blockly.inject(document.body, {
+					path: '<?= $blocklyPath ?>',
+					toolbox: document.getElementById('toolbox')
+				});
 				// Let the top-level application know that Blockly is ready.
 				window.parent.blocklyLoaded(Blockly);
+
+				//Load the starting blocks
 				var startingBlocks = document.getElementById('startingblocks').innerHTML;
 				var xml = Blockly.Xml.textToDom(startingBlocks);
 				Blockly.Xml.domToWorkspace(Blockly.mainWorkspace, xml);

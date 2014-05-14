@@ -50,6 +50,7 @@ $dev = file_exists("DEV");
 				})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
 				ga('create', 'UA-50251610-2', 'team5122.com');
+				ga('require', 'linkid', 'linkid.js');
 				ga('send', 'pageview');
 
 			</script>
@@ -67,7 +68,7 @@ $dev = file_exists("DEV");
 			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 		<![endif]-->
 		<script type="text/javascript" src="tabifier.js"></script>
-		<script type="text/javascript" src="javagenerator.js"></script>
+		
 		<script type="text/javascript" src="easyj.js"></script>
 		<script type="text/javascript">
 		$(document).ready(function() {
@@ -83,7 +84,7 @@ $dev = file_exists("DEV");
 					fudge = 0;
 				};
 				var content = $('#content');
-
+				content.height(500); //This seems to fix a resize glitch
 				var newheight = $(window).height() - content.offset().top - $('footer').height();
 				newheight = newheight - parseInt(content.css('padding-top')) - parseInt(content.css('padding-bottom')) + fudge;
 				content.height(newheight);
@@ -220,9 +221,20 @@ $dev = file_exists("DEV");
 			}
 			function onchange() {
 
-				var code = "";
+
 				var content = document.getElementById('languagePre');
-				code += Blockly.Java.workspaceToCode();
+				var generated = Blockly.Java.workspaceToCode();
+
+				var code = "package "+EasyJ.projectPackage+";\n\n";
+				code += "import edu.wpi.first.wpilibj.IterativeRobot;"
+				code += Blockly.Java.getImports().join("\n");
+				code += "\n\npublic class "+EasyJ.robotClass+" extends IterativeRobot {\n";
+				code += "\n";
+				code += generated.declarations;
+				code += "\n";
+				code += generated.code;
+				code += "}";
+
 
 				code = js_beautify(code);
 				content.textContent = code;
@@ -236,7 +248,7 @@ $dev = file_exists("DEV");
 			function blocklyLoaded(blockly) {
 				// Called once Blockly is fully loaded.
 				window.Blockly = blockly;
-				Blockly.Java.workspaceToCode = JavaGenerator;
+				// Blockly.Java.workspaceToCode = JavaGenerator;
 				
 				Blockly.addChangeListener(onchange);
 
