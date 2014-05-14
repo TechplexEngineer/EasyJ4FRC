@@ -1,6 +1,8 @@
 <xml>
-	<block type="auto_init" 		x="0"   y="5"></block>
-	<block type="auto_perodic" 		x="175" y="5"></block>
-	<block type="teleop_init" 		x="325" y="5"></block>
-	<block type="teleop_perodic" 	x="515" y="5"></block>
+	<block type="init_declare"      x="0"   y="5"></block>
+	<block type="auto_init"         x="175" y="5"></block>
+	<block type="auto_perodic"      x="335" y="5"></block>
+	<block type="teleop_init"       x="515" y="5"></block>
+	<block type="teleop_perodic"    x="690" y="5"></block>
+	
 </xml>

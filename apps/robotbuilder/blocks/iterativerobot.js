@@ -1,4 +1,24 @@
 // =============================================================================
+// Declare
+Blockly.Blocks['init_declare'] = {
+  init: function() {
+	this.setHelpUrl('http://www.example.com/');
+	this.setTooltip('Declare blocks go here');
+	this.appendDummyInput()
+		.appendField("Initialization");
+	this.appendStatementInput("WHAT")
+		.appendField("do")
+		.setCheck('declare');
+	this.setDeletable(false);
+	this.setColour(0);
+  }
+};
+Blockly.Java['init_declare'] = function(block) {
+  var statements_what = Blockly.Java.statementToCode(block, 'WHAT');
+  return statements_what;
+};
+
+// =============================================================================
 // Autonomous
 Blockly.Blocks['auto_init'] = {
   init: function() {
@@ -7,7 +27,8 @@ Blockly.Blocks['auto_init'] = {
 	this.appendDummyInput()
 		.appendField("At the Start of Auto");
 	this.appendStatementInput("WHAT")
-		.appendField("do");
+		.appendField("do")
+		.setCheck('statement');
 	this.setDeletable(false);
 	this.setColour(0);
   }
@@ -26,7 +47,8 @@ Blockly.Blocks['auto_perodic'] = {
 	this.appendDummyInput()
 		.appendField("During Auto");
 	this.appendStatementInput("WHAT")
-		.appendField("do");
+		.appendField("do")
+		.setCheck('statement');
 	this.setDeletable(false);
 	this.setColour(0);
   }
@@ -50,7 +72,8 @@ Blockly.Blocks['teleop_init'] = {
 	this.appendDummyInput()
 		.appendField("At the Start of Teleop");
 	this.appendStatementInput("WHAT")
-		.appendField("do");
+		.appendField("do")
+		.setCheck('statement');
 	this.setDeletable(false);
   }
 };
@@ -69,7 +92,8 @@ Blockly.Blocks['teleop_perodic'] = {
 	this.appendDummyInput()
 		.appendField("During Teleop");
 	this.appendStatementInput("WHAT")
-		.appendField("do");
+		.appendField("do")
+		.setCheck('statement');
 	this.setDeletable(false);
   }
 };

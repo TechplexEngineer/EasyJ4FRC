@@ -13,6 +13,8 @@ Blockly.Blocks['motor_controller'] = {
         .setCheck("Number")
         .appendField("on PWM port");
     this.setInputsInline(true);
+    this.setPreviousStatement(true, 'declare');
+    this.setNextStatement(true, 'declare');
   }
 };
 Blockly.Java['motor_controller'] = function(block) {
@@ -47,6 +49,8 @@ Blockly.Blocks['drivetrain'] = {
         .appendField(new Blockly.FieldDropdown([["Victor", "Victor"], ["Jaguar", "Jaguar"], ["Talon", "Talon"]]), "TYPE")
         .appendField("on PWM ports 1-4");
     this.setInputsInline(true);
+    this.setPreviousStatement(true, 'declare');
+    this.setNextStatement(true, 'declare');
   }
 };
 Blockly.Java['drivetrain'] = function(block) {
@@ -81,8 +85,8 @@ Blockly.Blocks['move'] = {
         .setCheck("Number")
         .appendField("Turn");
     this.setInputsInline(true);
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
+    this.setPreviousStatement(true, 'statement');
+    this.setNextStatement(true, 'statement');
   }
 };
 Blockly.Java['move'] = function(block) {
@@ -118,8 +122,8 @@ Blockly.Blocks['stop'] = {
         .appendField("Stop ")
         .appendField(new Blockly.FieldVariable("Drivetrain"), "NAME");
     this.setInputsInline(true);
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
+    this.setPreviousStatement(true, 'statement');
+    this.setNextStatement(true, 'statement');
   }
 };
 Blockly.Java['stop'] = function(block) {
@@ -141,8 +145,8 @@ Blockly.Blocks['move_with_joystick'] = {
         .appendField("with Joystick")
         .appendField(new Blockly.FieldVariable("JS1"), "JOYSTICK");
     this.setInputsInline(true);
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
+    this.setPreviousStatement(true, 'statement');
+    this.setNextStatement(true, 'statement');
   }
 };
 Blockly.Java['move_with_joystick'] = function(block) {

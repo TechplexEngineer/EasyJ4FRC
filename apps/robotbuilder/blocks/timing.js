@@ -11,8 +11,8 @@ Blockly.Blocks['delay'] = {
     this.appendDummyInput()
         .appendField("seconds");
     this.setInputsInline(true);
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
+    this.setPreviousStatement(true, 'statement');
+    this.setNextStatement(true, 'statement');
   }
 };
 Blockly.Java['delay'] = function(block) {
@@ -39,8 +39,8 @@ Blockly.Blocks['timer'] = {
     this.appendDummyInput()
         .appendField("Declare Timer")
         .appendField(new Blockly.FieldVariable("Timer1"), "NAME");
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
+    this.setPreviousStatement(true, 'declare');
+    this.setNextStatement(true, 'declare');
   }
 };
 Blockly.Java['timer'] = function(block) {
@@ -59,8 +59,8 @@ Blockly.Blocks['start_timer'] = {
     this.appendDummyInput()
         .appendField("Start timer")
         .appendField(new Blockly.FieldVariable("Timer1"), "NAME");
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
+    this.setPreviousStatement(true, 'statement');
+    this.setNextStatement(true, 'statement');
   }
 };
 Blockly.Java['start_timer'] = function(block) {
@@ -78,8 +78,8 @@ Blockly.Blocks['stop_timer'] = {
     this.appendDummyInput()
         .appendField("Stop timer")
         .appendField(new Blockly.FieldVariable("Timer1"), "NAME");
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
+    this.setPreviousStatement(true, 'statement');
+    this.setNextStatement(true, 'statement');
   }
 };
 Blockly.Java['stop_timer'] = function(block) {
@@ -97,8 +97,8 @@ Blockly.Blocks['reset_timer'] = {
     this.appendDummyInput()
         .appendField("Reset timer")
         .appendField(new Blockly.FieldVariable("Timer1"), "NAME");
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
+    this.setPreviousStatement(true, 'statement');
+    this.setNextStatement(true, 'statement');
   }
 };
 Blockly.Java['reset_timer'] = function(block) {

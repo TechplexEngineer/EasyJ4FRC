@@ -11,6 +11,8 @@ Blockly.Blocks['joystick'] = {
     this.appendValueInput("PORT")
         .setCheck("Number");
     this.setInputsInline(true);
+    this.setPreviousStatement(true, 'declare');
+    this.setNextStatement(true, 'declare');
   }
 };
 

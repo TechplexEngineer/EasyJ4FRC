@@ -12,6 +12,8 @@ Blockly.Blocks['analog_input'] = {
         .setCheck("Number")
         .appendField("on Port");
     this.setInputsInline(true);
+    this.setPreviousStatement(true, 'declare');
+    this.setNextStatement(true, 'declare');
   }
 };
 Blockly.Java['analog_input'] = function(block) {
