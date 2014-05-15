@@ -48,8 +48,17 @@
           </block>
         </value>
       </block>
+      <block type="move_motor_controller">
+        <value name="SPEED">
+          <block type="math_number">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+      </block>
+      <block type="stop_motor_controller"></block>
+
       <block type="drivetrain"></block>
-      <block type="move">
+      <block type="move_drivetrain">
         <value name="MOVE">
           <block type="math_number">
             <field name="NUM">1</field>
@@ -61,7 +70,7 @@
           </block>
         </value>
       </block>
-      <block type="stop"></block>
+      <block type="stop_drivetrain"></block>
       <block type="move_with_joystick"></block>
     </category>
 

@@ -37,6 +37,62 @@ Blockly.Java['motor_controller'] = function(block) {
   return code;
 };
 
+Blockly.Blocks['move_motor_controller'] = {
+  init: function() {
+    this.setHelpUrl('http://www.example.com/');
+    this.setTooltip('');
+    this.setColour(20);
+    this.appendDummyInput()
+        .appendField("Move")
+        .appendField(new Blockly.TypedFieldVariable("MC1","MotorController"), "NAME");
+    this.appendValueInput("SPEED")
+        .setCheck("Number")
+        .appendField("at speed");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, 'statement');
+    this.setNextStatement(true, 'statement');
+  }
+};
+Blockly.Java['move_motor_controller'] = function(block) {
+
+  var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
+
+  var value_speed = Blockly.Java.valueToCode(block, 'SPEED', Blockly.Java.ORDER_ATOMIC);
+
+  if (value_speed=="") {
+    block.setWarningText("Motor Controller speed not set. Defaulted to speed 0.");
+    value_speed = 0;
+  }
+  else
+  {
+    block.setWarningText(null);
+  }
+  
+  var code =variable_name+'.set('+value_speed+');\n';
+  return code;
+};
+
+Blockly.Blocks['stop_motor_controller'] = {
+  init: function() {
+    this.setHelpUrl('#about');
+    this.setTooltip('');
+    this.setColour(20);
+    this.appendDummyInput()
+        .appendField("Stop")
+        .appendField(new Blockly.TypedFieldVariable("MC1","MotorController"), "NAME");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, 'statement');
+    this.setNextStatement(true, 'statement');
+  }
+};
+Blockly.Java['stop_motor_controller'] = function(block) {
+
+  var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
+
+  var code = variable_name+'.stop();\n';
+  return code;
+};
+
 Blockly.Blocks['drivetrain'] = {
   init: function() {
     this.setHelpUrl('http://www.example.com/');
@@ -71,7 +127,7 @@ Blockly.Java['drivetrain'] = function(block) {
   return code.join('\n');
 };
 
-Blockly.Blocks['move'] = {
+Blockly.Blocks['move_drivetrain'] = {
   init: function() {
     this.setHelpUrl('http://www.example.com/');
     this.setTooltip('');
@@ -89,7 +145,7 @@ Blockly.Blocks['move'] = {
     this.setNextStatement(true, 'statement');
   }
 };
-Blockly.Java['move'] = function(block) {
+Blockly.Java['move_drivetrain'] = function(block) {
   var value_move = Blockly.Java.valueToCode(block, 'MOVE', Blockly.Java.ORDER_ATOMIC);
   var value_turn = Blockly.Java.valueToCode(block, 'TURN', Blockly.Java.ORDER_ATOMIC);
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
@@ -113,7 +169,7 @@ Blockly.Java['move'] = function(block) {
   return code;
 };
 
-Blockly.Blocks['stop'] = {
+Blockly.Blocks['stop_drivetrain'] = {
   init: function() {
     this.setHelpUrl('http://www.example.com/');
     this.setTooltip('');
@@ -126,7 +182,7 @@ Blockly.Blocks['stop'] = {
     this.setNextStatement(true, 'statement');
   }
 };
-Blockly.Java['stop'] = function(block) {
+Blockly.Java['stop_drivetrain'] = function(block) {
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
 
   var code = variable_name+'.arcadeDrive('+0+','+0+');\n';
