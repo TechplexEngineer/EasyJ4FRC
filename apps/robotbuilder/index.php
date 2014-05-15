@@ -50,6 +50,7 @@ $dev = file_exists("DEV");
 				})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
 				ga('create', 'UA-50251610-2', 'team5122.com');
+				ga('require', 'displayfeatures');
 				ga('require', 'linkid', 'linkid.js');
 				ga('send', 'pageview');
 
