@@ -24,8 +24,9 @@ tocopy =  $(thisdir) $(addprefix ../,$(parent)) $(addprefix ../../,$(grandparent
 
 all:
 	@echo "make setup		uses bower to install required packages"
-	@echo "make dist 		creates the dist directory & required files"
+	@echo "make dist -j 3	creates the dist directory & required files"
 	@echo "make static 		same as dist, but does not rebuild blockly core"
+	@echo "make deploy 		Send current dist directory to remote"
 
 clean:
 	$(RM) -rf ./$(OUTDIR)
