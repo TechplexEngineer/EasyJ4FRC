@@ -1,6 +1,7 @@
 <xml id="toolbox" style="display: none">
     
-    <category name="Input">
+    <category name="Input &amp; Sensors">
+
       <category name="User">
         <block type="joystick">
         <value name="PORT">
@@ -18,6 +19,18 @@
         </value>
       </block>
       </category>
+
+      <category name="Gyro">
+        <block type="declare_gyro">
+          <value name="PORT">
+            <block type="math_number">
+              <field name="NUM">1</field>
+            </block>
+          </value>
+        </block>
+        <block type="get_gyro"></block>        
+      </category>
+
       <category name="Digital">
         <block type="digital_input">
           <value name="PORT">
@@ -28,6 +41,7 @@
         </block>
         <block type="get_digital_input_value"></block>
       </category>
+
       <category name="Analog">
         <block type="analog_input">
           <value name="PORT">
@@ -38,6 +52,7 @@
         </block>
         <block type="get_analog_input_value"></block>
       </category>
+      
     </category>
 
     <category name="Motors">
@@ -72,19 +87,6 @@
       </block>
       <block type="stop_drivetrain"></block>
       <block type="move_with_joystick"></block>
-    </category>
-
-    <category name="Sensors">
-      <category name="Gyro">
-        <block type="declare_gyro">
-          <value name="PORT">
-            <block type="math_number">
-              <field name="NUM">1</field>
-            </block>
-          </value>
-        </block>
-        <block type="get_gyro"></block>        
-      </category>
     </category>
 
     <category name="Logic">

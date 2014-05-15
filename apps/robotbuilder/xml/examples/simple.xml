@@ -1,15 +1,15 @@
 <xml>
-  <block type="init_declare" id="22" deletable="false" x="0" y="5">
+  <block type="init_declare" id="12" deletable="false" x="0" y="5">
     <statement name="WHAT">
-      <block type="joystick" id="32" inline="true">
+      <block type="joystick" id="22" inline="true">
         <field name="NAME">JS1</field>
         <value name="PORT">
-          <block type="math_number" id="33">
+          <block type="math_number" id="23">
             <field name="NUM">1</field>
           </block>
         </value>
         <next>
-          <block type="drivetrain" id="42">
+          <block type="drivetrain" id="35">
             <field name="NAME">Drivetrain</field>
             <field name="TYPE">Victor</field>
           </block>
@@ -17,29 +17,29 @@
       </block>
     </statement>
   </block>
-  <block type="auto_init" id="23" deletable="false" x="-2" y="164">
+  <block type="auto_init" id="13" deletable="false" x="-1" y="123">
     <statement name="WHAT">
-      <block type="move" id="51" inline="true">
+      <block type="move_drivetrain" id="47" inline="true">
         <field name="NAME">Drivetrain</field>
         <value name="MOVE">
-          <block type="math_number" id="52">
+          <block type="math_number" id="48">
             <field name="NUM">1</field>
           </block>
         </value>
         <value name="TURN">
-          <block type="math_number" id="53">
+          <block type="math_number" id="49">
             <field name="NUM">0</field>
           </block>
         </value>
         <next>
-          <block type="delay" id="61" inline="true">
+          <block type="delay" id="69" inline="true">
             <value name="AMOUNT">
-              <block type="math_number" id="62">
+              <block type="math_number" id="70">
                 <field name="NUM">1.5</field>
               </block>
             </value>
             <next>
-              <block type="stop" id="71">
+              <block type="stop_drivetrain" id="61">
                 <field name="NAME">Drivetrain</field>
               </block>
             </next>
@@ -48,11 +48,11 @@
       </block>
     </statement>
   </block>
-  <block type="auto_perodic" id="24" deletable="false" x="13" y="350"></block>
-  <block type="teleop_init" id="25" deletable="false" x="15" y="444"></block>
-  <block type="teleop_perodic" id="26" deletable="false" x="13" y="547">
+  <block type="auto_perodic" id="14" deletable="false" x="490" y="179"></block>
+  <block type="teleop_init" id="15" deletable="false" x="1" y="283"></block>
+  <block type="teleop_perodic" id="16" deletable="false" x="491" y="283">
     <statement name="WHAT">
-      <block type="move_with_joystick" id="80">
+      <block type="move_with_joystick" id="101">
         <field name="NAME">Drivetrain</field>
         <field name="JOYSTICK">JS1</field>
       </block>
