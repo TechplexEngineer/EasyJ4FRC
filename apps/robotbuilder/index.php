@@ -76,8 +76,7 @@ $dev = file_exists("DEV");
 			
 			/**
 			 * Make the #content element fill the remaining horizontal space
-			 * @param  {[type]} fudge [description]
-			 * @return {[type]}       [description]
+			 * @param  {int} fudge fudge factor
 			 */
 			function adjContentHeight (fudge) {
 				if (typeof fudge == 'undefined') {
@@ -94,7 +93,7 @@ $dev = file_exists("DEV");
 				
 			}).resize();
 
-			// toggle button
+			// toggle between blocks and code
 			$('#blockcodetoggle').click(function(event){
 				if ($(event.target).attr('id') == "code") {
 					$('#blocklyworkspace').hide();
@@ -106,7 +105,16 @@ $dev = file_exists("DEV");
 					$('#codeoutput').hide();
 				}
 			});
-			//blocklyworkspace
+
+			$('#edit_clear').click(function(event){
+				console.log("Clicked");
+				event.preventDefault();
+				if (window.confirm("Do you really want to clear the workspace?\nAll work will be lost!")) {
+					Blockly.mainWorkspace.reset();
+				}
+			});
+			
+
 
 		});
 	</script>
@@ -152,7 +160,7 @@ $dev = file_exists("DEV");
 						<li class="dropdown"> <!-- Edit menu -->
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Edit <b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="#">Clear</a></li>
+								<li><a href="#" id="edit_clear">Reset &amp; Clear</a></li>
 								<!-- <li><a href="#">Undo</a></li> -->
 								<!-- <li><a href="#">Redo</a></li> -->
 								<!-- <li class="divider"></li> -->

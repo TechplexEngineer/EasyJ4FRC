@@ -115,12 +115,20 @@
 				});
 				// Let the top-level application know that Blockly is ready.
 				window.parent.blocklyLoaded(Blockly);
+				// console.log(Blockly);
 
-				//Load the starting blocks
-				var startingBlocks = document.getElementById('startingblocks').innerHTML;
-				var xml = Blockly.Xml.textToDom(startingBlocks);
-				Blockly.Xml.domToWorkspace(Blockly.mainWorkspace, xml);
+				Blockly.mainWorkspace.reset = function() {
+					// Remove all blocks
+					Blockly.mainWorkspace.clear();
+					//Load the starting blocks
+					var startingBlocks = document.getElementById('startingblocks').innerHTML;
+					var xml = Blockly.Xml.textToDom(startingBlocks);
+					Blockly.Xml.domToWorkspace(Blockly.mainWorkspace, xml);
+				}
+
+				Blockly.mainWorkspace.reset();
 			}
+			
 		</script>
 	</head>
 	<body onload="init()">
