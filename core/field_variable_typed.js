@@ -109,9 +109,8 @@ Blockly.TypedFieldVariable.prototype.setValue = function(text) {
  * @this {!Blockly.TypedFieldVariable}
  */
 Blockly.TypedFieldVariable.dropdownCreate = function() {
-  var variableList = Blockly.Variables.allVariables(); //@todo get vars by type
+  var variableList = Blockly.Variables.allVariablesOfType(this.vartype);
   // Ensure that the currently selected variable is an option.
-  console.log("dropdownCreate",this);
   var name = this.getText();
   if (name && variableList.indexOf(name) == -1) {
     variableList.push(name);

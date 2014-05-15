@@ -6,7 +6,7 @@ Blockly.Blocks['joystick'] = {
     this.setColour(20);
     this.appendDummyInput()
         .appendField("Declare Joystick")
-        .appendField(new Blockly.FieldVariable("JS1"), "NAME")
+        .appendField(new Blockly.TypedFieldVariable("JS1", "Joystick"), "NAME")
         .appendField("on usb port");
     this.appendValueInput("PORT")
         .setCheck("Number");
@@ -40,7 +40,7 @@ Blockly.Blocks['get_joystick_axis'] = {
     this.setColour(20);
     this.appendDummyInput()
         .appendField("Get Joystick")
-        .appendField(new Blockly.FieldVariable("JS1"), "NAME")
+        .appendField(new Blockly.TypedFieldVariable("JS1", "Joystick"), "NAME")
         .appendField(new Blockly.FieldDropdown([["X Axis", "kX"], ["Y Axis", "kY"], ["Z Axis", "kZ"], ["Twist", "kTwist"], ["Throttle", "kThrottle"]]), "WHAT");
     this.setOutput(true, "Number");
   }
@@ -61,7 +61,7 @@ Blockly.Blocks['get_joystick_button'] = {
     this.setColour(20);
     this.appendDummyInput()
         .appendField("Get Joystick")
-        .appendField(new Blockly.FieldVariable("JS1"), "NAME");
+        .appendField(new Blockly.TypedFieldVariable("JS1", "Joystick"), "NAME");
     this.appendValueInput("BUTTON_NUMBER")
         .setCheck("Number") // @todo Get the button value for buttons 1 through 12.
         .appendField("Button");

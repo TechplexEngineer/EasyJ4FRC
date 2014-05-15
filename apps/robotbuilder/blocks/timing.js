@@ -38,7 +38,7 @@ Blockly.Blocks['timer'] = {
     this.setColour(260);
     this.appendDummyInput()
         .appendField("Declare Timer")
-        .appendField(new Blockly.FieldVariable("Timer1"), "NAME");
+        .appendField(new Blockly.TypedFieldVariable("Timer1", "Timer"), "NAME");
     this.setPreviousStatement(true, 'declare');
     this.setNextStatement(true, 'declare');
   }
@@ -58,7 +58,7 @@ Blockly.Blocks['start_timer'] = {
     this.setColour(260);
     this.appendDummyInput()
         .appendField("Start timer")
-        .appendField(new Blockly.FieldVariable("Timer1"), "NAME");
+        .appendField(new Blockly.TypedFieldVariable("Timer1", "Timer"), "NAME");
     this.setPreviousStatement(true, 'statement');
     this.setNextStatement(true, 'statement');
   }
@@ -77,7 +77,7 @@ Blockly.Blocks['stop_timer'] = {
     this.setColour(260);
     this.appendDummyInput()
         .appendField("Stop timer")
-        .appendField(new Blockly.FieldVariable("Timer1"), "NAME");
+        .appendField(new Blockly.TypedFieldVariable("Timer1", "Timer"), "NAME");
     this.setPreviousStatement(true, 'statement');
     this.setNextStatement(true, 'statement');
   }
@@ -96,7 +96,7 @@ Blockly.Blocks['reset_timer'] = {
     this.setColour(260);
     this.appendDummyInput()
         .appendField("Reset timer")
-        .appendField(new Blockly.FieldVariable("Timer1"), "NAME");
+        .appendField(new Blockly.TypedFieldVariable("Timer1", "Timer"), "NAME");
     this.setPreviousStatement(true, 'statement');
     this.setNextStatement(true, 'statement');
   }

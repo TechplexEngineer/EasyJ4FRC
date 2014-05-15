@@ -7,7 +7,7 @@ Blockly.Blocks['analog_input'] = {
     this.setColour(65);
     this.appendDummyInput()
         .appendField("Declare Analog Input")
-        .appendField(new Blockly.FieldVariable("Ain1"), "NAME");
+        .appendField(new Blockly.TypedFieldVariable("Ain1", "AnalogChannel"), "NAME");
     this.appendValueInput("PORT")
         .setCheck("Number")
         .appendField("on Port");
@@ -40,7 +40,7 @@ Blockly.Blocks['get_analog_input_value'] = {
     this.appendDummyInput()
         .appendField("Get ")
         .appendField(new Blockly.FieldDropdown([["Average Voltage", "getAverageVoltage"], ["Voltage", "getVoltage"], [" Average Value", "getAverageValue"]]), "WHAT")
-        .appendField(new Blockly.FieldVariable("Ain1"), "NAME");
+        .appendField(new Blockly.TypedFieldVariable("Ain1", "AnalogChannel"), "NAME");
     this.setInputsInline(true);
     this.setOutput(true, "Number");
   }

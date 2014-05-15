@@ -59,6 +59,11 @@ Blockly.Variables.allVariables = function(opt_block) {
       var blockVariables = func.call(blocks[x]);
       for (var y = 0; y < blockVariables.length; y++) {
         var varName = blockVariables[y];
+
+        //add this to be backward compatible with the old syntax
+        if (typeof varName !== "string") {
+          varName = varName.name;
+        };
         // Variable name may be null if the block is only half-built.
         if (varName) {
           variableHash[varName.toLowerCase()] = varName;

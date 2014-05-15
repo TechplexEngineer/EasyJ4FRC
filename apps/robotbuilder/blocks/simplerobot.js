@@ -5,7 +5,7 @@ Blockly.Blocks['simple_robot'] = {
     this.setColour(120);
     this.appendDummyInput()
         .appendField("Sinple Robot Named:")
-        .appendField(new Blockly.FieldVariable("MyRobot"), "NAME");
+        .appendField(new Blockly.TypedFieldVariable("MyRobot", "Class"), "NAME");
     this.appendStatementInput("setup")
         .appendField("Setup");
     this.appendStatementInput("auto")

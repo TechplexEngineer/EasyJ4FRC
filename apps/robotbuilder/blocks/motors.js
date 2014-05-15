@@ -15,15 +15,15 @@ Blockly.Blocks['motor_controller'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, 'declare');
     this.setNextStatement(true, 'declare');
-  }
+  },
   /**
    * Return all variables referenced by this block.
    * @return {!Array.<string>} List of variable names.
    * @this Blockly.Block
    */
-  getVars: function() {
-    return [this.getFieldValue('NAME')];
-  },
+  // getVars: function() {
+  //   return [this.getFieldValue('NAME')];
+  // },
 };
 Blockly.Java['motor_controller'] = function(block) {
 
@@ -52,7 +52,7 @@ Blockly.Blocks['drivetrain'] = {
     this.setColour(20);
     this.appendDummyInput()
         .appendField("Declare Drivebase ")
-        .appendField(new Blockly.FieldVariable("Drivetrain"), "NAME")
+        .appendField(new Blockly.TypedFieldVariable("Drivetrain","RobotDrive"), "NAME")
         .appendField("of type")
         .appendField(new Blockly.FieldDropdown([["Victor", "Victor"], ["Jaguar", "Jaguar"], ["Talon", "Talon"]]), "TYPE")
         .appendField("on PWM ports 1-4");
@@ -87,7 +87,7 @@ Blockly.Blocks['move'] = {
     this.appendValueInput("MOVE") //@todo limit the range[-1,1]
         .setCheck("Number")
         .appendField("Move ")
-        .appendField(new Blockly.FieldVariable("Drivetrain"), "NAME")
+        .appendField(new Blockly.TypedFieldVariable("Drivetrain", "RobotDrive"), "NAME")
         .appendField("Speed");
     this.appendValueInput("TURN") //@todo limit the range[-1,1]
         .setCheck("Number")
@@ -128,7 +128,7 @@ Blockly.Blocks['stop'] = {
     this.setColour(20);
     this.appendDummyInput()
         .appendField("Stop ")
-        .appendField(new Blockly.FieldVariable("Drivetrain"), "NAME");
+        .appendField(new Blockly.TypedFieldVariable("Drivetrain", "RobotDrive"), "NAME");
     this.setInputsInline(true);
     this.setPreviousStatement(true, 'statement');
     this.setNextStatement(true, 'statement');
@@ -148,10 +148,10 @@ Blockly.Blocks['move_with_joystick'] = {
     this.setColour(20);
     this.appendDummyInput()
         .appendField("Move ")
-        .appendField(new Blockly.FieldVariable("Drivetrain"), "NAME");
+        .appendField(new Blockly.TypedFieldVariable("Drivetrain", "RobotDrive"), "NAME");
     this.appendDummyInput()
         .appendField("with Joystick")
-        .appendField(new Blockly.FieldVariable("JS1"), "JOYSTICK");
+        .appendField(new Blockly.TypedFieldVariable("JS1", "Joystick"), "JOYSTICK");
     this.setInputsInline(true);
     this.setPreviousStatement(true, 'statement');
     this.setNextStatement(true, 'statement');

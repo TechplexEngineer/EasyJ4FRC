@@ -7,7 +7,7 @@ Blockly.Blocks['digital_input'] = {
     this.setColour(120);
     this.appendDummyInput()
         .appendField("Declare Digital Input")
-        .appendField(new Blockly.FieldVariable("Din1"), "NAME");
+        .appendField(new Blockly.TypedFieldVariable("Din1", "DigitalInput"), "NAME");
     this.appendValueInput("PORT")
         .setCheck("Number")
         .appendField("on Port");
@@ -32,7 +32,7 @@ Blockly.Blocks['get_digital_input_value'] = {
     this.setColour(120);
     this.appendDummyInput()
         .appendField("Get value")
-        .appendField(new Blockly.FieldVariable("Din1"), "NAME");
+        .appendField(new Blockly.TypedFieldVariable("Din1", "DigitalInput"), "NAME");
     this.setInputsInline(true);
     this.setOutput(true, "Number");
   }
