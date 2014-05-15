@@ -6,7 +6,7 @@ Blockly.Blocks['motor_controller'] = {
     this.setColour(20);
     this.appendDummyInput()
         .appendField("Declare Motor Controller")
-        .appendField(new Blockly.FieldVariable("MC1"), "NAME")
+        .appendField(new Blockly.TypedFieldVariable("MC1","MotorController"), "NAME")
         .appendField("of type")
         .appendField(new Blockly.FieldDropdown([["Victor", "Victor"], ["Jaguar", "Jaguar"], ["Talon", "Talon"]]), "CONTROLLER_TYPE");
     this.appendValueInput("PORT")
@@ -16,6 +16,14 @@ Blockly.Blocks['motor_controller'] = {
     this.setPreviousStatement(true, 'declare');
     this.setNextStatement(true, 'declare');
   }
+  /**
+   * Return all variables referenced by this block.
+   * @return {!Array.<string>} List of variable names.
+   * @this Blockly.Block
+   */
+  getVars: function() {
+    return [this.getFieldValue('NAME')];
+  },
 };
 Blockly.Java['motor_controller'] = function(block) {
 

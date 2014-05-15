@@ -29,7 +29,7 @@ Blockly.Java.workspaceToCode = function (rootBlk) {
       } else if (block.type == "init_declare") {
         declarations.push(line);
       } else {
-        console.log("Ignoring Loose Block! of type %s",block.type, block);
+        // console.log("Ignoring Loose Block! of type %s",block.type, block);
       }
     }
   }
