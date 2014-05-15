@@ -74,7 +74,7 @@ Blockly.Java['move_motor_controller'] = function(block) {
 
 Blockly.Blocks['stop_motor_controller'] = {
   init: function() {
-    this.setHelpUrl('#about');
+    this.setHelpUrl('http://www.example.com/');
     this.setTooltip('');
     this.setColour(20);
     this.appendDummyInput()

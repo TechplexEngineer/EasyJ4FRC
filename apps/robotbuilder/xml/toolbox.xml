@@ -74,6 +74,19 @@
       <block type="move_with_joystick"></block>
     </category>
 
+    <category name="Sensors">
+      <category name="Gyro">
+        <block type="declare_gyro">
+          <value name="PORT">
+            <block type="math_number">
+              <field name="NUM">1</field>
+            </block>
+          </value>
+        </block>
+        <block type="get_gyro"></block>        
+      </category>
+    </category>
+
     <category name="Logic">
       <block type="controls_if"></block>
       <block type="logic_compare"></block>
