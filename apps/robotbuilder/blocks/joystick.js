@@ -60,11 +60,11 @@ Blockly.Blocks['get_joystick_button'] = {
     this.setTooltip('');
     this.setColour(20);
     this.appendDummyInput()
-        .appendField("Get Joystick")
+        .appendField("Joystick")
         .appendField(new Blockly.TypedFieldVariable("JS1", "Joystick"), "NAME");
     this.appendValueInput("BUTTON_NUMBER")
         .setCheck("Number") // @todo Get the button value for buttons 1 through 12.
-        .appendField("Button");
+        .appendField("Button is pressed");
     this.setInputsInline(true);
     this.setOutput(true, "Boolean");
   }
