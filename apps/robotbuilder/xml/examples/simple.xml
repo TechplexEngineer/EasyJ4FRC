@@ -1,38 +1,46 @@
 <xml>
-  <block type="auto_init" id="1" deletable="false" x="0" y="5">
+  <block type="init_declare" id="22" deletable="false" x="0" y="5">
     <statement name="WHAT">
-      <block type="move" id="47" inline="true">
+      <block type="joystick" id="32" inline="true">
+        <field name="NAME">JS1</field>
+        <value name="PORT">
+          <block type="math_number" id="33">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <next>
+          <block type="drivetrain" id="42">
+            <field name="NAME">Drivetrain</field>
+            <field name="TYPE">Victor</field>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="auto_init" id="23" deletable="false" x="-2" y="164">
+    <statement name="WHAT">
+      <block type="move" id="51" inline="true">
         <field name="NAME">Drivetrain</field>
         <value name="MOVE">
-          <block type="math_number" id="48">
+          <block type="math_number" id="52">
             <field name="NUM">1</field>
           </block>
         </value>
         <value name="TURN">
-          <block type="math_number" id="49">
+          <block type="math_number" id="53">
             <field name="NUM">0</field>
           </block>
         </value>
         <next>
-          <block type="delay" id="57" inline="true">
+          <block type="delay" id="61" inline="true">
             <value name="AMOUNT">
-              <block type="math_number" id="58">
+              <block type="math_number" id="62">
                 <field name="NUM">1.5</field>
               </block>
             </value>
             <next>
-              <block type="move" id="66" inline="true">
+              <block type="stop" id="71">
                 <field name="NAME">Drivetrain</field>
-                <value name="MOVE">
-                  <block type="math_number" id="67">
-                    <field name="NUM">0</field>
-                  </block>
-                </value>
-                <value name="TURN">
-                  <block type="math_number" id="68">
-                    <field name="NUM">0</field>
-                  </block>
-                </value>
               </block>
             </next>
           </block>
@@ -40,26 +48,14 @@
       </block>
     </statement>
   </block>
-  <block type="teleop_init" id="3" deletable="false" x="508" y="-2"></block>
-  <block type="teleop_perodic" id="4" deletable="false" x="506" y="106">
+  <block type="auto_perodic" id="24" deletable="false" x="13" y="350"></block>
+  <block type="teleop_init" id="25" deletable="false" x="15" y="444"></block>
+  <block type="teleop_perodic" id="26" deletable="false" x="13" y="547">
     <statement name="WHAT">
-      <block type="move_with_joystick" id="39">
+      <block type="move_with_joystick" id="80">
         <field name="NAME">Drivetrain</field>
         <field name="JOYSTICK">JS1</field>
       </block>
     </statement>
-  </block>
-  <block type="auto_perodic" id="2" deletable="false" x="1" y="245"></block>
-  <block type="joystick" id="9" inline="true" x="487" y="245">
-    <field name="NAME">JS1</field>
-    <value name="PORT">
-      <block type="math_number" id="10">
-        <field name="NUM">1</field>
-      </block>
-    </value>
-  </block>
-  <block type="drivetrain" id="31" x="485" y="301">
-    <field name="NAME">Drivetrain</field>
-    <field name="TYPE">Victor</field>
   </block>
 </xml>
