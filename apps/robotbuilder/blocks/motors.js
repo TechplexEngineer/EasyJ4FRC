@@ -15,15 +15,7 @@ Blockly.Blocks['motor_controller'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, 'declare');
     this.setNextStatement(true, 'declare');
-  },
-  /**
-   * Return all variables referenced by this block.
-   * @return {!Array.<string>} List of variable names.
-   * @this Blockly.Block
-   */
-  // getVars: function() {
-  //   return [this.getFieldValue('NAME')];
-  // },
+  }
 };
 Blockly.Java['motor_controller'] = function(block) {
 
