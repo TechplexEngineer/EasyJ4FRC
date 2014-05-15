@@ -10,7 +10,13 @@
         </value>
       </block>
       <block type="get_joystick_axis"></block>
-      <block type="get_joystick_button"></block>
+      <block type="get_joystick_button">
+        <value name="BUTTON_NUMBER">
+          <block type="math_number">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+      </block>
       </category>
       <category name="Digital">
         <block type="digital_input">
