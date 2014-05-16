@@ -14,21 +14,21 @@ EasyJ4FRC is based on [Google Blockly](http://code.google.com/p/blockly/).
 [Blockly Demo](https://blockly-demo.appspot.com/static/apps/index.html)
 ### Todos
 - [ ] Custom input checkers (ie: Joystick button valid values are 1-12)
-- [ ] Change the root block to be two function blocks teleop & auto
-- [ ] Loadable Demos
-- [ ] Help Pages
-- [ ] About page
-- [ ] Settings Page
+- [x] Change the root block to be two function blocks teleop & auto
+- [x] Loadable Demos
+- [x] Help Pages
+- [x] About page
+- [x] Settings Page
   - Alter package
 - [ ] Command Base
   - multiple class tabs
   - add new subsystems
   - add new commands
-- [ ] Easier deploys (update toolbox, update path) (SFTP in make?)
-- [ ] Fix digital & analog 'Get' blocks
+- [x] Easier deploys (update toolbox, update path) (rsync in make)
+- [x] Fix digital & analog 'Get' blocks
 - [ ] Test, Test, Test - Make sure the blocks generate good code
 - [ ] Add more blocks
-  - Gyro
+  - Gyro [x]
   - Variables
   - Lists
   - Subroutines
@@ -44,7 +44,7 @@ EasyJ4FRC is based on [Google Blockly](http://code.google.com/p/blockly/).
   - I2C
   - PID
   - Servo
-  - Iterative Robot
+  - Iterative Robot [x]
   - Ultrasonic
   - Watchdog?
 - [ ] Make types more like Java types (double, float, int, long ...)
@@ -54,4 +54,12 @@ EasyJ4FRC is based on [Google Blockly](http://code.google.com/p/blockly/).
   - To file?
   - Could we dump out a netbeans project?
 - [ ] make a desktop version 
-- [ ] make a cool logo
+- [x] make a cool logo
+- [ ] handle variable rename
+- [ ] hide blocks until variable exists
+- [ ] set warning on orphanned blocks
+- [ ] change "Declare" to "Create"
+- [ ] Change {motor controller,drivetrain} {speed,turn} inputs to be -100 to 100 %
+- [ ] Add more examples
+- [ ] add tool tips for blocks
+- [ ] add help url for blocks
