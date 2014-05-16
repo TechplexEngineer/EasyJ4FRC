@@ -14,13 +14,13 @@ OUTDIR = dist
 grandparent = msg/js/en.js {java,blockly,blocks}_compressed.js
 parent = prettify.{css,js}
 thisdir =  {easyj,javagenerator,tabifier}.js style.css {index,frame}.php
-recursdirs = ../../media modals images xml
+recursdirs = ../../media modals images xml zip RobotTemplate
 
 ## END VARS
 tocopy =  $(thisdir) $(addprefix ../,$(parent)) $(addprefix ../../,$(grandparent))
 
 
-.phony: all setup copy easyj_blocks
+.phony: all setup copy easyj_blocks 
 
 all:
 	@echo "make setup		uses bower to install required packages"
