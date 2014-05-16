@@ -7,7 +7,6 @@
 				<h4 class="modal-title">Open</h4>
 			</div>
 			<div class="modal-body">
-				@todo
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -15,3 +14,38 @@
 		</div>
 	</div>
 </div>
+<div id="examplewrapper" style="display:none">
+	<div class="cloneable example">
+		<!-- <h3>Robot Example</h3> -->
+		<!-- <div class="inline-block"> -->
+			<button type="button" class="btn btn-success load" style="margin-top:10px;">Load</button>
+		<!-- </div>	 -->
+		<!-- <div class="brief">Example showing use of a joystick and the drivetrain block.</div> -->
+	</div>
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function () {
+
+		$(document).on('show.bs.modal', function(event){
+			if ($(event.target).attr('id') == 'open') {
+				// build the list of saves. @todo Make is scroll
+					
+				var saves = EasyJ.localStorage.listSaves();
+				for (var i = 0; i < saves.length; i++) {
+					console.log("Here:", saves[i], saves.length);
+					var clone = $('#examplewrapper div:first').clone()
+					$("button", clone).text("Load '"+saves[i]+"'");
+					clone.appendTo($('#open .modal-body'));
+				};				
+			}
+		});
+		// $('#save .modal-footer .savebtn').click(function() {
+		// 	var xmlDom = Blockly.Xml.workspaceToDom(Blockly.mainWorkspace);
+		// 	var xmlText = Blockly.Xml.domToPrettyText(xmlDom);
+		// 	localStorage.setItem('easyj_'+$('#save_filename').val(), xmlText);
+		// 	//@todo tell the user that we saved for them!
+		// 	$('#save').modal('hide');
+		// });
+	});
+</script>

@@ -1,41 +1,53 @@
 
-// var EasyJ = function(){
-// 	var robotClass = "MyRobot"
-// };
 
-// EasyJ.prototype.getRobotClass = function() {
-// 	return robotClass;
-// };
 var EasyJ = {};
 EasyJ.projectPackage = "org.usfirst.frcEasyJ.team5122";
 EasyJ.robotClass = "MyRobot";
 
 
-// //Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
-// // need a getName
-// // var db = {
-// // 	type: [var1,var2],
-// // 	type2: [var3,var4]
-// // }
+EasyJ.localStorage = {};
 
-// var EasyJ = {};
-// EasyJ._projectPackage = "org.usfirst.frcEasyJ.team5122";
-// EasyJ._robotClass = "MyRobot";
+EasyJ.localStorage.addSave = function (name, blocks, overwrite) {
+	if (typeof overwrite === "undefined") {
+		overwrite = false;
+	}
+	if (typeof localStorage['easyj_saves'] === "undefined") {
+		var first = {};
+		first[name] = blocks;
+		localStorage['easyj_saves'] = JSON.stringify(first);
+	} else {
+		var saves = JSON.parse(localStorage['easyj_saves']);
+		if (typeof saves[name] === "undefined" || overwrite) {
+			saves[name] = blocks;
+			localStorage['easyj_saves'] = JSON.stringify(saves);
+			return true;
+		} else {
+			// Throw Error! The name is already used! & we are not overwriting it
+			return false;
+		}
+	}
+};
+EasyJ.localStorage.listSaves = function () {
+	if (typeof localStorage['easyj_saves'] === "undefined") {
+		return [];
+	} else {
+		var saves = JSON.parse(localStorage['easyj_saves']);
+		return Object.keys(JSON.parse(localStorage['easyj_saves']));
+	}
+};
 
-// Object.defineProperty(obj, 'projectPackage', {
-// 	get: function() { return this._projectPackage;},
-// 	set: function(value) { 
-// 		this._projectPackage = value;
-// 		$( "#easyj" ).trigger("varchange", "projectPackage");
-// 	}
-// });
+EasyJ.localStorage.open = function (name) {
+	if (typeof localStorage['easyj_saves'] === "undefined") {
+		alert("No saves in storage!"); //@todo fixme
+		return;
+	}
+	var saves = JSON.parse(localStorage['easyj_saves']);
+	if (typeof saves[name] === "undefined")
+	{
+		alert("A save by the name of '"+name+"' does not exits!"); //@todo fixme
+	}
 
- 
-// Object.defineProperty(obj, 'robotClass', {
-// 	get: function() { return this._robotClass;},
-// 	set: function(value) { 
-// 		this._robotClass = value;
-// 		$( "#easyj" ).trigger("varchange", "robotClass");
-// 	}
-// });
+	loadxml(saves[name]);
+};
+
 
