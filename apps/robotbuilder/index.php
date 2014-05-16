@@ -80,6 +80,7 @@ $dev = file_exists("DEV");
 			 * @param  {int} fudge fudge factor
 			 */
 			function adjContentHeight (fudge) {
+				console.log("Resize");
 				if (typeof fudge == 'undefined') {
 					fudge = 0;
 				};
@@ -115,8 +116,6 @@ $dev = file_exists("DEV");
 					Blockly.mainWorkspace.reset();
 				}
 			});
-			
-
 
 		});
 	</script>
@@ -234,10 +233,7 @@ $dev = file_exists("DEV");
 			var loadxml = function(xml) {
 				console.log("Sorry. Blockly isn't loaded yet. Try again soon."); //@todo this really should be an alert or modal.
 			}
-			function onchange() {
-
-
-				var content = document.getElementById('languagePre');
+			function generateJavaCode() {
 				var generated = Blockly.Java.workspaceToCode();
 
 				var code = "package "+EasyJ.projectPackage+";\n\n";
@@ -250,8 +246,17 @@ $dev = file_exists("DEV");
 				code += generated.code;
 				code += "}";
 
-
 				code = js_beautify(code);
+
+				return code;
+			}
+			function onchange() {
+
+
+				var content = document.getElementById('languagePre');
+				
+				var code = generateJavaCode();
+				
 				content.textContent = code;
 				if (typeof prettyPrintOne == 'function') {
 					code = content.innerHTML;
@@ -263,7 +268,7 @@ $dev = file_exists("DEV");
 			function blocklyLoaded(blockly) {
 				// Called once Blockly is fully loaded.
 				window.Blockly = blockly;
-				// Blockly.Java.workspaceToCode = JavaGenerator;
+				$(window).resize();
 				
 				Blockly.addChangeListener(onchange);
 
@@ -310,6 +315,11 @@ $dev = file_exists("DEV");
 		<!-- Bootstrap core JavaScript
 		================================================== -->
 		<!-- Placed at the end of the document so the pages load faster -->
+		<script type="text/javascript">
+		$(document).ready(function(){
+			$(window).resize();
+		});
+		</script>
 		
 	</body>
 </html>
