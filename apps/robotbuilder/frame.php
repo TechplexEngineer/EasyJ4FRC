@@ -82,14 +82,7 @@
 			// }
 		</script>
 		
-	
-		
 
-		
-
-		
-
-		
 		<style>
 			html, body {
 				background-color: #fff;
