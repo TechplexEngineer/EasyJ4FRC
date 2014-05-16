@@ -107,6 +107,7 @@ $dev = file_exists("DEV");
 				}
 			});
 
+			// Handle the Clear option in the edit menu
 			$('#edit_clear').click(function(event){
 				console.log("Clicked");
 				event.preventDefault();
@@ -200,22 +201,27 @@ $dev = file_exists("DEV");
 							</ul>
 						</li> -->
 					</ul>
-					<div class="pull-right" style="margin-top:5px;">
+					<div class="pull-right" style="margin-top:8px;">
 						
-						<a href="#help" class="notext" title="Help" data-toggle="modal">
-							<img src="images/help.png" style="width: 30px;">
+						<a href="#help" class="notext iconbar" title="Help" data-toggle="modal">
+							<!-- <img src="images/icons/iconmonstr-help-3-icon-256.png" style="height: 35px;"> -->
+							<?php include "images/icons/help.svg" ?>
 						</a>
-						<a href="#save" class="notext" title="Save" data-toggle="modal">
-							<img src="images/save.png" style="width: 30px;">
+						<a href="http://files.team5122.com/javadoc/" class="notext iconbar" title="WPI Robotics Library Documentation" target="_blank">
+							<!-- <img src="images/icons/iconmonstr-book-16-icon-256.png" style="height: 35px;"> -->
+							<?php include "images/icons/book.svg" ?>
 						</a>
-						<a href="#download" class="notext" title="Download" data-toggle="modal">
-							<img src="images/download.png" style="width: 30px;">
+						<a href="#save" class="notext iconbar" title="Save" data-toggle="modal">
+							<!-- <img src="images/icons/iconmonstr-save-icon-256.png" style="height: 35px;"> -->
+							<?php include "images/icons/save.svg" ?>
 						</a>
-						<!-- <a href="#settings" class="notext" title="Settings" data-toggle="modal">
-							<img src="images/gear.png" style="width: 40px;">
-						</a> -->
-						<a href="http://team5122.com" class="notext" title="Team5122 Homepage" target="_blank">
-							<img src="images/home.png" style="width: 40px;">
+						<a href="#download" class="notext iconbar" title="Download" data-toggle="modal">
+							<!-- <img src="images/icons/iconmonstr-download-2-icon-256.png" style="height: 35px;"> -->
+							<?php include "images/icons/download.svg" ?>
+						</a>
+						<a href="http://team5122.com" class="notext iconbar" title="Team5122 Homepage" target="_blank">
+							<!-- <img src="images/icons/iconmonstr-home-4-icon-256.png" style="height: 35px;"> -->
+							<?php include "images/icons/home.svg" ?>
 						</a>
 					</div>
 				</div><!--/.navbar-collapse -->
