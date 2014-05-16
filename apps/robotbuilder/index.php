@@ -85,10 +85,11 @@ $dev = file_exists("DEV");
 					fudge = 0;
 				};
 				var content = $('#content');
-				content.height(500); //This seems to fix a resize glitch
+				// content.height(500); //This seems to fix a resize glitch
 				var newheight = $(window).height() - content.offset().top - $('footer').height();
 				newheight = newheight - parseInt(content.css('padding-top')) - parseInt(content.css('padding-bottom')) + fudge;
 				content.height(newheight);
+				$('#blocklyworkspace').height(0).height("100%"); //This seems to fix a resize glitch
 			}
 			$(window).resize(function() {
 				adjContentHeight(-5);
