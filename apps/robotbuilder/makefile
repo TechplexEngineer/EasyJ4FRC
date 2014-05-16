@@ -56,4 +56,4 @@ easyj_blocks:
 	./build.py
 
 deploy:
-	rsync -r dist/* blake.metheus.org:/var/www/team5122/easyj
+	rsync -r --delete dist/* blake.metheus.org:/var/www/team5122/easyj
