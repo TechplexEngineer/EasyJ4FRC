@@ -18,7 +18,7 @@
 	<div class="cloneable example">
 		<!-- <h3>Robot Example</h3> -->
 		<!-- <div class="inline-block"> -->
-			<button type="button" class="btn btn-success load" style="margin-top:10px;">Load</button>
+			<button type="button" class="btn btn-success load" style="margin-top:10px;" data-name="">Load</button>
 		<!-- </div>	 -->
 		<!-- <div class="brief">Example showing use of a joystick and the drivetrain block.</div> -->
 	</div>
@@ -35,10 +35,17 @@
 				for (var i = 0; i < saves.length; i++) {
 					console.log("Here:", saves[i], saves.length);
 					var clone = $('#examplewrapper div:first').clone()
+					console.log("1",clone);
 					$("button", clone).text("Load '"+saves[i]+"'");
+					console.log("2",clone);
+					$("button", clone).data('toload', saves[i]);
+					console.log("3",clone[0].outerHTML);
 					clone.appendTo($('#open .modal-body'));
 				};				
 			}
+		});
+		$('#open .modal-body .example button').click(function(event){
+			console.log($(this), $(event.target));
 		});
 		// $('#save .modal-footer .savebtn').click(function() {
 		// 	var xmlDom = Blockly.Xml.workspaceToDom(Blockly.mainWorkspace);
