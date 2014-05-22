@@ -49,4 +49,21 @@ EasyJ.localStorage.open = function (name) {
 	return loadxml(saves[name]);
 };
 
+EasyJ.localStorage.remove = function (name) {
+	if (typeof localStorage['easyj_saves'] === "undefined") {
+		alert("No saves in storage!"); //@todo fixme
+		return false;
+	}
+	var saves = JSON.parse(localStorage['easyj_saves']);
+	if (typeof saves[name] === "undefined")
+	{
+		alert("A save by the name of '"+name+"' does not exit!"); //@todo fixme
+		return false;
+	}
 
+	if (window.confirm("Do you really want to delete the Project named '"+name+"'?")) { 
+		delete saves[name]; //remove the offender
+		localStorage['easyj_saves'] = JSON.stringify(saves); //store the data back
+	}
+	return true;
+};
