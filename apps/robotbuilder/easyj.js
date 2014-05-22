@@ -46,8 +46,7 @@ EasyJ.localStorage.open = function (name) {
 	{
 		alert("A save by the name of '"+name+"' does not exit!"); //@todo fixme
 	}
-
-	loadxml(saves[name]);
+	return loadxml(saves[name]);
 };
 
 
