@@ -44,7 +44,7 @@ EasyJ.localStorage.open = function (name) {
 	var saves = JSON.parse(localStorage['easyj_saves']);
 	if (typeof saves[name] === "undefined")
 	{
-		alert("A save by the name of '"+name+"' does not exits!"); //@todo fixme
+		alert("A save by the name of '"+name+"' does not exit!"); //@todo fixme
 	}
 
 	loadxml(saves[name]);
