@@ -4,7 +4,7 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title">Open</h4>
+				<h4 class="modal-title">Saved Projects</h4>
 			</div>
 			<div class="modal-body">
 			</div>
@@ -15,38 +15,74 @@
 	</div>
 </div>
 <div id="examplewrapper" style="display:none">
-	<div class="cloneable example">
-		<!-- <h3>Robot Example</h3> -->
-		<!-- <div class="inline-block"> -->
-			<button type="button" class="btn btn-success load" style="margin-top:10px;" data-name="">Load</button>
-		<!-- </div>	 -->
-		<!-- <div class="brief">Example showing use of a joystick and the drivetrain block.</div> -->
+	<div class="example" data-name="ted">
+		<h3><span>Robot Example</span>
+			<div class="pull-right inline-block">
+				<button type="button" class="btn btn-success load">Open</button>
+				<button type="button" class="btn btn-danger remove">Remove</button>
+			</div>
+		</h3>
+		<div class="brief">Description</div>
 	</div>
+	<!-- <div class="cloneable example">
+		<h3>Robot Example
+			<div class="inline-block">
+				<button type="button" class="btn btn-success load" style="margin-top:10px;" data-name="">Load</button>
+			</div>
+		</h3>
+		<div class="brief">Example showing use of a joystick and the drivetrain block.</div>
+	</div> -->
 </div>
 
 <script type="text/javascript">
+
+function handleEmpty () {
+	var empty = $("<h3>").text("No saved projects");
+	empty.appendTo($('#open .modal-body'));
+}
+
+function loadbtn (event) {
+	var ret = EasyJ.localStorage.open($(this).data('name'));
+	if (ret) {
+		$("#open").modal('hide');
+	}
+	// @todo handle errors better
+}
+function removebtn (event) {
+	var ret = EasyJ.localStorage.remove($(this).data('name'));
+	$(this).closest('.example').remove(); //based on the button pressed remove the parent example div
+	if (EasyJ.localStorage.listSaves().length == 0) {
+		handleEmpty();
+	};
+}
+
+
 	$(document).ready(function () {
 
 		$(document).on('show.bs.modal', function(event){
 			if ($(event.target).attr('id') == 'open') {
 				// build the list of saves. @todo Make is scroll
-					
+
+				//Clear out the modal body:
+				$('#open .modal-body').html("");
+
 				var saves = EasyJ.localStorage.listSaves();
-				for (var i = 0; i < saves.length; i++) {
-					console.log("Here:", saves[i], saves.length);
+				for (var i = 0; i < saves.length; i++) { //foreach save
+
 					var clone = $('#examplewrapper div:first').clone()
-					console.log("1",clone);
-					$("button", clone).text("Load '"+saves[i]+"'");
-					console.log("2",clone);
-					$("button", clone).data('toload', saves[i]);
-					console.log("3",clone[0].outerHTML);
+					$("h3 span", clone).text(saves[i]);
+					//this doesn't look like it works b/c the value isn't written to the DOM, but the value is cached in jquery internally.
+					$("button.load", clone).data('name', saves[i]).on('click', loadbtn);
+					$("button.remove", clone).data('name', saves[i]).on('click', removebtn);
+
 					clone.appendTo($('#open .modal-body'));
-				};				
+				}
+				if (saves.length == 0) {
+					handleEmpty();
+				};
 			}
 		});
-		$('#open .modal-body .example button').click(function(event){
-			console.log($(this), $(event.target));
-		});
+
 		// $('#save .modal-footer .savebtn').click(function() {
 		// 	var xmlDom = Blockly.Xml.workspaceToDom(Blockly.mainWorkspace);
 		// 	var xmlText = Blockly.Xml.domToPrettyText(xmlDom);
