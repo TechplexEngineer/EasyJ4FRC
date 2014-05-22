@@ -37,8 +37,12 @@
 			var file = $(event.target).closest('.example').data('file');
 			// console.log("Load", file);
 			var xml = $(".hiddenexamples div[data-file='"+file+"']").html();
-			// console.log(xml);
-			var success = loadxml(xml);
+
+			var success = false;
+			if (window.confirm("Do you really want to clear the workspace?\nAll work will be lost!")) {
+				success = loadxml(xml);
+			}
+			
 			if (success) {
 				$('#examples').modal('hide');
 			};
