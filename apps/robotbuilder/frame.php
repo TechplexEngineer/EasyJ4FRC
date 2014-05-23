@@ -26,6 +26,7 @@
 <!-- Include these in development mode ************************************* -->			
 			<script type="text/javascript" src="../../blockly_uncompressed.js"></script>
 			<script type="text/javascript" src="<?= $blocklyPath ?>generators/java.js"></script>
+			<script type="text/javascript" src="easyj.checker.js"></script>
 			<?php
 				// Be sure to include all of the standard block definitions
 				$blockdir = "../../blocks";
@@ -56,6 +57,7 @@
 <!-- Include these in production mode ************************************** -->
 			<script type="text/javascript" src="<?= $blocklyPath ?>blockly_compressed.js"></script>
 			<script type="text/javascript" src="<?= $blocklyPath ?>blocks_compressed.js"></script>
+			<script type="text/javascript" src="easyj.checkers.js"></script>
 			<script type="text/javascript" src="<?= $blocklyPath ?>java_compressed.js"></script>
 			<script type="text/javascript" src="<?= $blocklyPath ?>easyj_blocks_compressed.js"></script>
 			<script type="text/javascript" src="<?= $blocklyPath ?>en.js"></script>

@@ -2,57 +2,34 @@
     
     <category name="Input &amp; Sensors">
 
-      <category name="User">
-        <block type="joystick">
-        <value name="PORT">
-          <block type="math_number">
-            <field name="NUM">1</field>
-          </block>
-        </value>
-      </block>
-      <block type="get_joystick_axis"></block>
-      <block type="get_joystick_button">
-        <value name="BUTTON_NUMBER">
-          <block type="math_number">
-            <field name="NUM">1</field>
-          </block>
-        </value>
-      </block>
+      <category name="User (Joystick)">
+        <block type="joystick"></block>
+        <block type="get_joystick_axis"></block>
+        <block type="get_joystick_button"></block>
       </category>
 
       <category name="Gyro">
-        <block type="declare_gyro">
-          <value name="PORT">
-            <block type="math_number">
-              <field name="NUM">1</field>
-            </block>
-          </value>
-        </block>
+        <block type="declare_gyro"></block>
         <block type="get_gyro"></block>        
       </category>
 
       <category name="Digital">
-        <block type="digital_input">
-          <value name="PORT">
-            <block type="math_number">
-              <field name="NUM">1</field>
-            </block>
-          </value>
-        </block>
+        <block type="digital_input"></block>
         <block type="get_digital_input_value"></block>
       </category>
 
       <category name="Analog">
-        <block type="analog_input">
-          <value name="PORT">
-            <block type="math_number">
-              <field name="NUM">1</field>
-            </block>
-          </value>
-        </block>
+        <block type="analog_input"></block>
         <block type="get_analog_input_value"></block>
       </category>
       
+    </category>
+
+    <category name="Outputs">
+      <category name="Digital">
+        <block type="digital_output"></block>
+        <block type="set_digital_output"></block>
+      </category>
     </category>
 
     <category name="Motors">

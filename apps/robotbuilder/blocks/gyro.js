@@ -6,9 +6,12 @@ Blockly.Blocks['declare_gyro'] = {
     this.appendDummyInput()
         .appendField("Declare Gyro")
         .appendField(new Blockly.TypedFieldVariable("gyro1", "Gyro"), "NAME");
-    this.appendValueInput("PORT")
-        .setCheck("Number")
-        .appendField("on Port");
+    this.appendDummyInput()
+        .appendField("on port")
+        .appendField(new Blockly.FieldTextInput("1", EasyJ.Checker.DIGITAL_PORT), "PORT");
+    // this.appendValueInput("PORT")
+    //     .setCheck("Number")
+    //     .appendField("on Port");
     this.setInputsInline(true);
     this.setPreviousStatement(true, 'declare');
     this.setNextStatement(true, 'declare');
@@ -16,7 +19,7 @@ Blockly.Blocks['declare_gyro'] = {
 };
 Blockly.Java['declare_gyro'] = function(block) {
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
-  var value_port = Blockly.Java.valueToCode(block, 'PORT', Blockly.Java.ORDER_ATOMIC);
+  var value_port = block.getFieldValue('PORT');
   
   if (value_port=="") {
     block.setWarningText("Gyro port not set. Defaulted to port 1.");

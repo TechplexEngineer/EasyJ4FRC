@@ -8,9 +8,12 @@ Blockly.Blocks['analog_input'] = {
     this.appendDummyInput()
         .appendField("Declare Analog Input")
         .appendField(new Blockly.TypedFieldVariable("Ain1", "AnalogChannel"), "NAME");
-    this.appendValueInput("PORT")
-        .setCheck("Number")
-        .appendField("on Port");
+    this.appendDummyInput()
+        .appendField("on port")
+        .appendField(new Blockly.FieldTextInput("1", EasyJ.Checker.ANALOG_PORT), "PORT");
+    // this.appendValueInput("PORT")
+    //     .setCheck("Number")
+    //     .appendField("on Port");
     this.setInputsInline(true);
     this.setPreviousStatement(true, 'declare');
     this.setNextStatement(true, 'declare');
@@ -18,7 +21,7 @@ Blockly.Blocks['analog_input'] = {
 };
 Blockly.Java['analog_input'] = function(block) {
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
-  var value_port = Blockly.Java.valueToCode(block, 'PORT', Blockly.Java.ORDER_ATOMIC);
+  var value_port = block.getFieldValue('PORT');
   
   if (value_port=="") {
     block.setWarningText("Analog Input port not set. Defaulted to port 1.");

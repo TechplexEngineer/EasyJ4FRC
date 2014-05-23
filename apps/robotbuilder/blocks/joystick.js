@@ -6,10 +6,10 @@ Blockly.Blocks['joystick'] = {
     this.setColour(20);
     this.appendDummyInput()
         .appendField("Declare Joystick")
-        .appendField(new Blockly.TypedFieldVariable("JS1", "Joystick"), "NAME")
-        .appendField("on usb port");
-    this.appendValueInput("PORT")
-        .setCheck("Number");
+        .appendField(new Blockly.TypedFieldVariable("JS1", "Joystick"), "NAME");
+    this.appendDummyInput()
+        .appendField("on usb port")
+        .appendField(new Blockly.FieldTextInput("1", EasyJ.Checker.JS_PORT), "PORT");
     this.setInputsInline(true);
     this.setPreviousStatement(true, 'declare');
     this.setNextStatement(true, 'declare');
@@ -18,7 +18,7 @@ Blockly.Blocks['joystick'] = {
 
 Blockly.Java['joystick'] = function(block) {
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
-  var value_port = Blockly.Java.valueToCode(block, 'PORT', Blockly.Java.ORDER_ATOMIC);
+  var value_port = block.getFieldValue("PORT");
 
   if (value_port=="") {
     block.setWarningText("Joystick port not set. Defaulted to port 1.");
@@ -62,16 +62,19 @@ Blockly.Blocks['get_joystick_button'] = {
     this.appendDummyInput()
         .appendField("Joystick")
         .appendField(new Blockly.TypedFieldVariable("JS1", "Joystick"), "NAME");
-    this.appendValueInput("BUTTON_NUMBER")
-        .setCheck("Number") // @todo Get the button value for buttons 1 through 12.
-        .appendField("Button is pressed");
+    this.appendDummyInput()
+        .appendField("Button is pressed")
+        .appendField(new Blockly.FieldTextInput("1", EasyJ.Checker.JS_BUTTON), "BUTTON_NUMBER");
+    // this.appendDummyInput("BUTTON_NUMBER")
+    //     .setCheck("Number") // @todo Get the button value for buttons 1 through 12. JS_BUTTON
+    //     .appendField("Button is pressed");
     this.setInputsInline(true);
     this.setOutput(true, "Boolean");
   }
 };
 Blockly.Java['get_joystick_button'] = function(block) {
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
-  var value_button_number = Blockly.Java.valueToCode(block, 'BUTTON_NUMBER', Blockly.Java.ORDER_ATOMIC);
+  var value_button_number = block.getFieldValue("BUTTON_NUMBER");
   // TODO: Assemble Java into code variable.
   var code = variable_name+'.getRawButton('+value_button_number+')';
   // TODO: Change ORDER_NONE to the correct strength.

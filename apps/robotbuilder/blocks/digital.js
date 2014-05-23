@@ -8,16 +8,19 @@ Blockly.Blocks['digital_input'] = {
     this.appendDummyInput()
         .appendField("Declare Digital Input")
         .appendField(new Blockly.TypedFieldVariable("Din1", "DigitalInput"), "NAME");
-    this.appendValueInput("PORT")
-        .setCheck("Number")
-        .appendField("on Port");
+    this.appendDummyInput()
+        .appendField("on port")
+        .appendField(new Blockly.FieldTextInput("1", EasyJ.Checker.DIGITAL_PORT), "PORT");
+    // this.appendValueInput("PORT")
+    //     .setCheck("Number")
+    //     .appendField("on Port");
     this.setInputsInline(true);
     this.setPreviousStatement(true, 'declare');
     this.setNextStatement(true, 'declare');
   }
 };
 Blockly.Java['digital_input'] = function(block) {
-  var value_port = Blockly.Java.valueToCode(block, 'PORT', Blockly.Java.ORDER_ATOMIC);
+  var value_port = block.getFieldValue('PORT');
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
   
   Blockly.Java.addImport("import edu.wpi.first.wpilibj.DigitalInput;");
