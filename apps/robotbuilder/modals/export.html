@@ -8,6 +8,7 @@
 			</div>
 			<div class="modal-body">
 					<textarea class="xmlcode"></textarea> <!-- @todo Make readonly?-->
+					<a href="#" class="downXML">Download XML</a>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -24,6 +25,9 @@
 				var xmlText = Blockly.Xml.domToPrettyText(xmlDom);
 				$('#export .modal-body textarea').val(xmlText).focus();
 			}
+		});
+		$('#export .modal-body .downXML').click(function() {
+			EasyJ.Xml.download($('#export .modal-body textarea').val(), EasyJ.robotClass+".xml");
 		})
 	})
 </script>
