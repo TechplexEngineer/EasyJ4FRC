@@ -67,3 +67,17 @@ EasyJ.localStorage.remove = function (name) {
 	}
 	return true;
 };
+
+EasyJ.Xml = {};
+
+EasyJ.Xml.download = function (text, filename) {
+	if (typeof filename === "undefined") {
+		filename = false;
+	};
+	var pom = document.createElement('a');
+	pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+	if (filename) {
+		pom.setAttribute('download', filename);
+	}
+	pom.click();
+};
