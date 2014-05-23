@@ -217,6 +217,8 @@ Blockly.Field.prototype.updateTextNode_ = function() {
   var text = this.text_;
   // Empty the text element.
   goog.dom.removeChildren(/** @type {!Element} */ (this.textElement_));
+  // Make sure that the text is a string so that the replace function works
+  text = ""+text;
   // Replace whitespace with non-breaking spaces so the text doesn't collapse.
   text = text.replace(/\s/g, Blockly.Field.NBSP);
   if (Blockly.RTL && text) {
