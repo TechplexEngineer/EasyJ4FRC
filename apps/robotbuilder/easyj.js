@@ -61,7 +61,7 @@ EasyJ.localStorage.remove = function (name) {
 		return false;
 	}
 
-	if (window.confirm("Do you really want to delete the Project named '"+name+"'?")) { 
+	if (window.confirm("Do you really want to delete the Project named '"+name+"'?")) {
 		delete saves[name]; //remove the offender
 		localStorage['easyj_saves'] = JSON.stringify(saves); //store the data back
 	}
