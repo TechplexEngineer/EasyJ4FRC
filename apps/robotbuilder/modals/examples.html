@@ -8,7 +8,7 @@
 			</div>
 			<div class="modal-body">
 				<div class="example" data-file="simple.xml">
-					<h3>Robot Example 
+					<h3>Robot Example
 						<div class="pull-right inline-block">
 							<button type="button" class="btn btn-success load">Load</button>
 						</div>
@@ -23,7 +23,6 @@
 					</h3>
 					<div class="brief">How to use joystick buttons.</div>
 				</div> -->
-					
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -42,7 +41,7 @@
 			if (window.confirm("Do you really want to clear the workspace?\nAll work will be lost!")) {
 				success = loadxml(xml);
 			}
-			
+
 			if (success) {
 				$('#examples').modal('hide');
 			};
@@ -51,7 +50,7 @@
 </script>
 
 <div class="hiddenexamples">
-	<?php 
+	<?php
 	{
 		$dir1 = "./xml/examples";
 		$jsfiles1 = array_diff(scandir($dir1), array('..', '.'));
