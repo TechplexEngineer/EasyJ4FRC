@@ -86,16 +86,21 @@ Blockly.Blocks['set_digital_output'] = {
     this.appendDummyInput()
         .appendField("Set value")
         .appendField(new Blockly.TypedFieldVariable("Dout1", "DigitalOutput"), "NAME");
-    this.appendDummyInput()
-        .appendField("to")
-        .appendField(new Blockly.FieldDropdown([["True", "True"], ["False", "False"]]), "VALUE");
+    this.appendValueInput("VALUE")
+        .setCheck("Boolean")
+        .appendField("to");
+    // this.appendDummyInput()
+    //     .appendField("to")
+    //     .appendField(new Blockly.FieldDropdown([["True", "True"], ["False", "False"]]), "VALUE");
     this.setInputsInline(true);
-    this.setOutput(true, "Number");
+    this.setPreviousStatement(true, 'statement');
+    this.setNextStatement(true, 'statement');
   }
 };
 Blockly.Java['set_digital_output'] = function(block) {
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
-  var dropdown_value = block.getFieldValue('VALUE');
+  var dropdown_value = Blockly.Java.valueToCode(block, 'VALUE', Blockly.Java.ORDER_ATOMIC);
+  //block.getFieldValue('VALUE');
   //@todo make sure variable_name has been declared
   var code = variable_name+'.set('+dropdown_value+')';
   return code;

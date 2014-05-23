@@ -28,7 +28,13 @@
     <category name="Outputs">
       <category name="Digital">
         <block type="digital_output"></block>
-        <block type="set_digital_output"></block>
+        <block type="set_digital_output">
+          <value name="VALUE">
+            <block type="logic_boolean" id="16" x="245" y="191">
+              <field name="BOOL">TRUE</field>
+            </block>
+          </value>
+        </block>
       </category>
     </category>
 
