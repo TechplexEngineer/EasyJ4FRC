@@ -11,8 +11,8 @@ $dev = file_exists("DEV");
 		<meta name="description" content="">
 		<meta name="author" content="">
 		<link rel="shortcut icon" href="images/team5122_200x200.ico" type="image/x-icon">
-	<link rel="icon" href="images/team5122_200x200.ico" type="image/x-icon">
-		<link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+		<link rel="icon" href="images/team5122_200x200.ico" type="image/x-icon">
+
 
 		<title><?= $title ?></title>
 
