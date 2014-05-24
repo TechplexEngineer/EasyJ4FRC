@@ -1,7 +1,7 @@
 Blockly.Blocks['declare_gyro'] = {
   init: function() {
-    this.setHelpUrl('http://www.example.com/');
-    this.setTooltip('');
+    this.setHelpUrl('');
+    this.setTooltip('Create a gyro for measureing angle and heading.');
     this.setColour(65);
     this.appendDummyInput()
         .appendField("Declare Gyro")
@@ -35,8 +35,8 @@ Blockly.Java['declare_gyro'] = function(block) {
 
 Blockly.Blocks['get_gyro'] = {
   init: function() {
-    this.setHelpUrl('http://www.example.com/');
-    this.setTooltip('');
+    this.setHelpUrl('');
+    this.setTooltip('Get current data from the gyro. Either the angle or the rate of change of the angle.');
     this.setColour(65);
     this.appendDummyInput()
         .appendField("Get ")

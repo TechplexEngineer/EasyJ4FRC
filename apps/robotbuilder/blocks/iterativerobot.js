@@ -2,7 +2,7 @@
 // Declare
 Blockly.Blocks['init_declare'] = {
   init: function() {
-	this.setHelpUrl('http://www.example.com/');
+	this.setHelpUrl('');
 	this.setTooltip('Declare blocks go here');
 	this.appendDummyInput()
 		.appendField("Initialization");
@@ -22,8 +22,8 @@ Blockly.Java['init_declare'] = function(block) {
 // Autonomous
 Blockly.Blocks['auto_init'] = {
   init: function() {
-	this.setHelpUrl('http://www.example.com/');
-	this.setTooltip('');
+	this.setHelpUrl('');
+	this.setTooltip('These blocks are run once at the beginning of autonomous.');
 	this.appendDummyInput()
 		.appendField("At the Start of Auto");
 	this.appendStatementInput("WHAT")
@@ -42,8 +42,8 @@ Blockly.Java['auto_init'] = function(block) {
 
 Blockly.Blocks['auto_perodic'] = {
   init: function() {
-	this.setHelpUrl('http://www.example.com/');
-	this.setTooltip('');
+	this.setHelpUrl('');
+	this.setTooltip('These blocks are run repeadedly following the "At the Start of Auto" blocks.');
 	this.appendDummyInput()
 		.appendField("During Auto");
 	this.appendStatementInput("WHAT")
@@ -66,8 +66,8 @@ Blockly.Java['auto_perodic'] = function(block) {
 
 Blockly.Blocks['teleop_init'] = {
   init: function() {
-	this.setHelpUrl('http://www.example.com/');
-	this.setTooltip('');
+	this.setHelpUrl('');
+	this.setTooltip('These blocks are run once at the beginning of teleop.');
 	this.setColour(210);
 	this.appendDummyInput()
 		.appendField("At the Start of Teleop");
@@ -86,8 +86,8 @@ Blockly.Java['teleop_init'] = function(block) {
 
 Blockly.Blocks['teleop_perodic'] = {
   init: function() {
-	this.setHelpUrl('http://www.example.com/');
-	this.setTooltip('');
+	this.setHelpUrl('');
+	this.setTooltip('These blocks are run repeadedly following the "At the Start of Teleop" blocks.');
 	this.setColour(210);
 	this.appendDummyInput()
 		.appendField("During Teleop");

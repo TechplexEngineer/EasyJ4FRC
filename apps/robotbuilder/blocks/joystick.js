@@ -1,8 +1,8 @@
 // User Input Blocks
 Blockly.Blocks['joystick'] = {
   init: function() {
-    this.setHelpUrl('http://www.example.com/');
-    this.setTooltip('');
+    this.setHelpUrl('');
+    this.setTooltip('Create a joystick to take input from the operator.');
     this.setColour(20);
     this.appendDummyInput()
         .appendField("Declare Joystick")
@@ -35,8 +35,8 @@ Blockly.Java['joystick'] = function(block) {
 
 Blockly.Blocks['get_joystick_axis'] = {
   init: function() {
-    this.setHelpUrl('http://www.example.com/');
-    this.setTooltip('');
+    this.setHelpUrl('');
+    this.setTooltip('Reads the current value of the selected joystick axis.');
     this.setColour(20);
     this.appendDummyInput()
         .appendField("Get Joystick")
@@ -56,8 +56,8 @@ Blockly.Java['get_joystick_axis'] = function(block) {
 
 Blockly.Blocks['get_joystick_button'] = {
   init: function() {
-    this.setHelpUrl('http://www.example.com/');
-    this.setTooltip('');
+    this.setHelpUrl('');
+    this.setTooltip('Checks if the button is bieng pressed by the operator.');
     this.setColour(20);
     this.appendDummyInput()
         .appendField("Joystick")

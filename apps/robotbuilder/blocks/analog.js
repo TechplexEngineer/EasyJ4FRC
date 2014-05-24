@@ -2,8 +2,8 @@
 
 Blockly.Blocks['analog_input'] = {
   init: function() {
-    this.setHelpUrl('http://www.example.com/');
-    this.setTooltip('');
+    this.setHelpUrl('');
+    this.setTooltip('Create an analog input which allows sampling an input waveform.');
     this.setColour(65);
     this.appendDummyInput()
         .appendField("Declare Analog Input")
@@ -37,8 +37,8 @@ Blockly.Java['analog_input'] = function(block) {
 
 Blockly.Blocks['get_analog_input_value'] = {
   init: function() {
-    this.setHelpUrl('http://www.example.com/');
-    this.setTooltip('');
+    this.setHelpUrl('');
+    this.setTooltip('Get the value of an analog waveform.');
     this.setColour(65);
     this.appendDummyInput()
         .appendField("Get ")

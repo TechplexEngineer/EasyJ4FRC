@@ -2,6 +2,7 @@ if (typeof EasyJ !== "object") {
 	EasyJ = {};
 }
 EasyJ.Checker = {};
+
 // @todo this.sourceBlock_.setWarningText
 EasyJ.Checker.JS_PORT = function(text) {
 	var port = parseInt(text);

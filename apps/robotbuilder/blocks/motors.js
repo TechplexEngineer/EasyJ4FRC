@@ -1,8 +1,8 @@
 // Motors
 Blockly.Blocks['motor_controller'] = {
   init: function() {
-    this.setHelpUrl('http://www.example.com/');
-    this.setTooltip('');
+    this.setHelpUrl('');
+    this.setTooltip('Create a motor controller to control the speed of a motor.');
     this.setColour(20);
     this.appendDummyInput()
         .appendField("Declare Motor Controller")
@@ -39,8 +39,8 @@ Blockly.Java['motor_controller'] = function(block) {
 
 Blockly.Blocks['move_motor_controller'] = {
   init: function() {
-    this.setHelpUrl('http://www.example.com/');
-    this.setTooltip('');
+    this.setHelpUrl('');
+    this.setTooltip('Set the motor controller speed.');
     this.setColour(20);
     this.appendDummyInput()
         .appendField("Move")
@@ -74,8 +74,8 @@ Blockly.Java['move_motor_controller'] = function(block) {
 
 Blockly.Blocks['stop_motor_controller'] = {
   init: function() {
-    this.setHelpUrl('http://www.example.com/');
-    this.setTooltip('');
+    this.setHelpUrl('');
+    this.setTooltip('Set the motor controller speed to zero to stop the motor.');
     this.setColour(20);
     this.appendDummyInput()
         .appendField("Stop")
@@ -95,8 +95,8 @@ Blockly.Java['stop_motor_controller'] = function(block) {
 
 Blockly.Blocks['drivetrain'] = {
   init: function() {
-    this.setHelpUrl('http://www.example.com/');
-    this.setTooltip('');
+    this.setHelpUrl('');
+    this.setTooltip('Create a drivetrain and associated motor controllers to drive your robot.');
     this.setColour(20);
     this.appendDummyInput()
         .appendField("Declare Drivebase ")
@@ -129,8 +129,8 @@ Blockly.Java['drivetrain'] = function(block) {
 
 Blockly.Blocks['move_drivetrain'] = {
   init: function() {
-    this.setHelpUrl('http://www.example.com/');
-    this.setTooltip('');
+    this.setHelpUrl('');
+    this.setTooltip('Set the speed and turn of the drivetrain.');
     this.setColour(20);
     this.appendValueInput("MOVE") //@todo limit the range[-1,1]
         .setCheck("Number")
@@ -171,8 +171,8 @@ Blockly.Java['move_drivetrain'] = function(block) {
 
 Blockly.Blocks['stop_drivetrain'] = {
   init: function() {
-    this.setHelpUrl('http://www.example.com/');
-    this.setTooltip('');
+    this.setHelpUrl('');
+    this.setTooltip('Set the speed of the drivetrain to zero.');
     this.setColour(20);
     this.appendDummyInput()
         .appendField("Stop ")
@@ -191,8 +191,8 @@ Blockly.Java['stop_drivetrain'] = function(block) {
 
 Blockly.Blocks['move_with_joystick'] = {
   init: function() {
-    this.setHelpUrl('http://www.example.com/');
-    this.setTooltip('');
+    this.setHelpUrl('');
+    this.setTooltip('Connects the drivetrain to the operators joystick.');
     this.setColour(20);
     this.appendDummyInput()
         .appendField("Move ")

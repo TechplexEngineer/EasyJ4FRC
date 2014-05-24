@@ -2,8 +2,8 @@
 
 Blockly.Blocks['digital_input'] = {
   init: function() {
-    this.setHelpUrl('http://www.example.com/');
-    this.setTooltip('');
+    this.setHelpUrl('');
+    this.setTooltip('Create a digital input which allows reading of a digital signal.');
     this.setColour(120);
     this.appendDummyInput()
         .appendField("Declare Digital Input")
@@ -30,8 +30,8 @@ Blockly.Java['digital_input'] = function(block) {
 
 Blockly.Blocks['get_digital_input_value'] = {
   init: function() {
-    this.setHelpUrl('http://www.example.com/');
-    this.setTooltip('');
+    this.setHelpUrl('');
+    this.setTooltip('Get the current value of the digital input.');
     this.setColour(120);
     this.appendDummyInput()
         .appendField("Get value")
