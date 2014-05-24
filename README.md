@@ -13,7 +13,7 @@ A recent build of the EasyJ4FRC environment is available here:
 EasyJ4FRC is based on [Google Blockly](http://code.google.com/p/blockly/).   
 [Blockly Demo](https://blockly-demo.appspot.com/static/apps/index.html)
 ### Todos
-- [ ] Custom input checkers (ie: Joystick button valid values are 1-12)
+- [x] Custom input checkers (ie: Joystick button valid values are 1-12) [EasyJ.Checker.\*]
 - [x] Change the root block to be two function blocks teleop & auto
 - [x] Loadable Demos
 - [x] Help Pages
@@ -38,7 +38,7 @@ EasyJ4FRC is based on [Google Blockly](http://code.google.com/p/blockly/).
     - Compressor
     - Solenoids
     - Pressure switch?
-  - Digital Output
+  - Digital Output [x]
   - Relay
   - Encoder
   - I2C
@@ -48,11 +48,11 @@ EasyJ4FRC is based on [Google Blockly](http://code.google.com/p/blockly/).
   - Ultrasonic
   - Watchdog?
 - [ ] Make types more like Java types (double, float, int, long ...)
-- [ ] Save/Load
+- [x] Save/Load (localstorage)
   - Google Drive?
   - Gist?
   - To file?
-  - Could we dump out a netbeans project?
+- [x] Could we dump out a netbeans project?
 - [ ] make a desktop version 
 - [x] make a cool logo
 - [ ] handle variable rename
