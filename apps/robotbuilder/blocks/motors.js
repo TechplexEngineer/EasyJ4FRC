@@ -9,9 +9,12 @@ Blockly.Blocks['motor_controller'] = {
         .appendField(new Blockly.TypedFieldVariable("MC1","MotorController"), "NAME")
         .appendField("of type")
         .appendField(new Blockly.FieldDropdown([["Victor", "Victor"], ["Jaguar", "Jaguar"], ["Talon", "Talon"]]), "CONTROLLER_TYPE");
-    this.appendValueInput("PORT")
-        .setCheck("Number")
-        .appendField("on PWM port");
+    // this.appendValueInput("PORT")
+    //     .setCheck("Number")
+    //     .appendField("on PWM port");
+    this.appendDummyInput()
+        .appendField("on port")
+        .appendField(new Blockly.FieldTextInput("1", EasyJ.Checker.PWM_PORT), "PORT");
     this.setInputsInline(true);
     this.setPreviousStatement(true, 'declare');
     this.setNextStatement(true, 'declare');
@@ -21,7 +24,7 @@ Blockly.Java['motor_controller'] = function(block) {
 
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
   var dropdown_type = block.getFieldValue('CONTROLLER_TYPE');
-  var value_port = Blockly.Java.valueToCode(block, 'PORT', Blockly.Java.ORDER_ATOMIC);
+  var value_port = block.getFieldValue("PORT");
 
   if (value_port=="") {
     block.setWarningText("Motor Controller port not set. Defaulted to port 1.");
@@ -43,7 +46,7 @@ Blockly.Blocks['move_motor_controller'] = {
     this.setTooltip('Set the motor controller speed.');
     this.setColour(20);
     this.appendDummyInput()
-        .appendField("Move")
+        .appendField("Set")
         .appendField(new Blockly.TypedFieldVariable("MC1","MotorController"), "NAME");
     this.appendValueInput("SPEED")
         .setCheck("Number")

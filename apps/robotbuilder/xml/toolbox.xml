@@ -36,17 +36,12 @@
             </block>
           </value>
         </block>
+
       </category>
     </category>
 
     <category name="Motors">
-      <block type="motor_controller">
-        <value name="PORT">
-          <block type="math_number">
-            <field name="NUM">1</field>
-          </block>
-        </value>
-      </block>
+      <block type="motor_controller"></block>
       <block type="move_motor_controller">
         <value name="SPEED">
           <block type="math_number">

@@ -47,3 +47,14 @@ EasyJ.Checker.DIGITAL_PORT = function(text) {
 	}
 	return btn;
 };
+
+EasyJ.Checker.PWM_PORT = function(text) {
+	var btn = parseInt(text);
+	if (isNaN(btn)) {
+		return null;
+	}
+	if (btn < 1 || btn > 12) { //12 PWM Ports?
+		return null;
+	}
+	return btn;
+};
