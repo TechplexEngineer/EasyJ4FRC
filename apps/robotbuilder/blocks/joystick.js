@@ -63,8 +63,9 @@ Blockly.Blocks['get_joystick_button'] = {
         .appendField("Joystick")
         .appendField(new Blockly.TypedFieldVariable("JS1", "Joystick"), "NAME");
     this.appendDummyInput()
-        .appendField("Button is pressed")
-        .appendField(new Blockly.FieldTextInput("1", EasyJ.Checker.JS_BUTTON), "BUTTON_NUMBER");
+        .appendField("Button")
+        .appendField(new Blockly.FieldTextInput("1", EasyJ.Checker.JS_BUTTON), "BUTTON_NUMBER")
+        .appendField("is pressed");
     // this.appendDummyInput("BUTTON_NUMBER")
     //     .setCheck("Number") // @todo Get the button value for buttons 1 through 12. JS_BUTTON
     //     .appendField("Button is pressed");
