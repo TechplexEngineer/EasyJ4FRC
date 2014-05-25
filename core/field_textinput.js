@@ -45,7 +45,16 @@ goog.require('goog.userAgent');
 Blockly.FieldTextInput = function(text, opt_changeHandler) {
   Blockly.FieldTextInput.superClass_.constructor.call(this, text);
 
-  this.changeHandler_ = opt_changeHandler;
+  // Wrap the change handler so that the output is always a string
+  // This fixes a cryptic error on line 691 of closure/goog/dom/dom.js
+  // Uncaught NotFoundError: Failed to execute 'appendChild' on 'Node': The new child element is null.
+  this.changeHandler_ = function(text) {
+    if (txt == null) {
+      return null;
+    }
+    var txt = opt_changeHandler(text)
+    return txt; //""+
+  };
 };
 goog.inherits(Blockly.FieldTextInput, Blockly.Field);
 
