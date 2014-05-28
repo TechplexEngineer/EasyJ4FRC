@@ -65,7 +65,7 @@ Blockly.Block.prototype.getVars = function() {
       var item = this.inputList[i].fieldRow[j];
       // console.log(this.type, item instanceof Blockly.FieldVariable, item);
       // console.log("Item",item.vartype);
-      if (item instanceof Blockly.TypedFieldVariable) { //@todo should we handle these: FieldVariable
+      if (item instanceof Blockly.TypedFieldVariable && item.createVar) { //@todo should we handle these: FieldVariable
         var obj = {};
         obj.name = this.getFieldValue(item.name);
         obj.vartype = item.vartype;

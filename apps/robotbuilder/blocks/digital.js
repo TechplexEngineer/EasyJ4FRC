@@ -7,7 +7,7 @@ Blockly.Blocks['digital_input'] = {
     this.setColour(120);
     this.appendDummyInput()
         .appendField("Declare Digital Input")
-        .appendField(new Blockly.TypedFieldVariable("Din1", "DigitalInput"), "NAME");
+        .appendField(new Blockly.TypedFieldVariable("Din1", "DigitalInput", true), "NAME");
     this.appendDummyInput()
         .appendField("on port")
         .appendField(new Blockly.FieldTextInput("1", EasyJ.Checker.DIGITAL_PORT), "PORT");
@@ -57,7 +57,7 @@ Blockly.Blocks['digital_output'] = {
     this.setColour(120);
     this.appendDummyInput()
         .appendField("Declare Digital Output")
-        .appendField(new Blockly.TypedFieldVariable("Dout1", "DigitalOutput"), "NAME");
+        .appendField(new Blockly.TypedFieldVariable("Dout1", "DigitalOutput", true), "NAME");
     this.appendDummyInput()
         .appendField("on port")
         .appendField(new Blockly.FieldTextInput("1", EasyJ.Checker.DIGITAL_PORT), "PORT");

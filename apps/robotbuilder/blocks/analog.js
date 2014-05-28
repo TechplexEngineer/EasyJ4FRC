@@ -7,7 +7,7 @@ Blockly.Blocks['analog_input'] = {
     this.setColour(65);
     this.appendDummyInput()
         .appendField("Declare Analog Input")
-        .appendField(new Blockly.TypedFieldVariable("Ain1", "AnalogChannel"), "NAME");
+        .appendField(new Blockly.TypedFieldVariable("Ain1", "AnalogChannel", true), "NAME");
     this.appendDummyInput()
         .appendField("on port")
         .appendField(new Blockly.FieldTextInput("1", EasyJ.Checker.ANALOG_PORT), "PORT");

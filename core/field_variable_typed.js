@@ -41,9 +41,14 @@ goog.require('Blockly.FieldVariable');
  * @extends {Blockly.FieldDropdown}
  * @constructor
  */
-Blockly.TypedFieldVariable = function(varname, type, opt_changeHandler) {
+Blockly.TypedFieldVariable = function(varname, type, createVar, opt_changeHandler) {
   var changeHandler;
   this.vartype = type;
+
+  this.createVar = false;
+  if (typeof createVar === "boolean") {
+    this.createVar = createVar;
+  };
   if (opt_changeHandler) {
     // Wrap the user's change handler together with the variable rename handler.
     var thisObj = this;
@@ -74,6 +79,12 @@ Blockly.TypedFieldVariable = function(varname, type, opt_changeHandler) {
   }
 };
 goog.inherits(Blockly.TypedFieldVariable, Blockly.FieldDropdown);
+
+/**
+ * True if this TypedFieldVariable provides the variable
+ * @type {Boolean}
+ */
+// Blockly.TypedFieldVariable.prototype.createVar = false;
 
 /**
  * Clone this FieldVariable.

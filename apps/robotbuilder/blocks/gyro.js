@@ -5,7 +5,7 @@ Blockly.Blocks['declare_gyro'] = {
     this.setColour(65);
     this.appendDummyInput()
         .appendField("Declare Gyro")
-        .appendField(new Blockly.TypedFieldVariable("gyro1", "Gyro"), "NAME");
+        .appendField(new Blockly.TypedFieldVariable("gyro1", "Gyro", true), "NAME");
     this.appendDummyInput()
         .appendField("on port")
         .appendField(new Blockly.FieldTextInput("1", EasyJ.Checker.DIGITAL_PORT), "PORT");

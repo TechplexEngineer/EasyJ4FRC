@@ -37,7 +37,7 @@ Blockly.Blocks['timer'] = {
     this.setColour(260);
     this.appendDummyInput()
         .appendField("Declare Timer")
-        .appendField(new Blockly.TypedFieldVariable("Timer1", "Timer"), "NAME");
+        .appendField(new Blockly.TypedFieldVariable("Timer1", "Timer", true), "NAME");
     this.setPreviousStatement(true, 'declare');
     this.setNextStatement(true, 'declare');
   }

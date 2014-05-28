@@ -6,7 +6,7 @@ Blockly.Blocks['joystick'] = {
     this.setColour(20);
     this.appendDummyInput()
         .appendField("Declare Joystick")
-        .appendField(new Blockly.TypedFieldVariable("JS1", "Joystick"), "NAME");
+        .appendField(new Blockly.TypedFieldVariable("JS1", "Joystick", true), "NAME");
     this.appendDummyInput()
         .appendField("on usb port")
         .appendField(new Blockly.FieldTextInput("1", EasyJ.Checker.JS_PORT), "PORT");

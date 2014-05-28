@@ -6,7 +6,7 @@ Blockly.Blocks['motor_controller'] = {
     this.setColour(20);
     this.appendDummyInput()
         .appendField("Declare Motor Controller")
-        .appendField(new Blockly.TypedFieldVariable("MC1","MotorController"), "NAME")
+        .appendField(new Blockly.TypedFieldVariable("MC1","MotorController", true), "NAME")
         .appendField("of type")
         .appendField(new Blockly.FieldDropdown([["Victor", "Victor"], ["Jaguar", "Jaguar"], ["Talon", "Talon"]]), "CONTROLLER_TYPE");
     // this.appendValueInput("PORT")
@@ -103,7 +103,7 @@ Blockly.Blocks['drivetrain'] = {
     this.setColour(20);
     this.appendDummyInput()
         .appendField("Declare Drivebase ")
-        .appendField(new Blockly.TypedFieldVariable("Drivetrain","RobotDrive"), "NAME")
+        .appendField(new Blockly.TypedFieldVariable("Drivetrain","RobotDrive", true), "NAME")
         .appendField("of type")
         .appendField(new Blockly.FieldDropdown([["Victor", "Victor"], ["Jaguar", "Jaguar"], ["Talon", "Talon"]]), "TYPE")
         .appendField("on PWM ports 1-4");
