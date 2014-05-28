@@ -68,6 +68,29 @@
       <block type="move_with_joystick"></block>
     </category>
 
+    <category name="Pneumatics">
+      <category name="Compressor">
+        <block type="compressor"></block>
+        <block type="compressor_start"></block>
+      </category>
+      <category name="Solenoid (Valve)">
+        <block type="solenoid_single"></block>
+        <block type="set_solenoid_single">
+          <value name="VALUE">
+            <block type="logic_boolean" id="16" x="245" y="191">
+              <field name="BOOL">TRUE</field>
+            </block>
+          </value>
+        </block>
+      </category>
+      <category name="Double Solenoid (Valve)">
+        <block type="solenoid_double"></block>
+        <block type="double_solenoid_set"></block>
+      </category>
+
+      
+    </category>
+
     <category name="Logic">
       <block type="controls_if"></block>
       <block type="logic_compare"></block>

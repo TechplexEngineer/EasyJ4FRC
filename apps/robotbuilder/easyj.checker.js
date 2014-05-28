@@ -58,3 +58,25 @@ EasyJ.Checker.PWM_PORT = function(text) {
 	}
 	return btn;
 };
+
+EasyJ.Checker.RELAY_PORT = function(text) {
+	var btn = parseInt(text);
+	if (isNaN(btn)) {
+		return null;
+	}
+	if (btn < 1 || btn > 10) { //10 RELAY Ports?
+		return null;
+	}
+	return btn;
+};
+
+EasyJ.Checker.SOLENOID_PORT = function(text) {
+	var btn = parseInt(text);
+	if (isNaN(btn)) {
+		return null;
+	}
+	if (btn < 1 || btn > 10) { //10 SOLENOID Ports?
+		return null;
+	}
+	return btn;
+};

@@ -13,7 +13,7 @@ OUTDIR = dist
 
 grandparent = msg/js/en.js {java,blockly,blocks}_compressed.js
 parent = prettify.{css,js}
-thisdir =  {easyj,javagenerator,tabifier}.js style.css {index,frame}.php
+thisdir =  {easyj,javagenerator,tabifier}.js style.css {index,frame}.php easyj.checker.js
 recursdirs = ../../media modals images xml zip RobotTemplate
 
 ## END VARS
