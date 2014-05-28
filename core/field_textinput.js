@@ -49,11 +49,14 @@ Blockly.FieldTextInput = function(text, opt_changeHandler) {
   // This fixes a cryptic error on line 691 of closure/goog/dom/dom.js
   // Uncaught NotFoundError: Failed to execute 'appendChild' on 'Node': The new child element is null.
   this.changeHandler_ = function(text) {
-    if (txt == null) {
+    if (text == null) {
       return null;
     }
-    var txt = opt_changeHandler(text)
-    return txt; //""+
+    var txt = text;
+    if (opt_changeHandler) {
+      txt = opt_changeHandler(text)
+    }
+    return ""+txt; //""+
   };
 };
 goog.inherits(Blockly.FieldTextInput, Blockly.Field);
