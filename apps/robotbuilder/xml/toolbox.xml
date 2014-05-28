@@ -10,7 +10,8 @@
 
       <category name="Gyro">
         <block type="declare_gyro"></block>
-        <block type="get_gyro"></block>        
+        <block type="get_gyro"></block>
+        <block type="gyro_reset"></block>  
       </category>
 
       <category name="Digital">

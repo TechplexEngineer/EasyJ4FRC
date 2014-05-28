@@ -50,11 +50,31 @@ Blockly.Blocks['get_gyro'] = {
     this.setOutput(true, "Number");
   }
 };
-Blockly.Java['get_gyro_angle'] = function(block) {
+Blockly.Java['get_gyro'] = function(block) {
   var dropdown_what = block.getFieldValue('WHAT');
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
   
   //@todo make sure wariable_name has been declared
   var code = variable_name+'.'+dropdown_what+'()';
+  return code;
+};
+
+Blockly.Blocks['gyro_reset'] = {
+  init: function() {
+    this.setHelpUrl('');
+    this.setTooltip('');
+    this.setColour(65);
+    this.appendDummyInput()
+        .appendField("Reset Gyro")
+        .appendField(new Blockly.TypedFieldVariable("gyro1", "Gyro"), "NAME");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, 'statement');
+    this.setNextStatement(true, 'statement');
+  }
+};
+Blockly.Java['gyro_reset'] = function(block) {
+  var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
+
+  var code = variable_name+'.start();';
   return code;
 };
