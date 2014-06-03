@@ -48,6 +48,7 @@ Blockly.Blocks['get_gyro'] = {
         .appendField(new Blockly.TypedFieldVariable("gyro1", "Gyro"), "NAME");
     this.setInputsInline(true);
     this.setOutput(true, "Number");
+	this.setDependsOn("declare_gyro");
   }
 };
 Blockly.Java['get_gyro'] = function(block) {
@@ -70,6 +71,7 @@ Blockly.Blocks['gyro_reset'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, 'statement');
     this.setNextStatement(true, 'statement');
+	this.setDependsOn("declare_gyro");
   }
 };
 Blockly.Java['gyro_reset'] = function(block) {

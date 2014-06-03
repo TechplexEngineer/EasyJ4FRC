@@ -113,3 +113,124 @@ Blockly.Variables.allVariablesOfType = function(type) {
 
   return variableHash[type] || [];
 };
+
+/**
+ * Find all blocks in workspace of the given type.  No particular order.
+ * @return {!Array.<!Blockly.Block>} Array of blocks.
+ */
+Blockly.Workspace.prototype.getAllBlocksOfType = function(prototypeName) {
+  var foundblocks = [];
+
+  var blocks = this.getTopBlocks(false);
+
+  for (var x = 0; x < blocks.length; x++) {
+    // iterate over the top blocks and add any that match
+    if (blocks[x].type == prototypeName) {
+      foundblocks.push(blocks[x])
+    }
+    // for each top block, iterate over its children looking for matches
+    for (var i = 0; i < blocks[x].length; i++) {
+      if (blocks[x][i].type == prototypeName) {
+        foundblocks.push(blocks[x][i])
+      }
+    }
+    // blocks.push.apply(blocks, blocks[x].getChildren());
+  }
+  return foundblocks;
+};
+/**
+ * Keeps track of how many of each type of block exist
+ */
+Blockly.blockHash = {};
+
+function onchgupdatecountsfunc(event) {
+// 	console.log(this, a, b)
+	var blocks = Blockly.mainWorkspace.getAllBlocks();
+	Blockly.blockHash = {};
+	for (var i = 0; i < blocks.length; i++) {
+		if (typeof Blockly.blockHash[blocks[i].type] === "undefined") {
+			Blockly.blockHash[blocks[i].type] = 1;
+		} else {
+			Blockly.blockHash[blocks[i].type] ++;
+		}
+	}
+}
+$(document).on("blocklyLoaded", function() {
+	console.log("Loaded");
+	Blockly.bindEvent_(Blockly.mainWorkspace.getCanvas(), 'blocklyWorkspaceChange', null, onchgupdatecountsfunc);
+});
+
+
+
+/**
+ * Filter the blocks on the flyout to disable the ones that are above the
+ * capacity limit.
+ * @private
+ */
+Blockly.Flyout.prototype.filterForCapacity_ = function() {
+  var remainingCapacity = this.targetWorkspace_.remainingCapacity();
+  var blocks = this.workspace_.getTopBlocks(false); //Blocks in this flyout menu (workspace_ is the flyout)
+  // console.log("Blocks in this flyout menu:", blocks);
+  for (var i = 0, block; block = blocks[i]; i++) {
+    // console.log(block.fred);
+    // console.log(block.type, block.id, block.fred,"\n");
+    var allBlocks = block.getDescendants(); // blocks which are containted (value blocks or statement blocks)
+
+    var disabled = allBlocks.length > remainingCapacity;
+	 
+	// if the block depends on another block, at least one of those other blocks must exist
+	if (block.dependsOn) {
+		// && (typeof Blockly.blockHash[block.dependsOn] === "undefined" || Blockly.blockHash[block.dependsOn] < 1)
+		for (var j = 0; j < block.dependsOn.length; j++) {
+			disabled = (typeof Blockly.blockHash[block.dependsOn[j]] === "undefined" || Blockly.blockHash[block.dependsOn[j]] < 1)
+		}
+	}
+
+// @todo
+//     if (block.maxAvailable !== null) {
+//       console.log("Not Null!");
+//       var blocksoftype = this.targetWorkspace_.getAllBlocksOfType(block.type);
+//     }
+
+
+    block.setDisabled(disabled);
+  }
+};
+
+Blockly.Block.prototype.setDependsOn = function (who) {
+	if (!$.isArray(who))
+		who = [who];
+	this.dependsOn = who;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

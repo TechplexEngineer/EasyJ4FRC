@@ -23,7 +23,8 @@
 	    if ($dev): 
 	    	$blocklyPath = "../../";
 		?>
-<!-- Include these in development mode ************************************* -->			
+<!-- Include these in development mode ************************************* -->		
+			<script src="bower_components/jquery/dist/jquery.min.js"></script>
 			<script type="text/javascript" src="../../blockly_uncompressed.js"></script>
 			<script type="text/javascript" src="<?= $blocklyPath ?>generators/java.js"></script>
 			<script type="text/javascript" src="easyj.checker.js"></script><!-- Also Below -->
@@ -55,6 +56,7 @@
 			$blocklyPath = "./";
 		?>
 <!-- Include these in production mode ************************************** -->
+			<script src="jquery.min.js"></script>
 			<script type="text/javascript" src="<?= $blocklyPath ?>blockly_compressed.js"></script>
 			<script type="text/javascript" src="<?= $blocklyPath ?>blocks_compressed.js"></script>
 			<script type="text/javascript" src="easyj.checker.js"></script><!-- Also Above -->
@@ -110,6 +112,7 @@
 				});
 				// Let the top-level application know that Blockly is ready.
 				window.parent.blocklyLoaded(Blockly);
+				$(document).trigger("blocklyLoaded");
 				// console.log(Blockly);
 
 				Blockly.mainWorkspace.reset = function() {

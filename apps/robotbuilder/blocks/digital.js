@@ -38,6 +38,7 @@ Blockly.Blocks['get_digital_input_value'] = {
         .appendField(new Blockly.TypedFieldVariable("Din1", "DigitalInput"), "NAME");
     this.setInputsInline(true);
     this.setOutput(true, "Number");
+	this.setDependsOn("digital_input");
   }
 };
 Blockly.Java['get_digital_input_value'] = function(block) {
@@ -95,6 +96,7 @@ Blockly.Blocks['set_digital_output'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, 'statement');
     this.setNextStatement(true, 'statement');
+	this.setDependsOn("set_digital_output");
   }
 };
 Blockly.Java['set_digital_output'] = function(block) {

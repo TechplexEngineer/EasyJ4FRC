@@ -54,6 +54,7 @@ Blockly.Blocks['move_motor_controller'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, 'statement');
     this.setNextStatement(true, 'statement');
+	this.setDependsOn("motor_controller");
   }
 };
 Blockly.Java['move_motor_controller'] = function(block) {
@@ -86,6 +87,7 @@ Blockly.Blocks['stop_motor_controller'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, 'statement');
     this.setNextStatement(true, 'statement');
+	this.setDependsOn("motor_controller");
   }
 };
 Blockly.Java['stop_motor_controller'] = function(block) {
@@ -146,6 +148,7 @@ Blockly.Blocks['move_drivetrain'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, 'statement');
     this.setNextStatement(true, 'statement');
+	this.setDependsOn("drivetrain");
   }
 };
 Blockly.Java['move_drivetrain'] = function(block) {
@@ -183,6 +186,7 @@ Blockly.Blocks['stop_drivetrain'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, 'statement');
     this.setNextStatement(true, 'statement');
+	this.setDependsOn("drivetrain");
   }
 };
 Blockly.Java['stop_drivetrain'] = function(block) {
@@ -206,6 +210,7 @@ Blockly.Blocks['move_with_joystick'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, 'statement');
     this.setNextStatement(true, 'statement');
+	this.setDependsOn(["drivetrain", "joystick"]);
   }
 };
 Blockly.Java['move_with_joystick'] = function(block) {

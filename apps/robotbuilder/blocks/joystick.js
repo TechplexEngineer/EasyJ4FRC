@@ -43,6 +43,7 @@ Blockly.Blocks['get_joystick_axis'] = {
         .appendField(new Blockly.TypedFieldVariable("JS1", "Joystick"), "NAME")
         .appendField(new Blockly.FieldDropdown([["X Axis", "kX"], ["Y Axis", "kY"], ["Z Axis", "kZ"], ["Twist", "kTwist"], ["Throttle", "kThrottle"]]), "WHAT");
     this.setOutput(true, "Number");
+	this.setDependsOn("joystick");
   }
 };
 Blockly.Java['get_joystick_axis'] = function(block) {
@@ -71,6 +72,7 @@ Blockly.Blocks['get_joystick_button'] = {
     //     .appendField("Button is pressed");
     this.setInputsInline(true);
     this.setOutput(true, "Boolean");
+	this.setDependsOn("joystick");
   }
 };
 Blockly.Java['get_joystick_button'] = function(block) {

@@ -34,6 +34,7 @@ Blockly.Blocks['compressor_start'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, 'statement');
     this.setNextStatement(true, 'statement');
+	this.setDependsOn("compressor");
   }
 };
 Blockly.Java['compressor_start'] = function(block) {
@@ -83,6 +84,7 @@ Blockly.Blocks['set_solenoid_single'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, 'statement');
     this.setNextStatement(true, 'statement');
+	this.setDependsOn("solenoid_single");
   }
 };
 Blockly.Java['set_solenoid_single'] = function(block) {
@@ -135,6 +137,7 @@ Blockly.Blocks['double_solenoid_set'] = {
             ["Off", "kOff"]]), "TO");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
+	this.setDependsOn("solenoid_double");
   }
 };
 Blockly.Java['double_solenoid_set'] = function(block) {

@@ -46,6 +46,7 @@ Blockly.Blocks['get_analog_input_value'] = {
         .appendField(new Blockly.TypedFieldVariable("Ain1", "AnalogChannel"), "NAME");
     this.setInputsInline(true);
     this.setOutput(true, "Number");
+	this.setDependsOn("analog_input");
   }
 };
 Blockly.Java['get_analog_input_value'] = function(block) {

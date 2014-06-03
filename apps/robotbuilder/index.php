@@ -271,6 +271,8 @@ $dev = file_exists("DEV");
 				window.Blockly = blockly;
 				$(window).resize();
 				
+				
+				
 				Blockly.addChangeListener(onchange);
 
 				loadxml = function(xml) {

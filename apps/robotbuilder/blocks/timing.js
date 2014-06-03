@@ -60,6 +60,7 @@ Blockly.Blocks['start_timer'] = {
         .appendField(new Blockly.TypedFieldVariable("Timer1", "Timer"), "NAME");
     this.setPreviousStatement(true, 'statement');
     this.setNextStatement(true, 'statement');
+	this.setDependsOn("timer");
   }
 };
 Blockly.Java['start_timer'] = function(block) {
@@ -79,6 +80,7 @@ Blockly.Blocks['stop_timer'] = {
         .appendField(new Blockly.TypedFieldVariable("Timer1", "Timer"), "NAME");
     this.setPreviousStatement(true, 'statement');
     this.setNextStatement(true, 'statement');
+	this.setDependsOn("timer");
   }
 };
 Blockly.Java['stop_timer'] = function(block) {
@@ -98,6 +100,7 @@ Blockly.Blocks['reset_timer'] = {
         .appendField(new Blockly.TypedFieldVariable("Timer1", "Timer"), "NAME");
     this.setPreviousStatement(true, 'statement');
     this.setNextStatement(true, 'statement');
+	this.setDependsOn("timer");
   }
 };
 Blockly.Java['reset_timer'] = function(block) {
