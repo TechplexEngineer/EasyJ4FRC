@@ -15,7 +15,8 @@ Blockly.Blocks['declare_gyro'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, 'declare');
     this.setNextStatement(true, 'declare');
-  }
+  },
+  onchange: EasyJ.Checker.EnsureNotTop_Init
 };
 Blockly.Java['declare_gyro'] = function(block) {
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);

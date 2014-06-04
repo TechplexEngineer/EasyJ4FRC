@@ -17,12 +17,13 @@ Blockly.Blocks['digital_input'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, 'declare');
     this.setNextStatement(true, 'declare');
-  }
+  },
+  onchange: EasyJ.Checker.EnsureNotTop_Init
 };
 Blockly.Java['digital_input'] = function(block) {
   var value_port = block.getFieldValue('PORT');
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
-  
+
   Blockly.Java.addImport("import edu.wpi.first.wpilibj.DigitalInput;");
   var code = 'DigitalInput '+variable_name+' = new DigitalInput('+value_port+');';
   return code;
@@ -43,7 +44,7 @@ Blockly.Blocks['get_digital_input_value'] = {
 };
 Blockly.Java['get_digital_input_value'] = function(block) {
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
-  
+
   //@todo make sure variable_name has been declared
   var code = variable_name+'.get()';
   return code;
@@ -68,7 +69,8 @@ Blockly.Blocks['digital_output'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, 'declare');
     this.setNextStatement(true, 'declare');
-  }
+  },
+  onchange: EasyJ.Checker.EnsureNotTop_Init
 };
 Blockly.Java['digital_output'] = function(block) {
   var value_port = block.getFieldValue('PORT');

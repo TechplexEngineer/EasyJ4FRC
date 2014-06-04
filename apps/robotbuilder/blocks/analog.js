@@ -17,7 +17,8 @@ Blockly.Blocks['analog_input'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, 'declare');
     this.setNextStatement(true, 'declare');
-  }
+  },
+  onchange: EasyJ.Checker.EnsureNotTop_Init
 };
 Blockly.Java['analog_input'] = function(block) {
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);

@@ -18,7 +18,8 @@ Blockly.Blocks['motor_controller'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, 'declare');
     this.setNextStatement(true, 'declare');
-  }
+  },
+  onchange: EasyJ.Checker.EnsureNotTop_Init
 };
 Blockly.Java['motor_controller'] = function(block) {
 
@@ -97,7 +98,7 @@ Blockly.Java['stop_motor_controller'] = function(block) {
   var code = variable_name+'.stop();\n';
   return code;
 };
-
+// -------------------------------------------------------------------------------------------------
 Blockly.Blocks['drivetrain'] = {
   init: function() {
     this.setHelpUrl('');
@@ -112,7 +113,8 @@ Blockly.Blocks['drivetrain'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, 'declare');
     this.setNextStatement(true, 'declare');
-  }
+  },
+  onchange: EasyJ.Checker.EnsureNotTop_Init
 };
 Blockly.Java['drivetrain'] = function(block) {
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);

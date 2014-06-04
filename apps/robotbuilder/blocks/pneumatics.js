@@ -12,7 +12,8 @@ Blockly.Blocks['compressor'] = {
         .appendField(new Blockly.FieldTextInput("1", EasyJ.Checker.DIGITAL_PORT), "PRESSURESW");
     this.setPreviousStatement(true, 'declare');
     this.setNextStatement(true, 'declare');
-  }
+  },
+  onchange: EasyJ.Checker.EnsureNotTop_Init
 };
 Blockly.Java['compressor'] = function(block) {
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
@@ -58,7 +59,8 @@ Blockly.Blocks['solenoid_single'] = {
         .appendField(new Blockly.FieldTextInput("1", EasyJ.Checker.SOLENOID_PORT), "SOLENOID");
     this.setPreviousStatement(true, 'declare');
     this.setNextStatement(true, 'declare');
-  }
+  },
+  onchange: EasyJ.Checker.EnsureNotTop_Init
 };
 Blockly.Java['solenoid_single'] = function(block) {
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
@@ -110,7 +112,8 @@ Blockly.Blocks['solenoid_double'] = {
         .appendField(new Blockly.FieldTextInput("1", EasyJ.Checker.SOLENOID_PORT), "SOLENOIDREV");
     this.setPreviousStatement(true, 'declare');
     this.setNextStatement(true, 'declare');
-  }
+  },
+  onchange: EasyJ.Checker.EnsureNotTop_Init
 };
 Blockly.Java['solenoid_double'] = function(block) {
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);

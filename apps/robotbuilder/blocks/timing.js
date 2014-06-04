@@ -40,7 +40,8 @@ Blockly.Blocks['timer'] = {
         .appendField(new Blockly.TypedFieldVariable("Timer1", "Timer", true), "NAME");
     this.setPreviousStatement(true, 'declare');
     this.setNextStatement(true, 'declare');
-  }
+  },
+  onchange: EasyJ.Checker.EnsureNotTop_Init
 };
 Blockly.Java['timer'] = function(block) {
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);

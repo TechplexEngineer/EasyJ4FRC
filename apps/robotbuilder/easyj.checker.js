@@ -80,3 +80,19 @@ EasyJ.Checker.SOLENOID_PORT = function(text) {
 	}
 	return btn;
 };
+
+
+
+
+EasyJ.Checker.EnsureNotTop_Init = function() {
+  if (!this.workspace) {
+    // Block has been deleted.
+    return;
+  }
+
+  if (this.getSurroundParent() != null) {
+    this.setWarningText(null);
+  } else {
+    this.setWarningText("Error: This block must be within the Initialization block.");
+  }
+};

@@ -74,7 +74,7 @@ $dev = file_exists("DEV");
 		<script type="text/javascript">
 		$(document).ready(function() {
 			console.log("Ready!");
-			
+
 			/**
 			 * Make the #content element fill the remaining horizontal space
 			 * @param  {int} fudge fudge factor
@@ -93,12 +93,22 @@ $dev = file_exists("DEV");
 			}
 			$(window).resize(function() {
 				adjContentHeight(-5);
-				
+
 			}).resize();
 
 			// toggle between blocks and code
 			$('#blockcodetoggle').click(function(event){
 				if ($(event.target).attr('id') == "code") {
+
+          var code = generateJavaCode();
+          var content = document.getElementById('languagePre');
+          content.textContent = code;
+          if (typeof prettyPrintOne == 'function') {
+            code = content.innerHTML;
+            code = prettyPrintOne(code, 'java');
+            content.innerHTML = code;
+          }
+
 					$('#blocklyworkspace').hide();
 					$('#codeoutput').show();
 				}
@@ -254,16 +264,9 @@ $dev = file_exists("DEV");
 			function onchange() {
 
 
-				var content = document.getElementById('languagePre');
 				
-				var code = generateJavaCode();
 				
-				content.textContent = code;
-				if (typeof prettyPrintOne == 'function') {
-					code = content.innerHTML;
-					code = prettyPrintOne(code, 'java');
-					content.innerHTML = code;
-				}
+				
 
 			}
 			function blocklyLoaded(blockly) {

@@ -13,7 +13,8 @@ Blockly.Blocks['joystick'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, 'declare');
     this.setNextStatement(true, 'declare');
-  }
+  },
+  onchange: EasyJ.Checker.EnsureNotTop_Init
 };
 
 Blockly.Java['joystick'] = function(block) {
