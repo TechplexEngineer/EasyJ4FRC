@@ -24,9 +24,10 @@ tocopy =  $(thisdir) $(addprefix ../,$(parent)) $(addprefix ../../,$(grandparent
 
 all:
 	@echo "make setup		uses bower to install required packages"
-	@echo "make dist -j 3	creates the dist directory & required files"
+	@echo "make dist		creates the dist directory & required files"
 	@echo "make static 		same as dist, but does not rebuild blockly core"
 	@echo "make deploy 		Send current dist directory to remote"
+	@echo "make closure		Download closure archive and unzip it"
 
 clean:
 	$(RM) -rf ./$(OUTDIR)
@@ -57,3 +58,11 @@ easyj_blocks:
 
 deploy:
 	rsync -r --delete dist/* blake.metheus.org:/var/www/team5122/easyj
+
+closure:
+	@$(CD) ../../../; wget https://closure-library.googlecode.com/files/closure-library-20130212-95c19e7f0f5f.zip
+	@$(CD) ../../../; unzip closure-library-20130212-95c19e7f0f5f.zip -d closure-library-read-only
+    
+
+
+
