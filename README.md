@@ -18,8 +18,10 @@ EasyJ4FRC is based on [Google Blockly](http://code.google.com/p/blockly/).
 - [x] Loadable Demos
 - [x] Help Pages
 - [x] About page
-- [x] Settings Page
-  - Alter package
+- [ ] Settings Page
+  - Alter package [x]
+  - Alter Robot Class [x]
+  - Ensure entered package and class are valid
 - [ ] Command Base
   - multiple class tabs
   - add new subsystems
@@ -34,10 +36,10 @@ EasyJ4FRC is based on [Google Blockly](http://code.google.com/p/blockly/).
   - Subroutines
   - Accelerometer
   - Smart Dashboard
-  - Pneumatics
-    - Compressor
-    - Solenoids
-    - Pressure switch?
+  - Pneumatics [x]
+    - Compressor [x]
+    - Solenoids [x]
+    - Pressure switch (part of compressor object)
   - Digital Output [x]
   - Relay
   - Encoder
@@ -55,11 +57,13 @@ EasyJ4FRC is based on [Google Blockly](http://code.google.com/p/blockly/).
 - [x] Could we dump out a netbeans project?
 - [ ] make a desktop version 
 - [x] make a cool logo
-- [ ] handle variable rename
-- [ ] hide blocks until variable exists
+- [x] handle variable rename
+- [x] hide blocks until variable exists (disable instead of hide)
 - [ ] set warning on orphanned blocks
 - [ ] change "Declare" to "Create"
 - [ ] Change {motor controller,drivetrain} {speed,turn} inputs to be -100 to 100 %
 - [ ] Add more examples
 - [ ] add tool tips for blocks
 - [ ] add help url for blocks
+- [ ] remove old logic checking value blocks
+- [ ] ensure blockly default blocks have the next and previous statment type properly specified
