@@ -75,6 +75,7 @@ EasyJ4FRC is based on [Google Blockly](http://code.google.com/p/blockly/).
 - [ ] only allow the creation of one compressor
 - [ ] make all of the declare blocks the same color so that it is more obvious where they go.
 - [ ] Add a description to the save system
+- [ ] allow fields to have their own tool tips
 
 
 
