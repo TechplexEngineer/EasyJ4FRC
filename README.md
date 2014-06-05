@@ -67,3 +67,16 @@ EasyJ4FRC is based on [Google Blockly](http://code.google.com/p/blockly/).
 - [ ] add help url for blocks
 - [ ] remove old logic checking value blocks
 - [ ] ensure blockly default blocks have the next and previous statment type properly specified
+- [ ] Setup warning on non-init blocks
+- [ ] Once the declare block has been used the modifier blocks are enabled. THe problem is the modifier blocks have a new variable option. Actually It probably shouldn't exist on any of the modifier blocks. We need a way to make sure that the modifier blocks are set to one of the variables which exists because of a decleare block. One possible solution is to have value ports and create blocks in the menu for each variable.
+- [ ] need a test procedure for the code
+- [ ] It would be nice to handle port assiginments better, so that the same port can not be multiply selected
+- [ ] Should the robot drive block which creates 4 motor controller objects add the MC ogjects to the variable dropdown so that they can be independently accessed?
+- [ ] only allow the creation of one compressor
+- [ ] make all of the declare blocks the same color so that it is more obvious where they go.
+- [ ] Add a description to the save system
+
+
+
+
+
