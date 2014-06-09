@@ -3,7 +3,7 @@ Blockly.Blocks['declare_motor_controller'] = {
   init: function() {
     this.setHelpUrl('');
     this.setTooltip('Create a motor controller to control the speed of a motor.');
-    this.setColour(20);
+    this.setColour(120);
     this.appendDummyInput()
         .appendField("Declare Motor Controller")
         .appendField(new Blockly.TypedFieldVariable("MC1","MotorController", true), "NAME")
@@ -60,7 +60,7 @@ Blockly.Blocks['move_motor_controller'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, 'statement');
     this.setNextStatement(true, 'statement');
-	this.setDependsOn("motor_controller");
+	this.setDependsOn("declare_motor_controller");
   },
   renameVar: function(oldName, newName) {
     if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {
@@ -98,7 +98,7 @@ Blockly.Blocks['stop_motor_controller'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, 'statement');
     this.setNextStatement(true, 'statement');
-	this.setDependsOn("motor_controller");
+	this.setDependsOn("declare_motor_controller");
   },
   renameVar: function(oldName, newName) {
     if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {
@@ -118,7 +118,7 @@ Blockly.Blocks['declare_drivetrain'] = {
   init: function() {
     this.setHelpUrl('');
     this.setTooltip('Create a drivetrain and associated motor controllers to drive your robot.');
-    this.setColour(20);
+    this.setColour(120);
     this.appendDummyInput()
         .appendField("Declare Drivebase ")
         .appendField(new Blockly.TypedFieldVariable("Drivetrain","RobotDrive", true), "NAME")
@@ -170,7 +170,7 @@ Blockly.Blocks['move_drivetrain'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, 'statement');
     this.setNextStatement(true, 'statement');
-	this.setDependsOn("drivetrain");
+	this.setDependsOn("declare_drivetrain");
   },
   renameVar: function(oldName, newName) {
     if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {
@@ -213,7 +213,7 @@ Blockly.Blocks['stop_drivetrain'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, 'statement');
     this.setNextStatement(true, 'statement');
-	this.setDependsOn("drivetrain");
+	this.setDependsOn("declare_drivetrain");
   },
   renameVar: function(oldName, newName) {
     if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {
@@ -242,7 +242,7 @@ Blockly.Blocks['move_with_joystick'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, 'statement');
     this.setNextStatement(true, 'statement');
-	this.setDependsOn(["drivetrain", "joystick"]);
+	this.setDependsOn(["declare_drivetrain", "declare_joystick"]);
   },
   renameVar: function(oldName, newName) {
     if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {

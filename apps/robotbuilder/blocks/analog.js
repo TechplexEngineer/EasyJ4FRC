@@ -4,7 +4,7 @@ Blockly.Blocks['declare_analog_input'] = {
   init: function() {
     this.setHelpUrl('');
     this.setTooltip('Create an analog input which allows sampling an input waveform.');
-    this.setColour(65);
+    this.setColour(120);
     this.appendDummyInput()
         .appendField("Declare Analog Input")
         .appendField(new Blockly.TypedFieldVariable("Ain1", "AnalogChannel", true), "NAME");
@@ -52,7 +52,7 @@ Blockly.Blocks['get_analog_input_value'] = {
         .appendField(new Blockly.TypedFieldVariable("Ain1", "AnalogChannel"), "NAME");
     this.setInputsInline(true);
     this.setOutput(true, "Number");
-	this.setDependsOn("analog_input");
+	this.setDependsOn("declare_analog_input");
   },
   renameVar: function(oldName, newName) {
     if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {

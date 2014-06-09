@@ -66,7 +66,7 @@ Blockly.Blocks['start_timer'] = {
         .appendField(new Blockly.TypedFieldVariable("Timer1", "Timer"), "NAME");
     this.setPreviousStatement(true, 'statement');
     this.setNextStatement(true, 'statement');
-	this.setDependsOn("timer");
+	this.setDependsOn("declare_timer");
   },
   renameVar: function(oldName, newName) {
     if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {
@@ -91,7 +91,7 @@ Blockly.Blocks['stop_timer'] = {
         .appendField(new Blockly.TypedFieldVariable("Timer1", "Timer"), "NAME");
     this.setPreviousStatement(true, 'statement');
     this.setNextStatement(true, 'statement');
-	this.setDependsOn("timer");
+	this.setDependsOn("declare_timer");
   },
   renameVar: function(oldName, newName) {
     if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {
@@ -116,7 +116,7 @@ Blockly.Blocks['reset_timer'] = {
         .appendField(new Blockly.TypedFieldVariable("Timer1", "Timer"), "NAME");
     this.setPreviousStatement(true, 'statement');
     this.setNextStatement(true, 'statement');
-	this.setDependsOn("timer");
+	this.setDependsOn("declare_timer");
   },
   renameVar: function(oldName, newName) {
     if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {

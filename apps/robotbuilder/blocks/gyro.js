@@ -2,7 +2,7 @@ Blockly.Blocks['declare_gyro'] = {
   init: function() {
     this.setHelpUrl('');
     this.setTooltip('Create a gyro for measureing angle and heading.');
-    this.setColour(65);
+    this.setColour(120);
     this.appendDummyInput()
         .appendField("Declare Gyro")
         .appendField(new Blockly.TypedFieldVariable("gyro1", "Gyro", true), "NAME");

@@ -3,7 +3,7 @@ Blockly.Blocks['declare_joystick'] = {
   init: function() {
     this.setHelpUrl('');
     this.setTooltip('Create a joystick to take input from the operator.');
-    this.setColour(20);
+    this.setColour(120);
     this.appendDummyInput()
         .appendField("Declare Joystick")
         .appendField(new Blockly.TypedFieldVariable("JS1", "Joystick", true), "NAME");
@@ -49,7 +49,7 @@ Blockly.Blocks['get_joystick_axis'] = {
         .appendField(new Blockly.TypedFieldVariable("JS1", "Joystick"), "NAME")
         .appendField(new Blockly.FieldDropdown([["X Axis", "kX"], ["Y Axis", "kY"], ["Z Axis", "kZ"], ["Twist", "kTwist"], ["Throttle", "kThrottle"]]), "WHAT");
     this.setOutput(true, "Number");
-	this.setDependsOn("joystick");
+	this.setDependsOn("declare_joystick");
   },
   renameVar: function(oldName, newName) {
     if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {
@@ -83,7 +83,7 @@ Blockly.Blocks['get_joystick_button'] = {
     //     .appendField("Button is pressed");
     this.setInputsInline(true);
     this.setOutput(true, "Boolean");
-	this.setDependsOn("joystick");
+	this.setDependsOn("declare_joystick");
   },
   renameVar: function(oldName, newName) {
     if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {

@@ -40,7 +40,7 @@ Blockly.Blocks['compressor_start'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, 'statement');
     this.setNextStatement(true, 'statement');
-	this.setDependsOn("compressor");
+	this.setDependsOn("declare_compressor");
   },
   renameVar: function(oldName, newName) {
     if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {
@@ -61,7 +61,7 @@ Blockly.Blocks['declare_solenoid_single'] = {
   init: function() {
     this.setHelpUrl('');
     this.setTooltip('');
-    this.setColour(20);
+    this.setColour(120);
     this.appendDummyInput()
         .appendField("Declare Single Solenoid")
         .appendField(new Blockly.TypedFieldVariable("SValve1", "Solenoid"), "NAME")
@@ -101,7 +101,7 @@ Blockly.Blocks['set_solenoid_single'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, 'statement');
     this.setNextStatement(true, 'statement');
-	this.setDependsOn("solenoid_single");
+	this.setDependsOn("declare_solenoid_single");
   },
   renameVar: function(oldName, newName) {
     if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {
@@ -122,7 +122,7 @@ Blockly.Blocks['declare_solenoid_double'] = {
   init: function() {
     this.setHelpUrl('');
     this.setTooltip('How a double solenoid works');
-    this.setColour(20);
+    this.setColour(120);
     this.appendDummyInput()
         .appendField("Declare Double Solenoid")
         .appendField(new Blockly.TypedFieldVariable("DValve1", "DoubleSolenoid"), "NAME")
@@ -165,7 +165,7 @@ Blockly.Blocks['double_solenoid_set'] = {
             ["Off", "kOff"]]), "TO");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-	this.setDependsOn("solenoid_double");
+	this.setDependsOn("declare_solenoid_double");
   },
   renameVar: function(oldName, newName) {
     if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {

@@ -10,7 +10,7 @@ Blockly.Blocks['init_declare'] = {
 		.appendField("do")
 		.setCheck('declare');
 	this.setDeletable(false);
-	this.setColour(0);
+	this.setColour(120);
   }
 };
 Blockly.Java['init_declare'] = function(block) {
@@ -45,7 +45,7 @@ Blockly.Blocks['auto_perodic'] = {
 	this.setHelpUrl('');
 	this.setTooltip('These blocks are run repeadedly following the "At the Start of Auto" blocks.');
 	this.appendDummyInput()
-		.appendField("During Auto");
+		.appendField("Repeat During Auto");
 	this.appendStatementInput("WHAT")
 		.appendField("do")
 		.setCheck('statement');
@@ -90,7 +90,7 @@ Blockly.Blocks['teleop_perodic'] = {
 	this.setTooltip('These blocks are run repeadedly following the "At the Start of Teleop" blocks.');
 	this.setColour(210);
 	this.appendDummyInput()
-		.appendField("During Teleop");
+		.appendField("Repeat During Teleop");
 	this.appendStatementInput("WHAT")
 		.appendField("do")
 		.setCheck('statement');
