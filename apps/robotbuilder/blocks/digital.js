@@ -1,6 +1,6 @@
 // Digital
 
-Blockly.Blocks['digital_input'] = {
+Blockly.Blocks['declare_digital_input'] = {
   init: function() {
     this.setHelpUrl('');
     this.setTooltip('Create a digital input which allows reading of a digital signal.');
@@ -25,7 +25,7 @@ Blockly.Blocks['digital_input'] = {
     }
   }
 };
-Blockly.Java['digital_input'] = function(block) {
+Blockly.Java['declare_digital_input'] = function(block) {
   var value_port = block.getFieldValue('PORT');
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
 
@@ -62,7 +62,7 @@ Blockly.Java['get_digital_input_value'] = function(block) {
 
 // Digital Output
 
-Blockly.Blocks['digital_output'] = {
+Blockly.Blocks['declare_digital_output'] = {
   init: function() {
     this.setHelpUrl('http://www.example.com/');
     this.setTooltip('');
@@ -87,7 +87,7 @@ Blockly.Blocks['digital_output'] = {
     }
   }
 };
-Blockly.Java['digital_output'] = function(block) {
+Blockly.Java['declare_digital_output'] = function(block) {
   var value_port = block.getFieldValue('PORT');
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
   

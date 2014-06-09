@@ -1,4 +1,4 @@
-Blockly.Blocks['compressor'] = {
+Blockly.Blocks['declare_compressor'] = {
   init: function() {
     this.setHelpUrl('');
     this.setTooltip('');
@@ -20,7 +20,7 @@ Blockly.Blocks['compressor'] = {
     }
   }
 };
-Blockly.Java['compressor'] = function(block) {
+Blockly.Java['declare_compressor'] = function(block) {
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
   var text_relay = block.getFieldValue('RELAY');
   var text_pressuresw = block.getFieldValue('PRESSURESW');
@@ -57,7 +57,7 @@ Blockly.Java['compressor_start'] = function(block) {
 };
 
 
-Blockly.Blocks['solenoid_single'] = {
+Blockly.Blocks['declare_solenoid_single'] = {
   init: function() {
     this.setHelpUrl('');
     this.setTooltip('');
@@ -77,7 +77,7 @@ Blockly.Blocks['solenoid_single'] = {
     }
   }
 };
-Blockly.Java['solenoid_single'] = function(block) {
+Blockly.Java['declare_solenoid_single'] = function(block) {
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
   var text_solenoid = block.getFieldValue('SOLENOID');
 
@@ -118,7 +118,7 @@ Blockly.Java['set_solenoid_single'] = function(block) {
 };
 
 
-Blockly.Blocks['solenoid_double'] = {
+Blockly.Blocks['declare_solenoid_double'] = {
   init: function() {
     this.setHelpUrl('');
     this.setTooltip('How a double solenoid works');
@@ -140,7 +140,7 @@ Blockly.Blocks['solenoid_double'] = {
     }
   }
 };
-Blockly.Java['solenoid_double'] = function(block) {
+Blockly.Java['declare_solenoid_double'] = function(block) {
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
   var text_solenoidfwd = block.getFieldValue('SOLENOIDFWD');
    var text_solenoidrev = block.getFieldValue('SOLENOIDREV');

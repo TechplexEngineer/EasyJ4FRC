@@ -3,7 +3,7 @@
     <category name="Input &amp; Sensors">
 
       <category name="User (Joystick)">
-        <block type="joystick"></block>
+        <block type="declare_joystick"></block>
         <block type="get_joystick_axis"></block>
         <block type="get_joystick_button"></block>
       </category>
@@ -15,12 +15,12 @@
       </category>
 
       <category name="Digital">
-        <block type="digital_input"></block>
+        <block type="declare_digital_input"></block>
         <block type="get_digital_input_value"></block>
       </category>
 
       <category name="Analog">
-        <block type="analog_input"></block>
+        <block type="declare_analog_input"></block>
         <block type="get_analog_input_value"></block>
       </category>
       
@@ -29,7 +29,7 @@
     <category name="Outputs">
       <category name="Digital">
 
-        <block type="digital_output"></block>
+        <block type="declare_digital_output"></block>
         <block type="set_digital_output">
           <value name="VALUE">
             <block type="logic_boolean" id="16" x="245" y="191">
@@ -42,7 +42,7 @@
     </category>
 
     <category name="Motors">
-      <block type="motor_controller"></block>
+      <block type="declare_motor_controller"></block>
       <block type="move_motor_controller">
         <value name="SPEED">
           <block type="math_number">
@@ -52,7 +52,7 @@
       </block>
       <block type="stop_motor_controller"></block>
 
-      <block type="drivetrain"></block>
+      <block type="declare_drivetrain"></block>
       <block type="move_drivetrain">
         <value name="MOVE">
           <block type="math_number">
@@ -71,11 +71,11 @@
 
     <category name="Pneumatics">
       <category name="Compressor">
-        <block type="compressor"></block>
+        <block type="declare_compressor"></block>
         <block type="compressor_start"></block>
       </category>
       <category name="Solenoid (Valve)">
-        <block type="solenoid_single"></block>
+        <block type="declare_solenoid_single"></block>
         <block type="set_solenoid_single">
           <value name="VALUE">
             <block type="logic_boolean" id="16" x="245" y="191">
@@ -85,7 +85,7 @@
         </block>
       </category>
       <category name="Double Solenoid (Valve)">
-        <block type="solenoid_double"></block>
+        <block type="declare_solenoid_double"></block>
         <block type="double_solenoid_set"></block>
       </category>
 
@@ -181,7 +181,7 @@
           </block>
         </value>
       </block>
-      <block type="timer"></block>
+      <block type="declare_timer"></block>
       <block type="start_timer"></block>
       <block type="stop_timer"></block>
       <block type="reset_timer"></block>

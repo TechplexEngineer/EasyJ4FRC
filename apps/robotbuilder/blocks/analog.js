@@ -1,6 +1,6 @@
 // Analog
 
-Blockly.Blocks['analog_input'] = {
+Blockly.Blocks['declare_analog_input'] = {
   init: function() {
     this.setHelpUrl('');
     this.setTooltip('Create an analog input which allows sampling an input waveform.');
@@ -25,7 +25,7 @@ Blockly.Blocks['analog_input'] = {
     }
   }
 };
-Blockly.Java['analog_input'] = function(block) {
+Blockly.Java['declare_analog_input'] = function(block) {
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
   var value_port = block.getFieldValue('PORT');
   

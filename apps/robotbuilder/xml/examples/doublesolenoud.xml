@@ -1,20 +1,20 @@
 <xml>
   <block type="init_declare" id="25" deletable="false" x="0" y="5">
     <statement name="WHAT">
-      <block type="joystick" id="26">
+      <block type="declare_joystick" id="26">
         <field name="NAME">JS1</field>
         <field name="PORT">1</field>
         <next>
-          <block type="drivetrain" id="27">
+          <block type="declare_drivetrain" id="27">
             <field name="NAME">Drivetrain</field>
             <field name="TYPE">Victor</field>
             <next>
-              <block type="compressor" id="60">
+              <block type="declare_compressor" id="60">
                 <field name="NAME">Pump1</field>
                 <field name="RELAY">1</field>
                 <field name="PRESSURESW">1</field>
                 <next>
-                  <block type="solenoid_double" id="70">
+                  <block type="declare_solenoid_double" id="70">
                     <field name="NAME">DValve1</field>
                     <field name="SOLENOIDFWD">1</field>
                     <field name="SOLENOIDREV">1</field>

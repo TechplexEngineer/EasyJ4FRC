@@ -1,11 +1,11 @@
 <xml>
   <block type="init_declare" id="1" deletable="false" x="0" y="5">
     <statement name="WHAT">
-      <block type="joystick" id="9">
+      <block type="declare_joystick" id="9">
         <field name="NAME">JS1</field>
         <field name="PORT">1</field>
         <next>
-          <block type="drivetrain" id="31">
+          <block type="declare_drivetrain" id="31">
             <field name="NAME">Drivetrain</field>
             <field name="TYPE">Victor</field>
           </block>

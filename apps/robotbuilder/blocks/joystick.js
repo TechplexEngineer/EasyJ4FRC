@@ -1,5 +1,5 @@
 // User Input Blocks
-Blockly.Blocks['joystick'] = {
+Blockly.Blocks['declare_joystick'] = {
   init: function() {
     this.setHelpUrl('');
     this.setTooltip('Create a joystick to take input from the operator.');
@@ -22,7 +22,7 @@ Blockly.Blocks['joystick'] = {
   }
 };
 
-Blockly.Java['joystick'] = function(block) {
+Blockly.Java['declare_joystick'] = function(block) {
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
   var value_port = block.getFieldValue("PORT");
 

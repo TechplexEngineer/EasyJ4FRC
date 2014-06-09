@@ -30,7 +30,7 @@ Blockly.Java['delay'] = function(block) {
   return code;
 };
 
-Blockly.Blocks['timer'] = {
+Blockly.Blocks['declare_timer'] = {
   init: function() {
     this.setHelpUrl('http://www.example.com/');
     this.setTooltip('');
@@ -48,7 +48,7 @@ Blockly.Blocks['timer'] = {
     }
   }
 };
-Blockly.Java['timer'] = function(block) {
+Blockly.Java['declare_timer'] = function(block) {
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
   
   Blockly.Java.addImport("import edu.wpi.first.wpilibj.Timer;");

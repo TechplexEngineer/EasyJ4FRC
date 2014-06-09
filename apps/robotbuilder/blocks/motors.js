@@ -1,5 +1,5 @@
 // Motors
-Blockly.Blocks['motor_controller'] = {
+Blockly.Blocks['declare_motor_controller'] = {
   init: function() {
     this.setHelpUrl('');
     this.setTooltip('Create a motor controller to control the speed of a motor.');
@@ -26,7 +26,7 @@ Blockly.Blocks['motor_controller'] = {
     }
   }
 };
-Blockly.Java['motor_controller'] = function(block) {
+Blockly.Java['declare_motor_controller'] = function(block) {
 
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
   var dropdown_type = block.getFieldValue('CONTROLLER_TYPE');
@@ -114,7 +114,7 @@ Blockly.Java['stop_motor_controller'] = function(block) {
   return code;
 };
 // -------------------------------------------------------------------------------------------------
-Blockly.Blocks['drivetrain'] = {
+Blockly.Blocks['declare_drivetrain'] = {
   init: function() {
     this.setHelpUrl('');
     this.setTooltip('Create a drivetrain and associated motor controllers to drive your robot.');
@@ -136,7 +136,7 @@ Blockly.Blocks['drivetrain'] = {
     }
   }
 };
-Blockly.Java['drivetrain'] = function(block) {
+Blockly.Java['declare_drivetrain'] = function(block) {
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
   var dropdown_type = block.getFieldValue('TYPE');
 
