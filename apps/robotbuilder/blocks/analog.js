@@ -18,7 +18,12 @@ Blockly.Blocks['analog_input'] = {
     this.setPreviousStatement(true, 'declare');
     this.setNextStatement(true, 'declare');
   },
-  onchange: EasyJ.Checker.EnsureNotTop_Init
+  onchange: EasyJ.Checker.EnsureNotTop_Init,
+  renameVar: function(oldName, newName) {
+    if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {
+      this.setFieldValue(newName, 'NAME');
+    }
+  }
 };
 Blockly.Java['analog_input'] = function(block) {
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
@@ -48,6 +53,11 @@ Blockly.Blocks['get_analog_input_value'] = {
     this.setInputsInline(true);
     this.setOutput(true, "Number");
 	this.setDependsOn("analog_input");
+  },
+  renameVar: function(oldName, newName) {
+    if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {
+      this.setFieldValue(newName, 'NAME');
+    }
   }
 };
 Blockly.Java['get_analog_input_value'] = function(block) {

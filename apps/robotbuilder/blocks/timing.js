@@ -41,7 +41,12 @@ Blockly.Blocks['timer'] = {
     this.setPreviousStatement(true, 'declare');
     this.setNextStatement(true, 'declare');
   },
-  onchange: EasyJ.Checker.EnsureNotTop_Init
+  onchange: EasyJ.Checker.EnsureNotTop_Init,
+  renameVar: function(oldName, newName) {
+    if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {
+      this.setFieldValue(newName, 'NAME');
+    }
+  }
 };
 Blockly.Java['timer'] = function(block) {
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
@@ -62,6 +67,11 @@ Blockly.Blocks['start_timer'] = {
     this.setPreviousStatement(true, 'statement');
     this.setNextStatement(true, 'statement');
 	this.setDependsOn("timer");
+  },
+  renameVar: function(oldName, newName) {
+    if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {
+      this.setFieldValue(newName, 'NAME');
+    }
   }
 };
 Blockly.Java['start_timer'] = function(block) {
@@ -82,6 +92,11 @@ Blockly.Blocks['stop_timer'] = {
     this.setPreviousStatement(true, 'statement');
     this.setNextStatement(true, 'statement');
 	this.setDependsOn("timer");
+  },
+  renameVar: function(oldName, newName) {
+    if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {
+      this.setFieldValue(newName, 'NAME');
+    }
   }
 };
 Blockly.Java['stop_timer'] = function(block) {
@@ -102,6 +117,11 @@ Blockly.Blocks['reset_timer'] = {
     this.setPreviousStatement(true, 'statement');
     this.setNextStatement(true, 'statement');
 	this.setDependsOn("timer");
+  },
+  renameVar: function(oldName, newName) {
+    if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {
+      this.setFieldValue(newName, 'NAME');
+    }
   }
 };
 Blockly.Java['reset_timer'] = function(block) {

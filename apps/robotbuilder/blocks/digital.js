@@ -18,7 +18,12 @@ Blockly.Blocks['digital_input'] = {
     this.setPreviousStatement(true, 'declare');
     this.setNextStatement(true, 'declare');
   },
-  onchange: EasyJ.Checker.EnsureNotTop_Init
+  onchange: EasyJ.Checker.EnsureNotTop_Init,
+  renameVar: function(oldName, newName) {
+    if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {
+      this.setFieldValue(newName, 'NAME');
+    }
+  }
 };
 Blockly.Java['digital_input'] = function(block) {
   var value_port = block.getFieldValue('PORT');
@@ -40,6 +45,11 @@ Blockly.Blocks['get_digital_input_value'] = {
     this.setInputsInline(true);
     this.setOutput(true, "Number");
 	this.setDependsOn("digital_input");
+  },
+  renameVar: function(oldName, newName) {
+    if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {
+      this.setFieldValue(newName, 'NAME');
+    }
   }
 };
 Blockly.Java['get_digital_input_value'] = function(block) {
@@ -70,7 +80,12 @@ Blockly.Blocks['digital_output'] = {
     this.setPreviousStatement(true, 'declare');
     this.setNextStatement(true, 'declare');
   },
-  onchange: EasyJ.Checker.EnsureNotTop_Init
+  onchange: EasyJ.Checker.EnsureNotTop_Init,
+  renameVar: function(oldName, newName) {
+    if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {
+      this.setFieldValue(newName, 'NAME');
+    }
+  }
 };
 Blockly.Java['digital_output'] = function(block) {
   var value_port = block.getFieldValue('PORT');
@@ -99,6 +114,11 @@ Blockly.Blocks['set_digital_output'] = {
     this.setPreviousStatement(true, 'statement');
     this.setNextStatement(true, 'statement');
 	this.setDependsOn("set_digital_output");
+  },
+  renameVar: function(oldName, newName) {
+    if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {
+      this.setFieldValue(newName, 'NAME');
+    }
   }
 };
 Blockly.Java['set_digital_output'] = function(block) {

@@ -13,7 +13,12 @@ Blockly.Blocks['compressor'] = {
     this.setPreviousStatement(true, 'declare');
     this.setNextStatement(true, 'declare');
   },
-  onchange: EasyJ.Checker.EnsureNotTop_Init
+  onchange: EasyJ.Checker.EnsureNotTop_Init,
+  renameVar: function(oldName, newName) {
+    if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {
+      this.setFieldValue(newName, 'NAME');
+    }
+  }
 };
 Blockly.Java['compressor'] = function(block) {
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
@@ -36,6 +41,11 @@ Blockly.Blocks['compressor_start'] = {
     this.setPreviousStatement(true, 'statement');
     this.setNextStatement(true, 'statement');
 	this.setDependsOn("compressor");
+  },
+  renameVar: function(oldName, newName) {
+    if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {
+      this.setFieldValue(newName, 'NAME');
+    }
   }
 };
 Blockly.Java['compressor_start'] = function(block) {
@@ -60,7 +70,12 @@ Blockly.Blocks['solenoid_single'] = {
     this.setPreviousStatement(true, 'declare');
     this.setNextStatement(true, 'declare');
   },
-  onchange: EasyJ.Checker.EnsureNotTop_Init
+  onchange: EasyJ.Checker.EnsureNotTop_Init,
+  renameVar: function(oldName, newName) {
+    if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {
+      this.setFieldValue(newName, 'NAME');
+    }
+  }
 };
 Blockly.Java['solenoid_single'] = function(block) {
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
@@ -87,6 +102,11 @@ Blockly.Blocks['set_solenoid_single'] = {
     this.setPreviousStatement(true, 'statement');
     this.setNextStatement(true, 'statement');
 	this.setDependsOn("solenoid_single");
+  },
+  renameVar: function(oldName, newName) {
+    if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {
+      this.setFieldValue(newName, 'NAME');
+    }
   }
 };
 Blockly.Java['set_solenoid_single'] = function(block) {
@@ -113,7 +133,12 @@ Blockly.Blocks['solenoid_double'] = {
     this.setPreviousStatement(true, 'declare');
     this.setNextStatement(true, 'declare');
   },
-  onchange: EasyJ.Checker.EnsureNotTop_Init
+  onchange: EasyJ.Checker.EnsureNotTop_Init,
+  renameVar: function(oldName, newName) {
+    if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {
+      this.setFieldValue(newName, 'NAME');
+    }
+  }
 };
 Blockly.Java['solenoid_double'] = function(block) {
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
@@ -141,6 +166,11 @@ Blockly.Blocks['double_solenoid_set'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
 	this.setDependsOn("solenoid_double");
+  },
+  renameVar: function(oldName, newName) {
+    if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {
+      this.setFieldValue(newName, 'NAME');
+    }
   }
 };
 Blockly.Java['double_solenoid_set'] = function(block) {

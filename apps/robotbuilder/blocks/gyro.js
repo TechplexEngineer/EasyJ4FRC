@@ -16,7 +16,12 @@ Blockly.Blocks['declare_gyro'] = {
     this.setPreviousStatement(true, 'declare');
     this.setNextStatement(true, 'declare');
   },
-  onchange: EasyJ.Checker.EnsureNotTop_Init
+  onchange: EasyJ.Checker.EnsureNotTop_Init,
+  renameVar: function(oldName, newName) {
+    if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {
+      this.setFieldValue(newName, 'NAME');
+    }
+  }
 };
 Blockly.Java['declare_gyro'] = function(block) {
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
@@ -50,6 +55,11 @@ Blockly.Blocks['get_gyro'] = {
     this.setInputsInline(true);
     this.setOutput(true, "Number");
 	this.setDependsOn("declare_gyro");
+  },
+  renameVar: function(oldName, newName) {
+    if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {
+      this.setFieldValue(newName, 'NAME');
+    }
   }
 };
 Blockly.Java['get_gyro'] = function(block) {
@@ -73,6 +83,11 @@ Blockly.Blocks['gyro_reset'] = {
     this.setPreviousStatement(true, 'statement');
     this.setNextStatement(true, 'statement');
 	this.setDependsOn("declare_gyro");
+  },
+  renameVar: function(oldName, newName) {
+    if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {
+      this.setFieldValue(newName, 'NAME');
+    }
   }
 };
 Blockly.Java['gyro_reset'] = function(block) {

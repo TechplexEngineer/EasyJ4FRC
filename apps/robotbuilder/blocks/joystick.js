@@ -14,7 +14,12 @@ Blockly.Blocks['joystick'] = {
     this.setPreviousStatement(true, 'declare');
     this.setNextStatement(true, 'declare');
   },
-  onchange: EasyJ.Checker.EnsureNotTop_Init
+  onchange: EasyJ.Checker.EnsureNotTop_Init,
+  renameVar: function(oldName, newName) {
+    if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {
+      this.setFieldValue(newName, 'NAME');
+    }
+  }
 };
 
 Blockly.Java['joystick'] = function(block) {
@@ -45,6 +50,11 @@ Blockly.Blocks['get_joystick_axis'] = {
         .appendField(new Blockly.FieldDropdown([["X Axis", "kX"], ["Y Axis", "kY"], ["Z Axis", "kZ"], ["Twist", "kTwist"], ["Throttle", "kThrottle"]]), "WHAT");
     this.setOutput(true, "Number");
 	this.setDependsOn("joystick");
+  },
+  renameVar: function(oldName, newName) {
+    if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {
+      this.setFieldValue(newName, 'NAME');
+    }
   }
 };
 Blockly.Java['get_joystick_axis'] = function(block) {
@@ -74,6 +84,11 @@ Blockly.Blocks['get_joystick_button'] = {
     this.setInputsInline(true);
     this.setOutput(true, "Boolean");
 	this.setDependsOn("joystick");
+  },
+  renameVar: function(oldName, newName) {
+    if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {
+      this.setFieldValue(newName, 'NAME');
+    }
   }
 };
 Blockly.Java['get_joystick_button'] = function(block) {
