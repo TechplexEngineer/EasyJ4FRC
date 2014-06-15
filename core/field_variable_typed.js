@@ -44,6 +44,7 @@ goog.require('Blockly.FieldVariable');
 Blockly.TypedFieldVariable = function(varname, type, createVar, opt_changeHandler) {
   var changeHandler;
   this.vartype = type;
+  this.createVar = createVar;
 
   this.createVar = false;
   if (typeof createVar === "boolean") {
@@ -123,7 +124,7 @@ Blockly.TypedFieldVariable.dropdownCreate = function() {
   var variableList = Blockly.Variables.allVariablesOfType(this.vartype);
   // Ensure that the currently selected variable is an option.
   var name = this.getText();
-  if (name && variableList.indexOf(name) == -1) {
+  if (name && variableList.indexOf(name) == -1 && this.createVar) {
     variableList.push(name);
   }
   variableList.sort(goog.string.caseInsensitiveCompare);
