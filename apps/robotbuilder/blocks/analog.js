@@ -54,6 +54,15 @@ Blockly.Blocks['get_analog_input_value'] = {
     this.setOutput(true, "Number");
 	this.setDependsOn("declare_analog_input");
   },
+  onchange: function(evt) {
+   if (!this.workspace || this.isInFlyout) {
+      // Block has been deleted, or is in flyout
+      return;
+    }
+    var block = this;
+    this.setWarningText(EasyJ.Checker.PickWarning(block, [EasyJ.Checker.EnsureVariablesExist, EasyJ.Checker.EnsureNotOrphaned]));
+
+  },
   renameVar: function(oldName, newName) {
     if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {
       this.setFieldValue(newName, 'NAME');

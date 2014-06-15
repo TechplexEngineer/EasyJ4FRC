@@ -62,6 +62,15 @@ Blockly.Blocks['move_motor_controller'] = {
     this.setNextStatement(true, 'statement');
 	this.setDependsOn("declare_motor_controller");
   },
+  onchange: function(evt) {
+   if (!this.workspace || this.isInFlyout) {
+      // Block has been deleted, or is in flyout
+      return;
+    }
+    var block = this;
+    this.setWarningText(EasyJ.Checker.PickWarning(block, [EasyJ.Checker.EnsureVariablesExist, EasyJ.Checker.EnsureNotOrphaned]));
+
+  },
   renameVar: function(oldName, newName) {
     if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {
       this.setFieldValue(newName, 'NAME');
@@ -82,7 +91,7 @@ Blockly.Java['move_motor_controller'] = function(block) {
   {
     block.setWarningText(null);
   }
-  
+
   var code =variable_name+'.set('+value_speed+');\n';
   return code;
 };
@@ -99,6 +108,15 @@ Blockly.Blocks['stop_motor_controller'] = {
     this.setPreviousStatement(true, 'statement');
     this.setNextStatement(true, 'statement');
 	this.setDependsOn("declare_motor_controller");
+  },
+  onchange: function(evt) {
+   if (!this.workspace || this.isInFlyout) {
+      // Block has been deleted, or is in flyout
+      return;
+    }
+    var block = this;
+    this.setWarningText(EasyJ.Checker.PickWarning(block, [EasyJ.Checker.EnsureVariablesExist, EasyJ.Checker.EnsureNotOrphaned]));
+
   },
   renameVar: function(oldName, newName) {
     if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {
@@ -172,6 +190,15 @@ Blockly.Blocks['move_drivetrain'] = {
     this.setNextStatement(true, 'statement');
 	this.setDependsOn("declare_drivetrain");
   },
+  onchange: function(evt) {
+   if (!this.workspace || this.isInFlyout) {
+      // Block has been deleted, or is in flyout
+      return;
+    }
+    var block = this;
+    this.setWarningText(EasyJ.Checker.PickWarning(block, [EasyJ.Checker.EnsureVariablesExist, EasyJ.Checker.EnsureNotOrphaned]));
+
+  },
   renameVar: function(oldName, newName) {
     if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {
       this.setFieldValue(newName, 'NAME');
@@ -182,7 +209,7 @@ Blockly.Java['move_drivetrain'] = function(block) {
   var value_move = Blockly.Java.valueToCode(block, 'MOVE', Blockly.Java.ORDER_ATOMIC);
   var value_turn = Blockly.Java.valueToCode(block, 'TURN', Blockly.Java.ORDER_ATOMIC);
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
-  
+
   if (value_move=="") {
     block.setWarningText("Motor Controller speed not set. Defaulted to speed 0.");
     value_move = 0;
@@ -215,6 +242,15 @@ Blockly.Blocks['stop_drivetrain'] = {
     this.setNextStatement(true, 'statement');
 	this.setDependsOn("declare_drivetrain");
   },
+  onchange: function(evt) {
+   if (!this.workspace || this.isInFlyout) {
+      // Block has been deleted, or is in flyout
+      return;
+    }
+    var block = this;
+    this.setWarningText(EasyJ.Checker.PickWarning(block, [EasyJ.Checker.EnsureVariablesExist, EasyJ.Checker.EnsureNotOrphaned]));
+
+  },
   renameVar: function(oldName, newName) {
     if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {
       this.setFieldValue(newName, 'NAME');
@@ -242,7 +278,16 @@ Blockly.Blocks['move_with_joystick'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, 'statement');
     this.setNextStatement(true, 'statement');
-	this.setDependsOn(["declare_drivetrain", "declare_joystick"]);
+    this.setDependsOn(["declare_drivetrain", "declare_joystick"]);
+  },
+  onchange: function(evt) {
+   if (!this.workspace || this.isInFlyout) {
+      // Block has been deleted, or is in flyout
+      return;
+    }
+    var block = this;
+    this.setWarningText(EasyJ.Checker.PickWarning(block, [EasyJ.Checker.EnsureVariablesExist, EasyJ.Checker.EnsureNotOrphaned]));
+
   },
   renameVar: function(oldName, newName) {
     if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {

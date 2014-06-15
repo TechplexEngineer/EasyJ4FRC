@@ -46,6 +46,15 @@ Blockly.Blocks['get_digital_input_value'] = {
     this.setOutput(true, "Number");
 	this.setDependsOn("declare_digital_input");
   },
+  onchange: function(evt) {
+   if (!this.workspace || this.isInFlyout) {
+      // Block has been deleted, or is in flyout
+      return;
+    }
+    var block = this;
+    this.setWarningText(EasyJ.Checker.PickWarning(block, [EasyJ.Checker.EnsureVariablesExist, EasyJ.Checker.EnsureNotOrphaned]));
+
+  },
   renameVar: function(oldName, newName) {
     if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {
       this.setFieldValue(newName, 'NAME');
@@ -79,6 +88,15 @@ Blockly.Blocks['declare_digital_output'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, 'declare');
     this.setNextStatement(true, 'declare');
+  },
+  onchange: function(evt) {
+   if (!this.workspace || this.isInFlyout) {
+      // Block has been deleted, or is in flyout
+      return;
+    }
+    var block = this;
+    this.setWarningText(EasyJ.Checker.PickWarning(block, [EasyJ.Checker.EnsureVariablesExist, EasyJ.Checker.EnsureNotOrphaned]));
+
   },
   onchange: EasyJ.Checker.EnsureNotTop_Init,
   renameVar: function(oldName, newName) {
@@ -114,6 +132,15 @@ Blockly.Blocks['set_digital_output'] = {
     this.setPreviousStatement(true, 'statement');
     this.setNextStatement(true, 'statement');
 	this.setDependsOn("set_digital_output");
+  },
+  onchange: function(evt) {
+   if (!this.workspace || this.isInFlyout) {
+      // Block has been deleted, or is in flyout
+      return;
+    }
+    var block = this;
+    this.setWarningText(EasyJ.Checker.PickWarning(block, [EasyJ.Checker.EnsureVariablesExist, EasyJ.Checker.EnsureNotOrphaned]));
+
   },
   renameVar: function(oldName, newName) {
     if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {

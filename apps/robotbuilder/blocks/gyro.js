@@ -56,6 +56,15 @@ Blockly.Blocks['get_gyro'] = {
     this.setOutput(true, "Number");
 	this.setDependsOn("declare_gyro");
   },
+  onchange: function(evt) {
+   if (!this.workspace || this.isInFlyout) {
+      // Block has been deleted, or is in flyout
+      return;
+    }
+    var block = this;
+    this.setWarningText(EasyJ.Checker.PickWarning(block, [EasyJ.Checker.EnsureVariablesExist, EasyJ.Checker.EnsureNotOrphaned]));
+
+  },
   renameVar: function(oldName, newName) {
     if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {
       this.setFieldValue(newName, 'NAME');
@@ -83,6 +92,15 @@ Blockly.Blocks['gyro_reset'] = {
     this.setPreviousStatement(true, 'statement');
     this.setNextStatement(true, 'statement');
 	this.setDependsOn("declare_gyro");
+  },
+  onchange: function(evt) {
+   if (!this.workspace || this.isInFlyout) {
+      // Block has been deleted, or is in flyout
+      return;
+    }
+    var block = this;
+    this.setWarningText(EasyJ.Checker.PickWarning(block, [EasyJ.Checker.EnsureVariablesExist, EasyJ.Checker.EnsureNotOrphaned]));
+
   },
   renameVar: function(oldName, newName) {
     if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {

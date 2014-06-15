@@ -94,6 +94,15 @@ Blockly.Blocks['get_joystick_button'] = {
     this.setOutput(true, "Boolean");
 	this.setDependsOn("declare_joystick");
   },
+  onchange: function(evt) {
+   if (!this.workspace || this.isInFlyout) {
+      // Block has been deleted, or is in flyout
+      return;
+    }
+    var block = this;
+    this.setWarningText(EasyJ.Checker.PickWarning(block, [EasyJ.Checker.EnsureVariablesExist, EasyJ.Checker.EnsureNotOrphaned]));
+
+  },
   renameVar: function(oldName, newName) {
     if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {
       this.setFieldValue(newName, 'NAME');

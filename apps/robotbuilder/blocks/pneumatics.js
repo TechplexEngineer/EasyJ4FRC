@@ -42,6 +42,15 @@ Blockly.Blocks['compressor_start'] = {
     this.setNextStatement(true, 'statement');
 	this.setDependsOn("declare_compressor");
   },
+  onchange: function(evt) {
+   if (!this.workspace || this.isInFlyout) {
+      // Block has been deleted, or is in flyout
+      return;
+    }
+    var block = this;
+    this.setWarningText(EasyJ.Checker.PickWarning(block, [EasyJ.Checker.EnsureVariablesExist, EasyJ.Checker.EnsureNotOrphaned]));
+
+  },
   renameVar: function(oldName, newName) {
     if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {
       this.setFieldValue(newName, 'NAME');
@@ -102,6 +111,15 @@ Blockly.Blocks['set_solenoid_single'] = {
     this.setPreviousStatement(true, 'statement');
     this.setNextStatement(true, 'statement');
 	this.setDependsOn("declare_solenoid_single");
+  },
+  onchange: function(evt) {
+   if (!this.workspace || this.isInFlyout) {
+      // Block has been deleted, or is in flyout
+      return;
+    }
+    var block = this;
+    this.setWarningText(EasyJ.Checker.PickWarning(block, [EasyJ.Checker.EnsureVariablesExist, EasyJ.Checker.EnsureNotOrphaned]));
+
   },
   renameVar: function(oldName, newName) {
     if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {
@@ -165,7 +183,16 @@ Blockly.Blocks['double_solenoid_set'] = {
             ["Off", "kOff"]]), "TO");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-	this.setDependsOn("declare_solenoid_double");
+    this.setDependsOn("declare_solenoid_double");
+  },
+  onchange: function(evt) {
+   if (!this.workspace || this.isInFlyout) {
+      // Block has been deleted, or is in flyout
+      return;
+    }
+    var block = this;
+    this.setWarningText(EasyJ.Checker.PickWarning(block, [EasyJ.Checker.EnsureVariablesExist, EasyJ.Checker.EnsureNotOrphaned]));
+
   },
   renameVar: function(oldName, newName) {
     if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {

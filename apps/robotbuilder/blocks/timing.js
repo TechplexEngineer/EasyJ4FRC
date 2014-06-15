@@ -66,7 +66,16 @@ Blockly.Blocks['start_timer'] = {
         .appendField(new Blockly.TypedFieldVariable("Timer1", "Timer"), "NAME");
     this.setPreviousStatement(true, 'statement');
     this.setNextStatement(true, 'statement');
-	this.setDependsOn("declare_timer");
+    this.setDependsOn("declare_timer");
+  },
+  onchange: function(evt) {
+   if (!this.workspace || this.isInFlyout) {
+      // Block has been deleted, or is in flyout
+      return;
+    }
+    var block = this;
+    this.setWarningText(EasyJ.Checker.PickWarning(block, [EasyJ.Checker.EnsureVariablesExist, EasyJ.Checker.EnsureNotOrphaned]));
+
   },
   renameVar: function(oldName, newName) {
     if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {
@@ -91,7 +100,16 @@ Blockly.Blocks['stop_timer'] = {
         .appendField(new Blockly.TypedFieldVariable("Timer1", "Timer"), "NAME");
     this.setPreviousStatement(true, 'statement');
     this.setNextStatement(true, 'statement');
-	this.setDependsOn("declare_timer");
+    this.setDependsOn("declare_timer");
+  },
+  onchange: function(evt) {
+   if (!this.workspace || this.isInFlyout) {
+      // Block has been deleted, or is in flyout
+      return;
+    }
+    var block = this;
+    this.setWarningText(EasyJ.Checker.PickWarning(block, [EasyJ.Checker.EnsureVariablesExist, EasyJ.Checker.EnsureNotOrphaned]));
+
   },
   renameVar: function(oldName, newName) {
     if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {
@@ -117,6 +135,15 @@ Blockly.Blocks['reset_timer'] = {
     this.setPreviousStatement(true, 'statement');
     this.setNextStatement(true, 'statement');
 	this.setDependsOn("declare_timer");
+  },
+  onchange: function(evt) {
+   if (!this.workspace || this.isInFlyout) {
+      // Block has been deleted, or is in flyout
+      return;
+    }
+    var block = this;
+    this.setWarningText(EasyJ.Checker.PickWarning(block, [EasyJ.Checker.EnsureVariablesExist, EasyJ.Checker.EnsureNotOrphaned]));
+
   },
   renameVar: function(oldName, newName) {
     if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {
