@@ -129,7 +129,9 @@ Blockly.TypedFieldVariable.dropdownCreate = function() {
   }
   variableList.sort(goog.string.caseInsensitiveCompare);
   variableList.push(Blockly.Msg.RENAME_VARIABLE);
-  variableList.push(Blockly.Msg.NEW_VARIABLE);
+  if (this.createVar) {
+    variableList.push(Blockly.Msg.NEW_VARIABLE);
+  }
   // Variables are not language-specific, use the name as both the user-facing
   // text and the internal representation.
   var options = [];
