@@ -96,3 +96,39 @@ EasyJ.Checker.EnsureNotTop_Init = function() {
     this.setWarningText("Error: This block must be within the Initialization block.");
   }
 };
+
+EasyJ.Checker.PickWarning = function(block, warnings) {
+  if (!$.isArray(warnings))
+    warnings = [warnings];
+
+  for (var i=0; i<warnings.length; i++) {
+    var ret = warnings[i].call(block, block);
+    if (ret != null) {
+      //block.setWarningText(warnings[i]);
+      return ret;
+    }
+  }
+  return null;
+};
+
+EasyJ.Checker.EnsureVariablesExist = function(block) {
+  var blkvars = Blockly.Java.getTypedVarsFromBlock(block, false);
+  for (var i=0; i<blkvars.length; i++) {
+    var vartype = blkvars[i].vartype;
+    var varsofmatchingtype = Blockly.Variables.allVariablesOfType(vartype);
+    if ($.inArray(blkvars[i].name, varsofmatchingtype)) {
+     return "The variable '"+blkvars[i].name+"' is not declared!";
+    } else {
+      return null;
+    }
+  }
+};
+
+
+EasyJ.Checker.EnsureNotOrphaned = function(block) {
+	if (block.getSurroundParent()) {
+		return null;
+	} else {
+		return 'Ensure this block is correctly connected. It is not currently part of your program.';
+	}
+}
