@@ -56,18 +56,26 @@ function scrubWhitespace(code) {
 
 /**
  * Return a hash of a given block's variables
+ * @param {Blockly.Block=} block block to get variables from
+ * @param {bool} opt_onlyCreate false to get a list of all typed variables in use by a block, defaults to true
  * @return {hash} {name:"", vartype:""}
  */
-Blockly.Block.prototype.getVars = function() {
+Blockly.Java.getTypedVarsFromBlock = function(block, opt_onlyCreate) {
+  if (typeof opt_onlyCreate === "undefined") {
+    opt_onlyCreate = true;
+  }
   var out = [];
-  for (var i = 0; i < this.inputList.length; i++) {
-    for (var j = 0; j < this.inputList[i].fieldRow.length; j++) {
-      var item = this.inputList[i].fieldRow[j];
-      // console.log(this.type, item instanceof Blockly.FieldVariable, item);
+  for (var i = 0; i < block.inputList.length; i++) {
+    for (var j = 0; j < block.inputList[i].fieldRow.length; j++) {
+      var item = block.inputList[i].fieldRow[j];
+      // console.log(block.type, item instanceof Blockly.FieldVariable, item);
       // console.log("Item",item.vartype);
-      if (item instanceof Blockly.TypedFieldVariable && item.createVar) { //@todo should we handle these: FieldVariable
+      if (opt_onlyCreate && !item.createVar) {
+        continue;
+      }
+      if (item instanceof Blockly.TypedFieldVariable) { //@todo should we handle these: FieldVariable
         var obj = {};
-        obj.name = this.getFieldValue(item.name);
+        obj.name = block.getFieldValue(item.name);
         obj.vartype = item.vartype;
         out.push(obj)
       };
@@ -75,6 +83,14 @@ Blockly.Block.prototype.getVars = function() {
   };
   // console.log("out",out);
   return out;
+}
+
+/**
+ * Return a hash of a given block's variables
+ * @return {hash} {name:"", vartype:""}
+ */
+Blockly.Block.prototype.getVars = function() {
+  return Blockly.Java.getTypedVarsFromBlock(this);
 }
 
 /**
@@ -164,7 +180,7 @@ $(document).on("blocklyLoaded", function() {
 
 /**
  * Filter the blocks on the flyout to disable the ones that are above the
- * capacity limit.
+ * capacity limit and, the ones which depend on another block
  * @private
  */
 Blockly.Flyout.prototype.filterForCapacity_ = function() {
