@@ -193,14 +193,16 @@ Blockly.Flyout.prototype.filterForCapacity_ = function() {
     var allBlocks = block.getDescendants(); // blocks which are containted (value blocks or statement blocks)
 
     var disabled = allBlocks.length > remainingCapacity;
-	 
-	// if the block depends on another block, at least one of those other blocks must exist
-	if (block.dependsOn) {
-		// && (typeof Blockly.blockHash[block.dependsOn] === "undefined" || Blockly.blockHash[block.dependsOn] < 1)
-		for (var j = 0; j < block.dependsOn.length; j++) {
-			disabled = (typeof Blockly.blockHash[block.dependsOn[j]] === "undefined" || Blockly.blockHash[block.dependsOn[j]] < 1)
-		}
-	}
+
+    // if the block depends on another block, at least one of those other blocks must exist
+    if (block.dependsOn && !disabled) {
+      // && (typeof Blockly.blockHash[block.dependsOn] === "undefined" || Blockly.blockHash[block.dependsOn] < 1)
+      for (var j = 0; j < block.dependsOn.length; j++) {
+        disabled = (typeof Blockly.blockHash[block.dependsOn[j]] === "undefined" || Blockly.blockHash[block.dependsOn[j]] < 1)
+        if (disabled)
+          break;
+      }
+    }
 
 // @todo
 //     if (block.maxAvailable !== null) {
