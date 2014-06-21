@@ -40,7 +40,7 @@ Blockly.Java['declare_motor_controller'] = function(block) {
   {
     block.setWarningText(null);
   }
-  
+
   Blockly.Java.addImport("import edu.wpi.first.wpilibj."+dropdown_type+";");
   var code = dropdown_type+' '+variable_name+' = new '+dropdown_type+'('+value_port+');\n';
   return code;

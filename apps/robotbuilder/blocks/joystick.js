@@ -33,7 +33,7 @@ Blockly.Java['declare_joystick'] = function(block) {
   else {
     block.setWarningText(null);
   }
-  
+
   Blockly.Java.addImport("import edu.wpi.first.wpilibj.Joystick;");
   var code = 'Joystick '+variable_name+' = new Joystick('+value_port+');\n';
   return code;

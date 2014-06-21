@@ -17,7 +17,7 @@ Blockly.Blocks['delay'] = {
 };
 Blockly.Java['delay'] = function(block) {
   var value_amount = Blockly.Java.valueToCode(block, 'AMOUNT', Blockly.Java.ORDER_ATOMIC);
-  
+
   if (value_amount=="") {
     block.setWarningText("Delay amount not set. Defaulted to 0 secs.");
     value_amount = 1;
@@ -50,7 +50,7 @@ Blockly.Blocks['declare_timer'] = {
 };
 Blockly.Java['declare_timer'] = function(block) {
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
-  
+
   Blockly.Java.addImport("import edu.wpi.first.wpilibj.Timer;");
   var code = 'Timer '+variable_name+' = new Timer();';
   return code;

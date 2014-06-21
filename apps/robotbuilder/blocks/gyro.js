@@ -26,7 +26,7 @@ Blockly.Blocks['declare_gyro'] = {
 Blockly.Java['declare_gyro'] = function(block) {
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
   var value_port = block.getFieldValue('PORT');
-  
+
   if (value_port=="") {
     block.setWarningText("Gyro port not set. Defaulted to port 1.");
     value_port = 1;
@@ -74,7 +74,7 @@ Blockly.Blocks['get_gyro'] = {
 Blockly.Java['get_gyro'] = function(block) {
   var dropdown_what = block.getFieldValue('WHAT');
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
-  
+
   //@todo make sure wariable_name has been declared
   var code = variable_name+'.'+dropdown_what+'()';
   return code;
