@@ -89,15 +89,6 @@ Blockly.Blocks['declare_digital_output'] = {
     this.setPreviousStatement(true, 'declare');
     this.setNextStatement(true, 'declare');
   },
-  onchange: function(evt) {
-   if (!this.workspace || this.isInFlyout) {
-      // Block has been deleted, or is in flyout
-      return;
-    }
-    var block = this;
-    this.setWarningText(EasyJ.Checker.PickWarning(block, [EasyJ.Checker.EnsureVariablesExist, EasyJ.Checker.EnsureNotOrphaned]));
-
-  },
   onchange: EasyJ.Checker.EnsureNotTop_Init,
   renameVar: function(oldName, newName) {
     if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {
