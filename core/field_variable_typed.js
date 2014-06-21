@@ -43,6 +43,12 @@ goog.require('Blockly.FieldVariable');
  */
 Blockly.TypedFieldVariable = function(varname, type, createVar, opt_changeHandler) {
   var changeHandler;
+  if (typeof varname == "undefined") {
+    throw new Error("Variable name is undefined.");
+  }
+  if (typeof type == "undefined") {
+    throw new Error("Variable type is undefined.");
+  }
   this.vartype = type;
   this.createVar = createVar;
 
