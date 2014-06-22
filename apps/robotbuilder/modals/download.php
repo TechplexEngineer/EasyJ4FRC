@@ -4,10 +4,11 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title">Download</h4>
+				<h4 class="modal-title">Download code as a Netbeans Project</h4>
 			</div>
 			<div class="modal-body">
-
+        <p>Ready to try your code on your robot? </p>
+        <p>This tool allows you to download your code as a zip file. Once you extract the contents of the zip file, Netbeans can open the project inside.</p>
 				<label for="download_filename">Filename:</label>
 				<div class="input-group">
 					<input id="download_filename" type="text" class="form-control" value="download">

@@ -7,6 +7,7 @@
 				<h4 class="modal-title">Save As</h4>
 			</div>
 			<div class="modal-body">
+        <p>Save your project. You'll be able to open it later from this computer.</p>
 				<label for="save_filename">Filename:</label>
 				<input id="save_filename" type="text" class="form-control" value="filename">
 
@@ -26,7 +27,7 @@
 			if ($(event.target).attr('id') == 'save') {
 				//Put the most recent robot class in the filename
 				//@todo cache their filename
-				$('#save_filename').val(EasyJ.robotClass);				
+				$('#save_filename').val(EasyJ.robotClass);
 			}
 		});
 		$('#save .modal-footer .savebtn').click(function() {
@@ -48,8 +49,7 @@
 					}
 				}
 			}
-			
-			
+
 		});
 	});
 </script>

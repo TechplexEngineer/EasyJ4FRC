@@ -36,25 +36,25 @@
 
 <script type="text/javascript">
 
-function handleEmpty () {
-	var empty = $("<h3>").text("No saved projects");
-	empty.appendTo($('#open .modal-body'));
-}
+  function handleEmpty () {
+    var empty = $("<h3>").text("No saved projects");
+    empty.appendTo($('#open .modal-body'));
+  }
 
-function loadbtn (event) {
-	var ret = EasyJ.localStorage.open($(this).data('name'));
-	if (ret) {
-		$("#open").modal('hide');
-	}
-	// @todo handle errors better
-}
-function removebtn (event) {
-	var ret = EasyJ.localStorage.remove($(this).data('name'));
-	$(this).closest('.example').remove(); //based on the button pressed remove the parent example div
-	if (EasyJ.localStorage.listSaves().length == 0) {
-		handleEmpty();
-	};
-}
+  function loadbtn (event) {
+    var ret = EasyJ.localStorage.open($(this).data('name'));
+    if (ret) {
+      $("#open").modal('hide');
+    }
+    // @todo handle errors better
+  }
+  function removebtn (event) {
+    var ret = EasyJ.localStorage.remove($(this).data('name'));
+    $(this).closest('.example').remove(); //based on the button pressed remove the parent example div
+    if (EasyJ.localStorage.listSaves().length == 0) {
+      handleEmpty();
+    };
+  }
 
 
 	$(document).ready(function () {
