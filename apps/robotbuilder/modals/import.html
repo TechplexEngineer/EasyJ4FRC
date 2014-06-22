@@ -21,7 +21,7 @@
 	$(document).ready(function () {
 		$('#import .loadbtn').click(function() {
 			var toload = $('#import .modal-body textarea').val();
-			console.log(toload);
+
 			var success = loadxml(toload);
 			if (success) {
 				$('#import').modal('hide');

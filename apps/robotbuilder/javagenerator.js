@@ -36,14 +36,12 @@ Blockly.Java.workspaceToCode = function (rootBlk) {
   code = code.join('\n');  // Blank line between each section.
   declarations = declarations.join('');
   // code = this.finish(code, declarations.join('\n'));
-  
- 
 
 
   // Final scrubbing of whitespace.
   code = scrubWhitespace(code);
   declarations = scrubWhitespace(declarations);
-  
+
   return {"code":code, "declarations":declarations};
 };
 

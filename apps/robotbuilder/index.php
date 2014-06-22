@@ -17,7 +17,7 @@ $dev = file_exists("DEV");
 		<title><?= $title ?></title>
 
 		<?php 
-		if ($dev): 
+		if ($dev):
 		?>
 <!-- Include these in development mode ************************************* -->
 			<!-- Bootstrap core CSS -->
@@ -25,13 +25,13 @@ $dev = file_exists("DEV");
 
 			<link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 			<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-			
+
 			<link rel="stylesheet" type="text/css" href="../prettify.css">
 			<script type="text/javascript" src="../prettify.js"></script>
-			
 
-		<?php 
-		else: 
+
+		<?php
+		else:
 		?>
 <!-- Include these in production mode ************************************** -->
 			<!-- Bootstrap core CSS -->
@@ -39,7 +39,7 @@ $dev = file_exists("DEV");
 
 			<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 			<script src="bootstrap/js/bootstrap.min.js"></script>
-			
+
 			<link rel="stylesheet" type="text/css" href="prettify.css">
 			<script type="text/javascript" src="prettify.js"></script>
 
@@ -69,11 +69,10 @@ $dev = file_exists("DEV");
 			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 		<![endif]-->
 		<script type="text/javascript" src="tabifier.js"></script>
-		
+
 		<script type="text/javascript" src="easyj.js"></script>
 		<script type="text/javascript">
 		$(document).ready(function() {
-			console.log("Ready!");
 
 			/**
 			 * Make the #content element fill the remaining horizontal space
@@ -97,7 +96,7 @@ $dev = file_exists("DEV");
 			}).resize();
 
 			// toggle between blocks and code
-			$('#blockcodetoggle').click(function(event){
+			$('#blockcodetoggle').click(function(event) {
 				if ($(event.target).attr('id') == "code") {
 
           var code = generateJavaCode();
@@ -120,8 +119,7 @@ $dev = file_exists("DEV");
 			});
 
 			// Handle the Clear option in the edit menu
-			$('#edit_clear').click(function(event){
-				console.log("Clicked");
+			$('#edit_clear').click(function(event) {
 				event.preventDefault();
 				if (window.confirm("Do you really want to clear the workspace?\nAll work will be lost!")) {
 					Blockly.mainWorkspace.reset();
@@ -212,7 +210,7 @@ $dev = file_exists("DEV");
 						</li> -->
 					</ul>
 					<div class="pull-right" style="margin-top:8px;">
-						
+
 						<a href="#help" class="notext iconbar" title="Help" data-toggle="modal">
 							<!-- <img src="images/icons/iconmonstr-help-3-icon-256.png" style="height: 35px;"> -->
 							<?php include "images/icons/help.svg" ?>
@@ -263,19 +261,12 @@ $dev = file_exists("DEV");
 			}
 			function onchange() {
 
-
-				
-				
-				
-
 			}
 			function blocklyLoaded(blockly) {
 				// Called once Blockly is fully loaded.
 				window.Blockly = blockly;
 				$(window).resize();
-				
-				
-				
+
 				Blockly.addChangeListener(onchange);
 
 				loadxml = function(xml) {
