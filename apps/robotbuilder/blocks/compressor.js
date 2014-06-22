@@ -2,7 +2,7 @@ Blockly.Blocks['declare_compressor'] = {
   init: function() {
     this.setHelpUrl('');
     this.setTooltip('');
-    this.setColour(20);
+    this.setColour(120);
     this.appendDummyInput()
         .appendField("Declare Compressor")
         .appendField(new Blockly.TypedFieldVariable("Pump1", "Compressor", true), "NAME")

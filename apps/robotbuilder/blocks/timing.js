@@ -34,7 +34,7 @@ Blockly.Blocks['declare_timer'] = {
   init: function() {
     this.setHelpUrl('http://www.example.com/');
     this.setTooltip('');
-    this.setColour(260);
+    this.setColour(120);
     this.appendDummyInput()
         .appendField("Declare Timer")
         .appendField(new Blockly.TypedFieldVariable("Timer1", "Timer", true), "NAME");
