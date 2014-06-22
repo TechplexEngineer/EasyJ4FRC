@@ -1,5 +1,5 @@
 <xml id="toolbox" style="display: none">
-    
+
     <category name="Input &amp; Sensors">
 
       <category name="User (Joystick)">
@@ -23,7 +23,7 @@
         <block type="declare_analog_input"></block>
         <block type="get_analog_input_value"></block>
       </category>
-      
+
     </category>
 
     <category name="Outputs">
@@ -89,7 +89,7 @@
         <block type="double_solenoid_set"></block>
       </category>
 
-      
+
     </category>
 
     <category name="Logic">
@@ -140,10 +140,10 @@
       <block type="math_constant"></block>
       <category name="More">
         <block type="math_number_property"></block>
-        <block type="math_change"></block>
+<!--         <block type="math_change"></block> -->
         <block type="math_round"></block>
         <block type="math_trig"></block>
-        <block type="math_on_list"></block>
+<!--         <block type="math_on_list"></block> -->
         <block type="math_modulo"></block>
         <block type="math_constrain"></block>
         <block type="math_random_int"></block>
@@ -168,7 +168,7 @@
         <block type="text_getSubstring"></block>
         <block type="text_changeCase"></block>
         <block type="text_trim"></block>
-        <block type="text_prompt"></block>
+<!--         <block type="text_prompt"></block> -->
       </category>
     </category>
 
