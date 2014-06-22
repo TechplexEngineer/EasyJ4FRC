@@ -58,6 +58,15 @@ Blockly.Blocks['text'] = {
     }
     return new Blockly.FieldImage(Blockly.pathToBlockly + 'media/' + file,
                                   12, 12, '"');
+  },
+  onchange: function(evt) {
+   if (!this.workspace || this.isInFlyout) {
+      // Block has been deleted, or is in flyout
+      return;
+    }
+    var block = this;
+    this.setWarningText(EasyJ.Checker.EnsureNotOrphaned(block));
+
   }
 };
 
@@ -166,6 +175,15 @@ Blockly.Blocks['text_join'] = {
           'media/quote0.png', 12, 12, '"'))
           .appendField(new Blockly.FieldImage(Blockly.pathToBlockly +
           'media/quote1.png', 12, 12, '"'));
+    },
+    onchange: function(evt) {
+     if (!this.workspace || this.isInFlyout) {
+        // Block has been deleted, or is in flyout
+        return;
+      }
+      var block = this;
+      this.setWarningText(EasyJ.Checker.EnsureNotOrphaned(block));
+
     }
   },
   /**
@@ -258,6 +276,15 @@ Blockly.Blocks['text_append'] = {
     if (Blockly.Names.equals(oldName, this.getFieldValue('VAR'))) {
       this.setFieldValue(newName, 'VAR');
     }
+  },
+  onchange: function(evt) {
+   if (!this.workspace || this.isInFlyout) {
+      // Block has been deleted, or is in flyout
+      return;
+    }
+    var block = this;
+    this.setWarningText(EasyJ.Checker.EnsureNotOrphaned(block));
+
   }
 };
 
@@ -274,6 +301,15 @@ Blockly.Blocks['text_length'] = {
                         Blockly.ALIGN_RIGHT);
     this.setOutput(true, 'Number');
     this.setTooltip(Blockly.Msg.TEXT_LENGTH_TOOLTIP);
+  },
+  onchange: function(evt) {
+   if (!this.workspace || this.isInFlyout) {
+      // Block has been deleted, or is in flyout
+      return;
+    }
+    var block = this;
+    this.setWarningText(EasyJ.Checker.EnsureNotOrphaned(block));
+
   }
 };
 
@@ -290,6 +326,15 @@ Blockly.Blocks['text_isEmpty'] = {
                         Blockly.ALIGN_RIGHT);
     this.setOutput(true, 'Boolean');
     this.setTooltip(Blockly.Msg.TEXT_ISEMPTY_TOOLTIP);
+  },
+  onchange: function(evt) {
+   if (!this.workspace || this.isInFlyout) {
+      // Block has been deleted, or is in flyout
+      return;
+    }
+    var block = this;
+    this.setWarningText(EasyJ.Checker.EnsureNotOrphaned(block));
+
   }
 };
 
@@ -316,6 +361,15 @@ Blockly.Blocks['text_indexOf'] = {
     }
     this.setInputsInline(true);
     this.setTooltip(Blockly.Msg.TEXT_INDEXOF_TOOLTIP);
+  },
+  onchange: function(evt) {
+   if (!this.workspace || this.isInFlyout) {
+      // Block has been deleted, or is in flyout
+      return;
+    }
+    var block = this;
+    this.setWarningText(EasyJ.Checker.EnsureNotOrphaned(block));
+
   }
 };
 
@@ -402,6 +456,15 @@ Blockly.Blocks['text_charAt'] = {
       return undefined;
     });
     this.getInput('AT').appendField(menu, 'WHERE');
+  },
+  onchange: function(evt) {
+   if (!this.workspace || this.isInFlyout) {
+      // Block has been deleted, or is in flyout
+      return;
+    }
+    var block = this;
+    this.setWarningText(EasyJ.Checker.EnsureNotOrphaned(block));
+
   }
 };
 
@@ -507,6 +570,15 @@ Blockly.Blocks['text_getSubstring'] = {
     if (n == 1) {
       this.moveInputBefore('AT1', 'AT2');
     }
+  },
+  onchange: function(evt) {
+   if (!this.workspace || this.isInFlyout) {
+      // Block has been deleted, or is in flyout
+      return;
+    }
+    var block = this;
+    this.setWarningText(EasyJ.Checker.EnsureNotOrphaned(block));
+
   }
 };
 
@@ -527,6 +599,15 @@ Blockly.Blocks['text_changeCase'] = {
         .appendField(new Blockly.FieldDropdown(OPERATORS), 'CASE');
     this.setOutput(true, 'String');
     this.setTooltip(Blockly.Msg.TEXT_CHANGECASE_TOOLTIP);
+  },
+  onchange: function(evt) {
+   if (!this.workspace || this.isInFlyout) {
+      // Block has been deleted, or is in flyout
+      return;
+    }
+    var block = this;
+    this.setWarningText(EasyJ.Checker.EnsureNotOrphaned(block));
+
   }
 };
 
@@ -547,6 +628,15 @@ Blockly.Blocks['text_trim'] = {
         .appendField(new Blockly.FieldDropdown(OPERATORS), 'MODE');
     this.setOutput(true, 'String');
     this.setTooltip(Blockly.Msg.TEXT_TRIM_TOOLTIP);
+  },
+  onchange: function(evt) {
+   if (!this.workspace || this.isInFlyout) {
+      // Block has been deleted, or is in flyout
+      return;
+    }
+    var block = this;
+    this.setWarningText(EasyJ.Checker.EnsureNotOrphaned(block));
+
   }
 };
 
@@ -564,6 +654,15 @@ Blockly.Blocks['text_print'] = {
     this.setPreviousStatement(true, 'statement');
     this.setNextStatement(true, 'statement');
     this.setTooltip(Blockly.Msg.TEXT_PRINT_TOOLTIP);
+  },
+  onchange: function(evt) {
+   if (!this.workspace || this.isInFlyout) {
+      // Block has been deleted, or is in flyout
+      return;
+    }
+    var block = this;
+    this.setWarningText(EasyJ.Checker.EnsureNotOrphaned(block));
+
   }
 };
 

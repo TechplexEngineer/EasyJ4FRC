@@ -67,6 +67,15 @@ Blockly.Blocks['controls_repeat_ext'] = {
     this.setNextStatement(true, 'statement');
     this.setInputsInline(true);
     this.setTooltip(Blockly.Msg.CONTROLS_REPEAT_TOOLTIP);
+  },
+  onchange: function(evt) {
+   if (!this.workspace || this.isInFlyout) {
+      // Block has been deleted, or is in flyout
+      return;
+    }
+    var block = this;
+    this.setWarningText(EasyJ.Checker.EnsureNotOrphaned(block));
+
   }
 };
 
@@ -98,6 +107,15 @@ Blockly.Blocks['controls_whileUntil'] = {
       };
       return TOOLTIPS[op];
     });
+  },
+  onchange: function(evt) {
+   if (!this.workspace || this.isInFlyout) {
+      // Block has been deleted, or is in flyout
+      return;
+    }
+    var block = this;
+    this.setWarningText(EasyJ.Checker.EnsureNotOrphaned(block));
+
   }
 };
 
@@ -166,6 +184,15 @@ Blockly.Blocks['controls_for'] = {
       option.callback = Blockly.ContextMenu.callbackFactory(this, xmlBlock);
       options.push(option);
     }
+  },
+  onchange: function(evt) {
+   if (!this.workspace || this.isInFlyout) {
+      // Block has been deleted, or is in flyout
+      return;
+    }
+    var block = this;
+    this.setWarningText(EasyJ.Checker.EnsureNotOrphaned(block));
+
   }
 };
 
