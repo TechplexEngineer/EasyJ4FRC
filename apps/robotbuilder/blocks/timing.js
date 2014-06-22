@@ -167,6 +167,15 @@ Blockly.Blocks['us_counter'] = {
         .appendField("Microsecond Counter");
     this.setInputsInline(true);
     this.setOutput(true, "Number");
+  },
+  onchange: function(evt) {
+   if (!this.workspace || this.isInFlyout) {
+      // Block has been deleted, or is in flyout
+      return;
+    }
+    var block = this;
+    this.setWarningText(EasyJ.Checker.EnsureNotOrphaned(block));
+
   }
 };
 
