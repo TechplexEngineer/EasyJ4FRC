@@ -1,6 +1,5 @@
 <?php
 	$dev = file_exists("DEV");
-	
 
 	$toolbox = "xml/toolbox.xml";
 	if (!file_exists($toolbox)) {
@@ -19,18 +18,18 @@
 	<head>
 		<meta charset="utf-8">
 
-		<?php 
-	    if ($dev): 
+		<?php
+	    if ($dev):
 	    	$blocklyPath = "../../";
 		?>
-<!-- Include these in development mode ************************************* -->		
+<!-- Include these in development mode ************************************* -->
 			<script src="bower_components/jquery/dist/jquery.min.js"></script>
 			<script type="text/javascript" src="../../blockly_uncompressed.js"></script>
 			<script type="text/javascript" src="<?= $blocklyPath ?>generators/java.js"></script>
 			<script type="text/javascript" src="easyj.checker.js"></script><!-- Also Below -->
 			<?php
 				// Be sure to include all of the standard block definitions
-				$blockdir = "../../blocks";
+				$blockdir = "./blocks/blockly";
 				$jsfiles = array_diff(scandir($blockdir), array('..', '.'));
 				foreach ($jsfiles as $file) {
 					echo "<script type=\"text/javascript\" src=\"".$blockdir."/".$file."\"></script>\n";
@@ -42,7 +41,7 @@
 					echo "<script type=\"text/javascript\" src=\"".$blockdir."/".$file."\"></script>\n";
 				}
 				// Be sure to include all of the EasyJ blocks
-				$blockdir = "./blocks";
+				$blockdir = "./blocks/local";
 				$jsfiles = array_diff(scandir($blockdir), array('..', '.'));
 				foreach ($jsfiles as $file) {
 					echo "<script type=\"text/javascript\" src=\"".$blockdir."/".$file."\"></script>\n";
@@ -51,8 +50,8 @@
 			<script type="text/javascript" src="<?= $blocklyPath ?>msg/messages.js"></script>
 
 
-		<?php 
-		else: 
+		<?php
+		else:
 			$blocklyPath = "./";
 		?>
 <!-- Include these in production mode ************************************** -->
@@ -70,22 +69,6 @@
 
 		<!-- BLOCKLY Extensions -->
 		<script type="text/javascript" src="javagenerator.js"></script>
-
-		
-		<script type="text/javascript">
-			// Blockly.Block.prototype.requireInFunction = function() {
-			// 	if (!this.workspace) {
-			// 		// Block has been deleted.
-			// 		return;
-			// 	}
-			// 	if (this.getSurroundParent()) {
-			// 		this.setWarningText(null);
-			// 	} else {
-			// 		this.setWarningText('Place this block inside a function.'); //@todo need better help text
-			// 	}
-			// }
-		</script>
-		
 
 		<style>
 			html, body {
@@ -126,17 +109,17 @@
 
 				Blockly.mainWorkspace.reset();
 			}
-			
+
 		</script>
 	</head>
 	<body onload="init()">
 
 		<div class="xml" class="display:none;">
-			<?php 
-			include $toolbox; 
+			<?php
+			include $toolbox;
 			?>
 		<div id="startingblocks"  class="display:none;">
-			<?php 
+			<?php
 			include $startingBlocks;
 			?>
 		</div>

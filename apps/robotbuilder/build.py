@@ -43,7 +43,7 @@ class Gen_compressed(threading.Thread):
     remove = "var Blockly={Blocks:{}};"
     self.do_compile(params, target_filename, filenames, remove)
 
-    # @todo it would be nice if the ../../build.py was more like a library so 
+    # @todo it would be nice if the ../../build.py was more like a library so
     # I didn't have to duplicate all of this code
   def do_compile(self, params, target_filename, filenames, remove):
     # Send the request to Google.
