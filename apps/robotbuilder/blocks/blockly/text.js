@@ -175,15 +175,6 @@ Blockly.Blocks['text_join'] = {
           'media/quote0.png', 12, 12, '"'))
           .appendField(new Blockly.FieldImage(Blockly.pathToBlockly +
           'media/quote1.png', 12, 12, '"'));
-    },
-    onchange: function(evt) {
-     if (!this.workspace || this.isInFlyout) {
-        // Block has been deleted, or is in flyout
-        return;
-      }
-      var block = this;
-      this.setWarningText(EasyJ.Checker.EnsureNotOrphaned(block));
-
     }
   },
   /**
@@ -201,6 +192,15 @@ Blockly.Blocks['text_join'] = {
       itemBlock = itemBlock.nextConnection &&
           itemBlock.nextConnection.targetBlock();
     }
+  },
+  onchange: function(evt) {
+   if (!this.workspace || this.isInFlyout) {
+      // Block has been deleted, or is in flyout
+      return;
+    }
+    var block = this;
+    this.setWarningText(EasyJ.Checker.EnsureNotOrphaned(block));
+
   }
 };
 
