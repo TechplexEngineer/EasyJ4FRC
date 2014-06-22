@@ -79,7 +79,7 @@ $dev = file_exists("DEV");
 			 * @param  {int} fudge fudge factor
 			 */
 			function adjContentHeight (fudge) {
-				console.log("Resize");
+
 				if (typeof fudge == 'undefined') {
 					fudge = 0;
 				};
@@ -132,7 +132,7 @@ $dev = file_exists("DEV");
 
 	<body>
 		<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-			<div class="container">
+			<div class="container-fluid">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 						<span class="sr-only">Toggle navigation</span>
@@ -237,7 +237,7 @@ $dev = file_exists("DEV");
 		</div>
 
 
-		<div class="container" id="content">
+		<div class="container-fluid" id="content">
 			<script>
 			var loadxml = function(xml) {
 				console.log("Sorry. Blockly isn't loaded yet. Try again soon."); //@todo this really should be an alert or modal.
