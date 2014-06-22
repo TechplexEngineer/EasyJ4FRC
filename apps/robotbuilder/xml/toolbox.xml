@@ -11,7 +11,7 @@
       <category name="Gyro">
         <block type="declare_gyro"></block>
         <block type="get_gyro"></block>
-        <block type="gyro_reset"></block>  
+        <block type="gyro_reset"></block>
       </category>
 
       <category name="Digital">
@@ -38,6 +38,10 @@
           </value>
         </block>
 
+      </category>
+      <category name="Relay">
+        <block type="declare_relay"></block>
+        <block type="set_relay"></block>
       </category>
     </category>
 
