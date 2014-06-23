@@ -66,6 +66,6 @@ Blockly.Java['double_solenoid_set'] = function(block) {
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
   var dropdown_value = block.getFieldValue('TO');
   // TODO: Assemble Java into code variable.
-  var code = variable_name+'.set(DoubleSolenoid.Value.'+dropdown_value+')';
+  var code = variable_name+'.set(DoubleSolenoid.Value.'+dropdown_value+');';
   return code;
 };

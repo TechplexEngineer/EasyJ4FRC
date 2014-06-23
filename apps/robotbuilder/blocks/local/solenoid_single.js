@@ -63,6 +63,6 @@ Blockly.Java['set_solenoid_single'] = function(block) {
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
   var dropdown_value = Blockly.Java.valueToCode(block, 'VALUE', Blockly.Java.ORDER_ATOMIC);
   //@todo make sure variable_name has been declared
-  var code = variable_name+'.set('+dropdown_value+')';
+  var code = variable_name+'.set('+dropdown_value+');';
   return code;
 };
