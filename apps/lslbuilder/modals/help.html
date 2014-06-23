@@ -1,0 +1,124 @@
+<script type="text/javascript">
+$(document).ready(function(){
+	$('.fakeurl').click(function(event){
+		var eT = $(event.target);
+		var vis = $('div.help_block',eT.parent()).is(":visible"); //is it visible?
+
+		$('div.help_block').hide(); //Hide them all
+		
+		if (!vis) { //if it was visible, lets leave it hidden
+			$('div.help_block',eT.parent()).show();
+		}
+	});
+});
+</script>
+<style type="text/css">
+.help_block {
+	display:none;
+	border: 1px solid #ccc;
+	padding: 5px;
+	margin: 5px;
+	background: #EDEDED;
+}
+.fakeurl, .realurl {
+	color: #428bca;
+	text-decoration: underline;
+}
+.fakeurl:hover, a.realurl:hover {
+	color: #2a6496;
+	cursor: pointer;
+}
+</style>
+<!-- Modal -->
+<div class="modal fade" id="help" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">What can we help you with?</h4>
+			</div>
+			<div class="modal-body">
+				<ul>
+						<li>
+							<span class="fakeurl" title="Learn about EasyJ">Where should I begin?</span>
+							<div class="help_block">
+								Try loading one of the examples. <br>
+								From the <em>File</em> menu choose <a href="#examples" data-dismiss="modal"  data-toggle="modal"><em>Examples..</em></a> Try the <em> Simple Robot Example </em>
+							</div>
+						</li>
+
+						<li>
+							<span class="fakeurl" title="Learn how to get more information about a spesific block">A Specific Block</span>
+							<div class="help_block">
+								The best way to learn more about what a block does it to hover your mouse pointer over it, for most blocks one will see a small bit of hovertext detailing the usage of the block.
+							</div>
+						</li>
+						<li>
+							<span class="fakeurl" title="Learn how to deploy code">Deploying Code</span>
+							<div class="help_block">
+								<ol>
+									<li>Click the <a href="#download">Download</a> button in the upper right corner.</li>
+									<li>Then click the <em>Download!</em> button in the pop-up window.</li>
+									<li>Uncompress the contents of the zip folder to a new folder</li>
+									<li>Open Netbeans on your computer.  (Don't have it? <a href="http://wpilib.screenstepslive.com/s/3120/m/7885/l/79405-installing-the-java-development-tools" target="_blank">Follow the tutorial here</a>)</li>
+									<li>From the Netbeans File menu choose <em>Open Project..</em></li>
+									<li>Navigate to where you saved the folder we uncompressed earlier</li>
+									<li>The icon should be a little rocket</li>
+									<li>Double click to open the project</li>
+									<li>Vola! Make sure your robot is connected to your computer and you are ready to press the large green Play Button to start the download to your robot. </li>
+
+
+
+									<!-- <li>File &gt; New Project</li>
+									<li>Select FRC Java (Is it Missing? You might have missed step 5 in our <a href="http://frc2648.weebly.com/getting-started.html">Getting Started Guide</a>)</li>
+									<li>In the right pane, select SimpleRobotTemplateProject</li>
+									<li>Then click the <i> Next &gt; </i> Button</li>
+									<li>Name your project (Best to avoid spaces, punctuation and symbols. Stick to numbers and letters)</li>
+									<li>Pick a location to store your new project (ie: My Documents)</li>
+									***It is important to enter the following <strong>EXACTLY</strong> as they appear. (Just the <i>Italicized</i> part)
+									<li>Project Package: <i>edu.team2648.frcEasyJ</i></li>
+									<li>Robot Class: <i>MyRobot</i></li>
+									<li>Click the Finish button. Netbeans will now create your robot project.</li>
+									<li>On the left side of your screen you should see the project you just created with two things under it. <i>src</i> and <i>build.xml</i></li>
+									<li>Click the small plus next to <i> src</i></li>
+									<li>Then the plus next to <i>edu.team2648.frcEasyJ</i></li>
+									<li>Now you should see MyRobot.java : Double click it (Open for editing)</li>
+									<li>This is the default code that is provided for you for simple robot projects. We are going to replace it with the code generated for us.</li>
+									<li>Edit &gt; Select All</li>
+									<li>Edit &gt; Paste</li>
+									<li>Now we should save our new project. File &gt; Save</li>
+									<li>You are now ready to download code to your robot.</li> -->
+								</ol>
+								<br>
+								Check out the <a href="http://wpilib.screenstepslive.com/s/3120/m/7885">Getting started with Java</a> from WPI for more information.
+							</div>
+						</li>
+						<li>
+							<span class="fakeurl" title="Learn how to copy blocks">Copying Blocks</span>
+							<div class="help_block">One can easily copy blocks by right clicking the block they wish to copy, and choosing duplicate. <br>
+								<strong>NOTE:</strong> all blocks that are contained within the block will also be copied.</div>
+						</li>
+						<!-- <li>
+							<span class="fakeurl">What characters are allowed where?</span>
+							<div class="help_block">
+								<ul>
+									<li>int: An integer socket can contain any whole number value [0-9] with or without a sign (-)</li>
+									<li>string: A string can contain any character, digit or symbol except the double quote: (")</li>
+									<li>decimal: A decimal value can contain any integer value and the dot (.)</li>
+									<li>varname: For ease of programming: varnames can only contain letters (a-z and A-Z) and the underscore character(_)</li>
+								</ul>
+							</div>
+						</li> -->
+						<li>
+							<a href="http://www.team5122.com/easyj-feedback.html" class="realurl" target="_blank" title="Send your feeback here">Your Feedback and Suggestions are important to us</a>
+						</li>
+
+
+					</ul>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>

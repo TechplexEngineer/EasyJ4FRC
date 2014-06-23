@@ -1,0 +1,57 @@
+<xml>
+  <block type="init_declare" id="1" deletable="false" x="0" y="5">
+    <statement name="WHAT">
+      <block type="declare_joystick" id="9">
+        <field name="NAME">JS1</field>
+        <field name="PORT">1</field>
+        <next>
+          <block type="declare_drivetrain" id="31">
+            <field name="NAME">Drivetrain</field>
+            <field name="TYPE">Victor</field>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="auto_init" id="2" deletable="false" x="2" y="112">
+    <statement name="WHAT">
+      <block type="move_drivetrain" id="42" inline="true">
+        <field name="NAME">Drivetrain</field>
+        <value name="MOVE">
+          <block type="math_number" id="43">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <value name="TURN">
+          <block type="math_number" id="44">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <next>
+          <block type="delay" id="52" inline="true">
+            <value name="AMOUNT">
+              <block type="math_number" id="53">
+                <field name="NUM">1.5</field>
+              </block>
+            </value>
+            <next>
+              <block type="stop_drivetrain" id="64">
+                <field name="NAME">Drivetrain</field>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="auto_perodic" id="3" deletable="false" x="476" y="153"></block>
+  <block type="teleop_init" id="4" deletable="false" x="479" y="268"></block>
+  <block type="teleop_perodic" id="5" deletable="false" x="7" y="301">
+    <statement name="WHAT">
+      <block type="move_with_joystick" id="88">
+        <field name="NAME">Drivetrain</field>
+        <field name="JOYSTICK">JS1</field>
+      </block>
+    </statement>
+  </block>
+</xml>

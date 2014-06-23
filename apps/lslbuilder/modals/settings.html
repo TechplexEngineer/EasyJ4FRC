@@ -1,0 +1,50 @@
+<!-- Modal -->
+<div class="modal fade" id="settings" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Settings</h4>
+			</div>
+			<div class="modal-body">
+        <p></p>
+				<form role="form">
+					<div class="form-group">
+						<label>Java Package
+							<input type="text" class="form-control" id="setting_javapackage">
+						</label>
+					</div>
+					<div class="form-group">
+						<label>Robot Class
+							<input type="text" class="form-control" id="setting_robotclass">
+						</label>
+					</div>
+				</form>
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary save">Save changes</button> 
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function () {
+		$(document).on('show.bs.modal', function(event){
+			if ($(event.target).attr('id') == 'settings') {
+
+				$('#setting_javapackage').val(EasyJ.projectPackage)
+				$('#setting_robotclass').val(EasyJ.robotClass)
+				
+			}
+		});
+		$('#settings .modal-footer button.save').click(function(){
+			//@todo make sure what they type is valid
+			EasyJ.projectPackage = $('#setting_javapackage').val();
+			EasyJ.robotClass = $('#setting_robotclass').val();
+			$('#settings').modal('hide');
+		});
+	})
+</script>

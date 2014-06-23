@@ -1,0 +1,74 @@
+<!-- Modal -->
+<div class="modal fade" id="examples" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Examples</h4>
+			</div>
+			<div class="modal-body">
+        <p>Use the green load button to load any one of the below examples.</p>
+				<div class="example" data-file="simple.xml">
+					<h3>Robot Example
+						<div class="pull-right inline-block">
+							<button type="button" class="btn btn-success load">Load</button>
+						</div>
+					</h3>
+					<div class="brief">Example showing use of a joystick and the drivetrain block.</div>
+				</div>
+				<div class="example" data-file="button.xml">
+					<h3>Using Joystick Button
+						<div class="pull-right inline-block">
+							<button type="button" class="btn btn-success load">Load</button>
+						</div>
+					</h3>
+					<div class="brief">How to use joystick buttons.</div>
+				</div>
+				<div class="example" data-file="doublesolenoud.xml">
+					<h3>Double Solenoid
+						<div class="pull-right inline-block">
+							<button type="button" class="btn btn-success load">Load</button>
+						</div>
+					</h3>
+					<div class="brief">How to use a joystick button to control a double solenoid pneumatic valve.</div>
+				</div>
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.example button.load').click(function(event){
+			var file = $(event.target).closest('.example').data('file');
+			// console.log("Load", file);
+			var xml = $(".hiddenexamples div[data-file='"+file+"']").html();
+
+			var success = false;
+			if (window.confirm("Do you really want to clear the workspace?\nAll work will be lost!")) {
+				success = loadxml(xml);
+			}
+
+			if (success) {
+				$('#examples').modal('hide');
+			};
+		});
+	});
+</script>
+
+<div class="hiddenexamples">
+	<?php
+	{
+		$dir1 = "./xml/examples";
+		$jsfiles1 = array_diff(scandir($dir1), array('..', '.'));
+		foreach ($jsfiles1 as $file1) {
+			echo "<div data-file=\"".$file1."\">\n";
+			include $dir1."/".$file1;
+			echo "\n</div>\n";
+		}
+	}
+	?>
+</div>

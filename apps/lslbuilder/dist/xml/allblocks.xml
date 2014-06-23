@@ -1,0 +1,195 @@
+<xml>
+  <block type="init_declare" id="6" deletable="false" x="0" y="5">
+    <statement name="WHAT">
+      <block type="declare_joystick" id="7">
+        <field name="NAME">JS1</field>
+        <field name="PORT">1</field>
+        <next>
+          <block type="declare_gyro" id="8">
+            <field name="NAME">gyro1</field>
+            <field name="PORT">1</field>
+            <next>
+              <block type="declare_digital_input" id="9">
+                <field name="NAME">Din1</field>
+                <field name="PORT">1</field>
+                <next>
+                  <block type="declare_analog_input" id="10">
+                    <field name="NAME">Ain1</field>
+                    <field name="PORT">1</field>
+                    <next>
+                      <block type="declare_digital_output" id="11">
+                        <field name="NAME">Dout1</field>
+                        <field name="PORT">1</field>
+                        <next>
+                          <block type="declare_motor_controller" id="12">
+                            <field name="NAME">MC1</field>
+                            <field name="CONTROLLER_TYPE">Victor</field>
+                            <field name="PORT">1</field>
+                            <next>
+                              <block type="declare_drivetrain" id="13">
+                                <field name="NAME">Drivetrain</field>
+                                <field name="TYPE">Victor</field>
+                                <next>
+                                  <block type="declare_compressor" id="14">
+                                    <field name="NAME">Pump1</field>
+                                    <field name="RELAY">1</field>
+                                    <field name="PRESSURESW">1</field>
+                                    <next>
+                                      <block type="declare_solenoid_single" id="15">
+                                        <field name="NAME">SValve1</field>
+                                        <field name="SOLENOID">1</field>
+                                        <next>
+                                          <block type="declare_solenoid_double" id="16">
+                                            <field name="NAME">DValve1</field>
+                                            <field name="SOLENOIDFWD">1</field>
+                                            <field name="SOLENOIDREV">1</field>
+                                            <next>
+                                              <block type="declare_timer" id="17">
+                                                <field name="NAME">Timer1</field>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="get_joystick_axis" id="18" x="621" y="27">
+    <field name="NAME">JS1</field>
+    <field name="WHAT">kX</field>
+  </block>
+  <block type="get_joystick_button" id="19" x="616" y="72">
+    <field name="NAME">JS1</field>
+    <field name="BUTTON_NUMBER">1</field>
+  </block>
+  <block type="get_gyro" id="20" x="610" y="117">
+    <field name="WHAT">getAngle</field>
+    <field name="NAME">gyro1</field>
+  </block>
+  <block type="get_digital_input_value" id="22" x="635" y="208">
+    <field name="NAME">Din1</field>
+  </block>
+  <block type="get_analog_input_value" id="23" x="651" y="247">
+    <field name="WHAT">getAverageVoltage</field>
+    <field name="NAME">Ain1</field>
+  </block>
+  <block type="auto_perodic" id="24" deletable="false" x="283" y="362"></block>
+  <block type="teleop_init" id="35" deletable="false" x="85" y="379">
+    <statement name="WHAT">
+      <block type="gyro_reset" id="21">
+        <field name="NAME">gyro1</field>
+      </block>
+    </statement>
+  </block>
+  <block type="auto_init" id="36" deletable="false" x="679" y="374">
+    <statement name="WHAT">
+      <block type="set_digital_output" id="37" inline="true">
+        <field name="NAME">Dout1</field>
+        <value name="VALUE">
+          <block type="logic_boolean" id="38">
+            <field name="BOOL">TRUE</field>
+          </block>
+        </value>
+        <next>
+          <block type="move_motor_controller" id="39" inline="true">
+            <field name="NAME">MC1</field>
+            <value name="SPEED">
+              <block type="math_number" id="40">
+                <field name="NUM">1</field>
+              </block>
+            </value>
+            <next>
+              <block type="stop_motor_controller" id="41">
+                <field name="NAME">MC1</field>
+                <next>
+                  <block type="move_drivetrain" id="42" inline="true">
+                    <field name="NAME">Drivetrain</field>
+                    <value name="MOVE">
+                      <block type="math_number" id="43">
+                        <field name="NUM">1</field>
+                      </block>
+                    </value>
+                    <value name="TURN">
+                      <block type="math_number" id="44">
+                        <field name="NUM">0</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="stop_drivetrain" id="45">
+                        <field name="NAME">Drivetrain</field>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="teleop_perodic" id="46" deletable="false" x="84" y="443"></block>
+  <block type="move_with_joystick" id="25" x="97" y="533">
+    <field name="NAME">Drivetrain</field>
+    <field name="JOYSTICK">JS1</field>
+  </block>
+  <block type="compressor_start" id="26" x="112" y="605">
+    <field name="NAME">Pump1</field>
+    <next>
+      <block type="set_solenoid_single" id="27" inline="true">
+        <field name="NAME">SValve1</field>
+        <value name="VALUE">
+          <block type="logic_boolean" id="28">
+            <field name="BOOL">TRUE</field>
+          </block>
+        </value>
+        <next>
+          <block type="double_solenoid_set" id="29">
+            <field name="NAME">DValve1</field>
+            <field name="TO">kForward</field>
+            <next>
+              <block type="delay" id="30" inline="true">
+                <value name="AMOUNT">
+                  <block type="math_number" id="31">
+                    <field name="NUM">1.5</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="start_timer" id="32">
+                    <field name="NAME">Timer1</field>
+                    <next>
+                      <block type="stop_timer" id="33">
+                        <field name="NAME">Timer1</field>
+                        <next>
+                          <block type="reset_timer" id="34">
+                            <field name="NAME">Timer1</field>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
+  <block type="us_counter" id="47" x="509" y="753"></block>
+</xml>
