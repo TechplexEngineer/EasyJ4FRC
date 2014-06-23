@@ -36,13 +36,13 @@ setup:
 	bower install
 
 dist: | compressed copy easyj_blocks
-	
+
 static: copy easyj_blocks
 
 copy:
 	@$(MKDIR) -p $(OUTDIR)
 	@$(MKDIR) -p $(OUTDIR)/bootstrap
-	@$(CP) -R $(recursdirs) $(OUTDIR) 
+	@$(CP) -R $(recursdirs) $(OUTDIR)
 	@$(CP) $(tocopy) $(OUTDIR)
 	@$(CP) -R bower_components/bootstrap/dist/{js,css} $(OUTDIR)/bootstrap
 	@$(CP) bower_components/jquery/dist/jquery.min.js $(OUTDIR)
