@@ -61,7 +61,7 @@ Blockly.Variables.allVariables = function(opt_block) {
         var varName = blockVariables[y];
 
         //add this to be backward compatible with the old syntax
-        if (typeof varName !== "string") {
+        if (varName && typeof varName !== "string") {
           varName = varName.name;
         };
         // Variable name may be null if the block is only half-built.
