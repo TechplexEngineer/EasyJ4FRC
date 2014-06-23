@@ -36,7 +36,7 @@ Blockly.Java['math_number'] = function(block) {
 };
 
 Blockly.Java['math_arithmetic'] = function(block) {
-  Blockly.Java.addImport("java.lang.Math");
+  Blockly.Java.addImport("java.lang.Math;");
   // Basic arithmetic operators, and power.
   var OPERATORS = {
     'ADD': [' + ', Blockly.Java.ORDER_ADDITION],
@@ -61,7 +61,7 @@ Blockly.Java['math_arithmetic'] = function(block) {
 };
 
 Blockly.Java['math_single'] = function(block) {
-  Blockly.Java.addImport("java.lang.Math");
+  Blockly.Java.addImport("java.lang.Math;");
   // Math operators with single operand.
   var operator = block.getFieldValue('OP');
   var code;
@@ -146,7 +146,7 @@ Blockly.Java['math_single'] = function(block) {
 };
 
 Blockly.Java['math_constant'] = function(block) {
-  Blockly.Java.addImport("java.lang.Math");
+  Blockly.Java.addImport("java.lang.Math;");
   // Constants: PI, E, the Golden Ratio, sqrt(2), 1/sqrt(2), INFINITY.
   var CONSTANTS = {
     'PI': ['Math.PI', Blockly.Java.ORDER_MEMBER],
@@ -160,7 +160,7 @@ Blockly.Java['math_constant'] = function(block) {
 };
 
 Blockly.Java['math_number_property'] = function(block) {
-  Blockly.Java.addImport("java.lang.Math");
+  Blockly.Java.addImport("java.lang.Math;");
   // Check if a number is even, odd, prime, whole, positive, or negative
   // or if it is divisible by certain number. Returns true or false.
   var number_to_check = Blockly.Java.valueToCode(block, 'NUMBER_TO_CHECK',
@@ -374,7 +374,7 @@ Blockly.Java['math_modulo'] = function(block) {
 };
 
 Blockly.Java['math_constrain'] = function(block) {
-  Blockly.Java.addImport("java.lang.Math");
+  Blockly.Java.addImport("java.lang.Math;");
   // Constrain a number between two limits.
   var argument0 = Blockly.Java.valueToCode(block, 'VALUE',
       Blockly.Java.ORDER_COMMA) || '0';
