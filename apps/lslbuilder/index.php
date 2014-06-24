@@ -141,7 +141,6 @@ $dev = file_exists("DEV");
 						<span class="icon-bar"></span>
 					</button>
 					<a class="navbar-brand" href="#about" data-toggle="modal">
-<!-- 						<img src="images/easyj4frc.png" alt="<?= $title ?>" height="40px" style="margin-top: -10px;"> -->
             <?= $title ?>
 					</a>
 				</div>
@@ -152,13 +151,10 @@ $dev = file_exists("DEV");
 						<li class="dropdown"> <!-- File menu -->
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">File <b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<!-- <li><a href="#new" data-toggle="modal">New</a></li> --> <!--This will open a new workspace, is a modal needed? -->
 								<li><a href="#save" data-toggle="modal">Save</a></li> <!-- @note if the project has already been saved, don't open the save modal on press of the save button. Just show success alert-->
 								<li><a href="#download" data-toggle="modal">Download..</a></li>
 								<li><a href="#open" data-toggle="modal">Open..</a></li>
 								<li><a href="#examples" data-toggle="modal">Examples..</a></li>
-								<!-- <li class="divider"></li> -->
-								<!-- <li><a href="#run" data-toggle="modal">Run..</a></li> -->
 								<li class="divider"></li>
 								<li><a href="#import" data-toggle="modal">Import..</a></li>
 								<li><a href="#export" data-toggle="modal">Export..</a></li>
@@ -172,21 +168,10 @@ $dev = file_exists("DEV");
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Edit <b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="#" id="edit_clear">Reset &amp; Clear</a></li>
-								<!-- <li><a href="#">Undo</a></li> -->
-								<!-- <li><a href="#">Redo</a></li> -->
-								<!-- <li class="divider"></li> -->
-								<!-- <li><a href="#">Copy</a></li> -->
-								<!-- <li><a href="#">Cut</a></li> -->
-								<!-- <li><a href="#">Paste</a></li> -->
-								<!-- <li class="divider"></li> -->
 								<li><a href="#settings" data-toggle="modal">Settings..</a></li>
 							</ul>
 						</li>
 
-						<!-- <li class="active"><a href="#">Home</a></li> -->
-						<!-- <li><a href="#about" data-toggle="modal">About</a></li> -->
-						<!-- <li><a href="#help" data-toggle="modal">Help</a></li> -->
-						<!-- <li><a href="#settings" data-toggle="modal">Settings</a></li> -->
 						<li style="margin-top: 8px;">
 							<div class="btn-group" data-toggle="buttons" id="blockcodetoggle">
 								<label class="btn btn-primary active" title="Toggle to blocks view"  id="blocks">
@@ -197,39 +182,23 @@ $dev = file_exists("DEV");
 								</label>
 							</div>
 						</li>
-						<!-- <li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li><a href="#">Action</a></li>
-								<li><a href="#">Another action</a></li>
-								<li><a href="#">Something else here</a></li>
-								<li class="divider"></li>
-								<li class="dropdown-header">Nav header</li>
-								<li><a href="#">Separated link</a></li>
-								<li><a href="#">One more separated link</a></li>
-							</ul>
-						</li> -->
+
 					</ul>
 					<div class="pull-right" style="margin-top:8px;">
 
 						<a href="#help" class="notext iconbar" title="Help" data-toggle="modal">
-							<!-- <img src="images/icons/iconmonstr-help-3-icon-256.png" style="height: 35px;"> -->
 							<?php include "images/icons/help.svg" ?>
 						</a>
 						<a href="http://files.team5122.com/javadoc/" class="notext iconbar" title="WPI Robotics Library Documentation" target="_blank">
-							<!-- <img src="images/icons/iconmonstr-book-16-icon-256.png" style="height: 35px;"> -->
 							<?php include "images/icons/book.svg" ?>
 						</a>
 						<a href="#save" class="notext iconbar" title="Save" data-toggle="modal">
-							<!-- <img src="images/icons/iconmonstr-save-icon-256.png" style="height: 35px;"> -->
 							<?php include "images/icons/save.svg" ?>
 						</a>
 						<a href="#download" class="notext iconbar" title="Download" data-toggle="modal">
-							<!-- <img src="images/icons/iconmonstr-download-2-icon-256.png" style="height: 35px;"> -->
 							<?php include "images/icons/download.svg" ?>
 						</a>
 						<a href="http://team5122.com" class="notext iconbar" title="Team5122 Homepage" target="_blank">
-							<!-- <img src="images/icons/iconmonstr-home-4-icon-256.png" style="height: 35px;"> -->
 							<?php include "images/icons/home.svg" ?>
 						</a>
 					</div>
@@ -246,10 +215,7 @@ $dev = file_exists("DEV");
 			function generateJavaCode() {
 				var generated = Blockly.Java.workspaceToCode();
 
-				var code = "package "+EasyJ.projectPackage+";\n\n";
-				code += "import edu.wpi.first.wpilibj.IterativeRobot;"
-				code += Blockly.Java.getImports().join("\n");
-				code += "\n\npublic class "+EasyJ.robotClass+" extends IterativeRobot {\n";
+        var code = "default {";
 				code += "\n";
 				code += generated.declarations;
 				code += "\n";
@@ -298,7 +264,7 @@ $dev = file_exists("DEV");
 			</footer>
 		</div> <!-- /container -->
 		<div class="hiddenmodals">
-			<?php 
+			<?php
 				$dir = "./modals";
 				$jsfiles = array_diff(scandir($dir), array('..', '.'));
 				foreach ($jsfiles as $file) {
@@ -310,7 +276,7 @@ $dev = file_exists("DEV");
 		</div>
 
 
-		<!-- Bootstrap core JavaScript
+		<!--
 		================================================== -->
 		<!-- Placed at the end of the document so the pages load faster -->
 		<script type="text/javascript">
@@ -318,6 +284,6 @@ $dev = file_exists("DEV");
 			$(window).resize();
 		});
 		</script>
-		
+
 	</body>
 </html>
