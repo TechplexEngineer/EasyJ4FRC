@@ -16,6 +16,7 @@ Blockly.Blocks['declare_relay'] = {
     this.setPreviousStatement(true, 'declare');
     this.setNextStatement(true, 'declare');
   },
+  onchange: EasyJ.Checker.EnsureNotTop_Init,
   renameVar: function(oldName, newName) {
     if (Blockly.Names.equals(oldName, this.getFieldValue('NAME'))) {
       this.setFieldValue(newName, 'NAME');
