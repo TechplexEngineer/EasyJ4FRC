@@ -75,5 +75,5 @@ Blockly.Java['get_analog_input_value'] = function(block) {
 
   //@todo make sure wariable_name has been declared
   var code = variable_name+'.'+dropdown_what+'()';
-  return code;
+  return [code, Blockly.Java.ORDER_ATOMIC];
 };

@@ -77,7 +77,7 @@ Blockly.Java['get_gyro'] = function(block) {
 
   //@todo make sure wariable_name has been declared
   var code = variable_name+'.'+dropdown_what+'()';
-  return code;
+  return [code, Blockly.Java.ORDER_ATOMIC];
 };
 
 Blockly.Blocks['gyro_reset'] = {

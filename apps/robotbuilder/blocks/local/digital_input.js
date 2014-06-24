@@ -66,7 +66,7 @@ Blockly.Java['get_digital_input_value'] = function(block) {
 
   //@todo make sure variable_name has been declared
   var code = variable_name+'.get()';
-  return code;
+  return [code, Blockly.Java.ORDER_ATOMIC];
 };
 
 
