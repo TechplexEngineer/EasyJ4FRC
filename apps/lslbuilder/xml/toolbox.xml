@@ -1,102 +1,26 @@
 <xml id="toolbox" style="display: none">
 
-    <category name="Input &amp; Sensors">
+  <category name="Events (when)">
 
-      <category name="User (Joystick)">
-        <block type="declare_joystick"></block>
-        <block type="get_joystick_axis"></block>
-        <block type="get_joystick_button"></block>
-      </category>
+    <block type="touch_start"></block>
+    <block type="collision_start"></block>
+    <block type="state_entry"></block>
+    <block type="object_rez"></block>
 
-      <category name="Gyro">
-        <block type="declare_gyro"></block>
-        <block type="get_gyro"></block>
-        <block type="gyro_reset"></block>
-      </category>
+  </category>
 
-      <category name="Digital">
-        <block type="declare_digital_input"></block>
-        <block type="get_digital_input_value"></block>
-      </category>
+  <category name="Communication">
+    <block type="llsay"></block>
+      <block type="llwhisper"></block>
+      <block type="llshout"></block>
+      <block type="llownersay"></block>
+      <block type="llinstantmessage"></block>
+  </category>
 
-      <category name="Analog">
-        <block type="declare_analog_input"></block>
-        <block type="get_analog_input_value"></block>
-      </category>
+  <category name="Looks & Sound">
+  </category>
 
-    </category>
-
-    <category name="Outputs">
-      <category name="Digital">
-
-        <block type="declare_digital_output"></block>
-        <block type="set_digital_output">
-          <value name="VALUE">
-            <block type="logic_boolean" id="16" x="245" y="191">
-              <field name="BOOL">TRUE</field>
-            </block>
-          </value>
-        </block>
-
-      </category>
-      <category name="Relay">
-        <block type="declare_relay"></block>
-        <block type="set_relay"></block>
-      </category>
-    </category>
-
-    <category name="Motors">
-      <block type="declare_motor_controller"></block>
-      <block type="move_motor_controller">
-        <value name="SPEED">
-          <block type="math_number">
-            <field name="NUM">1</field>
-          </block>
-        </value>
-      </block>
-      <block type="stop_motor_controller"></block>
-
-      <block type="declare_drivetrain"></block>
-      <block type="move_drivetrain">
-        <value name="MOVE">
-          <block type="math_number">
-            <field name="NUM">1</field>
-          </block>
-        </value>
-        <value name="TURN">
-          <block type="math_number">
-            <field name="NUM">0</field>
-          </block>
-        </value>
-      </block>
-      <block type="stop_drivetrain"></block>
-      <block type="move_with_joystick"></block>
-    </category>
-
-    <category name="Pneumatics">
-      <category name="Compressor">
-        <block type="declare_compressor"></block>
-        <block type="compressor_start"></block>
-      </category>
-      <category name="Solenoid (Valve)">
-        <block type="declare_solenoid_single"></block>
-        <block type="set_solenoid_single">
-          <value name="VALUE">
-            <block type="logic_boolean" id="16" x="245" y="191">
-              <field name="BOOL">TRUE</field>
-            </block>
-          </value>
-        </block>
-      </category>
-      <category name="Double Solenoid (Valve)">
-        <block type="declare_solenoid_double"></block>
-        <block type="double_solenoid_set"></block>
-      </category>
-
-
-    </category>
-
-    <category name="Logic">
+  <category name="Logic">
       <block type="controls_if"></block>
       <block type="logic_compare"></block>
       <block type="logic_operation"></block>
@@ -176,50 +100,4 @@
       </category>
     </category>
 
-
-    <category name="Timing">
-      <block type="delay">
-        <value name="AMOUNT">
-          <block type="math_number">
-            <field name="NUM">1.5</field>
-          </block>
-        </value>
-      </block>
-      <block type="declare_timer"></block>
-      <block type="start_timer"></block>
-      <block type="stop_timer"></block>
-      <block type="reset_timer"></block>
-      <block type="us_counter"></block>
-    </category>
-
-    <!-- <category name="Field">
-      <block type="field_static"></block>
-      <block type="field_input"></block>
-      <block type="field_angle"></block>
-      <block type="field_dropdown"></block>
-      <block type="field_checkbox"></block>
-      <block type="field_colour"></block>
-      <block type="field_variable"></block>
-      <block type="field_image"></block>
-    </category>
-    <category name="Type">
-      <block type="type_group"></block>
-      <block type="type_null"></block>
-      <block type="type_boolean"></block>
-      <block type="type_number"></block>
-      <block type="type_string"></block>
-      <block type="type_list"></block>
-      <block type="type_other"></block>
-    </category>
-    <category name="Colour" id="colourCategory">
-      <block type="colour_hue"><field name="HUE">20</field></block>
-      <block type="colour_hue"><field name="HUE">65</field></block>
-      <block type="colour_hue"><field name="HUE">120</field></block>
-      <block type="colour_hue"><field name="HUE">160</field></block>
-      <block type="colour_hue"><field name="HUE">210</field></block>
-      <block type="colour_hue"><field name="HUE">230</field></block>
-      <block type="colour_hue"><field name="HUE">260</field></block>
-      <block type="colour_hue"><field name="HUE">290</field></block>
-      <block type="colour_hue"><field name="HUE">330</field></block>
-    </category> -->
-  </xml>
+</xml>

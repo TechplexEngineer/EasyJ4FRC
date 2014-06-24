@@ -1,7 +1,7 @@
 // This seems like a bit of a hack... but ohwells
 Blockly.Java.workspaceToCode = function (rootBlk) {
   var declarations = [];
-  var generatorblks = ['auto_init','auto_perodic','teleop_init','teleop_perodic'];
+  var generatorblks = ['touch_start','collision_start','state_entry','object_rez'];
   var code = [];
   this.init();
   var blocks = [];
