@@ -55,6 +55,14 @@ $dev = file_exists("DEV");
 				ga('send', 'pageview');
 
 			</script>
+    <script>
+      (function(g,i,a,n,t,s){g['SeeYourVisitors']=n;g[n]=g[n]||function(){
+      (g[n].q=g[n].q||[]).push(arguments)},g[n].l=1*new Date();t=i.createElement(a),
+      s=i.getElementsByTagName(a)[0];t.async=1;t.src='//seeyourvisitors2.appspot.com/gg.js';
+      s.parentNode.insertBefore(t,s)})(window,document,'script','gg');
+      gg('create', 'f0840870-665d-4a29-8fa4-de49cb6061eb');
+      gg('track');
+    </script>
 
 		<?php endif; ?>
 
