@@ -1,0 +1,47 @@
+<xml>
+  <block type="init_declare" id="131" deletable="false" x="2" y="19">
+    <statement name="WHAT">
+      <block type="declare_motor_controller" id="146">
+        <field name="NAME">Roller1</field>
+        <field name="CONTROLLER_TYPE">Victor</field>
+        <field name="PORT">1</field>
+        <next>
+          <block type="declare_digital_input" id="152">
+            <field name="NAME">LimitSwitch1</field>
+            <field name="PORT">1</field>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="teleop_init" id="134" deletable="false" x="4" y="137"></block>
+  <block type="auto_init" id="132" deletable="false" x="466" y="122"></block>
+  <block type="auto_perodic" id="133" deletable="false" x="466" y="191"></block>
+  <block type="teleop_perodic" id="135" deletable="false" x="7" y="223">
+    <statement name="WHAT">
+      <block type="controls_if" id="159" inline="false">
+        <mutation else="1"></mutation>
+        <value name="IF0">
+          <block type="get_digital_input_value" id="162">
+            <field name="NAME">LimitSwitch1</field>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="move_motor_controller" id="188" inline="true">
+            <field name="NAME">Roller1</field>
+            <value name="SPEED">
+              <block type="math_number" id="189">
+                <field name="NUM">1</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <statement name="ELSE">
+          <block type="stop_motor_controller" id="177">
+            <field name="NAME">Roller1</field>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+</xml>
