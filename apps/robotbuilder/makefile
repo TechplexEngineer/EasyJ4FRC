@@ -57,12 +57,12 @@ easyj_blocks:
 	./build.py
 
 deploy:
-	rsync -r --delete dist/* blake.metheus.org:/var/www/team5122/easyj
+	rsync -r --delete dist/* techplex@blake.metheus.org:/var/www/team5122/easyj
 
 closure:
 	@$(CD) ../../../; wget https://closure-library.googlecode.com/files/closure-library-20130212-95c19e7f0f5f.zip
 	@$(CD) ../../../; unzip closure-library-20130212-95c19e7f0f5f.zip -d closure-library-read-only
-    
+
 
 
 
