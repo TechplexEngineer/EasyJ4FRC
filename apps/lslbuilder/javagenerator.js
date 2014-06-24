@@ -202,12 +202,14 @@ Blockly.Flyout.prototype.filterForCapacity_ = function() {
       }
     }
 
-// @todo
-//     if (block.maxAvailable !== null) {
-//       console.log("Not Null!");
-//       var blocksoftype = this.targetWorkspace_.getAllBlocksOfType(block.type);
-//     }
-
+    // @todo this does not handle the case of duplicating!
+    if (block.maxAvailable && !disabled) {
+    	if (typeof Blockly.blockHash[block.type] !== "undefined" && Blockly.blockHash[block.type] !== 0) {
+        if (Blockly.blockHash[block.type] >= block.maxAvailable) {
+          disabled = true;
+        }
+      }
+    }
 
     block.setDisabled(disabled);
   }
@@ -219,6 +221,14 @@ Blockly.Block.prototype.setDependsOn = function (who) {
 	this.dependsOn = who;
 }
 
+Blockly.Block.prototype.setMaxAvailable = function (num) {
+	var value = parseInt(num);
+  if (isNaN(value)) {
+    console.err("The value '%s' is not a number", num);
+    return;
+  }
+  this.maxAvailable = value;
+}
 
 
 
