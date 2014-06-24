@@ -117,7 +117,8 @@ EasyJ.Checker.EnsureVariablesExist = function(block) {
     var vartype = blkvars[i].vartype;
     var varsofmatchingtype = Blockly.Variables.allVariablesOfType(vartype);
 
-    if ($.inArray(blkvars[i].name, varsofmatchingtype)) {
+    //http://stackoverflow.com/a/18867667/429544 -- returns index, or -1 if not found
+    if ($.inArray(blkvars[i].name, varsofmatchingtype) == -1 ) {
      return "The variable '"+blkvars[i].name+"' is not declared!";
     }
   }
