@@ -10,6 +10,8 @@
         <img src="images/easyj4frc.png" alt="EasyJ Logo" style="float:right; width:400px">
         <p>EasyJ is a new way to program FRC Robots using draggable snappable blocks.</p>
         <p>The goal is to lessen the learning curve for FRC Rookies and new programmers when using the WPI Robotics Library on an FRC Robot.</p>
+
+        <p> <a href="#about" class="stealthlink" data-toggle="modal"><?= $title ?></a> - <a href="http://techwizworld.net">Techplex Labs -- Blake Bourque</a> <?php echo date("Y"); ?></p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

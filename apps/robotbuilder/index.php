@@ -1,6 +1,8 @@
 <?php 
 $title = "EasyJ Robot Builder";
 $dev = file_exists("DEV");
+date_default_timezone_set("America/New_York");
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -293,7 +295,7 @@ $dev = file_exists("DEV");
 			</div>
 
 			<footer>
-				<p> <a href="#about" class="stealthlink" data-toggle="modal"><?= $title ?></a> - <a href="http://techwizworld.net">Techplex Labs</a> <script>document.write((new Date()).getFullYear());</script></p>
+				<p> <a href="#about" class="stealthlink" data-toggle="modal"><?= $title ?></a> - <a href="http://techwizworld.net">Techplex Labs -- Blake Bourque</a> <?php echo date("Y"); ?></p>
 			</footer>
 		</div> <!-- /container -->
 		<div class="hiddenmodals">
