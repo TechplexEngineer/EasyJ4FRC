@@ -13,6 +13,53 @@
 					<input id="download_filename" type="text" class="form-control" value="download">
 					<span class="input-group-addon">.zip</span>
 				</div>
+
+				<style>
+				.btn-radio {
+					width: 100%;
+				}
+				.img-radio {
+					opacity: 0.5;
+					margin-bottom: 5px;
+				}
+
+				.space-20 {
+					margin-top: 20px;
+				}
+				</style>
+				<script>
+					$(function () {
+						$('.btn-radio').click(function(e) {
+							$('.btn-radio').not(this).removeClass('active')
+								.siblings('input').prop('checked',false)
+								.siblings('.img-radio').css('opacity','0.5');
+							$(this).addClass('active')
+								.siblings('input').prop('checked',true)
+								.siblings('.img-radio').css('opacity','1');
+						});
+					});
+				</script>
+
+				<div class="form-horizontal well">
+				text here
+					<div class="row">
+						<div class="col-xs-4">
+							<img src="images/netbeans.png" class="img-responsive img-radio">
+							<button type="button" class="btn btn-primary btn-radio">Netbeans</button>
+							<input type="checkbox" id="left-item" class="hidden">
+						</div>
+						<div class="col-xs-4">
+							<img src="images/eclipse.png" class="img-responsive img-radio">
+							<button type="button" class="btn btn-primary btn-radio">Eclipse</button>
+							<input type="checkbox" id="middle-item" class="hidden">
+						</div>
+					</div>
+				</div>
+
+	
+	
+
+
 			</div>
 			<div class="modal-footer">
 				<button type="submit" class="btn btn-primary" id="downloadbtn">Download!</button>
