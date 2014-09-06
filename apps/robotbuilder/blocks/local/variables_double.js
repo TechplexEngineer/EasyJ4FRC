@@ -5,7 +5,7 @@ Blockly.Blocks['variables_declare_double'] = {
     this.setColour(120);
     this.appendDummyInput()
         .appendField("Declare")
-        .appendField(new Blockly.TypedFieldVariable("var1", 'double', true), "NAME")
+        .appendField(new Blockly.TypedFieldVariable("float1", 'double', true), "NAME")
         .appendField("of type 'double' value")
         // .appendField(new Blockly.FieldDropdown([["integer", "int"], ["double", "double"]]), "TYPE")
         // .appendField("value")
