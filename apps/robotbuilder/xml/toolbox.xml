@@ -192,6 +192,9 @@
       <block type="us_counter"></block>
     </category>
 
+    <category name="Variables" custom="VARIABLE"></category>
+    <!-- <category name="Functions" custom="PROCEDURE"></category> -->
+
     <!-- <category name="Field">
       <block type="field_static"></block>
       <block type="field_input"></block>

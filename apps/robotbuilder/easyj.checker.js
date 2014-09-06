@@ -81,7 +81,23 @@ EasyJ.Checker.SOLENOID_PORT = function(text) {
 	return btn;
 };
 
+EasyJ.Checker.IS_NUM = function(text) {
+	var num = parseInt(text);
+	if (isNaN(num)) {
+		return null;
+	}
 
+	return num;
+};
+
+EasyJ.Checker.IS_NUMF = function(text) {
+	var num = parseFloat(text);
+	if (isNaN(num)) {
+		return null;
+	}
+
+	return num;
+};
 
 
 EasyJ.Checker.EnsureNotTop_Init = function() {

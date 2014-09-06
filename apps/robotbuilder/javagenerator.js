@@ -219,8 +219,108 @@ Blockly.Block.prototype.setDependsOn = function (who) {
 	this.dependsOn = who;
 }
 
+// @override
+/**
+ * Construct the blocks required by the flyout for the variable category.
+ * @param {!Array.<!Blockly.Block>} blocks List of blocks to show.
+ * @param {!Array.<number>} gaps List of widths between blocks.
+ * @param {number} margin Standard margin width for calculating gaps.
+ * @param {!Blockly.Workspace} workspace The flyout's workspace.
+ */
+Blockly.Variables.flyoutCategory = function(blocks, gaps, margin, workspace) {
+  var variableList = Blockly.Variables.allVariablesOfType('int');
+  // variableList = variableList.concat(Blockly.Variables.allVariablesOfType('double'));
+
+  function a(type) {
+    // In addition to the user's variables, we also want to display the default
+    // variable name at the top.  We also don't want this duplicated if the
+    // user has created a variable of the same name.
+    // variableList.unshift(null);
+    var defaultVariable = undefined;
+    for (var i = 0; i < variableList.length; i++) {
+      if (variableList[i] === defaultVariable) {
+        continue;
+      }
+      var getBlock = Blockly.Blocks['variables_get'+'_'+type] ?
+          Blockly.Block.obtain(workspace, 'variables_get'+'_'+type) : null;
+      getBlock && getBlock.initSvg();
+      var setBlock = Blockly.Blocks['variables_set'+'_'+type] ?
+          Blockly.Block.obtain(workspace, 'variables_set'+'_'+type) : null;
+      setBlock && setBlock.initSvg();
+      if (variableList[i] === null) {
+        defaultVariable = (getBlock || setBlock).getVars()[0];
+      } else {
+        getBlock && getBlock.setFieldValue(variableList[i], 'NAME');
+        setBlock && setBlock.setFieldValue(variableList[i], 'NAME');
+      }
+      setBlock && blocks.push(setBlock);
+      getBlock && blocks.push(getBlock);
+      if (getBlock && setBlock) {
+        gaps.push(margin, margin * 3);
+      } else {
+        gaps.push(margin * 2);
+      }
+    }
+  }
+
+  var declareBlock_int = Blockly.Blocks['variables_declare_int'] ?
+    Blockly.Block.obtain(workspace, 'variables_declare_int') : null;
+    declareBlock_int && declareBlock_int.initSvg();
+  declareBlock_int && blocks.push(declareBlock_int);
+
+  gaps.push(margin, margin * 3);
+  variableList.sort(goog.string.caseInsensitiveCompare);
+  a('int');
+
+  variableList = Blockly.Variables.allVariablesOfType('double');
+
+  var declareBlock_double = Blockly.Blocks['variables_declare_double'] ?
+    Blockly.Block.obtain(workspace, 'variables_declare_double') : null;
+    declareBlock_double && declareBlock_double.initSvg();
+  declareBlock_double && blocks.push(declareBlock_double);
+
+  gaps.push(margin, margin * 3);
+  variableList.sort(goog.string.caseInsensitiveCompare);
+  a('double');
+//   console.log(Blockly.Blocks['variables_get_int']);
+// var type = 'int';
+//   var defaultVariable = undefined;
+//   for (var i = 0; i < variableList.length; i++) {
+//     if (variableList[i] === defaultVariable) {
+//       continue;
+//     }
+//     var getBlock = Blockly.Blocks['variables_get'+'_'+type] ?
+//         Blockly.Block.obtain(workspace, 'variables_get'+'_'+type) : null;
+//     getBlock && getBlock.initSvg();
+//     var setBlock = Blockly.Blocks['variables_set'+'_'+type] ?
+//         Blockly.Block.obtain(workspace, 'variables_set'+'_'+type) : null;
+//     setBlock && setBlock.initSvg();
+//     if (variableList[i] === null) {
+//       defaultVariable = (getBlock || setBlock).getVars()[0];
+//     } else {
+//       getBlock && getBlock.setFieldValue(variableList[i], 'NAME');
+//       setBlock && setBlock.setFieldValue(variableList[i], 'NAME');
+//     }
+//     setBlock && blocks.push(setBlock);
+//     getBlock && blocks.push(getBlock);
+//     if (getBlock && setBlock) {
+//       gaps.push(margin, margin * 3);
+//     } else {
+//       gaps.push(margin * 2);
+//     }
+//   }
 
 
+  // var declareBlock_double = Blockly.Blocks['variables_declare_double'] ?
+  //   Blockly.Block.obtain(workspace, 'variables_declare_double') : null;
+  //   declareBlock_double && declareBlock_double.initSvg();
+  // declareBlock_double && blocks.push(declareBlock_double);
+
+  // gaps.push(margin *2);
+
+  // variableList.sort(goog.string.caseInsensitiveCompare);
+  
+};
 
 
 
