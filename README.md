@@ -9,6 +9,13 @@ My goal is to allow FRC Rookies and new programmers to get their feet wet with s
 A recent build of the EasyJ4FRC environment is available here:   
 [EasyJ4FRC Demo](http://easyj.team5122.com/)
 
+## Building & Hacking
+1. Create a directory to work in I'll call mine `working`
+2. Download a copy of [EasyJ4FRC](https://github.com/TechplexEngineer/EasyJ4FRC/archive/master.zip) and unzip it into a folder in `working`, I'll call mine `EasyJ4FRC`
+3. Download a copy of the [Closure library](https://github.com/google/closure-library/archive/master.zip) and unzip it into a folder in `working`, it must be called `closure-library-read-only`
+4. Go into the `EasyJ4FRC` folder and try running the build script now.
+Note: I have only tested these instructions assuming the `working` directory is web accessible.
+
 ## Credits
 EasyJ4FRC is based on [Google Blockly](http://code.google.com/p/blockly/).   
 [Blockly Demo](https://blockly-demo.appspot.com/static/apps/index.html)
