@@ -282,6 +282,17 @@ Blockly.Variables.flyoutCategory = function(blocks, gaps, margin, workspace) {
   gaps.push(margin, margin * 3);
   variableList.sort(goog.string.caseInsensitiveCompare);
   a('double');
+
+  variableList = Blockly.Variables.allVariablesOfType('Boolean');
+
+  var declareBlock_boolean = Blockly.Blocks['variables_declare_boolean'] ?
+    Blockly.Block.obtain(workspace, 'variables_declare_boolean') : null;
+    declareBlock_boolean && declareBlock_boolean.initSvg();
+  declareBlock_boolean && blocks.push(declareBlock_boolean);
+
+  // gaps.push(margin, margin * 3);
+  variableList.sort(goog.string.caseInsensitiveCompare);
+  a('boolean');
 //   console.log(Blockly.Blocks['variables_get_int']);
 // var type = 'int';
 //   var defaultVariable = undefined;
