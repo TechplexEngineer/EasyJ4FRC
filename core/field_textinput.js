@@ -48,16 +48,18 @@ Blockly.FieldTextInput = function(text, opt_changeHandler) {
   // Wrap the change handler so that the output is always a string
   // This fixes a cryptic error on line 691 of closure/goog/dom/dom.js
   // Uncaught NotFoundError: Failed to execute 'appendChild' on 'Node': The new child element is null.
-  this.changeHandler_ = function(text) {
-    if (text == null) {
-      return null;
-    }
-    var txt = text;
-    if (opt_changeHandler) {
-      txt = opt_changeHandler(text)
-    }
-    return ""+txt; //""+
-  };
+  this.changeHandler_ = opt_changeHandler;
+
+  // this.changeHandler_ = function(text) {
+  //   if (text == null) {
+  //     return null;
+  //   }
+  //   var txt = text;
+  //   if (opt_changeHandler) {
+  //     txt = opt_changeHandler(text)
+  //   }
+  //   return ""+txt; //""+
+  // };
 };
 goog.inherits(Blockly.FieldTextInput, Blockly.Field);
 

@@ -163,7 +163,7 @@
         </value>
       </block>
       <block type="text_join"></block>
-      <category name="More">
+      <!-- <category name="More"> -->
 
 <!--         <block type="text_length"></block>
         <block type="text_isEmpty"></block>
@@ -173,7 +173,7 @@
         <block type="text_changeCase"></block>
         <block type="text_trim"></block> -->
 <!--         <block type="text_prompt"></block> -->
-      </category>
+      <!-- </category> -->
     </category>
 
 
@@ -193,7 +193,7 @@
     </category>
 
     <category name="Variables" custom="VARIABLE"></category>
-    <!-- <category name="Functions" custom="PROCEDURE"></category> -->
+    <category name="Functions" custom="PROCEDURE"></category>
 
     <!-- <category name="Field">
       <block type="field_static"></block>
