@@ -9,11 +9,13 @@ My goal is to allow FRC Rookies and new programmers to get their feet wet with s
 A recent build of the EasyJ4FRC environment is available here:   
 [EasyJ4FRC Demo](http://easyj.team5122.com/)
 
-## Building & Hacking
-### Prerequisites
+
+## Prerequisites
 You'll need:
 - Python 2.7+ (but not Python3)
 - Webserver with PHP
+
+## Building & Hacking
 
 1. Create a directory to work in I'll call mine `working`
 2. Download a copy of [EasyJ4FRC](https://github.com/TechplexEngineer/EasyJ4FRC/archive/master.zip) and 
