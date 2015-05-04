@@ -10,7 +10,7 @@ Blockly.Blocks['declare_digital_input'] = {
         .appendField(new Blockly.TypedFieldVariable("Din1", "DigitalInput", true), "NAME");
     this.appendDummyInput()
         .appendField("on port")
-        .appendField(new Blockly.FieldTextInput("1", EasyJ.Checker.DIGITAL_PORT), "PORT");
+        .appendField(new Blockly.FieldTextInput("0", EasyJ.Checker.DIGITAL_PORT), "PORT");
     // this.appendValueInput("PORT")
     //     .setCheck("Number")
     //     .appendField("on Port");

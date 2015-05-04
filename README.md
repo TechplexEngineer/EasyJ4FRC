@@ -9,24 +9,22 @@ My goal is to allow FRC Rookies and new programmers to get their feet wet with s
 A recent build of the EasyJ4FRC environment is available here:   
 [EasyJ4FRC Demo](http://easyj.team5122.com/)
 
-
-## Prerequisites
-You'll need:
-- Python 2.7+ (but not Python3)
-- Webserver with PHP
-
 ## Building & Hacking
-
 1. Create a directory to work in I'll call mine `working`
+<<<<<<< HEAD
+2. Download a copy of [EasyJ4FRC](https://github.com/TechplexEngineer/EasyJ4FRC/archive/master.zip) and unzip it into a folder in `working`, I'll call mine `EasyJ4FRC`
+3. Download a copy of the [Closure library](https://github.com/google/closure-library/archive/master.zip) and unzip it into a folder in `working`, it must be called `closure-library-read-only`
+4. Go into the `EasyJ4FRC` folder and try running the build script now.
+=======
 2. Download a copy of [EasyJ4FRC](https://github.com/TechplexEngineer/EasyJ4FRC/archive/master.zip) and 
 3. unzip it into a folder within `working`, I'll call mine `EasyJ4FRC`
 3. Download a copy of the [Closure library](https://github.com/google/closure-library/archive/master.zip)
 4. unzip `master.zip` it into a folder in `working`, it must be called `closure-library-read-only`
-4. Go into the `EasyJ4FRC` folder and try running the build script(build.py) now. This will generate the conpressed version of Blockly.
-5. Make the `working` folder web accessible. Apache if you are on linux, or XAMPP otherwhise. You'll need PHP
-5. Now using your web server, open `apps/robotbuilder/index.php` and begin hacking!
+4. Go into the `EasyJ4FRC` folder and try running the build script(build.py) now.
+5. Now using your web server, open index.html and begin hacking!
 
-Note: I have only tested these instructions on Linux.
+>>>>>>> 556bc1a0c850a2b066f9ea21b581348d2663376c
+Note: I have only tested these instructions assuming the `working` directory is web accessible.
 
 ## Credits
 EasyJ4FRC is based on [Google Blockly](http://code.google.com/p/blockly/).   
@@ -80,6 +78,7 @@ EasyJ4FRC is based on [Google Blockly](http://code.google.com/p/blockly/).
 - [x] hide blocks until variable exists (disable instead of hide)
 - [x] set warning on orphanned blocks
 - [ ] change "Declare" to "Create"
+- [ ] Change {motor controller,drivetrain} {speed,turn} inputs to be -100 to 100 %
 - [ ] Add more examples
 - [ ] add tool tips for blocks
 - [ ] add help url for blocks
@@ -90,7 +89,7 @@ EasyJ4FRC is based on [Google Blockly](http://code.google.com/p/blockly/).
 - [ ] need a test procedure for the code
 - [ ] It would be nice to handle port assiginments better, so that the same port can not be multiply selected
 - [ ] Should the robot drive block which creates 4 motor controller objects add the MC objects to the variable dropdown so that they can be independently accessed?
-- [ ] remove the compresor block
+- [ ] only allow the creation of one compressor
 - [x] make all of the declare blocks the same color so that it is more obvious where they go.
 - [ ] Add a description to the save system
 - [ ] allow fields to have their own tool tips
