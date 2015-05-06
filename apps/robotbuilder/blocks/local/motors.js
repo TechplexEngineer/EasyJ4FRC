@@ -96,13 +96,13 @@ Blockly.Java['move_motor_controller'] = function(block) {
   return code;
 };
 
-Blockly.Blocks['stop_motor_controller'] = {
+Blockly.Blocks['get_motor_controller'] = {
   init: function() {
     this.setHelpUrl('');
-    this.setTooltip('Set the motor controller speed to zero to stop the motor.');
+    this.setTooltip('Get the motor controller speed.');
     this.setColour(20);
     this.appendDummyInput()
-        .appendField("Stop")
+        .appendField("Get")
         .appendField(new Blockly.TypedFieldVariable("MC0","MotorController"), "NAME");
     this.setInputsInline(true);
     this.setPreviousStatement(true, 'statement');
@@ -123,6 +123,13 @@ Blockly.Blocks['stop_motor_controller'] = {
       this.setFieldValue(newName, 'NAME');
     }
   }
+};
+Blockly.Java['get_motor_controller'] = function(block) {   
+     
+  var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);    
+   
+  var code = variable_name+'.get();\n';   
+  return code;   
 };
 
 // -------------------------------------------------------------------------------------------------
