@@ -217,6 +217,9 @@ date_default_timezone_set("America/New_York");
 					</ul>
 					<div class="pull-right" style="margin-top:8px;">
 
+						<a href="http://www.team5122.com/easyj-feedback.html" class="notext iconbar" title="EasyJ Bug Report" target="_blank">
+							<img src="images/icons/issue.png" style="height: 30px; margin-top:-35px;">
+						</a>
 						<a href="#help" class="notext iconbar" title="Help" data-toggle="modal">
 							<!-- <img src="images/icons/iconmonstr-help-3-icon-256.png" style="height: 35px;"> -->
 							<?php include "images/icons/help.svg" ?>

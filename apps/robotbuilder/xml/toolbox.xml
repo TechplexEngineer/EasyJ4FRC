@@ -72,10 +72,6 @@
     </category>
 
     <category name="Pneumatics">
-      <category name="Compressor">
-        <block type="declare_compressor"></block>
-        <block type="compressor_start"></block>
-      </category>
       <category name="Solenoid (Valve)">
         <block type="declare_solenoid_single"></block>
         <block type="set_solenoid_single">
