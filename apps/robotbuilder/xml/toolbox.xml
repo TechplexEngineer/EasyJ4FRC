@@ -54,6 +54,7 @@
           </block>
         </value>
       </block>
+      <block type="get_motor_controller"></block>
       <block type="declare_drivetrain"></block>
       <block type="move_drivetrain">
         <value name="MOVE">
