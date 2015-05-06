@@ -6,8 +6,10 @@ Blockly.Blocks['declare_solenoid_single'] = {
     this.appendDummyInput()
         .appendField("Declare Single Solenoid")
         .appendField(new Blockly.TypedFieldVariable("SValve1", "Solenoid", true), "NAME")
+        .appendField("PCM channel")
+        .appendField(new Blockly.FieldTextInput("0", EasyJ.Checker.PCM_CHNL), "SOLENOIDCHNL")
         .appendField("on port")
-        .appendField(new Blockly.FieldTextInput("1", EasyJ.Checker.SOLENOID_PORT), "SOLENOID");
+        .appendField(new Blockly.FieldTextInput("0", EasyJ.Checker.SOLENOID_PORT), "SOLENOID");
     this.setPreviousStatement(true, 'declare');
     this.setNextStatement(true, 'declare');
   },
@@ -20,10 +22,11 @@ Blockly.Blocks['declare_solenoid_single'] = {
 };
 Blockly.Java['declare_solenoid_single'] = function(block) {
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
+  var text_solenoidchnl = block.getFieldValue('SOLENOIDCHNL');
   var text_solenoid = block.getFieldValue('SOLENOID');
 
   Blockly.Java.addImport("import edu.wpi.first.wpilibj.Solenoid;");
-  var code = 'Solenoid '+variable_name+' = new Solenoid('+text_solenoid+');';
+  var code = 'Solenoid '+variable_name+' = new Solenoid('+text_solenoidchnl+ ',' +text_solenoid+');';
   return code;
 };
 

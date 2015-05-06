@@ -90,7 +90,7 @@ EasyJ4FRC is based on [Google Blockly](http://code.google.com/p/blockly/).
 - [ ] need a test procedure for the code
 - [ ] It would be nice to handle port assiginments better, so that the same port can not be multiply selected
 - [ ] Should the robot drive block which creates 4 motor controller objects add the MC objects to the variable dropdown so that they can be independently accessed?
-- [ ] remove the compresor block
+- [x] remove the compresor block
 - [x] make all of the declare blocks the same color so that it is more obvious where they go.
 - [ ] Add a description to the save system
 - [ ] allow fields to have their own tool tips

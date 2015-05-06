@@ -14,7 +14,7 @@ Blockly.Blocks['declare_motor_controller'] = {
     //     .appendField("on PWM port");
     this.appendDummyInput()
         .appendField("on port")
-        .appendField(new Blockly.FieldTextInput("1", EasyJ.Checker.PWM_PORT), "PORT");
+        .appendField(new Blockly.FieldTextInput("0", EasyJ.Checker.PWM_PORT), "PORT");
     this.setInputsInline(true);
     this.setPreviousStatement(true, 'declare');
     this.setNextStatement(true, 'declare');
@@ -33,7 +33,7 @@ Blockly.Java['declare_motor_controller'] = function(block) {
   var value_port = block.getFieldValue("PORT");
 
   if (value_port=="") {
-    block.setWarningText("Motor Controller port not set. Defaulted to port 1.");
+    block.setWarningText("Motor Controller port not set. Defaulted to port 0.");
     value_port = 1;
   }
   else
@@ -53,7 +53,7 @@ Blockly.Blocks['move_motor_controller'] = {
     this.setColour(20);
     this.appendDummyInput()
         .appendField("Set")
-        .appendField(new Blockly.TypedFieldVariable("MC1","MotorController"), "NAME");
+        .appendField(new Blockly.TypedFieldVariable("MC0","MotorController"), "NAME");
     this.appendValueInput("SPEED")
         .setCheck("Number")
         .appendField("at speed");
@@ -103,7 +103,7 @@ Blockly.Blocks['stop_motor_controller'] = {
     this.setColour(20);
     this.appendDummyInput()
         .appendField("Stop")
-        .appendField(new Blockly.TypedFieldVariable("MC1","MotorController"), "NAME");
+        .appendField(new Blockly.TypedFieldVariable("MC0","MotorController"), "NAME");
     this.setInputsInline(true);
     this.setPreviousStatement(true, 'statement');
     this.setNextStatement(true, 'statement');
@@ -124,13 +124,7 @@ Blockly.Blocks['stop_motor_controller'] = {
     }
   }
 };
-Blockly.Java['stop_motor_controller'] = function(block) {
 
-  var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
-
-  var code = variable_name+'.stop();\n';
-  return code;
-};
 // -------------------------------------------------------------------------------------------------
 Blockly.Blocks['declare_drivetrain'] = {
   init: function() {
@@ -142,7 +136,7 @@ Blockly.Blocks['declare_drivetrain'] = {
         .appendField(new Blockly.TypedFieldVariable("Drivetrain","RobotDrive", true), "NAME")
         .appendField("of type")
         .appendField(new Blockly.FieldDropdown([["Victor", "Victor"], ["Jaguar", "Jaguar"], ["Talon", "Talon"]]), "TYPE")
-        .appendField("on PWM ports 1-4");
+        .appendField("on PWM ports 0-3");
     this.setInputsInline(true);
     this.setPreviousStatement(true, 'declare');
     this.setNextStatement(true, 'declare');
@@ -160,10 +154,10 @@ Blockly.Java['declare_drivetrain'] = function(block) {
 
   Blockly.Java.addReservedWords('frontLeftMotor,rearLeftMotor,frontRightMotor,rearRightMotor');
   var code = [];
-  code.push(dropdown_type+' frontLeftMotor  = new '+dropdown_type+'(1);');
-  code.push(dropdown_type+' rearLeftMotor   = new '+dropdown_type+'(2);');
-  code.push(dropdown_type+' frontRightMotor = new '+dropdown_type+'(3);');
-  code.push(dropdown_type+' rearRightMotor  = new '+dropdown_type+'(4);');
+  code.push(dropdown_type+' frontLeftMotor  = new '+dropdown_type+'(0);');
+  code.push(dropdown_type+' rearLeftMotor   = new '+dropdown_type+'(1);');
+  code.push(dropdown_type+' frontRightMotor = new '+dropdown_type+'(2);');
+  code.push(dropdown_type+' rearRightMotor  = new '+dropdown_type+'(3);');
 
   Blockly.Java.addImport("import edu.wpi.first.wpilibj."+dropdown_type+";");
   Blockly.Java.addImport("import edu.wpi.first.wpilibj.RobotDrive;");

@@ -54,8 +54,6 @@
           </block>
         </value>
       </block>
-      <block type="stop_motor_controller"></block>
-
       <block type="declare_drivetrain"></block>
       <block type="move_drivetrain">
         <value name="MOVE">

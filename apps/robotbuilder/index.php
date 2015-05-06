@@ -299,7 +299,7 @@ date_default_timezone_set("America/New_York");
 			</div>
 
 			<footer>
-				<p> <a href="#about" class="stealthlink" data-toggle="modal"><?= $title ?></a> - <a href="http://techwizworld.net">Techplex Labs -- Blake Bourque</a> <?php echo date("Y"); ?></p>
+				<p> <a href="#about" class="stealthlink" data-toggle="modal"><?= $title ?></a> - <a href="http://techwizworld.net">Techplex Labs </a><a href="#about" class="stealthlink" data-toggle="modal"></a> - <a href="http://Jgrindle.com"> JGrindle Labs </a> <b>-- Blake Bourque - John Grindle - <?php echo date("Y"); ?></b></p>
 			</footer>
 		</div> <!-- /container -->
 		<div class="hiddenmodals">

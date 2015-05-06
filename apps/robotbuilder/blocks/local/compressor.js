@@ -5,11 +5,9 @@ Blockly.Blocks['declare_compressor'] = {
     this.setColour(120);
     this.appendDummyInput()
         .appendField("Declare Compressor")
-        .appendField(new Blockly.TypedFieldVariable("Pump1", "Compressor", true), "NAME")
-        .appendField("with Relay on port")
-        .appendField(new Blockly.FieldTextInput("1", EasyJ.Checker.RELAY_PORT), "RELAY")
-        .appendField("and pressure switch on port")
-        .appendField(new Blockly.FieldTextInput("1", EasyJ.Checker.DIGITAL_PORT), "PRESSURESW");
+        .appendField(new Blockly.TypedFieldVariable("Comp1", "Compressor", true), "NAME")
+        .appendField("on PCM")
+        .appendField(new Blockly.FieldTextInput("0", EasyJ.Checker.PCM_CHNL), "PCM")
     this.setPreviousStatement(true, 'declare');
     this.setNextStatement(true, 'declare');
   },
@@ -22,13 +20,11 @@ Blockly.Blocks['declare_compressor'] = {
 };
 Blockly.Java['declare_compressor'] = function(block) {
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
-  var text_relay = block.getFieldValue('RELAY');
-  var text_pressuresw = block.getFieldValue('PRESSURESW');
+  var text_pcm = block.getFieldValue('PCM');
 
-  var code = 'Compressor '+variable_name+' = new Compressor('+text_pressuresw+','+text_relay+');';
+  var code = 'Compressor '+variable_name+' = new Compressor('+text_pcm+');';
   return code;
 };
-
 Blockly.Blocks['compressor_start'] = {
   init: function() {
     this.setHelpUrl('');
@@ -57,6 +53,7 @@ Blockly.Blocks['compressor_start'] = {
     }
   }
 };
+
 Blockly.Java['compressor_start'] = function(block) {
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
 
