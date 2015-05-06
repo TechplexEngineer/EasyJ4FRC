@@ -127,7 +127,7 @@ Blockly.Blocks['get_motor_controller'] = {
 Blockly.Java['get_motor_controller'] = function(block) {
   var variable_name = Blockly.Java.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
 
-  var code = variable_name;
+  var code = variable_name+'.get()';
 
   return [code, Blockly.Java.ORDER_ATOMIC];
 };
