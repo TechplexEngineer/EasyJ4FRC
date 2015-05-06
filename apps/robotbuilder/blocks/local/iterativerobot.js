@@ -80,7 +80,7 @@ Blockly.Blocks['teleop_init'] = {
 Blockly.Java['teleop_init'] = function(block) {
   var statements_what = Blockly.Java.statementToCode(block, 'WHAT');
   // TODO: Assemble Java into code variable.
-  var code = 'public void teleoperatedInit() { \n'+statements_what+'\n}';
+  var code = 'public void teleopInit() { \n'+statements_what+'\n}';
   return code;
 };
 
@@ -100,7 +100,7 @@ Blockly.Blocks['teleop_perodic'] = {
 Blockly.Java['teleop_perodic'] = function(block) {
   var statements_what = Blockly.Java.statementToCode(block, 'WHAT');
   // TODO: Assemble Java into code variable.
-  var code = 'public void teleoperatedPeriodic() { \n'+statements_what+'\n}';
+  var code = 'public void teleopPeriodic() { \n'+statements_what+'\n}';
   return code;
 };
 
