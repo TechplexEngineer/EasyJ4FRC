@@ -219,6 +219,7 @@ date_default_timezone_set("America/New_York");
 
 						<a href="http://www.team5122.com/easyj-feedback.html" class="notext iconbar" title="EasyJ Bug Report" target="_blank">
 							<img src="images/icons/issue.png" style="height: 31px; margin-top:-35px;">
+							<?php //include "images/icons/bugs.svg" ?>
 						</a>
 						<a href="#help" class="notext iconbar" title="Help" data-toggle="modal">
 							<!-- <img src="images/icons/iconmonstr-help-3-icon-256.png" style="height: 35px;"> -->
@@ -302,7 +303,10 @@ date_default_timezone_set("America/New_York");
 			</div>
 
 			<footer>
-				<p> <a href="#about" class="stealthlink" data-toggle="modal"><?= $title ?></a> - <a href="http://techwizworld.net">Techplex Labs </a><a href="#about" class="stealthlink" data-toggle="modal"></a> - <a href="http://Jgrindle.com"> JGrindle Labs </a> <b>-- Blake Bourque - John Grindle - <?php echo date("Y"); ?></b></p>
+				<p>
+					<a href="#about" class="stealthlink" data-toggle="modal"><?= $title ?></a> - 
+					<a href="http://techwizworld.net" target="_blank">Techplex Labs </a>
+					-- Blake Bourque - John Grindle - <?php echo date("Y"); ?></p>
 			</footer>
 		</div> <!-- /container -->
 		<div class="hiddenmodals">
