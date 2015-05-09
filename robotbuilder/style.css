@@ -48,14 +48,19 @@ div.modal .modal-body textarea.xmlcode {
 .form-group label, .form-group input {
 	width:100%;
 }
-.notext.iconbar {
-	margin-left:5px;
+
+.iconbar {
+	margin-top:12px;
 }
-.svgicon {
-	height:35px;
-	width:35px;
-	fill:white;
+
+.iconbar a {
+	margin-left:7px;
 }
-.svgicon:hover {
-	fill:gray;
+.iconbar .fa {
+	/*height:35px;*/
+	/*width:35px;*/
+	color:white;
+}
+.iconbar .fa:hover {
+	color:gray;
 }

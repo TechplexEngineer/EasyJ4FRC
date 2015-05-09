@@ -28,6 +28,8 @@ date_default_timezone_set("America/New_York");
 			<link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 			<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
+			<link href="bower_components/font-awesome/css/font-awesome.css" rel="stylesheet">
+
 		<?php
 		else:
 		?>
@@ -210,27 +212,25 @@ date_default_timezone_set("America/New_York");
 							</ul>
 						</li> -->
 					</ul>
-					<div class="pull-right" style="margin-top:8px;">
+					<div class="pull-right iconbar">
 
-						<a href="#help" class="notext iconbar" title="Help" data-toggle="modal">
-							<!-- <img src="images/icons/iconmonstr-help-3-icon-256.png" style="height: 35px;"> -->
-							<?php include "images/icons/help.svg" ?>
+						<a href="http://www.team5122.com/easyj-feedback.html" title="Feedback &amp; Bug Reporting" target="_blank">
+							<i class="fa fa-bug fa-2x"></i>
 						</a>
-						<a href="http://files.team5122.com/javadoc/" class="notext iconbar" title="WPI Robotics Library Documentation" target="_blank">
-							<!-- <img src="images/icons/iconmonstr-book-16-icon-256.png" style="height: 35px;"> -->
-							<?php include "images/icons/book.svg" ?>
+						<a href="#help" title="Help" data-toggle="modal">
+							<i class="fa fa-question fa-2x"></i>
 						</a>
-						<a href="#save" class="notext iconbar" title="Save" data-toggle="modal">
-							<!-- <img src="images/icons/iconmonstr-save-icon-256.png" style="height: 35px;"> -->
-							<?php include "images/icons/save.svg" ?>
+						<a href="http://files.team5122.com/javadoc/" title="WPI Robotics Library Documentation" target="_blank">
+							<i class="fa fa-book fa-2x"></i>
 						</a>
-						<a href="#download" class="notext iconbar" title="Download" data-toggle="modal">
-							<!-- <img src="images/icons/iconmonstr-download-2-icon-256.png" style="height: 35px;"> -->
-							<?php include "images/icons/download.svg" ?>
+						<a href="#save" title="Save" data-toggle="modal">
+							<i class="fa fa-floppy-o fa-2x"></i>
 						</a>
-						<a href="http://team5122.com" class="notext iconbar" title="Team5122 Homepage" target="_blank">
-							<!-- <img src="images/icons/iconmonstr-home-4-icon-256.png" style="height: 35px;"> -->
-							<?php include "images/icons/home.svg" ?>
+						<a href="#download" title="Download" data-toggle="modal">
+							<i class="fa fa-download fa-2x"></i>
+						</a>
+						<a href="http://team5122.com" title="Team5122 Homepage" target="_blank">
+							<i class="fa fa-home fa-2x"></i>
 						</a>
 					</div>
 				</div><!--/.navbar-collapse -->
