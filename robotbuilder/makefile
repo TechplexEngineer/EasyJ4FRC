@@ -11,16 +11,16 @@ MKDIR = mkdir
 #VARS
 OUTDIR = dist
 
-grandparent = msg/js/en.js {java,blockly,blocks}_compressed.js
-parent = 
-thisdir =  {easyj,javagenerator}.js style.css {index,frame}.php easyj.checker.js
-recursdirs = ../../media modals images xml zip RobotTemplate libs
+
+search_this_dir  = {easyj,javagenerator,easyj_checker}.js style.css {index,frame}.php
+search_build_dir = msg/js/en.js {java,blockly,blocks}_compressed.js
+search_recurse_dirs = ../blockly/media modals images xml RobotTemplate libs
 
 ## END VARS
-tocopy =  $(thisdir) $(addprefix ../,$(parent)) $(addprefix ../../,$(grandparent))
+tocopy =  $(search_this_dir)
+tocopy += $(addprefix ../build/,$(search_build_dir))
 
-
-.phony: all setup copy easyj_blocks 
+.phony: all setup copy
 
 all:
 	@echo "make setup		uses bower to install required packages"
@@ -35,26 +35,23 @@ clean:
 setup:
 	bower install
 
-dist: | compressed copy easyj_blocks
+dist: | compressed copy
 
-static: copy easyj_blocks
+static: copy
 
 copy:
-	@$(MKDIR) -p $(OUTDIR)
-	@$(MKDIR) -p $(OUTDIR)/bootstrap
-	@$(CP) -R $(recursdirs) $(OUTDIR)
+	@$(MKDIR) -p $(OUTDIR)/{,bootstrap,font-awesome}
+	@$(CP) -R $(search_recurse_dirs) $(OUTDIR)
 	@$(CP) $(tocopy) $(OUTDIR)
 	@$(CP) -R bower_components/bootstrap/dist/{js,css} $(OUTDIR)/bootstrap
+	@$(CP) -R bower_components/font-awesome/{css,fonts} $(OUTDIR)/font-awesome
 	@$(CP) bower_components/jquery/dist/jquery.min.js $(OUTDIR)
 
 	@echo "Static files copied."
 
 compressed:
-	$(CD) ../../; ./build.py
+	$(CD) ../build/; ./build.py
 	@echo "Closure Build Complete"
-
-easyj_blocks:
-	./build.py
 
 deploy:
 	rsync -r --delete dist/* techplex@blake.metheus.org:/var/www/team5122/easyj

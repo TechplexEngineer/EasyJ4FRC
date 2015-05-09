@@ -42,6 +42,7 @@ if sys.version_info[0] != 2:
 
 import errno, glob, httplib, json, os, re, subprocess, threading, urllib
 
+print "I AM HERE!"
 ### VARIABLES
 
 generator_languages = ['java', 'javascript', 'python', 'dart']
@@ -138,7 +139,7 @@ dir='blockly';
 
     provides = []
     for dep in calcdeps.BuildDependenciesFromFiles(self.search_paths):
-      if not dep.filename.startswith(os.pardir + os.sep + 'closure-library'):  # '../'
+      if not dep.filename.startswith(path_to_closure):  # '../'
         provides.extend(dep.provides)
     provides.sort()
     f.write('\n')
@@ -174,9 +175,9 @@ class Gen_compressed(threading.Thread):
 
   def run(self):
     self.gen_core()
-    self.gen_blocks()
-    for gen in generator_languages:
-      self.gen_generator(gen)
+    # self.gen_blocks()
+    # for gen in generator_languages:
+      # self.gen_generator(gen)
 
 
   def gen_core(self):
@@ -196,8 +197,10 @@ class Gen_compressed(threading.Thread):
     filenames = calcdeps.CalculateDependencies(self.search_paths,
         [os.path.join(path_to_blockly, 'core', 'blockly.js')])
     for filename in filenames:
+      print 'T',filename
+      continue
       # Filter out the Closure files (the compiler will add them).
-      if filename.startswith(os.pardir + os.sep):  # '../'
+      if filename.startswith(path_to_closure):  # '../'
         continue
       f = open(filename)
       params.append(('js_code', ''.join(f.readlines())))
@@ -220,7 +223,14 @@ class Gen_compressed(threading.Thread):
     # Read in all the source files.
     # Add Blockly.Blocks to be compatible with the compiler.
     params.append(('js_code', 'goog.provide(\'Blockly.Blocks\');'))
-    filenames = glob.glob(os.path.join(path_to_blockly_ext, 'blocks', '*.js'))
+    filenames = [] #glob.glob(os.path.join(path_to_blockly_ext, 'blocks', '*.js'))
+    import fnmatch
+    #recurse through subdirs of path_to_blockly_ext/blocks
+    #from: http://stackoverflow.com/a/2186565/429544
+    for r, dname, fnames in os.walk(os.path.join(path_to_blockly_ext, 'blocks')):
+      for filename in fnmatch.filter(fnames, '*.js'):
+        filenames.append(os.path.join(r, filename))
+
     for filename in filenames:
       f = open(filename)
       params.append(('js_code', ''.join(f.readlines())))
@@ -265,6 +275,7 @@ class Gen_compressed(threading.Thread):
     self.do_compile(params, target_filename, filenames, remove)
 
   def do_compile(self, params, target_filename, filenames, remove):
+    return
     # Send the request to Google.
     headers = {'Content-type': 'application/x-www-form-urlencoded'}
     conn = httplib.HTTPConnection('closure-compiler.appspot.com')
@@ -324,7 +335,7 @@ class Gen_compressed(threading.Thread):
  [\w ]+
 
  (Copyright \\d+ Google Inc.)
- https://developers.google.com/blockly/
+ https:[^$]+
 
  Licensed under the Apache License, Version 2.0 \(the "License"\);
  you may not use this file except in compliance with the License.
@@ -461,8 +472,8 @@ https://developers.google.com/blockly/hacking/closure""")
   # Run both tasks in parallel threads.
   # Uncompressed is limited by processor speed.
   # Compressed is limited by network and server speed.
-  Gen_uncompressed(search_paths).start()
+  # Gen_uncompressed(search_paths).start()
   Gen_compressed(search_paths).start()
 
   # This is run locally in a separate thread.
-  Gen_langfiles().start()
+  # Gen_langfiles().start()

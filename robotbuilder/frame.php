@@ -53,7 +53,7 @@
 
 		<?php
 		else:
-			$blocklyPath = "./build";
+			$blocklyPath = "./";
 		?>
 <!-- Include these in production mode ************************************** -->
 			<script src="jquery.min.js"></script>
@@ -61,7 +61,6 @@
 			<?php echo $easyj_checker; // must be before blocks. Otherwise EasyJ not defined. ?>
 			<script type="text/javascript" src="<?= $blocklyPath ?>blocks_compressed.js"></script>
 			<script type="text/javascript" src="<?= $blocklyPath ?>java_compressed.js"></script>
-			<script type="text/javascript" src="<?= $blocklyPath ?>easyj_blocks_compressed.js"></script>
 			<script type="text/javascript" src="<?= $blocklyPath ?>en.js"></script>
   		<?php endif; ?>
 
