@@ -1,0 +1,1 @@
+This directory contains the file which will serve as the index for the documentation directory available [files.team5122.com/javadoc](http://files.team5122.com/javadoc/)
