@@ -3,7 +3,7 @@
  * Visual Blocks Editor
  *
  * Copyright 2012 Google Inc.
- * https://blockly.googlecode.com/
+ * https://developers.google.com/blockly/
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,8 +19,9 @@
  */
 
 /**
- * @fileoverview Variable input field.
+ * @fileoverview Variable input field with type.
  * @author fraser@google.com (Neil Fraser)
+ * @author blake@techplex.io (Blake Bourque)
  */
 'use strict';
 
