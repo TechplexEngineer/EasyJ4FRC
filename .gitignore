@@ -7,3 +7,4 @@ apps/json/
 frcjava_hardway/
 xmlblocks/
 build/out/
+closure-compiler/*
