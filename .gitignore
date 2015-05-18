@@ -6,3 +6,4 @@ apps/json/
 *.sublime-*
 frcjava_hardway/
 xmlblocks/
+build/out/
