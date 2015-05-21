@@ -7,6 +7,7 @@ Installing the Dev Environment
 3. Node.js and NPM (Javascript runtime for Bower)
 4. Bower (front end package manager)
 5. Python (to build Blockly)
+6. Bower
 
 
 # Recommended Sublime Packages:
@@ -23,9 +24,13 @@ Installing the Dev Environment
 7. `mv closure-library-master/* .`
 8. `rmdir closure-library-master`
 9. `rm master.zip`
+10. cd ../
+11. wget http://dl.google.com/closure-compiler/compiler-latest.zip
+12. unzip compiler-latest.zip -d closure-compiler
 10. `cd ../robotbuilder`
 11. `bower install` #install frontend dependencies (bootstrap, font-awesome & jquery)
 12. `cd ../build`
 13. `./build.py` or `python build.py`
 14. `cd ../robotbuilder`
 15. make dist
+16. 
