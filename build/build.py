@@ -42,14 +42,13 @@ if sys.version_info[0] != 2:
 
 import errno, glob, httplib, json, os, re, subprocess, threading, urllib
 
-print "I AM HERE!"
 ### VARIABLES
 
 generator_languages = ['java', 'javascript', 'python', 'dart']
 path_to_blockly = os.path.join(os.pardir, 'blockly')
 path_to_blockly_ext = os.path.join(os.pardir, 'blockly_ext')
 path_to_closure = os.path.join(os.path.pardir, 'closure-library')
-output_dir = os.curdir;
+output_dir = os.path.join(os.curdir, 'out');
 
 ### VARIABLES
 
@@ -96,6 +95,7 @@ class Gen_uncompressed(threading.Thread):
 
   def run(self):
     target_filename = 'blockly_uncompressed.js'
+    target_filename = os.path.join(output_dir, target_filename)
     f = open(target_filename, 'w')
     f.write(HEADER)
     f.write("""
@@ -175,13 +175,14 @@ class Gen_compressed(threading.Thread):
 
   def run(self):
     self.gen_core()
-    # self.gen_blocks()
-    # for gen in generator_languages:
-      # self.gen_generator(gen)
+    self.gen_blocks()
+    for gen in generator_languages:
+      self.gen_generator(gen)
 
 
   def gen_core(self):
     target_filename = 'blockly_compressed.js'
+    target_filename = os.path.join(output_dir, target_filename)
     # Define the parameters for the POST request.
     params = [
         ('compilation_level', 'SIMPLE_OPTIMIZATIONS'),
@@ -197,19 +198,24 @@ class Gen_compressed(threading.Thread):
     filenames = calcdeps.CalculateDependencies(self.search_paths,
         [os.path.join(path_to_blockly, 'core', 'blockly.js')])
     for filename in filenames:
-      print 'T',filename
-      continue
+      
       # Filter out the Closure files (the compiler will add them).
       if filename.startswith(path_to_closure):  # '../'
+        # print "Ignoring ", filename
         continue
+      print 'T',os.path.isfile(filename), filename
       f = open(filename)
-      params.append(('js_code', ''.join(f.readlines())))
+      # params.append(('js_code', ''.join(f.readlines())))
+      if (filename == "../blockly/core/blockly.js"):
+        print f.readlines()
+      
       f.close()
 
     self.do_compile(params, target_filename, filenames, '')
 
   def gen_blocks(self):
     target_filename = 'blocks_compressed.js'
+    target_filename = os.path.join(output_dir, target_filename)
     # Define the parameters for the POST request.
     params = [
         ('compilation_level', 'SIMPLE_OPTIMIZATIONS'),
@@ -242,6 +248,7 @@ class Gen_compressed(threading.Thread):
 
   def gen_generator(self, language):
     target_filename = language + '_compressed.js'
+    target_filename = os.path.join(output_dir, target_filename)
     # Define the parameters for the POST request.
     params = [
         ('compilation_level', 'SIMPLE_OPTIMIZATIONS'),
@@ -335,7 +342,7 @@ class Gen_compressed(threading.Thread):
  [\w ]+
 
  (Copyright \\d+ Google Inc.)
- https:[^$]+
+ https://developers.google.com/blockly/
 
  Licensed under the Apache License, Version 2.0 \(the "License"\);
  you may not use this file except in compliance with the License.
@@ -468,12 +475,12 @@ https://developers.google.com/blockly/hacking/closure""")
       os.path.join(path_to_blockly_ext, 'core'),
       path_to_closure])
 
-
+  mkdir_p(output_dir)
   # Run both tasks in parallel threads.
   # Uncompressed is limited by processor speed.
   # Compressed is limited by network and server speed.
-  # Gen_uncompressed(search_paths).start()
+  Gen_uncompressed(search_paths).start()
   Gen_compressed(search_paths).start()
 
   # This is run locally in a separate thread.
-  # Gen_langfiles().start()
+  Gen_langfiles().start()
