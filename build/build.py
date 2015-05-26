@@ -201,14 +201,11 @@ class Gen_compressed(threading.Thread):
       
       # Filter out the Closure files (the compiler will add them).
       if filename.startswith(path_to_closure):  # '../'
-        # print "Ignoring ", filename
+        # print "Ignoring ", filename        
         continue
-      print 'T',os.path.isfile(filename), filename
+
       f = open(filename)
-      # params.append(('js_code', ''.join(f.readlines())))
-      if (filename == "../blockly/core/blockly.js"):
-        print f.readlines()
-      
+      params.append(('js_code', ''.join(f.readlines())))      
       f.close()
 
     self.do_compile(params, target_filename, filenames, '')
