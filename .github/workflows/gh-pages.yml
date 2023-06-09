@@ -42,7 +42,7 @@ jobs:
           
       - name: Build
         run: |
-          ./build.py
+          python2 build.py
         
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
