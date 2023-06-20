@@ -417,7 +417,7 @@ http://code.google.com/p/blockly/wiki/Closure""")
   # Uncompressed is limited by processor speed.
   # Compressed is limited by network and server speed.
   Gen_uncompressed(search_paths).start()
-  Gen_compressed(search_paths).start()
+  # Gen_compressed(search_paths).start()
 
   # This is run locally in a separate thread.
   Gen_langfiles().start()
