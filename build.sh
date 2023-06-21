@@ -4,7 +4,9 @@ set -euo pipefail
 
 cd "$(dirname "$0")"
 
-docker build . -t easyj
+echo "starting build"
+docker build . -t easyj 1> /dev/null 2>/dev/null
+echo "build complete"
 
 imagename="easyj"
 name=$(mktemp -u "${imagename}-XXX")
@@ -15,6 +17,11 @@ containerId=$(docker run -dit \
 	--name "${name}" \
 	easyj)
 
+echo "ls"
+ls
+
+echo "docker ls"
+docker exec "${containerId}" ls
 
 echo "make -C EasyJ4FRC closure compress allapps"
 docker exec "${containerId}" make -C EasyJ4FRC/EasyJ4FRC closure compress allapps
