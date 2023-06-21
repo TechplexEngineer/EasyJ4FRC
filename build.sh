@@ -9,7 +9,7 @@ name=$(mktemp -u "${imagename}-XXX")
 
 containerId=$(docker run -dit \
 	--workdir /src \
-	-v "${PWD}":/src/EasyJ4FRC \
+	-v "${PWD}":/src \
 	--name "${name}" \
 	easyj)
 
