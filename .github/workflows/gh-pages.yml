@@ -35,19 +35,10 @@ jobs:
         
       - name: Setup Pages
         uses: actions/configure-pages@v3
-
-      - name: Get Closure library
-        run: |
-          cd ..
-          wget https://github.com/google/closure-library/archive/refs/tags/v20160315.zip
-          unzip -q v20160315.zip
-          rm v20160315.zip
-          mv closure-library-20160315 closure-library-read-only
-          
           
       - name: Build
         run: |
-          python2 build.py
+          ./build.sh
         
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1

@@ -297,7 +297,7 @@ date_default_timezone_set("America/New_York");
 				}
 			}
 			</script>
-			<iframe id="blocklyworkspace" src="frame.php" class="blockly"></iframe>
+			<iframe id="blocklyworkspace" src="frame.html" class="blockly"></iframe>
 			<div id="codeoutput" style="display:none;">
 				<pre id="languagePre"></pre>
 			</div>

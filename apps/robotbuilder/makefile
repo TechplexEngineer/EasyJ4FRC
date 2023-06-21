@@ -33,8 +33,13 @@ all:
 clean:
 	$(RM) -rf ./$(OUTDIR)
 
+.phony: php
+php:
+	php frame.php > frame.html
+	php index.php > index.html
+
 setup:
-	bower install
+	bower install --allow-root
 
 dist: | compressed copy easyj_blocks
 

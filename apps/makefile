@@ -11,6 +11,7 @@ SOY_SOURCES = $(subst $(SPACE),$(COMMA),$(SOY_TEMPLATES))
 
 .PHONY: subdirs $(APPDIRS) json extracted_msgs.xlf
 
+.PHONY: all
 all: $(APPDIRS)
 
 $(APPDIRS): json
