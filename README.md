@@ -7,7 +7,7 @@ My goal is to allow FRC Rookies and new programmers to get their feet wet with s
 
 ## Demo
 A recent build of the EasyJ4FRC environment is available here:   
-[EasyJ4FRC Demo](http://easyj.team5122.com/)
+[EasyJ4FRC Demo]([http://easyj.team5122.com/](https://techplexengineer.github.io/EasyJ4FRC/EasyJ4FRC/apps/robotbuilder/))
 
 
 ## Prerequisites
